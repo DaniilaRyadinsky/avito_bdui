@@ -1,0 +1,4 @@
+config/local.yaml
+config/test.go
+.env
+configs/

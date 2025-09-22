@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: db
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - db:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    restart: unless-stopped
+    env_file: .env
+  bdui:
+    container_name: bdui
+    image: zitrax78/bdui:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./configs:/app/configs
+    environment:
+      CONFIG_FILE: bdui.yaml
+    restart: unless-stopped
+    
+volumes:
+  db:

@@ -1,0 +1,168 @@
+basePath: /
+definitions:
+  echo.SWGCreatedID:
+    properties:
+      id:
+        example: 550e8400-e29b-41d4-a716-446655440000
+        type: string
+    type: object
+  echo.SWGError:
+    properties:
+      error:
+        example: description of error
+        type: string
+    type: object
+  echo.SWGScreen:
+    additionalProperties: true
+    type: object
+host: 31.56.205.210:8080
+info:
+  contact:
+    email: admin@breezy.su
+    name: Alex "bustard" Provor
+    url: https://breezy.su
+  title: bdUI REST API
+  version: --dev--
+paths:
+  /api/screen/all:
+    get:
+      description: Returns all screen documents.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/echo.SWGScreen'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: List screens
+      tags:
+      - screens
+  /api/screen/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new screen document; server generates UUID and returns
+        it as `id`.
+      parameters:
+      - description: Screen payload
+        in: body
+        name: screen
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGScreen'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/echo.SWGCreatedID'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Create screen
+      tags:
+      - screens
+  /api/screen/delete:
+    delete:
+      description: Deletes a screen document by its UUID (`id`).
+      parameters:
+      - description: Screen ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Delete screen by ID
+      tags:
+      - screens
+  /api/screen/get:
+    get:
+      description: Returns a single screen document by UUID.
+      parameters:
+      - description: Screen ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/echo.SWGScreen'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Get screen by ID
+      tags:
+      - screens
+  /api/screen/rewrite:
+    put:
+      consumes:
+      - application/json
+      description: Updates fields of a screen document by UUID using `$set` semantics.
+      parameters:
+      - description: Screen ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Fields to set
+        in: body
+        name: screen
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGScreen'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Update (rewrite) screen by ID
+      tags:
+      - screens
+schemes:
+- http
+swagger: "2.0"
