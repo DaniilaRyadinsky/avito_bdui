@@ -4,6 +4,7 @@ import (
 	"bdui/config"
 	"bdui/internal/mongo"
 	"bdui/internal/utils/format"
+	"bdui/internal/ws"
 	"errors"
 	"fmt"
 	"github.com/labstack/echo/v4"
@@ -13,30 +14,61 @@ import (
 )
 
 type Server struct {
-	e      *echo.Echo
-	cfg    *config.Config
-	scrAPI mongo.ScreenAPI
+	e    *echo.Echo
+	cfg  *config.Config
+	API  mongo.API
+	coll mongo.Collections
+	wsm  *ws.Manager
 }
 
-func NewServer(cfg *config.Config, scrAPI mongo.ScreenAPI) *Server {
+func NewServer(cfg *config.Config, API mongo.API, coll mongo.Collections, wsm *ws.Manager) *Server {
 	e := echo.New()
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 	e.Use(middleware.Logger(), middleware.Recover(), middleware.CORS())
 
 	s := &Server{
-		e:      e,
-		cfg:    cfg,
-		scrAPI: scrAPI,
+		e:    e,
+		cfg:  cfg,
+		API:  API,
+		wsm:  wsm,
+		coll: coll,
 	}
+
+	wsm.MountEcho(e)
+
+	e.POST("/api/client/reload", s.Reload)
 
 	scr := e.Group("/api/screen/")
 	{
 		scr.POST("create", s.CreateScreen)
 		scr.DELETE("delete", s.DeleteScreen)
 		scr.PUT("rewrite", s.RewriteScreen)
+		scr.PATCH("update", s.UpdateScreen)
 
 		scr.GET("all", s.GetAllScreens)
 		scr.GET("get", s.GetScreen)
+	}
+
+	clr := e.Group("/api/color/")
+	{
+		clr.POST("create", s.CreateColor)
+		clr.DELETE("delete", s.DeleteColor)
+		clr.PUT("rewrite", s.RewriteColor)
+		clr.PATCH("update", s.UpdateColor)
+
+		clr.GET("all", s.GetAllColors)
+		clr.GET("get", s.GetColor)
+	}
+
+	elm := e.Group("/api/element/")
+	{
+		elm.POST("create", s.CreateElement)
+		elm.DELETE("delete", s.DeleteElement)
+		elm.PUT("rewrite", s.RewriteElement)
+		elm.PATCH("update", s.UpdateElement)
+
+		elm.GET("all", s.GetAllElements)
+		elm.GET("get", s.GetElement)
 	}
 
 	return s

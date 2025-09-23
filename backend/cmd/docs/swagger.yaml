@@ -1,10 +1,16 @@
 basePath: /
 definitions:
+  echo.SWGColor:
+    additionalProperties: true
+    type: object
   echo.SWGCreatedID:
     properties:
       id:
         example: 550e8400-e29b-41d4-a716-446655440000
         type: string
+    type: object
+  echo.SWGElement:
+    additionalProperties: true
     type: object
   echo.SWGError:
     properties:
@@ -24,6 +30,371 @@ info:
   title: bdUI REST API
   version: --dev--
 paths:
+  /api/client/reload:
+    post:
+      description: log count clients
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: No Content
+          schema:
+            type: string
+      summary: Broadcast all clients after reload screens
+      tags:
+      - websocket
+  /api/color/all:
+    get:
+      description: Returns all color documents.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/echo.SWGColor'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: List colors
+      tags:
+      - colors
+  /api/color/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new color document; server generates UUID and returns
+        it as `id`.
+      parameters:
+      - description: Color payload
+        in: body
+        name: color
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGColor'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/echo.SWGCreatedID'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Create color
+      tags:
+      - colors
+  /api/color/delete:
+    delete:
+      description: Deletes a color document by its UUID (`id`).
+      parameters:
+      - description: Color ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Delete color by ID
+      tags:
+      - colors
+  /api/color/get:
+    get:
+      description: Returns a single color document by UUID.
+      parameters:
+      - description: Color ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/echo.SWGColor'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Get color by ID
+      tags:
+      - colors
+  /api/color/rewrite:
+    put:
+      consumes:
+      - application/json
+      description: Rewrites (replaces) a color document by UUID. `_id` is preserved
+        on server.
+      parameters:
+      - description: Color ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Fields to write (document is replaced except for _id)
+        in: body
+        name: color
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGColor'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Update (rewrite) color by ID
+      tags:
+      - colors
+  /api/color/update:
+    patch:
+      consumes:
+      - application/json
+      description: Partially updates fields of a color document by UUID using `$set`;
+        `_id` is preserved.
+      parameters:
+      - description: Color ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Fields to set
+        in: body
+        name: color
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGColor'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Partially update color by ID
+      tags:
+      - colors
+  /api/element/all:
+    get:
+      description: Returns all element documents.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/echo.SWGElement'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: List elements
+      tags:
+      - elements
+  /api/element/create:
+    post:
+      consumes:
+      - application/json
+      description: Creates a new element document; server generates UUID and returns
+        it as `id`.
+      parameters:
+      - description: Element payload
+        in: body
+        name: element
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGElement'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/echo.SWGCreatedID'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Create element
+      tags:
+      - elements
+  /api/element/delete:
+    delete:
+      description: Deletes an element document by its UUID (`id`).
+      parameters:
+      - description: Element ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Delete element by ID
+      tags:
+      - elements
+  /api/element/get:
+    get:
+      description: Returns a single element document by UUID.
+      parameters:
+      - description: Element ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/echo.SWGElement'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Get element by ID
+      tags:
+      - elements
+  /api/element/rewrite:
+    put:
+      consumes:
+      - application/json
+      description: Rewrites (replaces) an element document by UUID. `_id` is preserved
+        on server.
+      parameters:
+      - description: Element ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Fields to write (document is replaced except for _id)
+        in: body
+        name: element
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGElement'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Update (rewrite) element by ID
+      tags:
+      - elements
+  /api/element/update:
+    patch:
+      consumes:
+      - application/json
+      description: Partially updates fields of an element document by UUID using `$set`;
+        `_id` is preserved.
+      parameters:
+      - description: Element ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Fields to set
+        in: body
+        name: element
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGElement'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Partially update element by ID
+      tags:
+      - elements
   /api/screen/all:
     get:
       description: Returns all screen documents.
@@ -163,6 +534,61 @@ paths:
       summary: Update (rewrite) screen by ID
       tags:
       - screens
+  /api/screen/update:
+    patch:
+      consumes:
+      - application/json
+      description: Partially updates fields of a screen document by UUID using `$set`;
+        `_id` is preserved.
+      parameters:
+      - description: Screen ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Fields to set
+        in: body
+        name: screen
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGScreen'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Partially update screen by ID
+      tags:
+      - screens
+  /ws:
+    get:
+      description: web socket connection! "ws://<ip>:8080/ws?id=<id>"
+      parameters:
+      - description: Screen ID (UUID)
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: No Content
+          schema:
+            type: string
+      summary: subscribe client to updates "ws://<ip>:8080/ws?id=<id>"
+      tags:
+      - websocket
 schemes:
 - http
 swagger: "2.0"

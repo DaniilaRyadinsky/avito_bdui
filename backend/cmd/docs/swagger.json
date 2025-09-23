@@ -15,6 +15,552 @@
     "host": "31.56.205.210:8080",
     "basePath": "/",
     "paths": {
+        "/api/client/reload": {
+            "post": {
+                "description": "log count clients",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "websocket"
+                ],
+                "summary": "Broadcast all clients after reload screens",
+                "responses": {
+                    "202": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/color/all": {
+            "get": {
+                "description": "Returns all color documents.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "colors"
+                ],
+                "summary": "List colors",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/echo.SWGColor"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/color/create": {
+            "post": {
+                "description": "Creates a new color document; server generates UUID and returns it as `id`.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "colors"
+                ],
+                "summary": "Create color",
+                "parameters": [
+                    {
+                        "description": "Color payload",
+                        "name": "color",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGColor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGCreatedID"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/color/delete": {
+            "delete": {
+                "description": "Deletes a color document by its UUID (`id`).",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "colors"
+                ],
+                "summary": "Delete color by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Color ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/color/get": {
+            "get": {
+                "description": "Returns a single color document by UUID.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "colors"
+                ],
+                "summary": "Get color by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Color ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGColor"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/color/rewrite": {
+            "put": {
+                "description": "Rewrites (replaces) a color document by UUID. `_id` is preserved on server.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "colors"
+                ],
+                "summary": "Update (rewrite) color by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Color ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Fields to write (document is replaced except for _id)",
+                        "name": "color",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGColor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/color/update": {
+            "patch": {
+                "description": "Partially updates fields of a color document by UUID using `$set`; `_id` is preserved.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "colors"
+                ],
+                "summary": "Partially update color by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Color ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Fields to set",
+                        "name": "color",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGColor"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/element/all": {
+            "get": {
+                "description": "Returns all element documents.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "elements"
+                ],
+                "summary": "List elements",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/echo.SWGElement"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/element/create": {
+            "post": {
+                "description": "Creates a new element document; server generates UUID and returns it as `id`.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "elements"
+                ],
+                "summary": "Create element",
+                "parameters": [
+                    {
+                        "description": "Element payload",
+                        "name": "element",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGElement"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGCreatedID"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/element/delete": {
+            "delete": {
+                "description": "Deletes an element document by its UUID (`id`).",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "elements"
+                ],
+                "summary": "Delete element by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Element ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/element/get": {
+            "get": {
+                "description": "Returns a single element document by UUID.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "elements"
+                ],
+                "summary": "Get element by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Element ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGElement"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/element/rewrite": {
+            "put": {
+                "description": "Rewrites (replaces) an element document by UUID. `_id` is preserved on server.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "elements"
+                ],
+                "summary": "Update (rewrite) element by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Element ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Fields to write (document is replaced except for _id)",
+                        "name": "element",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGElement"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/element/update": {
+            "patch": {
+                "description": "Partially updates fields of an element document by UUID using `$set`; `_id` is preserved.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "elements"
+                ],
+                "summary": "Partially update element by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Element ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Fields to set",
+                        "name": "element",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGElement"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
         "/api/screen/all": {
             "get": {
                 "description": "Returns all screen documents.",
@@ -224,9 +770,95 @@
                     }
                 }
             }
+        },
+        "/api/screen/update": {
+            "patch": {
+                "description": "Partially updates fields of a screen document by UUID using `$set`; `_id` is preserved.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "screens"
+                ],
+                "summary": "Partially update screen by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Screen ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Fields to set",
+                        "name": "screen",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGScreen"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/ws": {
+            "get": {
+                "description": "web socket connection! \"ws://\u003cip\u003e:8080/ws?id=\u003cid\u003e\"",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "websocket"
+                ],
+                "summary": "subscribe client to updates \"ws://\u003cip\u003e:8080/ws?id=\u003cid\u003e\"",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Screen ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "echo.SWGColor": {
+            "type": "object",
+            "additionalProperties": true
+        },
         "echo.SWGCreatedID": {
             "type": "object",
             "properties": {
@@ -235,6 +867,10 @@
                     "example": "550e8400-e29b-41d4-a716-446655440000"
                 }
             }
+        },
+        "echo.SWGElement": {
+            "type": "object",
+            "additionalProperties": true
         },
         "echo.SWGError": {
             "type": "object",

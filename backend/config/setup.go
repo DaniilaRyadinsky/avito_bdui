@@ -14,8 +14,10 @@ type Config struct {
 }
 
 const (
-	ScreenColl = "screens"
-	Db         = "bdui"
+	ScreenColl  = "screens"
+	ColorColl   = "colours"
+	ElementColl = "elements"
+	Db          = "bdui"
 )
 
 func MustSetup() *Config {
