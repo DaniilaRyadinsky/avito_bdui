@@ -1,8 +1,10 @@
 package echo
 
 import (
+	"bdui/internal/ws"
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/labstack/echo/v4"
 )
@@ -24,7 +26,7 @@ func (s *Server) CreateScreen(ctx echo.Context) error {
 		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": err.Error()})
 	}
 
-	id, err := s.scrAPI.CreateScreen(ctx.Request().Context(), payload)
+	id, err := s.API.Create(ctx.Request().Context(), payload, s.coll.ScreenColl())
 	if err != nil {
 		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
 	}
@@ -48,7 +50,7 @@ func (s *Server) DeleteScreen(ctx echo.Context) error {
 		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "missing id"})
 	}
 
-	if err := s.scrAPI.DeleteScreen(ctx.Request().Context(), id); err != nil {
+	if err := s.API.Delete(ctx.Request().Context(), id, s.coll.ScreenColl()); err != nil {
 		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
 	}
 
@@ -78,10 +80,37 @@ func (s *Server) RewriteScreen(ctx echo.Context) error {
 		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": err.Error()})
 	}
 
-	if err := s.scrAPI.RewriteScreen(ctx.Request().Context(), id, payload); err != nil {
+	if err := s.API.Rewrite(ctx.Request().Context(), id, payload, s.coll.ScreenColl()); err != nil {
 		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
 	}
 
+	return ctx.NoContent(http.StatusNoContent)
+}
+
+// UpdateScreen godoc
+// @Summary Partially update screen by ID
+// @Description Partially updates fields of a screen document by UUID using `$set`; `_id` is preserved.
+// @Tags screens
+// @Accept json
+// @Produce json
+// @Param id query string true "Screen ID (UUID)"
+// @Param screen body SWGScreen true "Fields to set"
+// @Success 204 {string} string "No Content"
+// @Failure 400 {object} SWGError
+// @Failure 500 {object} SWGError
+// @Router /api/screen/update [patch]
+func (s *Server) UpdateScreen(ctx echo.Context) error {
+	id := ctx.QueryParam("id")
+	if id == "" {
+		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "missing id"})
+	}
+	var payload map[string]interface{}
+	if err := ctx.Bind(&payload); err != nil {
+		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": err.Error()})
+	}
+	if err := s.API.Update(ctx.Request().Context(), id, payload, s.coll.ScreenColl()); err != nil {
+		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
+	}
 	return ctx.NoContent(http.StatusNoContent)
 }
 
@@ -96,7 +125,7 @@ func (s *Server) RewriteScreen(ctx echo.Context) error {
 func (s *Server) GetAllScreens(ctx echo.Context) error {
 	log.Println("getall")
 
-	screens, err := s.scrAPI.GetAllScreens(ctx.Request().Context())
+	screens, err := s.API.GetAll(ctx.Request().Context(), s.coll.ScreenColl())
 	if err != nil {
 		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
 	}
@@ -125,10 +154,26 @@ func (s *Server) GetScreen(ctx echo.Context) error {
 		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "missing id"})
 	}
 
-	screen, err := s.scrAPI.GetScreen(ctx.Request().Context(), id)
+	screen, err := s.API.Get(ctx.Request().Context(), id, s.coll.ScreenColl())
 	if err != nil {
 		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
 	}
 
 	return ctx.JSON(http.StatusOK, screen)
+}
+
+// Reload godoc
+// @Summary Broadcast all clients after reload screens
+// @Description log count clients
+// @Tags websocket
+// @Produce json
+// @Success 202 {string} string "No Content"
+// @Router /api/client/reload [post]
+func (s *Server) Reload(c echo.Context) error {
+	count := s.wsm.Broadcast(ws.Event{
+		Type: "RELOAD SCREEN",
+		Data: map[string]any{"ts": time.Now().Unix()},
+	})
+	log.Printf("broadcast sent to %d clients", count)
+	return c.NoContent(204)
 }

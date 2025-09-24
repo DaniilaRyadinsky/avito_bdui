@@ -5,6 +5,7 @@ import (
 	"bdui/config"
 	"bdui/internal/echo"
 	"bdui/internal/mongo"
+	"bdui/internal/ws"
 	"log"
 	"os"
 	"os/signal"
@@ -26,7 +27,9 @@ func main() {
 
 	m := mongo.MustConnect(cfg)
 
-	e := echo.NewServer(cfg, m)
+	wsm := ws.NewManager(ws.WithDefaultOptions())
+
+	e := echo.NewServer(cfg, m, m, wsm)
 	go e.MustRun()
 
 	stop := make(chan os.Signal, 1)
@@ -36,6 +39,8 @@ func main() {
 	if err := e.Stop(); err != nil {
 		log.Println(err)
 	}
+
+	wsm.Close()
 
 	log.Println("stop signal", sign)
 }

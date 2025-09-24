@@ -9,3 +9,5 @@ type SWGCreatedID struct {
 }
 
 type SWGScreen map[string]interface{}
+type SWGColor map[string]interface{}
+type SWGElement map[string]interface{}
