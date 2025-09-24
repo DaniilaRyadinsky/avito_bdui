@@ -1,11 +1,16 @@
 :root {
   --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05),
     0 4px 24px 0 rgba(0, 0, 0, 0.12);
-    --color-avito: #141414;
-    --white-hover: #D5D5D5;
+  --color-avito: #141414;
+  --white-hover: #D5D5D5;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  /* background-color: pink; */
 }

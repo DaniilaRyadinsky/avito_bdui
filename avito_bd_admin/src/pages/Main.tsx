@@ -1,5 +1,5 @@
 
-import LeftBar from '../features/LeftBar/LeftBar'
+import LeftBar from '../features/LeftBar/ui/LeftBar'
 import Topbar from '../widgets/Topbar/Topbar'
 import styles from './Main.module.css'
 
