@@ -14,24 +14,26 @@ import (
 )
 
 type Server struct {
-	e    *echo.Echo
-	cfg  *config.Config
-	API  mongo.API
-	coll mongo.Collections
-	wsm  *ws.Manager
+	e       *echo.Echo
+	cfg     *config.Config
+	API     mongo.API
+	coll    mongo.Collections
+	statApi mongo.StatAPI
+	wsm     *ws.Manager
 }
 
-func NewServer(cfg *config.Config, API mongo.API, coll mongo.Collections, wsm *ws.Manager) *Server {
+func NewServer(cfg *config.Config, API mongo.API, coll mongo.Collections, statApi mongo.StatAPI, wsm *ws.Manager) *Server {
 	e := echo.New()
 	e.GET("/swagger/*", echoSwagger.WrapHandler)
 	e.Use(middleware.Logger(), middleware.Recover(), middleware.CORS())
 
 	s := &Server{
-		e:    e,
-		cfg:  cfg,
-		API:  API,
-		wsm:  wsm,
-		coll: coll,
+		e:       e,
+		cfg:     cfg,
+		API:     API,
+		wsm:     wsm,
+		coll:    coll,
+		statApi: statApi,
 	}
 
 	wsm.MountEcho(e)
@@ -69,6 +71,13 @@ func NewServer(cfg *config.Config, API mongo.API, coll mongo.Collections, wsm *w
 
 		elm.GET("all", s.GetAllElements)
 		elm.GET("get", s.GetElement)
+	}
+
+	st := e.Group("/api/stats/")
+	{
+		st.GET("all", s.GetAllStats)
+		st.POST("click/element", s.SetClickElement)
+		st.POST("click/screen", s.SetClickScreen)
 	}
 
 	return s

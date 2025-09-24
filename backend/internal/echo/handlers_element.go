@@ -1,7 +1,9 @@
 package echo
 
 import (
+	"bdui/internal/utils/format"
 	"github.com/labstack/echo/v4"
+	"log"
 	"net/http"
 )
 
@@ -39,6 +41,8 @@ func (s *Server) CreateElement(ctx echo.Context) error {
 // @Failure 500 {object} SWGError
 // @Router /api/element/delete [delete]
 func (s *Server) DeleteElement(ctx echo.Context) error {
+	const op = "handlers.DeleteElement"
+
 	id := ctx.QueryParam("id")
 	if id == "" {
 		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "missing id"})
@@ -46,6 +50,11 @@ func (s *Server) DeleteElement(ctx echo.Context) error {
 	if err := s.API.Delete(ctx.Request().Context(), id, s.coll.ElementColl()); err != nil {
 		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
 	}
+
+	if err := s.statApi.DeleteClickElement(ctx.Request().Context(), id); err != nil {
+		log.Println(format.Error(op, err))
+	}
+
 	return ctx.NoContent(http.StatusNoContent)
 }
 
@@ -142,4 +151,32 @@ func (s *Server) GetElement(ctx echo.Context) error {
 		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
 	}
 	return ctx.JSON(http.StatusOK, obj)
+}
+
+// SetClickElement godoc
+// @Summary Set element click count
+// @Description Sets click count for element ID. Intended for client-side aggregated writes.
+// @Tags stats
+// @Accept json
+// @Produce json
+// @Param payload body SWGSetClickElementReq true "Element click payload"
+// @Success 204 {string} string "No Content"
+// @Failure 400 {object} SWGError
+// @Failure 500 {object} SWGError
+// @Router /api/stats/click/element [post]
+func (s *Server) SetClickElement(ctx echo.Context) error {
+	var req SWGSetClickElementReq
+	if err := ctx.Bind(&req); err != nil {
+		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": err.Error()})
+	}
+	if req.ElementID == "" {
+		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "missing elementId"})
+	}
+	if req.Count < 0 {
+		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "count must be >= 0"})
+	}
+	if err := s.statApi.SetClickElement(ctx.Request().Context(), req.ElementID, req.Count); err != nil {
+		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
+	}
+	return ctx.NoContent(http.StatusNoContent)
 }

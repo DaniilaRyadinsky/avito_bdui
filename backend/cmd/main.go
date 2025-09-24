@@ -29,7 +29,7 @@ func main() {
 
 	wsm := ws.NewManager(ws.WithDefaultOptions())
 
-	e := echo.NewServer(cfg, m, m, wsm)
+	e := echo.NewServer(cfg, m, m, m, wsm)
 	go e.MustRun()
 
 	stop := make(chan os.Signal, 1)

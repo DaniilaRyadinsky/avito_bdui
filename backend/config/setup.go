@@ -14,10 +14,14 @@ type Config struct {
 }
 
 const (
-	ScreenColl  = "screens"
-	ColorColl   = "colours"
 	ElementColl = "elements"
 	Db          = "bdui"
+
+	ScreenColl              = "screens"
+	ColorColl               = "colours"
+	StatScreenReceivingColl = "stat_screen_receiving"
+	StatClickElementColl    = "stat_click_element"
+	StatClickScreenColl     = "stat_click_screen"
 )
 
 func MustSetup() *Config {
