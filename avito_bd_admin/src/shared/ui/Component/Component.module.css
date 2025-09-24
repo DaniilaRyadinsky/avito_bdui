@@ -1,0 +1,18 @@
+.component {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px 3px;
+}
+
+.component_icon {
+    width: 40px;
+    height: 40px;
+    background-color: #343436;
+    border-radius: 4px;
+}
+
+.component_title {
+    font-size: 14px;
+}

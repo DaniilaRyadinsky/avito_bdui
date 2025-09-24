@@ -3,3 +3,7 @@
     background-color: #fff;
     box-shadow: var(--color-avito);
 }
+
+.logo {
+    display: block;
+}

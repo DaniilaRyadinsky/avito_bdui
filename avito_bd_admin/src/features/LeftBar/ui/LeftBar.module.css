@@ -5,9 +5,10 @@
 }
 
 .panel {
-    height: 100vh;
+    height: calc(100vh - 48px - 10px - 40px - 10px);
     width: 400px;
     background-color: #fff;
     border-radius: 28px;
     box-shadow: var(--shadow);
+    padding: 20px;
 }
