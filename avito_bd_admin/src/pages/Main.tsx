@@ -1,5 +1,6 @@
 
 import LeftBar from '../features/LeftBar/ui/LeftBar'
+import RightBar from '../features/RightBar/ui/RightBar'
 import Topbar from '../widgets/Topbar/Topbar'
 import styles from './Main.module.css'
 
@@ -9,6 +10,8 @@ const Main = () => {
             <Topbar />
             <div className={styles.main_window}>
                 <LeftBar/>
+                <div style={{flexGrow: "1"}}></div>
+                <RightBar/>
             </div>
 
         </div>
