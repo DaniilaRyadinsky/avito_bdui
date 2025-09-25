@@ -824,6 +824,124 @@
                 }
             }
         },
+        "/api/stats/all": {
+            "get": {
+                "description": "Returns all statistics maps: screen receiving, element clicks, screen clicks.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "stats"
+                ],
+                "summary": "Get aggregated statistics",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGStats"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/stats/click/element": {
+            "post": {
+                "description": "Sets click count for element ID. Intended for client-side aggregated writes.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "stats"
+                ],
+                "summary": "Set element click count",
+                "parameters": [
+                    {
+                        "description": "Element click payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGSetClickElementReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/stats/click/screen": {
+            "post": {
+                "description": "Sets (upserts) click count for screen ID. Intended for client-side aggregated writes.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "stats"
+                ],
+                "summary": "Set screen click count",
+                "parameters": [
+                    {
+                        "description": "Screen click payload",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGSetClickScreenReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/echo.SWGError"
+                        }
+                    }
+                }
+            }
+        },
         "/ws": {
             "get": {
                 "description": "web socket connection! \"ws://\u003cip\u003e:8080/ws?id=\u003cid\u003e\"",
@@ -884,6 +1002,55 @@
         "echo.SWGScreen": {
             "type": "object",
             "additionalProperties": true
+        },
+        "echo.SWGSetClickElementReq": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "example": 3
+                },
+                "elementId": {
+                    "type": "string",
+                    "example": "4d0f18d6-dc4a-4f5d-8b5b-6e9a8a8d9b01"
+                }
+            }
+        },
+        "echo.SWGSetClickScreenReq": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "example": 12
+                },
+                "screenId": {
+                    "type": "string",
+                    "example": "3b2c6f55-1e9e-44e7-8a7e-7f3c5d8a1b23"
+                }
+            }
+        },
+        "echo.SWGStats": {
+            "type": "object",
+            "properties": {
+                "clickElements": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "clickScreens": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "screenReceiving": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                }
+            }
         }
     }
 }

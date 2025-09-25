@@ -1,7 +1,6 @@
 package mongo
 
 import (
-	"bdui/config"
 	"bdui/internal/utils/format"
 	"context"
 	"errors"
@@ -18,24 +17,6 @@ type API interface {
 	GetAll(ctx context.Context, col *mongo.Collection) ([]interface{}, error)
 	Get(ctx context.Context, id string, col *mongo.Collection) (interface{}, error)
 	Update(ctx context.Context, id string, obj interface{}, col *mongo.Collection) error
-}
-
-type Collections interface {
-	ScreenColl() *mongo.Collection
-	ColorColl() *mongo.Collection
-	ElementColl() *mongo.Collection
-}
-
-func (c *Client) ScreenColl() *mongo.Collection {
-	return c.m.Database(config.Db).Collection(config.ScreenColl)
-}
-
-func (c *Client) ColorColl() *mongo.Collection {
-	return c.m.Database(config.Db).Collection(config.ColorColl)
-}
-
-func (c *Client) ElementColl() *mongo.Collection {
-	return c.m.Database(config.Db).Collection(config.ElementColl)
 }
 
 func (c *Client) Create(ctx context.Context, obj interface{}, col *mongo.Collection) (string, error) {

@@ -1,12 +1,10 @@
 package echo
 
 import (
-	"bdui/internal/ws"
+	"bdui/internal/utils/format"
+	"github.com/labstack/echo/v4"
 	"log"
 	"net/http"
-	"time"
-
-	"github.com/labstack/echo/v4"
 )
 
 // CreateScreen godoc
@@ -45,6 +43,8 @@ func (s *Server) CreateScreen(ctx echo.Context) error {
 // @Failure 500 {object} SWGError
 // @Router /api/screen/delete [delete]
 func (s *Server) DeleteScreen(ctx echo.Context) error {
+	const op = "handlers.DeleteScreen"
+
 	id := ctx.QueryParam("id")
 	if id == "" {
 		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "missing id"})
@@ -52,6 +52,13 @@ func (s *Server) DeleteScreen(ctx echo.Context) error {
 
 	if err := s.API.Delete(ctx.Request().Context(), id, s.coll.ScreenColl()); err != nil {
 		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
+	}
+
+	if err := s.statApi.DeleteClickScreen(ctx.Request().Context(), id); err != nil {
+		log.Println(format.Error(op, err))
+	}
+	if err := s.statApi.DeleteScreenReceiving(ctx.Request().Context(), id); err != nil {
+		log.Println(format.Error(op, err))
 	}
 
 	return ctx.NoContent(http.StatusNoContent)
@@ -149,6 +156,7 @@ func (s *Server) GetAllScreens(ctx echo.Context) error {
 // @Failure 500 {object} SWGError
 // @Router /api/screen/get [get]
 func (s *Server) GetScreen(ctx echo.Context) error {
+	const op = "handlers.GetScreen"
 	id := ctx.QueryParam("id")
 	if id == "" {
 		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "missing id"})
@@ -159,21 +167,37 @@ func (s *Server) GetScreen(ctx echo.Context) error {
 		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
 	}
 
+	if err := s.statApi.IncrementScreenReceiving(ctx.Request().Context(), id); err != nil {
+		log.Println(format.Error(op, err))
+	}
+
 	return ctx.JSON(http.StatusOK, screen)
 }
 
-// Reload godoc
-// @Summary Broadcast all clients after reload screens
-// @Description log count clients
-// @Tags websocket
+// SetClickScreen godoc
+// @Summary Set screen click count
+// @Description Sets (upserts) click count for screen ID. Intended for client-side aggregated writes.
+// @Tags stats
+// @Accept json
 // @Produce json
-// @Success 202 {string} string "No Content"
-// @Router /api/client/reload [post]
-func (s *Server) Reload(c echo.Context) error {
-	count := s.wsm.Broadcast(ws.Event{
-		Type: "RELOAD SCREEN",
-		Data: map[string]any{"ts": time.Now().Unix()},
-	})
-	log.Printf("broadcast sent to %d clients", count)
-	return c.NoContent(204)
+// @Param payload body SWGSetClickScreenReq true "Screen click payload"
+// @Success 204 {string} string "No Content"
+// @Failure 400 {object} SWGError
+// @Failure 500 {object} SWGError
+// @Router /api/stats/click/screen [post]
+func (s *Server) SetClickScreen(ctx echo.Context) error {
+	var req SWGSetClickScreenReq
+	if err := ctx.Bind(&req); err != nil {
+		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": err.Error()})
+	}
+	if req.ScreenID == "" {
+		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "missing screenId"})
+	}
+	if req.Count < 0 {
+		return ctx.JSON(http.StatusBadRequest, echo.Map{"error": "count must be >= 0"})
+	}
+	if err := s.statApi.SetClickScreen(ctx.Request().Context(), req.ScreenID, req.Count); err != nil {
+		return ctx.JSON(http.StatusInternalServerError, echo.Map{"error": err.Error()})
+	}
+	return ctx.NoContent(http.StatusNoContent)
 }

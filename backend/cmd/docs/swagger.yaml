@@ -21,6 +21,39 @@ definitions:
   echo.SWGScreen:
     additionalProperties: true
     type: object
+  echo.SWGSetClickElementReq:
+    properties:
+      count:
+        example: 3
+        type: integer
+      elementId:
+        example: 4d0f18d6-dc4a-4f5d-8b5b-6e9a8a8d9b01
+        type: string
+    type: object
+  echo.SWGSetClickScreenReq:
+    properties:
+      count:
+        example: 12
+        type: integer
+      screenId:
+        example: 3b2c6f55-1e9e-44e7-8a7e-7f3c5d8a1b23
+        type: string
+    type: object
+  echo.SWGStats:
+    properties:
+      clickElements:
+        additionalProperties:
+          type: integer
+        type: object
+      clickScreens:
+        additionalProperties:
+          type: integer
+        type: object
+      screenReceiving:
+        additionalProperties:
+          type: integer
+        type: object
+    type: object
 host: 31.56.205.210:8080
 info:
   contact:
@@ -570,6 +603,86 @@ paths:
       summary: Partially update screen by ID
       tags:
       - screens
+  /api/stats/all:
+    get:
+      description: 'Returns all statistics maps: screen receiving, element clicks,
+        screen clicks.'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/echo.SWGStats'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Get aggregated statistics
+      tags:
+      - stats
+  /api/stats/click/element:
+    post:
+      consumes:
+      - application/json
+      description: Sets click count for element ID. Intended for client-side aggregated
+        writes.
+      parameters:
+      - description: Element click payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGSetClickElementReq'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Set element click count
+      tags:
+      - stats
+  /api/stats/click/screen:
+    post:
+      consumes:
+      - application/json
+      description: Sets (upserts) click count for screen ID. Intended for client-side
+        aggregated writes.
+      parameters:
+      - description: Screen click payload
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/echo.SWGSetClickScreenReq'
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/echo.SWGError'
+      summary: Set screen click count
+      tags:
+      - stats
   /ws:
     get:
       description: web socket connection! "ws://<ip>:8080/ws?id=<id>"
