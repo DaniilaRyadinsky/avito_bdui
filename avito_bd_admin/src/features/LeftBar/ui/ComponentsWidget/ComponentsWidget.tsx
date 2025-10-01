@@ -1,7 +1,6 @@
 // import Component from '../../../../../shared/ui/Component/Component'
 import styles from './ComponentsWidget.module.css'
 
-import arrow from '../../../../shared/assets/icons/arrow.svg'
 import Summary from '../../../../shared/ui/Summary/Summary'
 
 const ComponentsWidget = () => {

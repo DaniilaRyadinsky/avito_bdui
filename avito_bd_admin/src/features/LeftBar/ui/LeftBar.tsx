@@ -1,5 +1,5 @@
+import { ComponentControls } from "../../Builder/ui/ComponentControls/ComponentControls";
 import { ComponentAdder } from "../../ComponentLibrary/ui/ComponentAdder/ComponentAdder";
-import ComponentsWidget from "../../ComponentLibrary/ui/ComponentWidget/ComponentWidget";
 import styles from "./LeftBar.module.css";
 import Sidebar from "./sidebar/Sidebar";
 
@@ -9,6 +9,7 @@ const LeftBar = () => {
       <Sidebar />
       <div className={styles.panel}>
         <ComponentAdder />
+        <ComponentControls/>
       </div>
     </div>
   );
