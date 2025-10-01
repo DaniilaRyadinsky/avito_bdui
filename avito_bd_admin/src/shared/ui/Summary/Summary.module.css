@@ -1,0 +1,32 @@
+.details {
+    display: block;
+    transition: all 0.2s;
+    width: 100%;
+}
+
+.details_title_container {
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow {
+    width: 24px;
+    height: 24px;
+    transform-origin: center;
+    transition: .2s;
+}
+
+.details[open] .arrow {
+    transform: rotate(180deg);
+}
+
+.details summary {
+    list-style: none;
+    color: var(--color-avito);
+    cursor: pointer;
+    transition: .2s;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
