@@ -1,3 +1,12 @@
+// pages/Main/Main.tsx
+import LeftBar from "../features/LeftBar/ui/LeftBar";
+import Topbar from "../widgets/Topbar/Topbar";
+import { ScreenRenderer } from "../widgets/ScreenRenderer/index";
+import { ComponentControls } from "../features/Builder/ui/ComponentControls/ComponentControls";
+import { BuilderProvider } from "../features/Builder/lib/builderContext";
+import { useScreenData } from "../shared/lib/useScreenData";
+import screenData from "../app/data/screen.json";
+import styles from "./Main.module.css";
 
 import { useState } from 'react'
 import LeftBar from '../features/LeftBar/ui/LeftBar'
@@ -34,4 +43,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default Main;

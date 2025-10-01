@@ -1,17 +1,17 @@
-import styles from './LeftBar.module.css'
-import ComponentsWidget from './ComponentsWidget/ComponentsWidget'
-import Sidebar from './sidebar/Sidebar'
+import { ComponentAdder } from "../../ComponentLibrary/ui/ComponentAdder/ComponentAdder";
+import ComponentsWidget from "../../ComponentLibrary/ui/ComponentWidget/ComponentWidget";
+import styles from "./LeftBar.module.css";
+import Sidebar from "./sidebar/Sidebar";
 
 const LeftBar = () => {
-    return (
-        <div className={styles.container}>
+  return (
+    <div className={styles.container}>
+      <Sidebar />
+      <div className={styles.panel}>
+        <ComponentAdder />
+      </div>
+    </div>
+  );
+};
 
-            <Sidebar />
-            <div className={styles.panel}>
-                <ComponentsWidget />
-            </div>
-        </div>
-    )
-}
-
-export default LeftBar
+export default LeftBar;
