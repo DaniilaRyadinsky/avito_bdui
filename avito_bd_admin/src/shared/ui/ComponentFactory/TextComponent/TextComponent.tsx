@@ -15,7 +15,7 @@ export const TextComponent: React.FC<TextComponentProps> = ({
   onAction,
 }) => {
 
-   const isSelected = selectedId == component.id
+   const isSelected = selectedId == component._id
 
   const { text, format, style = {}, modifier = {} } = component;
 
@@ -45,7 +45,7 @@ export const TextComponent: React.FC<TextComponentProps> = ({
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (component.id && onSelect) {
+    if (component._id && onSelect) {
       // console.log(e.currentTarget.id)
       onSelect(e.currentTarget.id);
     }
@@ -85,7 +85,7 @@ export const TextComponent: React.FC<TextComponentProps> = ({
     <div
       style={textStyle}
       onClick={handleClick} // изменено
-      id={component.id}
+      id={component._id}
     >
       {displayText}
     </div>

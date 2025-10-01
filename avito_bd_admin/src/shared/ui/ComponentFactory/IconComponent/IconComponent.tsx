@@ -21,10 +21,10 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     modifier = {},
   } = component;
 
-  const isSelected = selectedId == component.id
+  const isSelected = selectedId == component._id
   const {
-    size = {},
-    padding = {},
+    size ,
+    padding,
     background,
     clip,
     border,
@@ -33,8 +33,8 @@ export const IconComponent: React.FC<IconComponentProps> = ({
   } = modifier;
 
   const iconStyle: React.CSSProperties = {
-    width: size.width || 24,
-    height: size.height || 24,
+    width: size?.width || 24,
+    height: size?.height || 24,
     color: tint,
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
@@ -42,8 +42,8 @@ export const IconComponent: React.FC<IconComponentProps> = ({
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
-      }px ${padding.start || 0}px`,
+    padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0
+      }px ${padding?.start || 0}px`,
     opacity: alpha,
     cursor: clickable || onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
@@ -56,7 +56,7 @@ export const IconComponent: React.FC<IconComponentProps> = ({
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (component.id && onSelect) {
+    if (component._id && onSelect) {
       onSelect(e.currentTarget.id);
     }
   };
@@ -65,7 +65,7 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     <div
       style={iconStyle}
       onClick={handleClick}
-      id={contentDescription || component.id}
+      id={contentDescription || component._id}
     >
       {icon}
     </div>

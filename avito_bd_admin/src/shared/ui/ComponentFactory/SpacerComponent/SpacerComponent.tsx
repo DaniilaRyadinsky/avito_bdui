@@ -15,7 +15,7 @@ export const SpacerComponent: React.FC<SpacerComponentProps> = ({
   onAction,
 }) => {
 
-  const isSelected = selectedId == component.id
+  const isSelected = selectedId == component._id
 
   const { width, height = "20", weight, modifier = {} } = component;
 
@@ -38,10 +38,10 @@ export const SpacerComponent: React.FC<SpacerComponentProps> = ({
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (component.id && onSelect) {
+    if (component._id && onSelect) {
       onSelect(e.currentTarget.id);
     }
   };
 
-  return <div style={spacerStyle} onClick={handleClick} id={component.id} />;
+  return <div style={spacerStyle} onClick={handleClick} id={component._id} />;
 };

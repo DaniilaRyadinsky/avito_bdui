@@ -15,15 +15,15 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   onAction,
 }) => {
 
-  const isSelected = selectedId == component.id
+  const isSelected = selectedId == component._id
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation()
-    if (component.id && onSelect) {
+    if (component._id && onSelect) {
        onSelect(e.currentTarget.id);
     }
-    if (component.id && onAction && component.actions) {
-      onAction(component.id, { type: "click" });
+    if (component._id && onAction && component.actions) {
+      onAction(component._id, { type: "click" });
     }
   };
   const { text, enabled = true, style = {}, modifier = {}, icon } = component;
@@ -73,7 +73,7 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
       style={buttonStyle}
       onClick={handleClick}
       disabled={!enabled}
-      id={component.id}
+      id={component._id}
     >
       {icon && <span>{icon}</span>}
       {text}

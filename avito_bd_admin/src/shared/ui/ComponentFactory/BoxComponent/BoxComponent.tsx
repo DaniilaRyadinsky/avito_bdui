@@ -19,13 +19,13 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
   onAction,
 }) => {
 
-  const isSelected = selectedId == component.id
+  const isSelected = selectedId == component._id
 
   const { children = [], modifier = {} } = component;
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (component.id && onSelect) {
+    if (component._id && onSelect) {
       onSelect(e.currentTarget.id);
     }
   };
@@ -55,10 +55,10 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
   };
 
   return (
-    <div style={boxStyle} onClick={handleClick} id={component.id}>
+    <div style={boxStyle} onClick={handleClick} id={component._id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
-          key={child.id || index}
+          key={child._id || index}
           component={child}
           selectedId={selectedId}
           onSelect={onSelect}

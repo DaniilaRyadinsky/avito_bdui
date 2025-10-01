@@ -73,7 +73,7 @@ const LibraryItem: React.FC<{
 
     const newComponent: UIComponent = {
       type: type as UIComponent["type"],
-      id: `new-${type}-${Date.now()}`,
+      _id: `new-${type}-${Date.now()}`,
       ...defaultProps,
     } as UIComponent;
 
@@ -85,8 +85,8 @@ const LibraryItem: React.FC<{
         const addToParent = (components: UIComponent[]): UIComponent[] => {
           return components.map((comp) => {
             // Если нашли выделенный компонент и он может содержать детей
-            if (comp.id === selectedComponentId && "children" in comp) {
-              console.log("✅ Adding to parent:", comp.id);
+            if (comp._id === selectedComponentId && "children" in comp) {
+              console.log("✅ Adding to parent:", comp._id);
               return {
                 ...comp,
                 children: [...comp.children, newComponent],

@@ -51,7 +51,7 @@ export const ComponentAdder: React.FC = () => {
 
     const newComponent: UIComponent = {
       type: template.type,
-      id: `new-${template.type}-${Date.now()}`,
+      _id: `new-${template.type}-${Date.now()}`,
       ...template.defaultProps,
     } as UIComponent;
 
@@ -62,8 +62,8 @@ export const ComponentAdder: React.FC = () => {
       updateScreen((currentScreen) => {
         const addToParent = (components: UIComponent[]): UIComponent[] => {
           return components.map((comp) => {
-            if (comp.id === selectedComponentId && "children" in comp) {
-              console.log("✅ Adding to parent:", comp.id);
+            if (comp._id === selectedComponentId && "children" in comp) {
+              console.log("✅ Adding to parent:", comp._id);
               return {
                 ...comp,
                 children: [...comp.children, newComponent],

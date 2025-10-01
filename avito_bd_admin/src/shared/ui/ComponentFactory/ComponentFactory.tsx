@@ -25,15 +25,15 @@ export const ComponentFactory: React.FC<ComponentFactoryProps> = ({
   onAction,
 }) => {
   
-  const isSelected = selectedId === component.id
+  const isSelected = selectedId === component._id
 
   const handleSelect = (v: string) => {
       onSelect?.(v);
   };
 
   const handleAction = (action: any) => {
-    if (component.id) {
-      onAction?.(component.id, action);
+    if (component._id) {
+      onAction?.(component._id, action);
     }
   };
 

@@ -44,7 +44,7 @@ export const ComponentControls: React.FC = () => {
     targetId: string
   ): UIComponent | null => {
     for (const comp of components) {
-      if (comp.id === targetId) return comp;
+      if (comp._id === targetId) return comp;
 
       if ("children" in comp && comp.children) {
         const found = findComponentInTree(comp.children, targetId);

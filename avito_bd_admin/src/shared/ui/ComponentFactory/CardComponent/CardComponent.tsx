@@ -27,16 +27,16 @@ export const CardComponent: React.FC<CardComponentProps> = ({
     modifier = {},
   } = component;
 
-  const isSelected = selectedId == component.id
+  const isSelected = selectedId == component._id
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation()
-    if (component.id && onSelect) {
+    if (component._id && onSelect) {
       console.log(e.currentTarget.id)
       onSelect(e.currentTarget.id);
     }
-    if (component.id && onAction) {
-      onAction(component.id, { type: "click" });
+    if (component._id && onAction) {
+      onAction(component._id, { type: "click" });
     }
   };
 
@@ -68,10 +68,10 @@ export const CardComponent: React.FC<CardComponentProps> = ({
   };
 
   return (
-    <div style={cardStyle} onClick={handleClick} id={component.id}>
+    <div style={cardStyle} onClick={handleClick} id={component._id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
-          key={child.id || index}
+          key={child._id || index}
           component={child}
           selectedId={selectedId}
           onSelect={onSelect}

@@ -1,6 +1,6 @@
 {
   "type": "screen",
-  "id": "cart_screen",
+  "_id": "cart_screen",
   "name": "CartScreen",
   "background": "#FFFFFF",
   "topBar": [
@@ -173,7 +173,7 @@
   "content": [
     {
       "type": "card",
-      "id": "cart_item_1",
+      "_id": "cart_item_1",
       "modifier": {
         "fillMaxWidth": true,
         "padding": {
@@ -269,7 +269,7 @@
                   }
                 },
                 {
-                  "id": "quantitySelector",
+                  "_id": "quantitySelector",
                   "type": "row",
                   "children": [
                     {
@@ -372,7 +372,7 @@
             },
             {
               "type": "row",
-              "id": "icons column",
+              "_id": "icons column",
               "children": [
                 {
                   "type": "spacer",
@@ -407,7 +407,7 @@
     },
     {
       "type": "card",
-      "id": "cart_item_2",
+      "_id": "cart_item_2",
       "modifier": {
         "fillMaxWidth": true,
         "padding": {
@@ -503,7 +503,7 @@
                   }
                 },
                 {
-                  "id": "quantitySelector",
+                  "_id": "quantitySelector",
                   "type": "row",
                   "children": [
                     {
@@ -606,7 +606,7 @@
             },
             {
               "type": "row",
-              "id": "icons column",
+              "_id": "icons column",
               "children": [
                 {
                   "type": "spacer",
@@ -641,7 +641,7 @@
     },
     {
       "type": "card",
-      "id": "cart_item_3",
+      "_id": "cart_item_3",
       "modifier": {
         "fillMaxWidth": true,
         "padding": {
@@ -737,7 +737,7 @@
                   }
                 },
                 {
-                  "id": "quantitySelector",
+                  "_id": "quantitySelector",
                   "type": "row",
                   "children": [
                     {
@@ -840,7 +840,7 @@
             },
             {
               "type": "row",
-              "id": "icons column",
+              "_id": "icons column",
               "children": [
                 {
                   "type": "spacer",
@@ -877,7 +877,7 @@
   "snackbars": [
     {
       "type": "snackbar",
-      "id": "deleteCartItemSnackbar",
+      "_id": "deleteCartItemSnackbar",
       "text": "Товар удалён из корзины",
       "actionText": "Вернуть",
       "actions": [

@@ -20,7 +20,7 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
     modifier = {},
   } = component;
   
-  const isSelected = selectedId == component.id
+  const isSelected = selectedId == component._id
 
   const { checkedColor = "#000000", uncheckedColor = "#CCCCCC" } = colors;
 
@@ -46,13 +46,13 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
 
   const handleClick = (e: React.MouseEvent) => {
       e.stopPropagation();
-      if (component.id && onSelect) {
+      if (component._id && onSelect) {
         onSelect(e.currentTarget.id);
       }
     };
 
   return (
-    <div style={checkboxStyle} onClick={handleClick} id={component.id}>
+    <div style={checkboxStyle} onClick={handleClick} id={component._id}>
       {isChecked && (
         <span style={{ color: "#FFFFFF", fontSize: "14px" }}>✓</span>
       )}

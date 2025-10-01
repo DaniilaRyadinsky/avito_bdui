@@ -6,8 +6,8 @@ function ensureAllComponentsHaveIds(screen: UIScreen): UIScreen {
   const addMissingIds = (component: UIComponent, path: string): UIComponent => {
     const withId = {
       ...component,
-      id:
-        component.id ||
+      _id:
+        component._id ||
         `comp-${path}-${Math.random().toString(36).substr(2, 9)}`,
     };
 
@@ -47,7 +47,7 @@ export function useScreenData(initialData: RawUIScreen): UIScreen | null {
       // Простая валидация без сложной логики
       const screen: UIScreen = {
         type: "screen",
-        id: initialData.id || "default",
+        _id: initialData._id || "default",
         name: initialData.name || "Default",
         background: initialData.background || "#FFFFFF",
         topBar: initialData.topBar || [],

@@ -32,7 +32,7 @@ export const ScreenRenderer: React.FC = () => {
       <div className={styles.topBar}>
         {screen.topBar.map((component, index) => (
           <ComponentFactory
-            key={component.id || `topbar-${index}`}
+            key={component._id || `topbar-${index}`}
             component={component}
             selectedId={selectedComponentId}
             onSelect={handleComponentSelect}
@@ -44,7 +44,7 @@ export const ScreenRenderer: React.FC = () => {
       <div className={styles.content}>
         {screen.content.map((component, index) => (
           <ComponentFactory
-            key={component.id ? `${component.id}-${index}` : `content-${index}`} // ← ИСПРАВЛЕНО
+            key={component._id ? `${component._id}-${index}` : `content-${index}`} // ← ИСПРАВЛЕНО
             component={component}
             selectedId={selectedComponentId}
             onSelect={handleComponentSelect}
@@ -56,7 +56,7 @@ export const ScreenRenderer: React.FC = () => {
       <div className={styles.bottomBar}>
         {screen.bottomBar.map((component, index) => (
           <ComponentFactory
-            key={component.id || `bottombar-${index}`}
+            key={component._id || `bottombar-${index}`}
             component={component}
             selectedId={selectedComponentId}
             onSelect={handleComponentSelect}

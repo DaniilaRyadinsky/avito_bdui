@@ -10,7 +10,7 @@ import type { UIScreen, UIComponent } from "../../../shared/model/types";
 interface BuilderContextType {
   screen: UIScreen | null;
   selectedComponentId: string | null;
-  setSelectedComponent: (id: string | null) => void;
+  setSelectedComponent: (_id: string | null) => void;
   updateScreen: (updater: (currentScreen: UIScreen) => UIScreen) => void;
   deleteComponent: (componentId: string) => void;
   moveComponent: (componentId: string, direction: "up" | "down") => void;
@@ -58,7 +58,7 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
       const newComponents = [...components];
 
       // Сначала ищем на текущем уровне
-      const index = newComponents.findIndex((comp) => comp.id === componentId);
+      const index = newComponents.findIndex((comp) => comp._id === componentId);
 
       if (index !== -1) {
         found = true;
@@ -129,8 +129,8 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
     const deleteFromArray = (components: UIComponent[]): UIComponent[] => {
       return components.filter((comp) => {
         // Если нашли компонент для удаления - пропускаем его
-        if (comp.id === componentId) {
-          console.log("🗑️ Deleting component:", comp.id);
+        if (comp._id === componentId) {
+          console.log("🗑️ Deleting component:", comp._id);
           return false;
         }
 

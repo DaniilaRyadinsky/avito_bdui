@@ -25,7 +25,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     modifier = {},
   } = component;
 
-  const isSelected = selectedId == component.id
+  const isSelected = selectedId == component._id
 
   const {
     padding = {},
@@ -38,7 +38,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (component.id && onSelect) {
+    if (component._id && onSelect) {
       onSelect(e.currentTarget.id);
     }
   };
@@ -81,10 +81,10 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   };
 
   return (
-    <div style={columnStyle} onClick={handleClick} id={component.id}>
+    <div style={columnStyle} onClick={handleClick} id={component._id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
-          key={child.id || index}
+          key={child._id || index}
           component={child}
           selectedId={selectedId}
           onSelect={onSelect}
