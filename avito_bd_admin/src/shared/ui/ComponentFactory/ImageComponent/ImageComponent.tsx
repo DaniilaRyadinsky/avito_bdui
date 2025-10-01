@@ -39,8 +39,9 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
   };
 
   const imageStyle: React.CSSProperties = {
-    width: size.width || "100%",
-    height: size.height || "auto",
+    width: size.width ? `${size.width}px` : "100%",
+
+    height: size.height ? `${size.height}px` : "auto",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     backgroundColor: background || "transparent",
     border:

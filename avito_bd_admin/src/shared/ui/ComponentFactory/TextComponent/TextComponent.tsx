@@ -15,12 +15,6 @@ export const TextComponent: React.FC<TextComponentProps> = ({
   onAction,
 }) => {
   const { text, format, style = {}, modifier = {} } = component;
-  console.log(
-    "🔍 TextComponent: component.id=",
-    component.id,
-    "onSelect exists=",
-    !!onSelect
-  );
 
   const {
     fontSize = 16,

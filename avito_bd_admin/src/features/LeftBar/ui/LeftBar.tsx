@@ -1,8 +1,9 @@
 import styles from './LeftBar.module.css'
-import ComponentsWidget from './ComponentsWidget/ComponentsWidget'
 import Sidebar from './sidebar/Sidebar'
 import { useState } from 'react'
 import ColorsWidget from './ColorsWiget/ColorsWidget'
+import ComponentsWidget from '../../ComponentLibrary/ui/ComponentWidget/ComponentWidget'
+import { ComponentControls } from '../../Builder/ui/ComponentControls/ComponentControls'
 
 const LeftBar = () => {
     const [mode, setMode] = useState<"comp"| "col" | "var">("comp")
@@ -14,8 +15,11 @@ const LeftBar = () => {
             <div className={styles.panel}>
                 {mode == "comp" && <ComponentsWidget />}
                 {mode== "col" && <ColorsWidget/>}
-                
+                <div>
+              <ComponentControls/>
             </div>
+            </div>
+            
         </div>
     )
 }

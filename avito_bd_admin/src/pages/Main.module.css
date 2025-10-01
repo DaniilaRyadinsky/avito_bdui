@@ -5,14 +5,45 @@
 }
 
 .main_window {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
 }
 
-.screen_area {
-  flex: 1;
-  padding: 20px;
-  background: #f5f5f5;
-  overflow: auto;
+.work_panel {
+    display: flex;
+    width: calc(100vw - 440px - 398px - 20px - 20px );
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.work_panel_top {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    /* width: calc(100vw - 440px - 498px - 20px - 20px ); */
+    gap: 10px;
+}
+
+.input_container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 200px;
+}
+
+.workspace {
+    display: flex;
+    height: calc(100vh - 48px - 10px - 38px - 10px - 10px);
+    /* width: calc(100vw - 440px - 498px - 20px - 20px ); */
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen {
+    flex: 0 0 auto; 
+    background-color: #fff;
 }

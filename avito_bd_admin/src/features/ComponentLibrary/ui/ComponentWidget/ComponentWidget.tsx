@@ -4,6 +4,7 @@ import styles from "./ComponentWidget.module.css";
 import arrow from "../../../../shared/assets/icons/arrow.svg";
 import { useBuilder } from "../../../Builder/lib/builderContext";
 import type { UIComponent } from "../../../../shared/model/types";
+import Summary from "../../../../shared/ui/Summary/Summary";
 
 // Типы для шаблонов компонентов
 const componentTemplates: {
@@ -11,53 +12,53 @@ const componentTemplates: {
   name: string;
   defaultProps: Partial<UIComponent>;
 }[] = [
-  {
-    type: "text",
-    name: "Текст",
-    defaultProps: {
-      text: "Новый текст",
-      style: { fontSize: 16, color: "#000000" },
+    {
+      type: "text",
+      name: "Текст",
+      defaultProps: {
+        text: "Новый текст",
+        style: { fontSize: 16, color: "#000000" },
+      },
     },
-  },
-  {
-    type: "button",
-    name: "Кнопка",
-    defaultProps: {
-      text: "Новая кнопка",
-      style: { background: "#007AFF", textColor: "#FFFFFF" },
+    {
+      type: "button",
+      name: "Кнопка",
+      defaultProps: {
+        text: "Новая кнопка",
+        style: { background: "#007AFF", textColor: "#FFFFFF" },
+      },
     },
-  },
-  {
-    type: "image",
-    name: "Изображение",
-    defaultProps: {
-      url: "https://via.placeholder.com/150",
-      contentDescription: "Placeholder image",
+    {
+      type: "image",
+      name: "Изображение",
+      defaultProps: {
+        url: "https://via.placeholder.com/150",
+        contentDescription: "Placeholder image",
+      },
     },
-  },
-  {
-    type: "card",
-    name: "Карточка",
-    defaultProps: {
-      background: "#FFFFFF",
-      children: [],
+    {
+      type: "card",
+      name: "Карточка",
+      defaultProps: {
+        background: "#FFFFFF",
+        children: [],
+      },
     },
-  },
-  {
-    type: "row",
-    name: "Строка",
-    defaultProps: {
-      children: [],
+    {
+      type: "row",
+      name: "Строка",
+      defaultProps: {
+        children: [],
+      },
     },
-  },
-  {
-    type: "column",
-    name: "Колонка",
-    defaultProps: {
-      children: [],
+    {
+      type: "column",
+      name: "Колонка",
+      defaultProps: {
+        children: [],
+      },
     },
-  },
-];
+  ];
 
 // Компонент для элемента библиотеки
 const LibraryItem: React.FC<{
@@ -130,13 +131,7 @@ const LibraryItem: React.FC<{
 const ComponentsWidget = () => {
   return (
     <div className={styles.container}>
-      <details className={styles.details} open>
-        <summary>
-          <div className={styles.details_title_container}>
-            Базовые компоненты
-            <img className={styles.arrow} src={arrow} alt="arrow" />
-          </div>
-        </summary>
+      <Summary title="Базовые компоненты">
         <div className={styles.componentsList}>
           {componentTemplates.map((template) => (
             <LibraryItem
@@ -147,8 +142,9 @@ const ComponentsWidget = () => {
             />
           ))}
         </div>
-      </details>
-    </div>
+      </Summary>
+      
+    </div >
   );
 };
 
