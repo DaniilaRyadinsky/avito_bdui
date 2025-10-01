@@ -3,14 +3,14 @@ import type { CheckboxComponent as CheckboxComponentType } from "../../../model/
 
 interface CheckboxComponentProps {
   component: CheckboxComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
 }) => {
   const {
@@ -19,6 +19,8 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
     colors = {},
     modifier = {},
   } = component;
+  
+  const isSelected = selectedId == component.id
 
   const { checkedColor = "#000000", uncheckedColor = "#CCCCCC" } = colors;
 
@@ -42,8 +44,15 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
     }px ${padding.start || 0}px`,
   };
 
+  const handleClick = (e: React.MouseEvent) => {
+      e.stopPropagation();
+      if (component.id && onSelect) {
+        onSelect(e.currentTarget.id);
+      }
+    };
+
   return (
-    <div style={checkboxStyle} onClick={onSelect} title={component.id}>
+    <div style={checkboxStyle} onClick={handleClick} id={component.id}>
       {isChecked && (
         <span style={{ color: "#FFFFFF", fontSize: "14px" }}>✓</span>
       )}

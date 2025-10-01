@@ -15,6 +15,7 @@ export const ScreenRenderer: React.FC = () => {
 
   const handleComponentSelect = (componentId: string) => {
     setSelectedComponent(componentId);
+    console.log(componentId)
   };
 
   return (
@@ -33,7 +34,7 @@ export const ScreenRenderer: React.FC = () => {
           <ComponentFactory
             key={component.id || `topbar-${index}`}
             component={component}
-            isSelected={component.id === selectedComponentId}
+            selectedId={selectedComponentId}
             onSelect={handleComponentSelect}
           />
         ))}
@@ -45,7 +46,7 @@ export const ScreenRenderer: React.FC = () => {
           <ComponentFactory
             key={component.id ? `${component.id}-${index}` : `content-${index}`} // ← ИСПРАВЛЕНО
             component={component}
-            isSelected={component.id === selectedComponentId}
+            selectedId={selectedComponentId}
             onSelect={handleComponentSelect}
           />
         ))}
@@ -57,7 +58,7 @@ export const ScreenRenderer: React.FC = () => {
           <ComponentFactory
             key={component.id || `bottombar-${index}`}
             component={component}
-            isSelected={component.id === selectedComponentId}
+            selectedId={selectedComponentId}
             onSelect={handleComponentSelect}
           />
         ))}

@@ -3,17 +3,20 @@ import type { SpacerComponent as SpacerComponentType } from "../../../model/type
 
 interface SpacerComponentProps {
   component: SpacerComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const SpacerComponent: React.FC<SpacerComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
+
+  const isSelected = selectedId == component.id
+
   const { width, height = "20", weight, modifier = {} } = component;
 
   const { padding = {}, background, alpha = 1.0 } = modifier;
@@ -36,9 +39,9 @@ export const SpacerComponent: React.FC<SpacerComponentProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (component.id && onSelect) {
-      onSelect(component.id);
+      onSelect(e.currentTarget.id);
     }
   };
 
-  return <div style={spacerStyle} onClick={handleClick} title={component.id} />;
+  return <div style={spacerStyle} onClick={handleClick} id={component.id} />;
 };

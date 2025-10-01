@@ -3,20 +3,24 @@ import type { ButtonComponent as ButtonComponentType } from "../../../model/type
 
 interface ButtonComponentProps {
   component: ButtonComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
-  const handleClick = () => {
+
+  const isSelected = selectedId == component.id
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
     if (component.id && onSelect) {
-      onSelect(component.id);
+       onSelect(e.currentTarget.id);
     }
     if (component.id && onAction && component.actions) {
       onAction(component.id, { type: "click" });
@@ -69,7 +73,7 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
       style={buttonStyle}
       onClick={handleClick}
       disabled={!enabled}
-      title={component.id}
+      id={component.id}
     >
       {icon && <span>{icon}</span>}
       {text}

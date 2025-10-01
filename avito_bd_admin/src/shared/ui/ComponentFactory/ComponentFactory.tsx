@@ -13,21 +13,22 @@ import { BoxComponent } from "./BoxComponent/BoxComponent";
 
 interface ComponentFactoryProps {
   component: UIComponent;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const ComponentFactory: React.FC<ComponentFactoryProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
-  const handleSelect = () => {
-    if (component.id) {
-      onSelect?.(component.id);
-    }
+  
+  const isSelected = selectedId === component.id
+
+  const handleSelect = (v: string) => {
+      onSelect?.(v);
   };
 
   const handleAction = (action: any) => {
@@ -38,7 +39,7 @@ export const ComponentFactory: React.FC<ComponentFactoryProps> = ({
 
   // Передаем пропсы в КАЖДЫЙ компонент
   const commonProps = {
-    isSelected,
+    selectedId,
     onSelect: handleSelect,
     onAction: handleAction,
   };

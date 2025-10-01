@@ -3,14 +3,14 @@ import type { IconComponent as IconComponentType } from "../../../model/types";
 
 interface IconComponentProps {
   component: IconComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const IconComponent: React.FC<IconComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
@@ -21,6 +21,7 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     modifier = {},
   } = component;
 
+  const isSelected = selectedId == component.id
   const {
     size = {},
     padding = {},
@@ -41,9 +42,8 @@ export const IconComponent: React.FC<IconComponentProps> = ({
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${
-      padding.bottom || 0
-    }px ${padding.start || 0}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
+      }px ${padding.start || 0}px`,
     opacity: alpha,
     cursor: clickable || onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
@@ -57,7 +57,7 @@ export const IconComponent: React.FC<IconComponentProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (component.id && onSelect) {
-      onSelect(component.id);
+      onSelect(e.currentTarget.id);
     }
   };
 
@@ -65,7 +65,7 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     <div
       style={iconStyle}
       onClick={handleClick}
-      title={contentDescription || component.id}
+      id={contentDescription || component.id}
     >
       {icon}
     </div>

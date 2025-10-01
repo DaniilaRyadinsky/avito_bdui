@@ -3,17 +3,20 @@ import type { TextComponent as TextComponentType } from "../../../model/types";
 
 interface TextComponentProps {
   component: TextComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const TextComponent: React.FC<TextComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
+
+   const isSelected = selectedId == component.id
+
   const { text, format, style = {}, modifier = {} } = component;
 
   const {
@@ -43,7 +46,8 @@ export const TextComponent: React.FC<TextComponentProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (component.id && onSelect) {
-      onSelect(component.id);
+      // console.log(e.currentTarget.id)
+      onSelect(e.currentTarget.id);
     }
   };
 
@@ -81,7 +85,7 @@ export const TextComponent: React.FC<TextComponentProps> = ({
     <div
       style={textStyle}
       onClick={handleClick} // изменено
-      title={component.id}
+      id={component.id}
     >
       {displayText}
     </div>

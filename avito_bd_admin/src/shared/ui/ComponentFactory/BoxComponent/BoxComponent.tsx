@@ -7,23 +7,26 @@ import { ComponentFactory } from "../ComponentFactory";
 
 interface BoxComponentProps {
   component: BoxComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const BoxComponent: React.FC<BoxComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
+
+  const isSelected = selectedId == component.id
+
   const { children = [], modifier = {} } = component;
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (component.id && onSelect) {
-      onSelect(component.id);
+      onSelect(e.currentTarget.id);
     }
   };
 
@@ -43,9 +46,8 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 12}px ${padding.end || 12}px ${
-      padding.bottom || 12
-    }px ${padding.start || 12}px`,
+    padding: `${padding.top || 12}px ${padding.end || 12}px ${padding.bottom || 12
+      }px ${padding.start || 12}px`,
     opacity: alpha,
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
@@ -53,12 +55,12 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
   };
 
   return (
-    <div style={boxStyle} onClick={handleClick} title={component.id}>
+    <div style={boxStyle} onClick={handleClick} id={component.id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
           key={child.id || index}
           component={child}
-          isSelected={isSelected}
+          selectedId={selectedId}
           onSelect={onSelect}
           onAction={onAction}
         />

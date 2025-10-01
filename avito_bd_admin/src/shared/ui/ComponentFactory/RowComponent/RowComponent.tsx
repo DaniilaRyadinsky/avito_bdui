@@ -7,17 +7,19 @@ import { ComponentFactory } from "../ComponentFactory";
 
 interface RowComponentProps {
   component: RowComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const RowComponent: React.FC<RowComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
+
+  const isSelected = selectedId == component.id
   const {
     children = [],
     verticalAlignment = "centerVertically",
@@ -37,11 +39,13 @@ export const RowComponent: React.FC<RowComponentProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (component.id && onSelect) {
-      onSelect(component.id);
+      onSelect(e.currentTarget.id);
     }
   };
 
   const rowStyle: React.CSSProperties = {
+    width: "100%",
+    height: "100%",
     display: "flex",
     flexDirection: "row",
     alignItems:
@@ -79,12 +83,12 @@ export const RowComponent: React.FC<RowComponentProps> = ({
   };
 
   return (
-    <div style={rowStyle} onClick={handleClick} title={component.id}>
+    <div style={rowStyle} onClick={handleClick} id={component.id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
           key={child.id || index}
           component={child}
-          isSelected={isSelected}
+          selectedId={selectedId}
           onSelect={onSelect}
           onAction={onAction}
         />

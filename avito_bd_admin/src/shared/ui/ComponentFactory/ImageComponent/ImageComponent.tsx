@@ -3,14 +3,14 @@ import type { ImageComponent as ImageComponentType } from "../../../model/types"
 
 interface ImageComponentProps {
   component: ImageComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const ImageComponent: React.FC<ImageComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
@@ -20,6 +20,8 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
     contentScale = "Crop",
     modifier = {},
   } = component;
+
+  const isSelected = selectedId == component.id
 
   const {
     size = {},
@@ -34,7 +36,8 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (component.id && onSelect) {
-      onSelect(component.id);
+      // console.log("img")
+      onSelect(e.currentTarget.id);
     }
   };
 
@@ -48,9 +51,8 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${
-      padding.bottom || 0
-    }px ${padding.start || 0}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
+      }px ${padding.start || 0}px`,
     opacity: alpha,
     cursor: clickable || onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
@@ -64,7 +66,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
       alt={contentDescription}
       style={imageStyle}
       onClick={handleClick}
-      title={component.id}
+      id={component.id}
     />
   );
 };

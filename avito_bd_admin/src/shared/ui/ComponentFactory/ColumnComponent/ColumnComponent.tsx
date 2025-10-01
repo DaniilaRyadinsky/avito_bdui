@@ -7,14 +7,14 @@ import { ComponentFactory } from "../ComponentFactory";
 
 interface ColumnComponentProps {
   component: ColumnComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
@@ -24,6 +24,8 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     horizontalAlignment = "start",
     modifier = {},
   } = component;
+
+  const isSelected = selectedId == component.id
 
   const {
     padding = {},
@@ -37,7 +39,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (component.id && onSelect) {
-      onSelect(component.id);
+      onSelect(e.currentTarget.id);
     }
   };
 
@@ -79,12 +81,12 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   };
 
   return (
-    <div style={columnStyle} onClick={handleClick} title={component.id}>
+    <div style={columnStyle} onClick={handleClick} id={component.id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
           key={child.id || index}
           component={child}
-          isSelected={isSelected}
+          selectedId={selectedId}
           onSelect={onSelect}
           onAction={onAction}
         />

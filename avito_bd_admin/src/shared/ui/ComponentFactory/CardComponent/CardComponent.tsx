@@ -7,14 +7,14 @@ import { ComponentFactory } from "../ComponentFactory";
 
 interface CardComponentProps {
   component: CardComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const CardComponent: React.FC<CardComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
@@ -27,9 +27,13 @@ export const CardComponent: React.FC<CardComponentProps> = ({
     modifier = {},
   } = component;
 
-  const handleClick = () => {
+  const isSelected = selectedId == component.id
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
     if (component.id && onSelect) {
-      onSelect(component.id);
+      console.log(e.currentTarget.id)
+      onSelect(e.currentTarget.id);
     }
     if (component.id && onAction) {
       onAction(component.id, { type: "click" });
@@ -64,12 +68,12 @@ export const CardComponent: React.FC<CardComponentProps> = ({
   };
 
   return (
-    <div style={cardStyle} onClick={handleClick} title={component.id}>
+    <div style={cardStyle} onClick={handleClick} id={component.id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
           key={child.id || index}
           component={child}
-          isSelected={isSelected}
+          selectedId={selectedId}
           onSelect={onSelect}
           onAction={onAction}
         />

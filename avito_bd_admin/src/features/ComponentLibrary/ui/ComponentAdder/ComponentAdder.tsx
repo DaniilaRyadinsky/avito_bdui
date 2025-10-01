@@ -55,9 +55,9 @@ export const ComponentAdder: React.FC = () => {
       ...template.defaultProps,
     } as UIComponent;
 
-    console.log("➕ Adding new component:", newComponent);
+    console.log("➕ Adding new component:", (typeof componentTemplates)[1]);
 
-    // Если есть выделенный компонент, добавляем как ребенка
+    // Если есть выделенный компонент, добавляем как глубокий
     if (selectedComponentId && screen) {
       updateScreen((currentScreen) => {
         const addToParent = (components: UIComponent[]): UIComponent[] => {
