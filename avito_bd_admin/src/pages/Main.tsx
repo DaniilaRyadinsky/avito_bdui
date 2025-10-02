@@ -154,12 +154,10 @@ const Main = () => {
           }
 
           const data = await response.json();
-          console.log("✅ Raw data from server:", data);
           setFetchedData(data);
         }
       } catch (err) {
-        console.error("❌ Error in fetchScreenData:", err);
-        setError(err instanceof Error ? err.message : "Неизвестная ошибка");
+        setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
         setLoading(false);
       }

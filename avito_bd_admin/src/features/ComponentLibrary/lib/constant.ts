@@ -5,7 +5,7 @@ export const defaultPadding: Padding = { all: 5, start: 10, end: 10, top: 10, bo
 export const defaultBorder: Border = { width: 0, color: "#000000" };
 export const defaultShape: Shape = { cornerRadius: 0, topStart: 0, topEnd: 0 };
 export const defaultClip: Clip = { cornerRadius: 0 };
-export const defaultShadow: Shadow = { elevation: 0, color: 0x000000 };
+export const defaultShadow: Shadow = { elevation: 0, color: "#000000" };
 
 // Базовый модификатор (нейтральный)
 export const defaultModifier: Modifier = {
@@ -71,19 +71,19 @@ export const componentDefaults: {
     image: {
         modifier: {
             ...defaultModifier,
-            size: { width: 64, height: 64 },
+            size: { width: "64", height: "64" },
         },
     },
     icon: {
         modifier: {
             ...defaultModifier,
-            size: { width: 24, height: 24 },
+            size: { width: "24", height: "24" },
         },
     },
     row: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 }, // контейнер 20×20
+            size: { width: "20", height: "20" }, // контейнер 20×20
         },
         verticalAlignment: "centerVertically",
         horizontalArrangement: "start",
@@ -91,7 +91,7 @@ export const componentDefaults: {
     column: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 }, // контейнер 20×20
+            size: { width: "20", height: "20" }, // контейнер 20×20
         },
         verticalArrangement: "top",
         horizontalAlignment: "start",
@@ -99,13 +99,13 @@ export const componentDefaults: {
     box: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 }, // контейнер 20×20
+            size: { width: "20", height: "20" }, // контейнер 20×20
         },
     },
     card: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 }, // контейнер 20×20
+            size: { width: "20", height: "20" }, // контейнер 20×20
         },
         elevation: 1,
         shape: { cornerRadius: 12 },
@@ -121,7 +121,7 @@ export const componentDefaults: {
     spacer: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 },
+            size: { width: "20", height: "20" },
         },
     },
     snackbar: {

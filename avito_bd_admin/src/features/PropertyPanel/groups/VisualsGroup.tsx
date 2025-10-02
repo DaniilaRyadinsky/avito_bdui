@@ -12,7 +12,7 @@ const ShadowEditor: React.FC<{ value?: Shadow; onChange: (next: Partial<Shadow>)
     if (!value) return;
     return (<div className="grid grid-cols-2 gap-3">
         <Column label="Elevation"><NumberInput value={Number(value.elevation)} onChange={(n) => onChange({ elevation: n })} /></Column>
-        <Column label="Цвет"><NumberInput value={Number(value.color)} onChange={(n) => onChange({ color: n })} /></Column>
+        <Column label="Цвет"><ColorInput value={value.color} onChange={(n) => onChange({ color: n })} /></Column>
     </div>)
 };
 
