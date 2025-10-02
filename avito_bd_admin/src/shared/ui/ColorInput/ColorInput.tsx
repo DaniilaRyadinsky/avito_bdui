@@ -2,8 +2,7 @@ import styles from './ColorInput.module.css'
 
 export const ColorInput: React.FC<{ value?: string | null; onChange: (v: string) => void }> = ({ value, onChange }) => {
     if (value == null) {
-        onChange("#000000")
-        return
+        value = "#000000"
     }
     return (
         <div className="flex">
