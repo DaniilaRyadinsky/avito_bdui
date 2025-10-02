@@ -1,5 +1,6 @@
 import React from "react";
 import type { ButtonComponent as ButtonComponentType } from "../../../model/types";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface ButtonComponentProps {
   component: ButtonComponentType;
@@ -20,7 +21,7 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation()
     if (component._id && onSelect) {
-       onSelect(e.currentTarget.id);
+      onSelect(e.currentTarget.id);
     }
     if (component._id && onAction && component.actions) {
       onAction(component._id, { type: "click" });
@@ -36,12 +37,24 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
     fontStyle = "normal",
     shape = {},
     border = {},
-    elevation = 0,
+    elevation,
   } = style;
+
+  const { size } = modifier;
 
   const { padding = {}, clickable, alpha = 1.0 } = modifier;
 
   const buttonStyle: React.CSSProperties = {
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     backgroundColor: background,
     color: textColor,
     fontSize: `${fontSize}px`,
@@ -55,9 +68,8 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
     boxShadow: elevation
       ? `0 ${elevation}px ${elevation * 2}px rgba(0,0,0,0.3)`
       : "none",
-    padding: `${padding.top || 12}px ${padding.end || 16}px ${
-      padding.bottom || 12
-    }px ${padding.start || 16}px`,
+    padding: `${padding.top || 12}px ${padding.end || 16}px ${padding.bottom || 12
+      }px ${padding.start || 16}px`,
     opacity: alpha,
     cursor: clickable || onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

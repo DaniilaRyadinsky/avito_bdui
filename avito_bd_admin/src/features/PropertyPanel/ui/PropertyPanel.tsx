@@ -1,5 +1,5 @@
 import React from "react";
-import type { UIComponent, UIScreen } from "../../../shared/model/types";
+import type { ContentScale, ImageComponent, UIComponent, UIScreen } from "../../../shared/model/types";
 import { useBuilder } from "../../Builder/lib/builderContext";
 import { ButtonStyleGroup } from "../groups/ButtonStyleGroup";
 import { LayoutGroup } from "../groups/LayoutGroup";
@@ -8,9 +8,12 @@ import { TextStyleGroup } from "../groups/TextStyleGroup";
 import { VisualsGroup } from "../groups/VisualsGroup";
 import { applyDefaultsToComponent } from "../lib/constants";
 import { updateComponentById } from "../lib/utils";
+import { ImageStyleGroup } from "../groups/ImageStyleGroup";
 
 export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) => {
   const { screen, updateScreen, selectedComponentId } = useBuilder();
+
+  const isImage = (c: UIComponent): c is ImageComponent => c.type === "image";
 
   // Поисковые хелперы можно вынести вне компонента, но оставлю тут для краткости
   const findInList = (list: UIComponent[] | undefined, id: string): UIComponent | null => {
@@ -48,11 +51,6 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) =
     [selectedComponentId, updateScreen]
   );
 
-  // Доп: этот эффект тоже должен иметь deps, и он выше раннего return
-  React.useEffect(() => {
-    console.log(targetComponent);
-  }, [targetComponent]);
-
   // Теперь можно делать ранний return — порядок хуков уже зафиксирован
   if (!targetComponent) {
     return <div className={`panel-card ${className ?? ""}`}>Выберите элемент</div>;
@@ -77,12 +75,30 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) =
             }))
           }
         />
+
+        {targetComponent.type === "image" && (
+          <ImageStyleGroup
+            // если вдруг где-то пролезает null — превращаем в undefined
+            value={targetComponent}
+            onChange={(patch: Partial<ImageComponent>) =>
+              updateSelected(c =>
+                isImage(c) ? { ...c, ...patch } : c
+              )
+            }
+          />
+        )}
         {targetComponent.type === "text" && (
           <TextStyleGroup
+            text={targetComponent.text}
             value={(targetComponent as any).style}
             onChange={(partialStyle) =>
               updateSelected(c => ({ ...c, style: { ...(c as any).style, ...partialStyle } as any }))
             }
+            onTextChange={(newText) =>
+              updateSelected(c => ({
+                ...c,
+                text: newText, // просто обновляем поле text
+              }))}
           />
         )}
         {targetComponent.type === "button" && (
@@ -99,6 +115,7 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) =
             updateSelected(c => ({ ...c, modifier: { ...c.modifier, ...partialModifier } }))
           }
         />
+
       </div>
     </div>
   );

@@ -6,31 +6,31 @@ export type TextDecoration = "none" | "underline" | "lineThrough"
 export type TextAlign = "start" | "end" | "center" | "justify"
 
 export type Size = {
-    width?: "wrap_content" | "match_parent"|  string,
-    height?: "wrap_content" |"match_parent"|  string
+  width?: "wrap_content" | "match_parent" | string,
+  height?: "wrap_content" | "match_parent" | string
 }
 
 export type Overflow = "clip" | "ellipsis" | "visible"
 export type Padding = {
-    start?: number,
-    end?: number,
-    top?: number,
-    bottom?: number,
-    all?: number
+  start?: number,
+  end?: number,
+  top?: number,
+  bottom?: number,
+  all?: number
 }
 export type Align = "start" | "center" | "end" | "top" | "bottom"
 export type Border = {
-    width?: number,
-    color?: string
+  width?: number,
+  color?: string
 }
 export type Shape = {
-    cornerRadius?: number,
-    topStart?: number,
-    topEnd?: number
+  cornerRadius?: number,
+  topStart?: number,
+  topEnd?: number
 }
 
 export type Clip = {
-    cornerRadius?: number
+  cornerRadius?: number
 }
 
 export type ContentScale = "Fill" | "FillHeight" | "Crop" | "FillWidth" | "Inside" | "None" | "FillBounds"
@@ -39,8 +39,8 @@ export type VerticalAlignment = "top" | "centerVertically" | "bottom"
 export type HorizontalArrangement = "start" | "center" | "end" | "spaceBetween" | "spaceAround" | "spaceEvenly"
 
 export type Shadow = {
-    elevation?: number,
-    color?: number
+  elevation?: number,
+  color?: number
 }
 
 
@@ -48,7 +48,7 @@ export interface Modifier {
   size?: Size;
   fillMaxWidth?: boolean;
   fillMaxHeight?: boolean;
-  weight?: number ;
+  weight?: number;
   padding?: Padding;
   background?: string | null;
   clip?: Clip;
@@ -74,13 +74,14 @@ export interface TextStyle {
 }
 
 export type ButtonStyle = {
-    background?: string,
-    textColor?: string,
-    fontSize?: number,
-    fontWeight?: FontWeight,         // Толщина шрифта: normal, bold, medium и т.д.
-    fontStyle?: FontStyle,           // Наклон: normal, italic
-    shape?: Shape,
-    border?: Border
+  background?: string,
+  textColor?: string,
+  fontSize?: number,
+  fontWeight?: FontWeight,         // Толщина шрифта: normal, bold, medium и т.д.
+  fontStyle?: FontStyle,           // Наклон: normal, italic
+  shape?: Shape,
+  border?: Border,
+  elevation?: number
 }
 
 export interface Action {
@@ -114,7 +115,7 @@ export interface ImageComponent {
   _id?: string;
   url: string;
   contentDescription?: string;
-  contentScale?:ContentScale;
+  contentScale?: ContentScale;
   placeholder?: string | null;
   error?: string | null;
   modifier?: Modifier;
@@ -136,7 +137,7 @@ export interface RowComponent {
   _id?: string;
   modifier?: Modifier;
   verticalAlignment?: VerticalAlignment;
-  horizontalArrangement?:HorizontalArrangement;
+  horizontalArrangement?: HorizontalArrangement;
   children: UIComponent[];
 }
 
@@ -144,7 +145,7 @@ export interface ColumnComponent {
   type: "column";
   _id?: string;
   modifier?: Modifier;
-  verticalArrangement?:VerticalAlignment;
+  verticalArrangement?: VerticalAlignment;
   horizontalAlignment?: HorizontalArrangement;
   children: UIComponent[];
 }

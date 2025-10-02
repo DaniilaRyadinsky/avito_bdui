@@ -1,5 +1,6 @@
 import React, { use, useEffect, useLayoutEffect } from "react";
 import type { SpacerComponent as SpacerComponentType } from "../../../model/types";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface SpacerComponentProps {
   component: SpacerComponentType;
@@ -31,8 +32,16 @@ export const SpacerComponent: React.FC<SpacerComponentProps> = ({
   const { size, weight, background, alpha, padding } = modifier || {}
 
   const spacerStyle: React.CSSProperties = {
-    width: `${size?.width}px`,
-    height: `${size?.height}px`,
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     flex: weight ? Number(weight) : undefined,
     backgroundColor: background || "transparent",
     opacity: alpha,

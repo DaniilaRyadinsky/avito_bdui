@@ -7,12 +7,18 @@ import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
 import { ColorInput } from "../../../shared/ui/ColorInput/ColorInput";
 import type { TextStyle } from "../../../shared/model/types";
+import { TextInput } from "../../../shared/ui/TextInput/TextInput";
 
 
 export const TextStyleGroup: React.FC<{
-    value?: TextStyle; onChange: (next: Partial<TextStyle>) => void
-}> = ({ value, onChange }) => (
+    text: string;
+    value?: TextStyle;
+    onTextChange: (v: string) => void;
+    onChange: (next: Partial<TextStyle>) => void
+}> = ({ text, value, onTextChange, onChange }) => (
+
     <Section title="Свойства текста">
+        <TextInput value={text} placeholder="Текст" onChange={(v) => onTextChange( v)} />
         <Column label="Размер текста"><NumberInput value={Number(value?.fontSize)} onChange={(n) => onChange({ fontSize: n })} /></Column>
         <Column label="Насыщенность">
             <SelectBox value={value?.fontWeight} onChange={(v) => onChange({ fontWeight: v as any })} options={["normal", "bold", "medium"].map(x => ({ label: x, value: x }))} />

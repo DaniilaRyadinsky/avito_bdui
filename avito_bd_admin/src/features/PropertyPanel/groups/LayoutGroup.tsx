@@ -75,12 +75,12 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
                 <Column label="Ширина">
                     <div className="grid-2">
                         <SelectBox
-                            value={typeof value?.size?.width === "number" ? "px" : value?.fillMaxWidth === true ? "match_parent" : "wrap_content"}
+                            value={(value?.size?.width !== "wrap_content" && value?.size?.width !== "match_parent") ? "px" : value?.fillMaxWidth === true ? "match_parent" : "wrap_content"}
                             onChange={(v) => onWidthChange(v)}
                             options={[{ label: "Содержимое", value: "wrap_content" }, { label: "Растянуть", value: "match_parent" }, { label: "Фиксированная", value: "px" }]}
                         />
-                        {typeof value?.size?.width === "number" ? (
-                            <NumberInput value={value?.size?.width} onChange={(n) => setSize({ width: String(n) })} />
+                        {(value?.size?.width !== "wrap_content" && value?.size?.width !== "match_parent") ? (
+                            <NumberInput value={Number(value?.size?.width)} onChange={(n) => setSize({ width: String(n) })} />
                         ) : (
                             <button className="button" onClick={() => setSize({ width: "100" })}>px</button>
                         )}
@@ -91,12 +91,12 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
                 <Column label="Высота">
                     <div className="grid-2">
                         <SelectBox
-                            value={typeof value?.size?.height === "number" ? "px" : value?.fillMaxHeight === true ? "match_parent" : "wrap_content"}
+                            value={(value?.size?.height !== "wrap_content" && value?.size?.height !== "match_parent") ? "px" : value?.fillMaxHeight === true ? "match_parent" : "wrap_content"}
                             onChange={(v) => onHeightChange(v)}
                             options={[{ label: "Содержимое", value: "wrap_content" }, { label: "Растянуть", value: "match_parent" }, { label: "Фиксированная", value: "px" }]}
                         />
-                        {typeof value?.size?.height === "number" ? (
-                            <NumberInput value={value?.size?.height} onChange={(n) => setSize({ height: String(n) })} />
+                        {(value?.size?.height !== "wrap_content" && value?.size?.height !== "match_parent") ? (
+                            <NumberInput value={Number(value?.size?.height)} onChange={(n) => setSize({ height: String(n) })} />
                         ) : (
                             <button className="button" onClick={() => setSize({ height: "100" })}>px</button>
                         )}

@@ -1,5 +1,6 @@
 import React from "react";
 import type { ImageComponent as ImageComponentType } from "../../../model/types";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface ImageComponentProps {
   component: ImageComponentType;
@@ -44,9 +45,16 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
   
 
   const imageStyle: React.CSSProperties = {
-    width: size?.width ? `${size.width}px` : "100%",
-
-    height: size?.height ? `${size.height}px` : "auto",
+    width:
+          size?.width === "wrap_content"
+            ? "auto"
+            : size?.width === "match_parent"
+              ? `${calculateWidth(padding)}`
+              : `${size?.width}px`,
+        height: size?.height === "wrap_content"
+          ? "auto"
+          : size?.height === "match_parent"
+            ? `${calculateHeight(padding)}` : `${size?.height}px`,
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     backgroundColor: background || "transparent",
     border:

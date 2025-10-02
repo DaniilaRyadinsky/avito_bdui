@@ -1,5 +1,6 @@
 import React from "react";
 import type { TextComponent as TextComponentType } from "../../../model/types";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface TextComponentProps {
   component: TextComponentType;
@@ -15,7 +16,7 @@ export const TextComponent: React.FC<TextComponentProps> = ({
   onAction,
 }) => {
 
-   const isSelected = selectedId == component._id
+  const isSelected = selectedId == component._id
 
   const { text, format, style = {}, modifier = {} } = component;
 
@@ -39,6 +40,7 @@ export const TextComponent: React.FC<TextComponentProps> = ({
     border,
     clickable,
     alpha = 1.0,
+    size
   } = modifier;
 
   const displayText = format ? format.replace("%s", text) : text;
@@ -52,6 +54,16 @@ export const TextComponent: React.FC<TextComponentProps> = ({
   };
 
   const textStyle: React.CSSProperties = {
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     fontSize: `${fontSize}px`,
     fontWeight,
     fontStyle,
@@ -73,9 +85,8 @@ export const TextComponent: React.FC<TextComponentProps> = ({
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${
-      padding.bottom || 0
-    }px ${padding.start || 0}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
+      }px ${padding.start || 0}px`,
     cursor: clickable || onSelect ? "pointer" : "default", // изменено
     outline: isSelected ? "2px solid #007AFF" : "none", // уже есть!
     outlineOffset: "2px",
