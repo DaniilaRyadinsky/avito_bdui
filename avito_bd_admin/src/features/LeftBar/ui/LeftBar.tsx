@@ -1,17 +1,27 @@
 import styles from './LeftBar.module.css'
-import ComponentsWidget from './ComponentsWidget/ComponentsWidget'
 import Sidebar from './sidebar/Sidebar'
+import { useState } from 'react'
+import ColorsWidget from './ColorsWiget/ColorsWidget'
+import ComponentsWidget from '../../ComponentLibrary/ui/ComponentWidget/ComponentWidget'
+import { ComponentControls } from '../../Builder/ui/ComponentControls/ComponentControls'
 
 const LeftBar = () => {
+    const [mode, setMode] = useState<"comp"| "col" | "var">("comp")
+
     return (
         <div className={styles.container}>
 
-            <Sidebar />
+            <Sidebar  mode={mode} setMode={setMode}/>
             <div className={styles.panel}>
-                <ComponentsWidget />
+                {mode == "comp" && <ComponentsWidget />}
+                {mode== "col" && <ColorsWidget/>}
+                <div>
+              <ComponentControls/>
             </div>
+            </div>
+            
         </div>
     )
 }
 
-export default LeftBar
+export default LeftBar;

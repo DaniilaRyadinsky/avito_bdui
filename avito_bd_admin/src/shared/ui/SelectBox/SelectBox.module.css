@@ -1,0 +1,15 @@
+.select {
+    width: 100%;
+    height: var(--field-h);
+    border: 1px solid var(--panel-border);
+    border-radius: 10px;
+    padding: 0 var(--space-3);
+    font: inherit;
+    color: var(--panel-text);
+    background: #fff;
+}
+
+.select:focus {
+    outline: 2px solid #c7d2fe;
+    border-color: #a5b4fc;
+}
