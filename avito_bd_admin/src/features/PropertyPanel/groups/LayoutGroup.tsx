@@ -35,7 +35,7 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
         }
         else if (v === "px") {
             onChange({
-                size: { ...value?.size, width: 100 },
+                size: { ...value?.size, width: "100" },
                 fillMaxWidth: false,
             });
         }
@@ -57,7 +57,7 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
         }
         else if (v === "px") {
             onChange({
-                size: { ...value?.size, height: 100 },
+                size: { ...value?.size, height: "100" },
                 fillMaxHeight: false,
             });
         }
@@ -80,9 +80,9 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
                             options={[{ label: "Содержимое", value: "wrap_content" }, { label: "Растянуть", value: "match_parent" }, { label: "Фиксированная", value: "px" }]}
                         />
                         {typeof value?.size?.width === "number" ? (
-                            <NumberInput value={value?.size?.width} onChange={(n) => setSize({ width: n })} />
+                            <NumberInput value={value?.size?.width} onChange={(n) => setSize({ width: String(n) })} />
                         ) : (
-                            <button className="button" onClick={() => setSize({ width: 100 })}>px</button>
+                            <button className="button" onClick={() => setSize({ width: "100" })}>px</button>
                         )}
                     </div>
                 </Column>
@@ -96,15 +96,15 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
                             options={[{ label: "Содержимое", value: "wrap_content" }, { label: "Растянуть", value: "match_parent" }, { label: "Фиксированная", value: "px" }]}
                         />
                         {typeof value?.size?.height === "number" ? (
-                            <NumberInput value={value?.size?.height} onChange={(n) => setSize({ height: n })} />
+                            <NumberInput value={value?.size?.height} onChange={(n) => setSize({ height: String(n) })} />
                         ) : (
-                            <button className="button" onClick={() => setSize({ height: 100 })}>px</button>
+                            <button className="button" onClick={() => setSize({ height: "100" })}>px</button>
                         )}
                     </div>
                 </Column>
             </div>
 
-            <Column label="Weight"><NumberInput value={value?.weight} onChange={(n) => onChange({ weight: n })} step={0.1} /></Column>
+            <Column label="Weight"><NumberInput value={Number(value?.weight)} onChange={(n) => onChange({ weight: n })} step={0.1} /></Column>
             {/* <Column label="Fill max width">
                 <SelectBox value={String(value.fillMaxWidth)} onChange={(v) => onChange({ fillMaxWidth: v === "true" ? true : v === "false" ? false : Number(v) })} options={pctOrBoolOptions} />
             </Column>

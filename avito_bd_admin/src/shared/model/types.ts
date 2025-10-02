@@ -6,8 +6,8 @@ export type TextDecoration = "none" | "underline" | "lineThrough"
 export type TextAlign = "start" | "end" | "center" | "justify"
 
 export type Size = {
-    width?: "wrap_content" | "match_parent"|  number,
-    height?: "wrap_content" |"match_parent"|  number
+    width?: "wrap_content" | "match_parent"|  string,
+    height?: "wrap_content" |"match_parent"|  string
 }
 
 export type Overflow = "clip" | "ellipsis" | "visible"

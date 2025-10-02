@@ -20,16 +20,16 @@ export const PaddingGroup: React.FC<{ value?: Padding; onChange: (next: Padding)
                     </div>
                 </Column>
                 {linkAll ? (
-                    <Column label="All"><NumberInput value={value?.all ?? 0} onChange={(n) => setAll(n)} /></Column>
+                    <Column label="All"><NumberInput value={Number(value?.all ?? 0)} onChange={(n) => setAll(n)} /></Column>
                 ) : (
                     <div className="grid-2">
                         <div className="section_container">
-                            <Column label="Start"><NumberInput value={value?.start} onChange={(n) => onChange({ ...value, start: n })} /></Column>
-                            <Column label="End"><NumberInput value={value?.end} onChange={(n) => onChange({ ...value, end: n })} /></Column>
+                            <Column label="Start"><NumberInput value={Number(value?.start)} onChange={(n) => onChange({ ...value, start: n })} /></Column>
+                            <Column label="End"><NumberInput value={Number(value?.end)} onChange={(n) => onChange({ ...value, end: n })} /></Column>
                         </div>
                         <div className="section_container">
-                            <Column label="Top"><NumberInput value={value?.top} onChange={(n) => onChange({ ...value, top: n })} /></Column>
-                            <Column label="Bottom"><NumberInput value={value?.bottom} onChange={(n) => onChange({ ...value, bottom: n })} /></Column>
+                            <Column label="Top"><NumberInput value={Number(value?.top)} onChange={(n) => onChange({ ...value, top: n })} /></Column>
+                            <Column label="Bottom"><NumberInput value={Number(value?.bottom)} onChange={(n) => onChange({ ...value, bottom: n })} /></Column>
                         </div>
                     </div>
                 )}

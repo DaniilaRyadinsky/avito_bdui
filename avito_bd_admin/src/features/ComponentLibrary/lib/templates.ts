@@ -93,7 +93,7 @@ export const createRow = (overrides: Partial<RowComponent> = {}): RowComponent =
         _id: genId("row"),
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 },
+            size: { width: "20", height: "20" },
         },
         verticalAlignment: "centerVertically",
         horizontalArrangement: "start",
@@ -141,7 +141,7 @@ export const createSpacer = (overrides: Partial<SpacerComponent> = {}): SpacerCo
         _id: genId("spacer"),
         modifier: {
             ...defaultModifier,
-            size: { width: 8, height: 8 },
+            size: { width: "8", height: "8" },
         },
     };
     return withDefaults(base, componentDefaults["spacer"], overrides);
