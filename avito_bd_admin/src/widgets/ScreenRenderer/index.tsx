@@ -1,15 +1,10 @@
-// widgets/ScreenRenderer/ScreenRenderer.tsx
 import React from "react";
 import { ComponentFactory } from "../../shared/ui/ComponentFactory/ComponentFactory";
 import { useBuilder } from "../../features/Builder/lib/builderContext";
 import styles from "./ScreenRenderer.module.css";
 
-
 export const ScreenRenderer: React.FC = () => {
   const { screen, selectedComponentId, setSelectedComponent } = useBuilder();
-
-  // console.log("🔍 ScreenRenderer: screen=", screen);
-  // console.log("🔍 ScreenRenderer: selectedComponentId=", selectedComponentId);
 
   if (!screen) {
     return <div className={styles.loading}>Загрузка экрана...</div>;
@@ -45,7 +40,9 @@ export const ScreenRenderer: React.FC = () => {
       <div className={styles.content}>
         {screen.content.map((component, index) => (
           <ComponentFactory
-            key={component._id ? `${component._id}-${index}` : `content-${index}`} // ← ИСПРАВЛЕНО
+            key={
+              component._id ? `${component._id}-${index}` : `content-${index}`
+            } // ← ИСПРАВЛЕНО
             component={component}
             selectedId={selectedComponentId}
             onSelect={handleComponentSelect}

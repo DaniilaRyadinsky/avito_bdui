@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import LeftBar from "../features/LeftBar/ui/LeftBar";
 import Topbar from "../widgets/Topbar/Topbar";
 import { ScreenRenderer } from "../widgets/ScreenRenderer/index";
@@ -11,6 +11,7 @@ import { useScreenData } from "../shared/lib/useScreenData";
 import styles from "./Main.module.css";
 import { PropertyPanel } from "../features/PropertyPanel/ui/PropertyPanel";
 import { NumberInput } from "../shared/ui/NumberInput/NumberInput";
+import { createNewScreen } from "../shared/constants/screenTemplates";
 
 const SaveButton = () => {
   const { screen } = useBuilder();
@@ -28,7 +29,6 @@ const SaveButton = () => {
 
       const screenData = {
         ...screen,
-        // Для нового скрина генерируем временный ID, сервер создаст постоянный
         _id: isNewScreen ? `temp-${Date.now()}` : screen._id,
       };
 
@@ -42,7 +42,6 @@ const SaveButton = () => {
         `💾 ${isNewScreen ? "Creating" : "Updating"} screen:`,
         screenData
       );
-      console.log(`📤 Sending ${method} request to: ${url}`);
 
       const response = await fetch(url, {
         method: method,
@@ -52,13 +51,7 @@ const SaveButton = () => {
         body: JSON.stringify(screenData),
       });
 
-      console.log(
-        `📥 Response status: ${response.status} ${response.statusText}`
-      );
-
-      // Проверяем, есть ли тело ответа
       const responseText = await response.text();
-      console.log(`📥 Response body:`, responseText);
 
       if (!response.ok) {
         throw new Error(
@@ -66,34 +59,28 @@ const SaveButton = () => {
         );
       }
 
-      // Парсим JSON только если есть содержимое
       let result;
       if (responseText && responseText.trim() !== "") {
         result = JSON.parse(responseText);
       } else {
-        result = { success: true, message: "Empty response" };
+        result = { success: true, message: "Пустой ответ" };
       }
 
       console.log("✅ Save successful:", result);
 
-      setMessage(
-        isNewScreen
-          ? "Screen created successfully!"
-          : "Screen updated successfully!"
-      );
-
-      // Если это новый скрин, можно обновить URL с новым ID
       if (isNewScreen && result._id) {
         console.log("New screen ID:", result._id);
       }
-    } catch (err) {
-      console.error("❌ Error saving screen:", err);
+
       setMessage(
-        `Error: ${err instanceof Error ? err.message : "Unknown error"}`
+        isNewScreen ? "Экран успешно создан!" : "Изменения успешно сохранены!"
+      );
+    } catch (err) {
+      setMessage(
+        `Ошибка: ${err instanceof Error ? err.message : "Неизвестная ошибка"}`
       );
     } finally {
       setSaving(false);
-      // Автоматически скрываем сообщение через 3 секунды
       setTimeout(() => setMessage(null), 3000);
     }
   };
@@ -106,9 +93,9 @@ const SaveButton = () => {
         className={styles.saveButton}
       >
         {saving
-          ? "Сохранение"
+          ? "Сохранение..."
           : screen?._id === "new"
-          ? "Создать скрин"
+          ? "Создать экран"
           : "Сохранить изменения"}
       </button>
       {message && (
@@ -128,7 +115,6 @@ const SaveButton = () => {
 
 const Main = () => {
   const { screenId } = useParams<{ screenId: string }>();
-  const navigate = useNavigate();
   const [fetchedData, setFetchedData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -144,34 +130,20 @@ const Main = () => {
         console.log("🔍 Screen ID from URL:", screenId);
 
         if (!screenId) {
-          console.log("🆕 No screen ID, creating new screen");
-          const newScreen = {
-            _id: "new",
-            type: "screen",
-            name: "New Screen",
-            background: "#FFFFFF",
-            topBar: [],
-            content: [],
-            bottomBar: [],
-            snackbars: [],
-          };
+          // Создаем новый экран с уникальными ID
+          const newScreen = createNewScreen();
+          console.log("🆕 Creating new screen (no ID):", newScreen);
           setFetchedData(newScreen);
           return;
         }
 
         if (screenId === "new") {
-          const newScreen = {
-            _id: "new",
-            type: "screen",
-            name: "New Screen",
-            background: "#FFFFFF",
-            topBar: [],
-            content: [],
-            bottomBar: [],
-            snackbars: [],
-          };
+          // Создаем новый экран с уникальными ID
+          const newScreen = createNewScreen();
+          console.log("🆕 Creating new screen:", newScreen);
           setFetchedData(newScreen);
         } else {
+          // Загружаем существующий экран
           console.log(`📡 Fetching screen with ID: ${screenId}`);
           const response = await fetch(
             `http://31.56.205.210:8080/api/screen/get?id=${screenId}`
@@ -182,10 +154,12 @@ const Main = () => {
           }
 
           const data = await response.json();
+          console.log("✅ Raw data from server:", data);
           setFetchedData(data);
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
+        console.error("❌ Error in fetchScreenData:", err);
+        setError(err instanceof Error ? err.message : "Неизвестная ошибка");
       } finally {
         setLoading(false);
       }
@@ -194,13 +168,14 @@ const Main = () => {
     fetchScreenData();
   }, [screenId]);
 
+  // Передаем полученные данные в useScreenData
   const screen = useScreenData(fetchedData);
 
   if (!screenId && loading) {
     return (
       <div className={styles.container}>
         <div className={styles.loading}>
-          <div>Initializing editor...</div>
+          <div>Инициализация редактора...</div>
           <div className={styles.loadingSpinner}>⏳</div>
         </div>
       </div>
@@ -213,8 +188,8 @@ const Main = () => {
         <div className={styles.loading}>
           <div>
             {screenId === "new"
-              ? "Creating new screen..."
-              : "Loading screen..."}
+              ? "Создание нового экрана..."
+              : "Загрузка экрана..."}
           </div>
           <div className={styles.loadingSpinner}>⏳</div>
         </div>
@@ -227,12 +202,12 @@ const Main = () => {
       <div className={styles.container}>
         <div className={styles.error}>
           <h3>
-            Error {screenId === "new" || !screenId ? "creating" : "loading"}{" "}
-            screen
+            Ошибка {screenId === "new" || !screenId ? "создания" : "загрузки"}{" "}
+            экрана
           </h3>
           <p>{error}</p>
           <Link to="/" className={styles.backLink}>
-            ← Back to Screens List
+            ← К списку экранов
           </Link>
         </div>
       </div>
@@ -243,10 +218,10 @@ const Main = () => {
     return (
       <div className={styles.container}>
         <div className={styles.error}>
-          <h3>No screen data found or invalid format</h3>
-          <p>Screen ID: {screenId || "none (new screen)"}</p>
+          <h3>Данные экрана не найдены или неверный формат</h3>
+          <p>ID экрана: {screenId || "новый экран"}</p>
           <Link to="/" className={styles.backLink}>
-            ← Back to Screens List
+            ← К списку экранов
           </Link>
         </div>
       </div>
