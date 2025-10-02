@@ -28,20 +28,20 @@ export const SpacerComponent: React.FC<SpacerComponentProps> = ({
 
   // const { size, weight, padding, background, alpha = 1.0 } = modifier ?? {};
 
-  const { size } = modifier || {}
+  const { size, weight, background, alpha, padding } = modifier || {}
 
   const spacerStyle: React.CSSProperties = {
     width: `${size?.width}px`,
     height: `${size?.height}px`,
-    // flex: weight ? Number(weight) : undefined,
-    // backgroundColor: background || "transparent",
-    // opacity: alpha,
-    // outline: isSelected ? "2px solid #007AFF" : "none",
-    // outlineOffset: "2px",
-    // padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0
-    //   }px ${padding?.start || 0}px`,
-    // minHeight: "1px",
-    // minWidth: "1px",
+    flex: weight ? Number(weight) : undefined,
+    backgroundColor: background || "transparent",
+    opacity: alpha,
+    outline: isSelected ? "2px solid #007AFF" : "none",
+    outlineOffset: "2px",
+    padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0
+      }px ${padding?.start || 0}px`,
+    minHeight: "1px",
+    minWidth: "1px",
   };
 
   const handleClick = (e: React.MouseEvent) => {

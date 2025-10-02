@@ -24,7 +24,7 @@ export const RowComponent: React.FC<RowComponentProps> = ({
     children = [],
     verticalAlignment = "centerVertically",
     horizontalArrangement = "start",
-    modifier ,
+    modifier = {} ,
   } = component;
 
     // useEffect(() => {
@@ -44,7 +44,7 @@ export const RowComponent: React.FC<RowComponentProps> = ({
     alpha = 1.0,
     shadow,
 
-  } = modifier ?? {};
+  } = modifier;
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();

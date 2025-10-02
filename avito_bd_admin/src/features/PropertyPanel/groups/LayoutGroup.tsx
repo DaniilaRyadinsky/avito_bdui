@@ -19,29 +19,29 @@ const pctOrBoolOptions = [
     { label: "90%", value: "0.9" },
 ];
 
-export const LayoutGroup: React.FC<{ value: Modifier; onChange: (next: Partial<Modifier>) => void }> = ({ value, onChange }) => {
+export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<Modifier>) => void }> = ({ value, onChange }) => {
     const setSize = (patch: Partial<Size>) => {
         console.log(patch)
-        onChange({ size: { ...value.size, ...patch } as Size });
+        onChange({ size: { ...value?.size, ...patch } as Size });
     }
 
     const onWidthChange = (v: string) => {
         console.log(v)
         if (v === "wrap_content") {
             onChange({
-                size: { ...value.size, width: "wrap_content" },
+                size: { ...value?.size, width: "wrap_content" },
                 fillMaxWidth: false,
             });
         }
         else if (v === "px") {
             onChange({
-                size: { ...value.size, width: 100 },
+                size: { ...value?.size, width: 100 },
                 fillMaxWidth: false,
             });
         }
         else if (v === "match_parent") {
             onChange({
-                size: { ...value.size, width: "match_parent" },
+                size: { ...value?.size, width: "match_parent" },
                 fillMaxWidth: true,
             });
         }
@@ -51,19 +51,19 @@ export const LayoutGroup: React.FC<{ value: Modifier; onChange: (next: Partial<M
         console.log(v)
         if (v === "wrap_content") {
             onChange({
-                size: { ...value.size, height: "wrap_content" },
+                size: { ...value?.size, height: "wrap_content" },
                 fillMaxHeight: false,
             });
         }
         else if (v === "px") {
             onChange({
-                size: { ...value.size, height: 100 },
+                size: { ...value?.size, height: 100 },
                 fillMaxHeight: false,
             });
         }
         else if (v === "match_parent") {
             onChange({
-                size: { ...value.size, height: "match_parent" },
+                size: { ...value?.size, height: "match_parent" },
                 fillMaxHeight: true,
             });
         }
@@ -75,12 +75,12 @@ export const LayoutGroup: React.FC<{ value: Modifier; onChange: (next: Partial<M
                 <Column label="Ширина">
                     <div className="grid-2">
                         <SelectBox
-                            value={typeof value.size?.width === "number" ? "px" : value.fillMaxWidth === true ? "match_parent" : "wrap_content"}
+                            value={typeof value?.size?.width === "number" ? "px" : value?.fillMaxWidth === true ? "match_parent" : "wrap_content"}
                             onChange={(v) => onWidthChange(v)}
                             options={[{ label: "Содержимое", value: "wrap_content" }, { label: "Растянуть", value: "match_parent" }, { label: "Фиксированная", value: "px" }]}
                         />
-                        {typeof value.size?.width === "number" ? (
-                            <NumberInput value={value.size?.width} onChange={(n) => setSize({ width: n })} />
+                        {typeof value?.size?.width === "number" ? (
+                            <NumberInput value={value?.size?.width} onChange={(n) => setSize({ width: n })} />
                         ) : (
                             <button className="button" onClick={() => setSize({ width: 100 })}>px</button>
                         )}
@@ -91,12 +91,12 @@ export const LayoutGroup: React.FC<{ value: Modifier; onChange: (next: Partial<M
                 <Column label="Высота">
                     <div className="grid-2">
                         <SelectBox
-                            value={typeof value.size?.height === "number" ? "px" : value.fillMaxHeight === true ? "match_parent" : "wrap_content"}
+                            value={typeof value?.size?.height === "number" ? "px" : value?.fillMaxHeight === true ? "match_parent" : "wrap_content"}
                             onChange={(v) => onHeightChange(v)}
                             options={[{ label: "Содержимое", value: "wrap_content" }, { label: "Растянуть", value: "match_parent" }, { label: "Фиксированная", value: "px" }]}
                         />
-                        {typeof value.size?.height === "number" ? (
-                            <NumberInput value={value.size?.height} onChange={(n) => setSize({ height: n })} />
+                        {typeof value?.size?.height === "number" ? (
+                            <NumberInput value={value?.size?.height} onChange={(n) => setSize({ height: n })} />
                         ) : (
                             <button className="button" onClick={() => setSize({ height: 100 })}>px</button>
                         )}
@@ -104,7 +104,7 @@ export const LayoutGroup: React.FC<{ value: Modifier; onChange: (next: Partial<M
                 </Column>
             </div>
 
-            <Column label="Weight"><NumberInput value={value.weight} onChange={(n) => onChange({ weight: n })} step={0.1} /></Column>
+            <Column label="Weight"><NumberInput value={value?.weight} onChange={(n) => onChange({ weight: n })} step={0.1} /></Column>
             {/* <Column label="Fill max width">
                 <SelectBox value={String(value.fillMaxWidth)} onChange={(v) => onChange({ fillMaxWidth: v === "true" ? true : v === "false" ? false : Number(v) })} options={pctOrBoolOptions} />
             </Column>
@@ -113,7 +113,7 @@ export const LayoutGroup: React.FC<{ value: Modifier; onChange: (next: Partial<M
             </Column> */}
 
             <Column label="Выравнивание">
-                <SelectBox value={value.align} onChange={(v) => onChange({ align: v as any })} options={["start", "center", "end", "top", "bottom"].map(x => ({ label: x, value: x }))} />
+                <SelectBox value={value?.align} onChange={(v) => onChange({ align: v as any })} options={["start", "center", "end", "top", "bottom"].map(x => ({ label: x, value: x }))} />
             </Column>
         </Section>
     );

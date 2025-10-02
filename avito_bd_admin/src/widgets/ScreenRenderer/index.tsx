@@ -8,8 +8,8 @@ import styles from "./ScreenRenderer.module.css";
 export const ScreenRenderer: React.FC = () => {
   const { screen, selectedComponentId, setSelectedComponent } = useBuilder();
 
-  console.log("🔍 ScreenRenderer: screen=", screen);
-  console.log("🔍 ScreenRenderer: selectedComponentId=", selectedComponentId);
+  // console.log("🔍 ScreenRenderer: screen=", screen);
+  // console.log("🔍 ScreenRenderer: selectedComponentId=", selectedComponentId);
 
   if (!screen) {
     return <div className={styles.loading}>Загрузка экрана...</div>;

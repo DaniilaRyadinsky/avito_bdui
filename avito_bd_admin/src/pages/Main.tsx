@@ -9,7 +9,6 @@ import styles from "./Main.module.css";
 
 import { useState } from 'react'
 
-import { DemoPanel } from '../features/PropertyPanel/ui/DemoPanel'
 import { PropertyPanel } from '../features/PropertyPanel/ui/PropertyPanel'
 import { NumberInput } from '../shared/ui/NumberInput/NumberInput'
 
@@ -41,7 +40,7 @@ const Main = () => {
                             </div>
                         </div>
                     </div>
-                    <DemoPanel />
+                    <PropertyPanel />
                 </BuilderProvider>
             </div>
 

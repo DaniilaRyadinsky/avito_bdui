@@ -1,11 +1,19 @@
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScreensList from "../pages/screenList/ScreensList";
+import Stats from "../pages/Stats/Stats";
 import Main from "../pages/Main";
 
 function App() {
   return (
-    <>
-      <Main />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<ScreensList />} />
+        <Route path="/builder/:screenId" element={<Main />} />
+        <Route path="/builder" element={<Main />} />
+        <Route path="/stats" element={<Stats />} />
+      </Routes>
+    </Router>
   );
 }
 

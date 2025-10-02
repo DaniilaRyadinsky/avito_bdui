@@ -1,66 +1,12 @@
 // features/ComponentLibrary/ui/ComponentsWidget/ComponentsWidget.tsx
 import React from "react";
 import styles from "./ComponentWidget.module.css";
-import arrow from "../../../../shared/assets/icons/arrow.svg";
 import { useBuilder } from "../../../Builder/lib/builderContext";
 import type { UIComponent } from "../../../../shared/model/types";
 import Summary from "../../../../shared/ui/Summary/Summary";
-import { createText, createButton, createImage, createIcon, createRow, createColumn, createCheckbox, createSpacer, createCard, createBox, createSnackbar } from "../../lib/constant";
+import { componentTemplates } from "../../lib/constant";
+import { createComponent } from "../../lib/templates";
 
-// Типы для шаблонов компонентов
-const componentTemplates: {
-  type: UIComponent["type"];
-  name: string;
-}[] = [
-    {
-      type: "text",
-      name: "Текст"
-    },
-    {
-      type: "button",
-      name: "Кнопка"
-    },
-    {
-      type: "image",
-      name: "Изображение"
-    },
-    {
-      type: "card",
-      name: "Карточка"
-    },
-    {
-      type: "row",
-      name: "Строка"
-    },
-  ];
-
-const createComponent = (type: UIComponent["type"]) => {
-  switch (type) {
-    case ("text"):
-      return createText()
-    case ("button"):
-      return createButton()
-    case ("image"):
-      return createImage()
-    case ("icon"):
-      return createIcon()
-    case ("row"):
-      return createRow()
-    case ("column"):
-      return createColumn()
-    case ("checkbox"):
-      return createCheckbox()
-    case ("spacer"):
-      return createSpacer()
-    case ("card"):
-      return createCard()
-    case ("box"):
-      return createBox()
-    case ("snackbar"):
-      return createSnackbar()
-  }
-
-}
 
 // Компонент для элемента библиотеки
 const LibraryItem: React.FC<{
