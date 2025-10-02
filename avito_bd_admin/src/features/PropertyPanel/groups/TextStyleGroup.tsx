@@ -18,8 +18,8 @@ export const TextStyleGroup: React.FC<{
 }> = ({ text, value, onTextChange, onChange }) => (
 
     <Section title="Свойства текста">
-        <TextInput value={text} placeholder="Текст" onChange={(v) => onTextChange( v)} />
-        <Column label="Размер текста"><NumberInput value={Number(value?.fontSize)} onChange={(n) => onChange({ fontSize: n })} /></Column>
+        <TextInput value={text}  placeholder="Текст" onChange={(v) => onTextChange( v)} />
+        <Column label="Размер текста"><NumberInput min={0} value={Number(value?.fontSize)} onChange={(n) => onChange({ fontSize: n })} /></Column>
         <Column label="Насыщенность">
             <SelectBox value={value?.fontWeight} onChange={(v) => onChange({ fontWeight: v as any })} options={["normal", "bold", "medium"].map(x => ({ label: x, value: x }))} />
         </Column>
@@ -27,8 +27,8 @@ export const TextStyleGroup: React.FC<{
             <SelectBox value={value?.fontStyle} onChange={(v) => onChange({ fontStyle: v as any })} options={["normal", "italic"].map(x => ({ label: x, value: x }))} />
         </Column>
         <Column label="Цвет"><ColorInput value={value?.color} onChange={(c) => onChange({ color: c })} /></Column>
-        <Column label="Высота линии"><NumberInput value={Number(value?.lineHeight)} onChange={(n) => onChange({ lineHeight: n })} /></Column>
-        <Column label="Интервал"><NumberInput value={Number(value?.letterSpacing)} onChange={(n) => onChange({ letterSpacing: n })} /></Column>
+        <Column label="Высота линии"><NumberInput min={0} value={Number(value?.lineHeight)} onChange={(n) => onChange({ lineHeight: n })} /></Column>
+        <Column label="Интервал"><NumberInput min={0} value={Number(value?.letterSpacing)} onChange={(n) => onChange({ letterSpacing: n })} /></Column>
         <Column label="Decoration">
             <SelectBox value={value?.textDecoration} onChange={(v) => onChange({ textDecoration: v as any })} options={[{ label: "Нормальный", value: "none" }, { label: "Подчеркнутый", value: "underline" }, { label: "Зачеркнутый", value: "lineThrough" }]} />
         </Column>

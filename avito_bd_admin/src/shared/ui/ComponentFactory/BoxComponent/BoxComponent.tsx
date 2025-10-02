@@ -41,6 +41,7 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
     border,
     clickable,
     alpha = 1.0,
+    shadow
   } = modifier;
 
 
@@ -68,6 +69,7 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   return (

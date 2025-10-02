@@ -31,6 +31,7 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     border,
     clickable,
     alpha = 1.0,
+    shadow
   } = modifier;
 
   const iconStyle: React.CSSProperties = {
@@ -61,6 +62,7 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     alignItems: "center",
     justifyContent: "center",
     fontSize: "18px",
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   const handleClick = (e: React.MouseEvent) => {

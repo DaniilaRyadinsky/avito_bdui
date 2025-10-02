@@ -80,7 +80,7 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
                             options={[{ label: "Содержимое", value: "wrap_content" }, { label: "Растянуть", value: "match_parent" }, { label: "Фиксированная", value: "px" }]}
                         />
                         {(value?.size?.width !== "wrap_content" && value?.size?.width !== "match_parent") ? (
-                            <NumberInput value={Number(value?.size?.width)} onChange={(n) => setSize({ width: String(n) })} />
+                            <NumberInput min={0} value={Number(value?.size?.width)} onChange={(n) => setSize({ width: String(n) })} />
                         ) : (
                             <button className="button" onClick={() => setSize({ width: "100" })}>px</button>
                         )}
@@ -96,7 +96,7 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
                             options={[{ label: "Содержимое", value: "wrap_content" }, { label: "Растянуть", value: "match_parent" }, { label: "Фиксированная", value: "px" }]}
                         />
                         {(value?.size?.height !== "wrap_content" && value?.size?.height !== "match_parent") ? (
-                            <NumberInput value={Number(value?.size?.height)} onChange={(n) => setSize({ height: String(n) })} />
+                            <NumberInput min={0} value={Number(value?.size?.height)} onChange={(n) => setSize({ height: String(n) })} />
                         ) : (
                             <button className="button" onClick={() => setSize({ height: "100" })}>px</button>
                         )}
@@ -104,7 +104,7 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
                 </Column>
             </div>
 
-            <Column label="Weight"><NumberInput value={Number(value?.weight)} onChange={(n) => onChange({ weight: n })} step={0.1} /></Column>
+            <Column label="Weight"><NumberInput min={0} value={Number(value?.weight)} onChange={(n) => onChange({ weight: n })} step={0.1} /></Column>
             {/* <Column label="Fill max width">
                 <SelectBox value={String(value.fillMaxWidth)} onChange={(v) => onChange({ fillMaxWidth: v === "true" ? true : v === "false" ? false : Number(v) })} options={pctOrBoolOptions} />
             </Column>

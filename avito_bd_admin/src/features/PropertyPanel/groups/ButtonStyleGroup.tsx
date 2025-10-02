@@ -13,7 +13,7 @@ import type { Border, Shape, ButtonStyle } from "../../../shared/model/types";
 
 const BorderEditor: React.FC<{ value?: Border; onChange: (next: Partial<Border>) => void }> = ({ value, onChange }) => (
     <div className="grid grid-cols-2 gap-3">
-        <Column label="Width"><NumberInput value={Number(value?.width)} onChange={(n) => onChange({ width:n })} /></Column>
+        <Column label="Width"><NumberInput min={0} value={Number(value?.width)} onChange={(n) => onChange({ width:n })} /></Column>
         <Column label="Color"><ColorInput value={value?.color} onChange={(c) => onChange({ color: c })} /></Column>
     </div>
 );
@@ -21,9 +21,9 @@ const BorderEditor: React.FC<{ value?: Border; onChange: (next: Partial<Border>)
 
 const ShapeEditor: React.FC<{ value?: Shape; onChange: (next: Partial<Shape>) => void }> = ({ value, onChange }) => (
     <div className="grid grid-cols-2 gap-3">
-        <Column label="Corner radius"><NumberInput value={Number(value?.cornerRadius)} onChange={(n) => onChange({ cornerRadius: n })} /></Column>
-        <Column label="Top start"><NumberInput value={Number(value?.topStart)} onChange={(n) => onChange({ topStart: n })} /></Column>
-        <Column label="Top end"><NumberInput value={Number(value?.topEnd)} onChange={(n) => onChange({ topEnd: n })} /></Column>
+        <Column label="Corner radius"><NumberInput min={0} value={Number(value?.cornerRadius)} onChange={(n) => onChange({ cornerRadius: n })} /></Column>
+        <Column label="Top start"><NumberInput min={0} value={Number(value?.topStart)} onChange={(n) => onChange({ topStart: n })} /></Column>
+        <Column label="Top end"><NumberInput min={0} value={Number(value?.topEnd)} onChange={(n) => onChange({ topEnd: n })} /></Column>
     </div>
 );
 
@@ -36,7 +36,7 @@ export const ButtonStyleGroup: React.FC<{
     <Section title="Свойство кнопки">
         <Column label="Фон"><ColorInput value={value?.background} onChange={(c) => onChange({ background: c })} /></Column>
         <Column label="Цвет текста"><ColorInput value={value?.textColor} onChange={(c) => onChange({ textColor: c })} /></Column>
-        <Column label="Размер текста"><NumberInput value={Number(value?.fontSize)} onChange={(n) => onChange({ fontSize: n })} /></Column>
+        <Column label="Размер текста"><NumberInput min={0} value={Number(value?.fontSize)} onChange={(n) => onChange({ fontSize: n })} /></Column>
         <Column label="Насыщенность">
             <SelectBox value={value?.fontWeight} onChange={(v) => onChange({ fontWeight: v as any })} options={["normal", "bold", "medium"].map(x => ({ label: x, value: x }))} />
         </Column>

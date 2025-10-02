@@ -27,7 +27,7 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
       onAction(component._id, { type: "click" });
     }
   };
-  const { text, enabled = true, style = {}, modifier = {}, icon } = component;
+  const { text, enabled = true, style = {}, modifier = {}, icon, } = component;
 
   const {
     background = "#007AFF",
@@ -37,12 +37,12 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
     fontStyle = "normal",
     shape = {},
     border = {},
-    elevation,
+
   } = style;
 
   const { size } = modifier;
 
-  const { padding = {}, clickable, alpha = 1.0 } = modifier;
+  const { padding = {}, clickable, alpha = 1.0 , shadow} = modifier;
 
   const buttonStyle: React.CSSProperties = {
     width:
@@ -65,9 +65,7 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
       border.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    boxShadow: elevation
-      ? `0 ${elevation}px ${elevation * 2}px rgba(0,0,0,0.3)`
-      : "none",
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`,
     padding: `${padding.top || 12}px ${padding.end || 16}px ${padding.bottom || 12
       }px ${padding.start || 16}px`,
     opacity: alpha,

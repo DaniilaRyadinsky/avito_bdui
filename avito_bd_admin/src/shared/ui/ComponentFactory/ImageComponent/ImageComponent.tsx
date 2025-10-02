@@ -32,6 +32,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
     border,
     clickable,
     alpha = 1.0,
+    shadow
   } = modifier;
 
   const handleClick = (e: React.MouseEvent) => {
@@ -68,6 +69,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
     objectFit: contentScale.toLowerCase() as any,
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   return (

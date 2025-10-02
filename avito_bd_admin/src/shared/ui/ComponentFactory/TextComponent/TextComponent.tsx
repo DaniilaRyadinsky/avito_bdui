@@ -40,7 +40,8 @@ export const TextComponent: React.FC<TextComponentProps> = ({
     border,
     clickable,
     alpha = 1.0,
-    size
+    size,
+    shadow
   } = modifier;
 
   const displayText = format ? format.replace("%s", text) : text;
@@ -90,6 +91,7 @@ export const TextComponent: React.FC<TextComponentProps> = ({
     cursor: clickable || onSelect ? "pointer" : "default", // изменено
     outline: isSelected ? "2px solid #007AFF" : "none", // уже есть!
     outlineOffset: "2px",
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   return (

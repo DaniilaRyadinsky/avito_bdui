@@ -102,7 +102,8 @@ export const RowComponent: React.FC<RowComponentProps> = ({
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
-    gap: "8px",
+    gap: "0px",
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   return (

@@ -35,7 +35,8 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     border,
     clickable,
     alpha = 1.0,
-    size
+    size,
+    shadow
   } = modifier;
 
   const handleClick = (e: React.MouseEvent) => {
@@ -90,6 +91,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
     gap: "8px",
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   return (

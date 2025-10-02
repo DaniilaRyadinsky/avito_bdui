@@ -25,7 +25,7 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
 
   const { checkedColor = "#000000", uncheckedColor = "#CCCCCC" } = colors;
 
-  const { size = {}, padding = {}, clickable, alpha = 1.0 } = modifier;
+  const { size = {}, padding = {}, clickable, alpha = 1.0, shadow } = modifier;
 
   const checkboxStyle: React.CSSProperties = {
     width:
@@ -50,6 +50,7 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
     justifyContent: "center",
     padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
       }px ${padding.start || 0}px`,
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   const handleClick = (e: React.MouseEvent) => {
