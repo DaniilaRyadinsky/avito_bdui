@@ -71,19 +71,19 @@ export const componentDefaults: {
     image: {
         modifier: {
             ...defaultModifier,
-            size: { width: 64, height: 64 },
+            size: { width: "64", height: "64" },
         },
     },
     icon: {
         modifier: {
             ...defaultModifier,
-            size: { width: 24, height: 24 },
+            size: { width: "24", height: "24" },
         },
     },
     row: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 }, // контейнер 20×20
+            size: { width: "20", height: "20" }, // контейнер 20×20
         },
         verticalAlignment: "centerVertically",
         horizontalArrangement: "start",
@@ -91,7 +91,7 @@ export const componentDefaults: {
     column: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 }, // контейнер 20×20
+            size: { width: "20", height: "20" }, // контейнер 20×20
         },
         verticalArrangement: "top",
         horizontalAlignment: "start",
@@ -99,13 +99,13 @@ export const componentDefaults: {
     box: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 }, // контейнер 20×20
+            size: { width: "20", height: "20" }, // контейнер 20×20
         },
     },
     card: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 }, // контейнер 20×20
+            size: { width: "20", height: "20" }, // контейнер 20×20
         },
         elevation: 1,
         shape: { cornerRadius: 12 },
@@ -121,7 +121,7 @@ export const componentDefaults: {
     spacer: {
         modifier: {
             ...defaultModifier,
-            size: { width: 20, height: 20 },
+            size: { width: "20", height: "20" },
         },
     },
     snackbar: {
