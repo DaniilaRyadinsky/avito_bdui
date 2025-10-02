@@ -1,0 +1,43 @@
+[
+  {
+    "type": "textField",
+    "id": "username_input",
+    "modifier": {
+      "fillMaxWidth": true,
+      "padding": {
+        "start": 16,
+        "end": 16,
+        "top": 8,
+        "bottom": 8
+      }
+    },
+    "value": "",
+    "placeholder": "Введите имя пользователя",
+    "enabled": true,
+    "singleLine": true,
+    "style": {
+      "fontSize": 16,
+      "fontWeight": "normal",
+      "color": "#333333",
+      "textAlign": "start"
+    }
+  },
+
+
+
+  {
+    "type": "bottomSheet",
+    "id": "cart_options_sheet",
+    "modifier": {
+      "fillMaxWidth": true,
+      "padding": {
+        "start": 16,
+        "end": 16,
+        "top": 12,
+        "bottom": 12
+      }
+    },
+    "dismissible": true,
+    "children": []
+  }
+]

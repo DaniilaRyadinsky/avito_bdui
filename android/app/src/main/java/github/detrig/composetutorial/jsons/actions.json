@@ -1,0 +1,323 @@
+
+{
+  "_id": "b7485cf9-d9c6-4ede-ae30-bb7e3f44b004",
+  "bottomBar": [
+    {
+      "shadow": {
+        "elevation": 8
+      },
+      "background": "#FFFFFF",
+      "children": [
+        {
+          "type": "row",
+          "modifier": {
+            "padding": {
+              "end": 12,
+              "start": 12
+            }
+          },
+          "children": [
+            {
+              "type": "column",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "3 товара",
+                  "style": {
+                    "fontSize": 12
+                  },
+                  "_id": "comp-bottombar-0-0-0-0-mhvdbe0we"
+                },
+                {
+                  "type": "text",
+                  "_id": "comp-bottombar-0-0-0-1-lmxe464ij",
+                  "text": "12450 ₽",
+                  "style": {
+                    "fontWeight": "bold",
+                    "fontSize": 20
+                  }
+                }
+              ],
+              "_id": "comp-bottombar-0-0-0-o2379f2ch"
+            },
+            {
+              "type": "spacer",
+              "modifier": {
+                "weight": 1
+              },
+              "_id": "comp-bottombar-0-0-1-ibs44groo"
+            },
+            {
+              "style": {
+                "background": "#965EEB",
+                "textColor": "#FFFFFF",
+                "shape": {
+                  "cornerRadius": 12
+                }
+              },
+              "modifier": {
+                "height": "48"
+              },
+              "onClick": "checkout",
+              "_id": "comp-bottombar-0-0-2-slbac8mt3",
+              "type": "button",
+              "text": "Оформить доставку",
+              "actions": [
+                {
+                  "action": "navigate",
+                  "targetId": "make_order"
+                }
+              ]
+            }
+          ],
+          "_id": "comp-bottombar-0-0-oydfm8ne"
+        }
+      ],
+      "type": "box",
+      "shape": {
+        "topStart": 16,
+        "topEnd": 16
+      },
+      "_id": "comp-bottombar-0-9snycml87"
+    }
+  ],
+  "snackbars": [
+    {
+      "actions": [
+        {
+          "action": "restoreItem",
+          "targetId": "cart_item"
+        }
+      ],
+      "type": "snackbar",
+      "id": "deleteCartItemSnackbar",
+      "text": "Товар удалён из корзины",
+      "actionText": "Вернуть"
+    }
+  ],
+  "type": "screen",
+  "name": "CartScreen",
+  "background": "#FFFFFF",
+  "topBar": [
+    {
+      "type": "row",
+      "children": [
+        {
+          "type": "row",
+          "modifier": {
+            "padding": {
+              "top": 8,
+              "bottom": 12,
+              "start": 16,
+              "end": 16
+            },
+            "fillMaxWidth": true
+          },
+          "verticalAlignment": "centerVertically",
+          "horizontalAlignment": "start",
+          "_id": "comp-topbar-0-0-rbseldwit",
+          "children": [
+            {
+              "_id": "comp-topbar-0-0-0-pyu3r4sf5",
+              "type": "checkbox",
+              "isChecked": "true",
+              "colors": {
+                "checkedColor": "#000000",
+                "uncheckedColor": "#000000",
+                "disableColor": "#808080"
+              },
+              "modifier": {
+                "size": {
+                  "width": "21",
+                  "height": "21"
+                }
+              }
+            },
+            {
+              "modifier": {
+                "padding": {
+                  "start": 2
+                }
+              },
+              "type": "text",
+              "text": "4.8",
+              "_id": "comp-topbar-0-0-3-wgzpq1a6j",
+              "style": {
+                "fontSize": 16,
+                "fontWeight": "normal"
+              }
+            },
+            {
+              "_id": "comp-topbar-0-0-4-tui7jhw39",
+              "format": "(%s)",
+              "type": "text",
+              "text": "(463)",
+              "style": {
+                "fontWeight": "normal",
+                "color": "#A3A3A3",
+                "fontSize": 16
+              },
+              "modifier": {
+                "padding": {
+                  "start": 2
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "_id": "comp-topbar-0-3fj00paqb"
+    }
+  ],
+  "content": [
+    {
+      "modifier": {
+        "fillMaxWidth": true,
+        "padding": {
+          "top": 8,
+          "bottom": 8
+        }
+      },
+      "background": "#FFFFFF",
+      "shape": {
+        "cornerRadius": 12
+      },
+      "children": [
+        {
+          "verticalAlignment": "top",
+          "modifier": {
+            "fillMaxWidth": true,
+            "padding": {
+              "bottom": 8,
+              "start": 16,
+              "end": 16,
+              "top": 8
+            }
+          },
+          "children": [
+            {
+              "modifier": {
+                "size": {
+                  "width": "21",
+                  "height": "21"
+                }
+              },
+              "type": "checkbox",
+              "isChecked": true,
+              "colors": {
+                "checkedColor": "#000000",
+                "uncheckedColor": "#000000",
+                "disableColor": "#808080"
+              },
+              "_id": "comp-content-0-0-0-jr5xneulm"
+            },
+            {
+              "_id": "comp-content-0-0-1-0w2sjmbjs",
+              "type": "image",
+              "url": "https://sun9-77.userapi.com/s/v1/ig2/KeExlUQUq5eKWjUqliuzv6J4o84ppdJVAV7arT8fw5yE4cltAaSHvPtTJvfA9w7dJxx3yrXijPaghdvqRc0_6m0n.jpg?quality=95\u0026as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440\u0026from=bu\u0026cs=1080x0",
+              "contentScale": "Crop",
+              "modifier": {
+                "clip": {
+                  "cornerRadius": 12
+                },
+                "size": {
+                  "width": "96",
+                  "height": "96"
+                },
+                "padding": {
+                  "start": 12,
+                  "end": 12
+                }
+              }
+            },
+            {
+              "type": "spacer",
+              "modifier": {
+                "height": "10"
+              },
+              "_id": "comp-content-0-0-2-i07qq03dw"
+            },
+            {
+              "modifier": {
+                "weight": 1
+              },
+              "children": [
+                {
+                  "style": {
+                    "fontWeight": "bold",
+                    "fontSize": 16
+                  },
+                  "type": "text",
+                  "_id": "comp-content-0-0-3-0-m0eqgiasz",
+                  "text": "2490 ₽"
+                },
+                {
+                  "style": {
+                    "color": "#888888",
+                    "fontSize": 14
+                  },
+                  "maxLines": 2,
+                  "overflow": "ellipsis",
+                  "_id": "comp-content-0-0-3-1-exzqmye6o",
+                  "type": "text",
+                  "text": "SHOES AIR MAX"
+                },
+                {
+                  "modifier": {
+                    "height": "8"
+                  },
+                  "_id": "comp-content-0-0-3-2-whld1i4ct",
+                  "type": "spacer"
+                },
+                {
+                  "children": [
+                    {
+                      "type": "row",
+                      "modifier": {
+                        "clip": {
+                          "cornerRadius": 8
+                        },
+                        "background": "#F0F0F0",
+                        "padding": {
+                          "top": 12,
+                          "bottom": 6
+                        }
+                      },
+                      "children": [
+                        {
+                          "modifier": {
+                            "padding": {
+                              "bottom": 6,
+                              "start": 12,
+                              "end": 12,
+                              "top": 6
+                            },
+                            "clickable": true
+                          },
+                          "children": [
+                            {
+                              "style": {
+                                "fontSize": 18,
+                                "fontWeight": "bold"
+                              },
+                              "_id": "comp-content-0-0-3-3-0-2-0-i16aqijlh",
+                              "type": "text",
+                              "text": "+"
+                            }
+                          ],
+                          "_id": "comp-content-0-0-3-3-0-2-y0en3fz1p",
+                          "type": "box"
+                        },
+                        {
+                          "_id": "comp-content-0-0-3-3-0-1-euahfk6he",
+                          "modifier": {
+                            "padding": {
+                              "start": 12,
+                              "end": 12,
+                              "top": 6
+                            }
+                          },
+                          "type": "text",
+                          "text": "1",
+                          "style": {
+                            "fontSi
