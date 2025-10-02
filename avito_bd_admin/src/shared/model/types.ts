@@ -40,7 +40,7 @@ export type HorizontalArrangement = "start" | "center" | "end" | "spaceBetween" 
 
 export type Shadow = {
   elevation?: number,
-  color?: number
+  color?: string
 }
 
 
@@ -195,8 +195,6 @@ export interface BoxComponent {
   modifier?: Modifier;
   children: UIComponent[];
 }
-
-
 
 export interface Position {
   x: number;
