@@ -5,36 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58713a9b-4280-4595-a202-1a9921d17b7a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/.idea/card_backend_task.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/TaskFile.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/card.tar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/cmd/docs/docs.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/cmd/docs/swagger.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/cmd/docs/swagger.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/cmd/main/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/cmd/migrator/migration.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/config/test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/configs/card.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/go.sum" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/internal/echo/client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/internal/echo/handlers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/internal/format/format.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/internal/format/format_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/internal/psql/conn.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/internal/psql/op.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/internal/psql/op_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/internal/views/swgmodel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/internal/views/views.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/migrations/0001_create_table.down.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../card_backend_task/migrations/0001_create_table.up.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Команда Воппер хакатон.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../Команда Воппер хакатон.pptx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

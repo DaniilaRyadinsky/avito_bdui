@@ -1,0 +1,51 @@
+{
+  "type": "screen",
+  "id": "cart_screen",
+  "name": "CartScreen",
+  "background": "#FFFFFF",
+  "topBar": [
+    {
+      "id": "column1",
+      "type": "column",
+      "modifier": {
+        "fillMaxWidth": true,
+        "size": { "height": "50" }
+      },
+      "background": "#FFFFFF",
+      "children": [
+
+      ]
+    }
+  ],
+  "bottomBar": [
+    {
+      "type": "box",
+      "id": "box1",
+
+      "modifier": {
+        "fillMaxWidth": true,
+        "size": { "height": "50" }
+      },
+      "background": "#FFFFFF",
+      "children": [
+
+      ]
+    }
+  ],
+  "content": [
+    {
+      "type": "row",
+      "modifier": {
+        "fillMaxWidth": true,
+        "height": "500"
+      },
+      "children": [
+
+      ]
+    }
+
+  ],
+  "snackbars": [
+
+  ]
+}

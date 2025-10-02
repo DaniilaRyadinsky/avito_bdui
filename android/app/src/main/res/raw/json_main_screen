@@ -1,0 +1,29 @@
+{
+  "screen_id": "home",
+  "title": "Main Screen",
+  "components": [
+    {
+      "type": "text",
+      "value": "Добро пожаловать в Avito!",
+      "style": "headline"
+    },
+    {
+      "type": "button",
+      "text": "Открыть магазин",
+      "action": "open_screen:shop"
+    },
+    {
+      "type": "image",
+      "url": "https://placekitten.com/400/200",
+      "description": "Милый котик"
+    },
+    {
+      "type": "list",
+      "items": [
+        { "type": "text", "value": "Элемент 1" },
+        { "type": "text", "value": "Элемент 2" },
+        { "type": "button", "text": "Подробнее", "action": "open_screen:details" }
+      ]
+    }
+  ]
+}

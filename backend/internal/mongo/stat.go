@@ -7,6 +7,7 @@ import (
 	"go.mongodb.org/mongo-driver/v2/bson"
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"go.mongodb.org/mongo-driver/v2/mongo/options"
+	"log"
 )
 
 type StatAPI interface {
@@ -124,43 +125,73 @@ type Stats struct {
 type CountDoc struct {
 	ID    string `bson:"_id" json:"id"`
 	Count int    `bson:"count" json:"count"`
+	Name  string `bson:"-" json:"name"`
 }
 
-// GetAllStats — агрегированное получение всех трёх наборов статистики как массивы CountDoc.
-func (c *Client) GetAllStats(ctx context.Context) (Stats, error) {
-	const op = "mongo.GetAllStats"
+func (c *Client) readCounters(ctx context.Context, col *mongo.Collection, colOrigin *mongo.Collection) ([]CountDoc, error) {
+	const op = "mongo.readCounters"
 
-	readColl := func(col *mongo.Collection) ([]CountDoc, error) {
-		var docs []CountDoc
-		cur, err := col.Find(ctx, bson.M{})
-		if err != nil {
-			return nil, err
-		}
-		defer func() { _ = cur.Close(ctx) }()
+	var docs []CountDoc
+	cur, err := col.Find(ctx, bson.M{})
+	if err != nil {
+		return nil, err
+	}
+	defer func() { _ = cur.Close(ctx) }()
 
-		for cur.Next(ctx) {
-			var d CountDoc
-			if err := cur.Decode(&d); err != nil {
-				return docs, err
-			}
-			docs = append(docs, d)
-		}
-		if err := cur.Err(); err != nil {
+	for cur.Next(ctx) {
+		var d CountDoc
+		if err := cur.Decode(&d); err != nil {
 			return docs, err
 		}
-		return docs, nil
+
+		obj, err := c.Get(ctx, d.ID, colOrigin)
+		log.Println(obj)
+		if err != nil {
+			d.Name = "object not exist"
+		} else {
+			switch v := obj.(type) {
+			case bson.M:
+				if name, ok := v["name"].(string); ok && name != "" {
+					d.Name = name
+				} else {
+					d.Name = "object dont have name"
+				}
+			case bson.D:
+				for _, elem := range v {
+					if elem.Key == "name" {
+						d.Name = elem.Value.(string)
+						break
+					}
+				}
+				if d.Name == "" {
+					d.Name = "object dont have name"
+				}
+			default:
+				d.Name = "decoding failed"
+			}
+		}
+
+		docs = append(docs, d)
 	}
+	if err := cur.Err(); err != nil {
+		return docs, err
+	}
+	return docs, nil
+}
+
+func (c *Client) GetAllStats(ctx context.Context) (Stats, error) {
+	const op = "mongo.GetAllStats"
 
 	var st Stats
 	var err error
 
-	if st.ScreenReceiving, err = readColl(c.ScreenReceivingColl()); err != nil {
+	if st.ScreenReceiving, err = c.readCounters(ctx, c.ScreenReceivingColl(), c.ScreenColl()); err != nil {
 		return st, format.Error(op, err)
 	}
-	if st.ClickElements, err = readColl(c.ClickElementColl()); err != nil {
+	if st.ClickElements, err = c.readCounters(ctx, c.ClickElementColl(), c.ElementColl()); err != nil {
 		return st, format.Error(op, err)
 	}
-	if st.ClickScreens, err = readColl(c.ClickScreenColl()); err != nil {
+	if st.ClickScreens, err = c.readCounters(ctx, c.ClickScreenColl(), c.ScreenColl()); err != nil {
 		return st, format.Error(op, err)
 	}
 

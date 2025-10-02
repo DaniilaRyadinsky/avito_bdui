@@ -1,0 +1,129 @@
+{
+  "screen": {
+    "name": "CartScreen",
+    "background": "#FFFFFF",
+    "topBar": [
+    {
+      "type": "column",
+      "background": "#FFFFFF",
+      "children": [
+        {
+          "type": "box",
+          "modifier": { "fillMaxWidth": true },
+          "children": [
+            {
+              "type": "text",
+              "text": "Корзина",
+              "style": {
+                "fontSize": 20,
+                "color": "#000000",
+                "textAlign": "center",
+                "fontWeight": "normal"
+              },
+              "modifier": { "padding": { "top": 14 }, "align": "topCenter" }
+            },
+            {
+              "type": "iconButton",
+              "icon": "back",
+              "modifier": {
+                "size": 24,
+                "padding": { "top": 12, "start": 14 },
+                "align": "topStart"
+              }
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "modifier": { "padding": { "start": 16, "end": 16, "top": 16, "bottom": 8 } },
+          "children": [
+            {
+              "type": "checkbox",
+              "checked": true,
+              "modifier": { "size": 21 }
+            },
+            {
+              "type": "text",
+              "text": "Выбрать всё",
+              "style": { "fontSize": 16 },
+              "modifier": { "padding": { "start": 8 } }
+            },
+            {
+              "type": "spacer",
+              "weight": 1
+            },
+            {
+              "type": "text",
+              "text": "Удалить (3)",
+              "style": { "color": "#0099F7" },
+              "onClick": "deleteSelected"
+            }
+          ]
+        }
+      ]
+      }
+    ],
+    "bottomBar": [
+    {
+      "type": "box",
+      "shape": { "topStart": 16, "topEnd": 16 },
+      "shadow": { "elevation": 8 },
+      "background": "#FFFFFF",
+      "children": [
+        {
+          "type": "row",
+          "modifier": { "padding": { "horizontal": 12, "vertical": 16 } },
+          "children": [
+            {
+              "type": "column",
+              "children": [
+                { "type": "text", "text": "3 товара", "style": { "fontSize": 12 } },
+                {
+                  "type": "text",
+                  "text": "12450 ₽",
+                  "style": { "fontSize": 20, "fontWeight": "bold" }
+                }
+              ]
+            },
+            { "type": "spacer", "weight": 1 },
+            {
+              "type": "button",
+              "text": "Оформить доставку",
+              "style": {
+                "background": "#965EEB",
+                "textColor": "#FFFFFF",
+                "shape": { "cornerRadius": 12 }
+              },
+              "modifier": { "height": 48 },
+              "onClick": "checkout"
+            }
+          ]
+        }
+      ]
+      }
+    ],
+    "content": [
+        {
+          "type": "lazyColumn",
+          "modifier": {
+            "fillMaxWidth": true,
+            "fillMaxHeight": true,
+            "padding": { "start": 0, "end": 0, "top": 0, "bottom": 0 },
+            "background": null,
+            "clip": { "cornerRadius": 0 },
+            "alpha": 1.0
+          },
+          "header": {
+            "type": "component",           // Можно указать конкретный тип: "storeHeader"
+            "binding": "storeHeader",       // Привязка к данным, если нужно
+            "children": []                  // Сюда вставляется JSON StoreHeader
+          },
+          "items": {
+            "type": "component",            // Например "cartItem"
+            "binding": "cartItems",         // Ключ, по которому подставлять список элементов
+            "children": []                  // Сюда вставляется JSON CartItem
+          }
+        }
+    ]
+  }
+}

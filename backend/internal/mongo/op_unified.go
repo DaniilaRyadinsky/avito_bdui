@@ -131,7 +131,7 @@ func (c *Client) GetAll(ctx context.Context, col *mongo.Collection) ([]interface
 }
 
 func (c *Client) Get(ctx context.Context, id string, col *mongo.Collection) (interface{}, error) {
-	const op = "mongo.GetAllScreens"
+	const op = "mongo.Get"
 
 	res := col.FindOne(ctx, bson.M{"_id": id})
 	if res.Err() != nil {

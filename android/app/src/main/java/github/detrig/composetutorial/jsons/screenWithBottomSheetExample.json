@@ -1,0 +1,18 @@
+{
+  "type": "screen",
+  "id": "cart_screen",
+  "name": "CartScreen",
+  "background": "#FFFFFF",
+  "topBar": [
+
+  ],
+  "bottomBar": [
+
+  ],
+  "content": [
+
+  ],
+  "snackbars": [
+
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "type": "screen",
+  "id": "cart_screen",
+  "name": "CartScreen",
+  "background": "#FFFFFF",
+  "topBar": [
+    {
+      "type": "column",
+      "background": "#FFFFFF",
+      "children": [
+        {
+          "type": "box",
+          "modifier": { "fillMaxWidth": true },
+          "children": [
+            {
+              "type": "text",
+              "text": "Корзина",
+              "style": {
+                "fontSize": 20,
+                "color": "#000000",
+                "textAlign": "center",
+                "fontWeight": "normal"
+              },
+              "modifier": { "padding": { "top": 14 }, "align": "topCenter" }
+            },
+            {
+              "type": "iconButton",
+              "icon": "back",
+              "modifier": {
+                "size": 24,
+                "padding": { "top": 12, "start": 14 },
+                "align": "topStart"
+              }
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "modifier": { "padding": { "start": 16, "end": 16, "top": 16, "bottom": 8 } },
+          "children": [
+            {
+              "type": "checkbox",
+              "checked": true,
+              "modifier": { "size": 21 }
+            },
+            {
+              "type": "text",
+              "text": "Выбрать всё",
+              "style": { "fontSize": 16 },
+              "modifier": { "padding": { "start": 8 } }
+            },
+            {
+              "type": "spacer",
+              "weight": 1
+            },
+            {
+              "type": "text",
+              "text": "Удалить (3)",
+              "style": { "color": "#0099F7" },
+              "onClick": "deleteSelected"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bottomBar": [
+    {
+      "type": "box",
+      "shape": {
+        "topStart": 16,
+        "topEnd": 16
+      },
+      "shadow": {
+        "elevation": 8
+      },
+      "background": "#FFFFFF",
+      "children": [
+        {
+          "type": "row",
+          "modifier": {
+            "padding": {
+              "start": 12,
+              "end": 12
+            }
+          },
+          "children": [
+            {
+              "type": "column",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "3 товара",
+                  "style": {
+                    "fontSize": 12
+                  }
+                },
+                {
+                  "type": "text",
+                  "text": "12450 ₽",
+                  "style": {
+                    "fontSize": 20,
+                    "fontWeight": "bold"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "spacer",
+              "modifier": {
+                "weight": 1
+              }
+            },
+            {
+              "type": "button",
+              "text": "Оформить доставку",
+              "actions": [
+                {
+                  "action": "navigate",
+                  "targetId": "make_order"
+                }
+              ],
+              "style": {
+                "background": "#965EEB",
+                "textColor": "#FFFFFF",
+                "shape": {
+                  "cornerRadius": 12
+                }
+              },
+              "modifier": {
+                "height": "48"
+              },
+              "onClick": "checkout"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content": [
+    {
+      "type": "card",
+      "id": "cart_item",
+      "modifier": {
+        "fillMaxWidth": true,
+        "padding": {
+          "top": 8,
+          "bottom": 8
+        }
+      },
+      "background": "#FFFFFF",
+      "shape": {
+        "cornerRadius": 12
+      },
+      "children": [
+        {
+          "type": "row",
+          "verticalAlignment": "top",
+          "modifier": {
+            "fillMaxWidth": true,
+            "padding": {
+              "start": 16,
+              "end": 16,
+              "top": 8,
+              "bottom": 8
+            }
+          },
+          "children": [
+            {
+              "type": "checkbox",
+              "isChecked": true,
+              "colors": {
+                "checkedColor": "#000000",
+                "uncheckedColor": "#000000",
+                "disableColor": "#808080"
+              },
+              "modifier": {
+                "size": {
+                  "width": "21",
+                  "height": "21"
+                }
+              }
+            },
+            {
+              "type": "image",
+              "url": "https://sun9-77.userapi.com/s/v1/ig2/KeExlUQUq5eKWjUqliuzv6J4o84ppdJVAV7arT8fw5yE4cltAaSHvPtTJvfA9w7dJxx3yrXijPaghdvqRc0_6m0n.jpg?quality=95",
+              "contentScale": "Crop",
+              "modifier": {
+                "size": {
+                  "width": "96",
+                  "height": "96"
+                },
+                "padding": {
+                  "start": 12,
+                  "end": 12
+                },
+                "clip": {
+                  "cornerRadius": 12
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "id": "example_list",
+      "modifier": {
+        "fillMaxWidth": true,
+        "padding": {
+          "top": 16,
+          "bottom": 16,
+          "start": 16,
+          "end": 16
+        }
+      },
+      "items": [
+        {
+          "type": "text",
+          "text": "Пункт 1",
+          "style": {
+            "fontSize": 16
+          }
+        },
+        {
+          "type": "text",
+          "text": "Пункт 2",
+          "style": {
+            "fontSize": 16
+          }
+        },
+        {
+          "type": "text",
+          "text": "Пункт 3",
+          "style": {
+            "fontSize": 16
+          }
+        }
+      ]
+    }
+  ],
+  "snackbars": [
+    {
+      "type": "snackbar",
+      "id": "deleteCartItemSnackbar",
+      "text": "Товар удалён из корзины",
+      "actionText": "Вернуть",
+      "actions": [
+        {
+          "action": "restoreItem",
+          "targetId": "cart_item"
+        }
+      ]
+    }
+  ]
+}

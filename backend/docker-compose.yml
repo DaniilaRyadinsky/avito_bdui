@@ -14,16 +14,16 @@ services:
       MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
     restart: unless-stopped
     env_file: .env
-  bdui:
-    container_name: bdui
-    image: zitrax78/bdui:latest
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./configs:/app/configs
-    environment:
-      CONFIG_FILE: bdui.yaml
-    restart: unless-stopped
-    
+#  bdui:
+#    container_name: bdui
+#    image: zitrax78/bdui:latest
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - ./configs:/app/configs
+#    environment:
+#      CONFIG_FILE: bdui.yaml
+#    restart: unless-stopped
+#
 volumes:
   db:
