@@ -25,44 +25,91 @@ function ensureAllComponentsHaveIds(screen: UIScreen): UIScreen {
 
   return {
     ...screen,
-    topBar: screen.topBar.map((comp, index) =>
+    topBar: (screen.topBar || []).map((comp, index) =>
       addMissingIds(comp, `topbar-${index}`)
     ),
-    content: screen.content.map((comp, index) =>
+    content: (screen.content || []).map((comp, index) =>
       addMissingIds(comp, `content-${index}`)
     ),
-    bottomBar: screen.bottomBar.map((comp, index) =>
+    bottomBar: (screen.bottomBar || []).map((comp, index) =>
       addMissingIds(comp, `bottombar-${index}`)
     ),
   };
 }
 
-export function useScreenData(initialData: RawUIScreen): UIScreen | null {
+// Функция для адаптации данных с сервера к формату RawUIScreen
+function adaptServerData(serverData: any): RawUIScreen | null {
+  if (!serverData) return null;
+
+  console.log("🔄 Adapting server data:", serverData);
+
+  // Если это новый скрин (уже в правильном формате)
+  if (serverData._id === "new" && serverData.type === "screen") {
+    return serverData;
+  }
+
+  // Если данные уже в правильном формате RawUIScreen
+  if (serverData.type === "screen" && serverData._id) {
+    return serverData;
+  }
+
+  // Если данные пришли с сервера и содержат поле data с экраном
+  if (serverData.data && serverData.data.type === "screen") {
+    return serverData.data;
+  }
+
+  // Если данные пришли напрямую с сервера (как в вашем примере JSON)
+  if (serverData._id && serverData.type === "screen") {
+    return serverData;
+  }
+
+  // Если это просто объект с полями (резервный вариант)
+  if (serverData._id || serverData.id) {
+    return {
+      type: "screen",
+      _id: serverData._id || serverData.id,
+      name: serverData.name || "Unnamed Screen",
+      background: serverData.background || "#FFFFFF",
+      topBar: serverData.topBar || [],
+      content: serverData.content || [],
+      bottomBar: serverData.bottomBar || [],
+      snackbars: serverData.snackbars || [],
+    };
+  }
+
+  console.warn("❌ Unknown data format:", serverData);
+  return null;
+}
+
+export function useScreenData(initialData: any): UIScreen | null {
   const [screen, setScreen] = useState<UIScreen | null>(null);
 
   useEffect(() => {
-    console.log("🔄 useScreenData: initialData received", initialData);
-
     try {
-      // Простая валидация без сложной логики
+      const adaptedData = adaptServerData(initialData);
+
+      if (!adaptedData) {
+        setScreen(null);
+        return;
+      }
+
       const screen: UIScreen = {
         type: "screen",
-        _id: initialData._id || "default",
-        name: initialData.name || "Default",
-        background: initialData.background || "#FFFFFF",
-        topBar: initialData.topBar || [],
-        content: initialData.content || [],
-        bottomBar: initialData.bottomBar || [],
-        snackbars: initialData.snackbars || [],
+        _id: adaptedData._id || "default",
+        name: adaptedData.name || "Default Screen",
+        background: adaptedData.background || "#FFFFFF",
+        topBar: adaptedData.topBar || [],
+        content: adaptedData.content || [],
+        bottomBar: adaptedData.bottomBar || [],
+        snackbars: adaptedData.snackbars || [],
       };
 
-      // ДОБАВЬТЕ ЭТУ СТРОКУ для генерации ID
       const screenWithIds = ensureAllComponentsHaveIds(screen);
 
-      console.log("✅ useScreenData: screen created", screenWithIds);
       setScreen(screenWithIds);
     } catch (error) {
       console.error("❌ useScreenData error:", error);
+      setScreen(null);
     }
   }, [initialData]);
 

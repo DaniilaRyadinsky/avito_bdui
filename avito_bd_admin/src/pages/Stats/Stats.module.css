@@ -13,17 +13,17 @@
 .backLink {
   display: inline-block;
   margin-bottom: 30px;
-  color: #007bff;
+  color: var(--color-avito-active);
   text-decoration: none;
   font-size: 16px;
   padding: 10px 20px;
-  border: 1px solid #007bff;
+  border: 1px solid var(--color-avito-active);
   border-radius: 4px;
   transition: all 0.3s ease;
 }
 
 .backLink:hover {
-  background: #007bff;
+  background: var(--color-avito-active);
   color: white;
 }
 
@@ -45,7 +45,7 @@
   margin: 0 0 15px 0;
   color: #333;
   font-size: 18px;
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid var(--color-avito-active);
   padding-bottom: 8px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .statCount {
-  background: #007bff;
+  background: var(--color-avito-active);
   color: white;
   padding: 4px 8px;
   border-radius: 12px;

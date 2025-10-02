@@ -40,16 +40,23 @@ const ScreensList = () => {
   }, []);
 
   if (loading) {
-    return <div className={styles.container}>Loading screens...</div>;
+    return <div className={styles.container}>Загрузка экранов...</div>;
   }
 
   if (error) {
-    return <div className={styles.container}>Error: {error}</div>;
+    return <div className={styles.container}>Ошибка: {error}</div>;
   }
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Available Screens</h1>
+      <h1 className={styles.title}>Доступные экраны</h1>
+
+      <div className={styles.actions}>
+        <Link to="/builder/new" className={styles.createButton}>
+          + Создать новый экран
+        </Link>
+      </div>
+
       <div className={styles.screensGrid}>
         {screens.map((screen) => (
           <Link
@@ -58,16 +65,26 @@ const ScreensList = () => {
             className={styles.screenCard}
           >
             <h3 className={styles.screenName}>
-              {screen.title || screen.name || screen.id || "Unnamed Screen"}
+              {screen.title || screen.name || screen.id || "Неназванный скрин"}
             </h3>
-            <p className={styles.screenId}>ID: {screen._id}</p>
-            <span className={styles.viewButton}>Open in Builder</span>
+            <p
+              className={
+                screen._id === "new" ? styles.newScreenId : styles.screenId
+              }
+            >
+              ID: {screen._id}
+            </p>
+            <span className={styles.viewButton}>
+              {screen._id === "new"
+                ? "Продолжить изменения"
+                : "Открыть в Редакторе"}
+            </span>
           </Link>
         ))}
       </div>
 
       <Link to="/stats" className={styles.statsLink}>
-        View Statistics →
+        Статистика →
       </Link>
     </div>
   );

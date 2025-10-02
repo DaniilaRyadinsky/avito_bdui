@@ -14,7 +14,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
 
 .screenCard {
@@ -31,7 +31,7 @@
 .screenCard:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  border-color: #007bff;
+  border-color: var(--color-avito-active);
 }
 
 .screenName {
@@ -50,7 +50,7 @@
 
 .viewButton {
   display: inline-block;
-  background: #007bff;
+  background: var(--color-avito-active);
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
@@ -59,22 +59,30 @@
 }
 
 .screenCard:hover .viewButton {
-  background: #0056b3;
+  background: #0071b3;
 }
 
 .statsLink {
   display: block;
   text-align: center;
   font-size: 18px;
-  color: #007bff;
+  color: var(--color-avito-active);
   text-decoration: none;
   padding: 15px;
-  border: 2px solid #007bff;
+  border: 2px solid var(--color-avito-active);
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 
 .statsLink:hover {
-  background: #007bff;
+  background: var(--color-avito-active);
   color: white;
+}
+
+.createButton {
+  background: var(--color-avito-active);
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
 }
