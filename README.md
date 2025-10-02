@@ -18,7 +18,6 @@
 **Backend:**  
 - Go  
 - MongoDB  
-- Echo (для http-запросов)  
 
 **Frontend:**  
 - React (админ-панель для редактирования интерфейсов)  
