@@ -22,7 +22,8 @@
 .work_panel_top {
     display: flex;
     flex-direction: row;
-    align-items: start;
+    align-items: center;
+    justify-content: start;
     /* width: calc(100vw - 440px - 498px - 20px - 20px ); */
     gap: 10px;
 }
