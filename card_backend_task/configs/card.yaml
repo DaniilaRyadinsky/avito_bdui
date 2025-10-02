@@ -1,0 +1,3 @@
+conn_str: "postgres://postgres:passwd@carddb:5432/carddb?sslmode=disable"
+port: 8080
+mode: "PROD"

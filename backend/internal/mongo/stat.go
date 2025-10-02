@@ -62,7 +62,7 @@ func (c *Client) SetClickElement(ctx context.Context, elementID string, count in
 	_, err := c.ClickElementColl().UpdateOne(
 		ctx,
 		bson.M{"_id": elementID},
-		bson.M{"$set": bson.M{"count": count}},
+		bson.M{"$inc": bson.M{"count": count}},
 		opts,
 	)
 	if err != nil {
@@ -92,7 +92,7 @@ func (c *Client) SetClickScreen(ctx context.Context, screenID string, count int)
 	_, err := c.ClickScreenColl().UpdateOne(
 		ctx,
 		bson.M{"_id": screenID},
-		bson.M{"$set": bson.M{"count": count}},
+		bson.M{"$inc": bson.M{"count": count}},
 		opts,
 	)
 	if err != nil {
@@ -116,22 +116,22 @@ func (c *Client) DeleteClickScreen(ctx context.Context, elementID string) error 
 }
 
 type Stats struct {
-	ScreenReceiving map[string]int `json:"screenReceiving"`
-	ClickElements   map[string]int `json:"clickElements" `
-	ClickScreens    map[string]int `json:"clickScreens"  `
+	ScreenReceiving []CountDoc `json:"screenReceiving"`
+	ClickElements   []CountDoc `json:"clickElements"`
+	ClickScreens    []CountDoc `json:"clickScreens"`
 }
 
-// GetAllStats — агрегированное получение всех трёх наборов статистики как map[string]int.
+type CountDoc struct {
+	ID    string `bson:"_id" json:"id"`
+	Count int    `bson:"count" json:"count"`
+}
+
+// GetAllStats — агрегированное получение всех трёх наборов статистики как массивы CountDoc.
 func (c *Client) GetAllStats(ctx context.Context) (Stats, error) {
 	const op = "mongo.GetAllStats"
 
-	type countDoc struct {
-		ID    string `bson:"_id"`
-		Count int    `bson:"count"`
-	}
-
-	readColl := func(col *mongo.Collection) (map[string]int, error) {
-		m := make(map[string]int)
+	readColl := func(col *mongo.Collection) ([]CountDoc, error) {
+		var docs []CountDoc
 		cur, err := col.Find(ctx, bson.M{})
 		if err != nil {
 			return nil, err
@@ -139,16 +139,16 @@ func (c *Client) GetAllStats(ctx context.Context) (Stats, error) {
 		defer func() { _ = cur.Close(ctx) }()
 
 		for cur.Next(ctx) {
-			var d countDoc
+			var d CountDoc
 			if err := cur.Decode(&d); err != nil {
-				return m, err
+				return docs, err
 			}
-			m[d.ID] = d.Count
+			docs = append(docs, d)
 		}
 		if err := cur.Err(); err != nil {
-			return m, err
+			return docs, err
 		}
-		return m, nil
+		return docs, nil
 	}
 
 	var st Stats

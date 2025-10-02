@@ -379,7 +379,7 @@ const docTemplate = `{
         },
         "/api/element/delete": {
             "delete": {
-                "description": "Deletes an element document by its UUID (` + "`" + `id` + "`" + `).",
+                "description": "Deletes an element document by its UUID (` + "`" + `id` + "`" + `). STAT: delete all info about this element",
                 "produces": [
                     "application/json"
                 ],
@@ -642,7 +642,7 @@ const docTemplate = `{
         },
         "/api/screen/delete": {
             "delete": {
-                "description": "Deletes a screen document by its UUID (` + "`" + `id` + "`" + `).",
+                "description": "Deletes a screen document by its UUID (` + "`" + `id` + "`" + `). STAT: delete all info about this screen",
                 "produces": [
                     "application/json"
                 ],
@@ -683,7 +683,7 @@ const docTemplate = `{
         },
         "/api/screen/get": {
             "get": {
-                "description": "Returns a single screen document by UUID.",
+                "description": "Returns a single screen document by UUID. STAT: Increment screenReceiving for this screen",
                 "produces": [
                     "application/json"
                 ],
