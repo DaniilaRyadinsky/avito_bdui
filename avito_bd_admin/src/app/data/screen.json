@@ -367,6 +367,26 @@
                       "bottom": 8
                     }
                   }
+                },
+                {
+                  "type": "spacer",
+                  "modifier": {
+                    "size": {
+                      "width": 10,
+                      "height": 10
+                    }
+                  }
+                },
+                {
+                  "_id": "quantit2212",
+                  "type": "row",
+                  "children": [],
+                  "modifier": {
+                    "size": {
+                      "width": 10,
+                      "height": 10
+                    }
+                  }
                 }
               ]
             },

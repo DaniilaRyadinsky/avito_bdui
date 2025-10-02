@@ -18,7 +18,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
     url,
     contentDescription,
     contentScale = "Crop",
-    modifier = {},
+    modifier={},
   } = component;
 
   const isSelected = selectedId == component._id

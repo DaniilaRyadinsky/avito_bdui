@@ -1,7 +1,7 @@
 import styles from "./NumberInput.module.css";
 
 export const NumberInput: React.FC<{
-  value: number;
+  value?: number;
   onChange: (v: number) => void;
   min?: number;
   max?: number;

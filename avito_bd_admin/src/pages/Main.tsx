@@ -2,8 +2,7 @@
 import LeftBar from "../features/LeftBar/ui/LeftBar";
 import Topbar from "../widgets/Topbar/Topbar";
 import { ScreenRenderer } from "../widgets/ScreenRenderer/index";
-import { ComponentControls } from "../features/Builder/ui/ComponentControls/ComponentControls";
-import { BuilderProvider } from "../features/Builder/lib/builderContext";
+import { BuilderProvider, useBuilder } from "../features/Builder/lib/builderContext";
 import { useScreenData } from "../shared/lib/useScreenData";
 import screenData from "../app/data/screen.json";
 import styles from "./Main.module.css";
@@ -16,8 +15,10 @@ import { NumberInput } from '../shared/ui/NumberInput/NumberInput'
 
 
 const Main = () => {
+    // const { screen, selectedComponentId, setSelectedComponent } = useBuilder();
+
     const screen = useScreenData(screenData);
-    const [width, setWidth] = useState(320);
+    const [width, setWidth] = useState(420);
     const [height, setHeight] = useState(600);
 
     return (
@@ -36,7 +37,7 @@ const Main = () => {
                         </div>
                         <div className={styles.workspace} >
                             <div className={styles.screen} style={{ width: width, height: height }}>
-                                 <ScreenRenderer />
+                                <ScreenRenderer />
                             </div>
                         </div>
                     </div>

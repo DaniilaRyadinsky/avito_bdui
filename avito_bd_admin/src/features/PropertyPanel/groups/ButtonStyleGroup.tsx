@@ -2,12 +2,13 @@ import * as React from "react";
 import { Section } from "./Section";
 
 import { Column } from "./FieldPrimitives";
-import type { ButtonStyle, Shape, Border } from "../model/types";
+
 
 import "../styles/panel.css"
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
 import { ColorInput } from "../../../shared/ui/ColorInput/ColorInput";
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
+import type { Border, Shape, ButtonStyle } from "../../../shared/model/types";
 
 
 const BorderEditor: React.FC<{ value: Border; onChange: (next: Partial<Border>) => void }> = ({ value, onChange }) => (
@@ -25,6 +26,8 @@ const ShapeEditor: React.FC<{ value: Shape; onChange: (next: Partial<Shape>) => 
         <Column label="Top end"><NumberInput value={value.topEnd} onChange={(n) => onChange({ topEnd: n })} /></Column>
     </div>
 );
+
+
 
 
 export const ButtonStyleGroup: React.FC<{

@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Section } from "./Section";
 import { Column } from "./FieldPrimitives";
-import type { Padding } from "../model/types";
 
 import "../styles/panel.css"
 import { BoolSwitch } from "../../../shared/ui/BoolSwitch/BoolSwitch";
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
+import type { Padding } from "../../../shared/model/types";
 
 
 export const PaddingGroup: React.FC<{ value: Padding; onChange: (next: Padding) => void }> = ({ value, onChange }) => {

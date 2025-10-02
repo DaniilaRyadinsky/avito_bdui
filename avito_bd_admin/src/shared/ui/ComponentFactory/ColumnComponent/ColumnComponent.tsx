@@ -28,7 +28,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   const isSelected = selectedId == component._id
 
   const {
-    padding = {},
+    padding ={},
     background,
     clip,
     border,
@@ -53,15 +53,16 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
         ? "center"
         : verticalArrangement === "bottom"
         ? "flex-end"
-        : verticalArrangement === "spaceBetween"
-        ? "space-between"
-        : verticalArrangement === "spaceAround"
-        ? "space-around"
-        : "flex-start",
+        :"",
+        // : verticalArrangement === "spaceBetween"
+        // ? "space-between"
+        // : verticalArrangement === "spaceAround"
+        // ? "space-around"
+        // : "flex-start",
     alignItems:
       horizontalAlignment === "start"
         ? "flex-start"
-        : horizontalAlignment === "centerHorizontally"
+        : horizontalAlignment === "center"
         ? "center"
         : "flex-end",
     backgroundColor: background || "transparent",

@@ -2,12 +2,11 @@ import * as React from "react";
 import { VisualsGroup } from "../groups/VisualsGroup";
 import { TextStyleGroup } from "../groups/TextStyleGroup";
 import { ButtonStyleGroup } from "../groups/ButtonStyleGroup";
-import { AdvancedGroup } from "../groups/AdvancedGroup";
-import type { Modifier, TextStyle, ButtonStyle, ContentScale } from "../model/types";
 import { LayoutGroup } from "../groups/LayoutGroup";
 import { PaddingGroup } from "../groups/PaddingGroup";
 
 import "../styles/panel.css"
+import type { Modifier, TextStyle, ButtonStyle, ContentScale } from "../../../shared/model/types";
 
 
 export type PropertyPanelValue = {

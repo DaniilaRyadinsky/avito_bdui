@@ -1,4 +1,4 @@
-import React from "react";
+import React, { use, useEffect, useLayoutEffect } from "react";
 import type { SpacerComponent as SpacerComponentType } from "../../../model/types";
 
 interface SpacerComponentProps {
@@ -17,23 +17,31 @@ export const SpacerComponent: React.FC<SpacerComponentProps> = ({
 
   const isSelected = selectedId == component._id
 
-  const { width, height = "20", weight, modifier = {} } = component;
+  const { modifier } = component;
 
-  const { padding = {}, background, alpha = 1.0 } = modifier;
+  // useEffect(() => {
+  //   if(modifier) {
+  //   console.log(modifier)
+  //   console.log(modifier.size)
+  //   }
+  // }, [])
+
+  // const { size, weight, padding, background, alpha = 1.0 } = modifier ?? {};
+
+  const { size } = modifier || {}
 
   const spacerStyle: React.CSSProperties = {
-    width: width || "auto",
-    height: height || "auto",
-    flex: weight ? Number(weight) : undefined,
-    backgroundColor: background || "transparent",
-    opacity: alpha,
-    outline: isSelected ? "2px solid #007AFF" : "none",
-    outlineOffset: "2px",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${
-      padding.bottom || 0
-    }px ${padding.start || 0}px`,
-    minHeight: "1px",
-    minWidth: "1px",
+    width: `${size?.width}px`,
+    height: `${size?.height}px`,
+    // flex: weight ? Number(weight) : undefined,
+    // backgroundColor: background || "transparent",
+    // opacity: alpha,
+    // outline: isSelected ? "2px solid #007AFF" : "none",
+    // outlineOffset: "2px",
+    // padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0
+    //   }px ${padding?.start || 0}px`,
+    // minHeight: "1px",
+    // minWidth: "1px",
   };
 
   const handleClick = (e: React.MouseEvent) => {

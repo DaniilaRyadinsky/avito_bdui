@@ -5,77 +5,74 @@ import arrow from "../../../../shared/assets/icons/arrow.svg";
 import { useBuilder } from "../../../Builder/lib/builderContext";
 import type { UIComponent } from "../../../../shared/model/types";
 import Summary from "../../../../shared/ui/Summary/Summary";
+import { createText, createButton, createImage, createIcon, createRow, createColumn, createCheckbox, createSpacer, createCard, createBox, createSnackbar } from "../../lib/constant";
 
 // Типы для шаблонов компонентов
 const componentTemplates: {
   type: UIComponent["type"];
   name: string;
-  defaultProps: Partial<UIComponent>;
 }[] = [
     {
       type: "text",
-      name: "Текст",
-      defaultProps: {
-        text: "Новый текст",
-        style: { fontSize: 16, color: "#000000" },
-      },
+      name: "Текст"
     },
     {
       type: "button",
-      name: "Кнопка",
-      defaultProps: {
-        text: "Новая кнопка",
-        style: { background: "#007AFF", textColor: "#FFFFFF" },
-      },
+      name: "Кнопка"
     },
     {
       type: "image",
-      name: "Изображение",
-      defaultProps: {
-        url: "https://via.placeholder.com/150",
-        contentDescription: "Placeholder image",
-      },
+      name: "Изображение"
     },
     {
       type: "card",
-      name: "Карточка",
-      defaultProps: {
-        background: "#FFFFFF",
-        children: [],
-      },
+      name: "Карточка"
     },
     {
       type: "row",
-      name: "Строка",
-      defaultProps: {
-        children: [],
-      },
-    },
-    {
-      type: "column",
-      name: "Колонка",
-      defaultProps: {
-        children: [],
-      },
+      name: "Строка"
     },
   ];
+
+const createComponent = (type: UIComponent["type"]) => {
+  switch (type) {
+    case ("text"):
+      return createText()
+    case ("button"):
+      return createButton()
+    case ("image"):
+      return createImage()
+    case ("icon"):
+      return createIcon()
+    case ("row"):
+      return createRow()
+    case ("column"):
+      return createColumn()
+    case ("checkbox"):
+      return createCheckbox()
+    case ("spacer"):
+      return createSpacer()
+    case ("card"):
+      return createCard()
+    case ("box"):
+      return createBox()
+    case ("snackbar"):
+      return createSnackbar()
+  }
+
+}
 
 // Компонент для элемента библиотеки
 const LibraryItem: React.FC<{
   name: string;
   type: string;
-  defaultProps: Partial<UIComponent>;
-}> = ({ name, type, defaultProps }) => {
+}> = ({ name, type, }) => {
   const { screen, updateScreen, selectedComponentId } = useBuilder();
 
   const handleAddComponent = () => {
     if (!screen) return;
 
-    const newComponent: UIComponent = {
-      type: type as UIComponent["type"],
-      _id: `new-${type}-${Date.now()}`,
-      ...defaultProps,
-    } as UIComponent;
+    const newComponent: UIComponent = createComponent(type as UIComponent["type"]);
 
     console.log("➕ Adding new component:", newComponent);
 
@@ -138,12 +135,11 @@ const ComponentsWidget = () => {
               key={template.type}
               name={template.name}
               type={template.type}
-              defaultProps={template.defaultProps}
             />
           ))}
         </div>
       </Summary>
-      
+
     </div >
   );
 };

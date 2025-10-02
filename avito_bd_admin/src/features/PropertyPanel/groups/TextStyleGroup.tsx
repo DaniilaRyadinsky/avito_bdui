@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Section } from "./Section";
 import { Column } from "./FieldPrimitives";
-import type { TextStyle } from "../model/types";
 
 import "../styles/panel.css"
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
 import { ColorInput } from "../../../shared/ui/ColorInput/ColorInput";
+import type { TextStyle } from "../../../shared/model/types";
 
 
 export const TextStyleGroup: React.FC<{

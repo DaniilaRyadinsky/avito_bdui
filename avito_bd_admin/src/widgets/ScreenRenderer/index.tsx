@@ -3,6 +3,8 @@ import React from "react";
 import { ComponentFactory } from "../../shared/ui/ComponentFactory/ComponentFactory";
 import { useBuilder } from "../../features/Builder/lib/builderContext";
 import styles from "./ScreenRenderer.module.css";
+
+
 export const ScreenRenderer: React.FC = () => {
   const { screen, selectedComponentId, setSelectedComponent } = useBuilder();
 
@@ -15,7 +17,6 @@ export const ScreenRenderer: React.FC = () => {
 
   const handleComponentSelect = (componentId: string) => {
     setSelectedComponent(componentId);
-    console.log(componentId)
   };
 
   return (

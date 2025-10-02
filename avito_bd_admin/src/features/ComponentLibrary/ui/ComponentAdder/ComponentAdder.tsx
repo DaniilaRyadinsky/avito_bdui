@@ -3,45 +3,88 @@ import React from "react";
 import type { UIComponent } from "../../../../shared/model/types";
 import styles from "./ComponentAdder.module.css";
 import { useBuilder } from "../../../Builder/lib/builderContext";
+import { createBox, createButton, createCard, createCheckbox, createColumn, createIcon, createImage, createRow, createSnackbar, createSpacer, createText } from "../../lib/constant";
 
 const componentTemplates: {
   type: UIComponent["type"];
   name: string;
   defaultProps: Partial<UIComponent>;
 }[] = [
-  {
-    type: "text",
-    name: "Текст",
-    defaultProps: {
-      text: "Новый текст",
-      style: { fontSize: 16, color: "#000000" },
+    {
+      type: "text",
+      name: "Текст",
+      defaultProps: {
+        text: "Новый текст",
+        style: { fontSize: 16, color: "#000000" },
+      },
     },
-  },
-  {
-    type: "button",
-    name: "Кнопка",
-    defaultProps: {
-      text: "Новая кнопка",
-      style: { background: "#007AFF", textColor: "#FFFFFF" },
+    {
+      type: "button",
+      name: "Кнопка",
+      defaultProps: {
+        text: "Новая кнопка",
+        style: { background: "#007AFF", textColor: "#FFFFFF" },
+      },
     },
-  },
-  {
-    type: "image",
-    name: "Изображение",
-    defaultProps: {
-      url: "https://via.placeholder.com/150",
-      contentDescription: "Placeholder image",
+    {
+      type: "image",
+      name: "Изображение",
+      defaultProps: {
+        url: "https://via.placeholder.com/150",
+        contentDescription: "Placeholder image",
+      },
     },
-  },
-  {
-    type: "card",
-    name: "Карточка",
-    defaultProps: {
-      background: "#FFFFFF",
-      children: [],
+    {
+      type: "card",
+      name: "Карточка",
+      defaultProps: {
+        modifier: {
+          size: { width: 20, height: 20 },
+          background: "#FFFFFF",
+        },
+        children: [],
+      },
     },
-  },
-];
+    {
+      type: "row",
+      name: "Строка",
+      defaultProps: {
+        modifier: {
+          size: { width: 20, height: 20 },
+          background: "#FFFFFF",
+        },
+        children: [],
+      },
+    },
+  ];
+
+const createComponent = (template: (typeof componentTemplates)[0]) => {
+  switch (template.type) {
+    case ("text"):
+      return createText()
+    case ("button"):
+      return createButton()
+    case ("image"):
+      return createImage()
+    case ("icon"):
+      return createIcon()
+    case ("row"):
+      return createRow()
+    case ("column"):
+      return createColumn()
+    case ("checkbox"):
+      return createCheckbox()
+    case ("spacer"):
+      return createSpacer()
+    case ("card"):
+      return createCard()
+    case ("box"):
+      return createBox()
+    case ("snackbar"):
+      return createSnackbar()
+  }
+
+}
 
 export const ComponentAdder: React.FC = () => {
   const { screen, updateScreen, selectedComponentId } = useBuilder();
@@ -55,11 +98,15 @@ export const ComponentAdder: React.FC = () => {
       ...template.defaultProps,
     } as UIComponent;
 
+    // const newComponent: UIComponent = createComponent(template);
+
     console.log("➕ Adding new component:", (typeof componentTemplates)[1]);
 
     // Если есть выделенный компонент, добавляем как глубокий
     if (selectedComponentId && screen) {
+
       updateScreen((currentScreen) => {
+
         const addToParent = (components: UIComponent[]): UIComponent[] => {
           return components.map((comp) => {
             if (comp._id === selectedComponentId && "children" in comp) {

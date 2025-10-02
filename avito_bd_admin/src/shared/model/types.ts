@@ -6,8 +6,8 @@ export type TextDecoration = "none" | "underline" | "lineThrough"
 export type TextAlign = "start" | "end" | "center" | "justify"
 
 export type Size = {
-    width: "wrap_content" | "match_parent"|  number,
-    height: "wrap_content" |"match_parent"|  number
+    width?: "wrap_content" | "match_parent"|  number,
+    height?: "wrap_content" |"match_parent"|  number
 }
 
 export type Overflow = "clip" | "ellipsis" | "visible"
@@ -24,9 +24,9 @@ export type Border = {
     color?: string
 }
 export type Shape = {
-    cornerRadius: number,
-    topStart: number,
-    topEnd: number
+    cornerRadius?: number,
+    topStart?: number,
+    topEnd?: number
 }
 
 export type Clip = {
@@ -35,12 +35,12 @@ export type Clip = {
 
 export type ContentScale = "Fill" | "FillHeight" | "Crop" | "FillWidth" | "Inside" | "None" | "FillBounds"
 
-export type VerticalAlignment = "Top" | "CenterVertically" | "Bottom"
+export type VerticalAlignment = "top" | "centerVertically" | "bottom"
 export type HorizontalArrangement = "start" | "center" | "end" | "spaceBetween" | "spaceAround" | "spaceEvenly"
 
 export type Shadow = {
-    elevation: number,
-    color: number
+    elevation?: number,
+    color?: number
 }
 
 
@@ -57,6 +57,7 @@ export interface Modifier {
   onClick?: string | null;
   align?: Align;
   alpha?: number;
+  shadow?: Shadow;
 }
 
 export interface TextStyle {
@@ -72,9 +73,19 @@ export interface TextStyle {
   overflow?: Overflow;
 }
 
+export type ButtonStyle = {
+    background?: string,
+    textColor?: string,
+    fontSize?: number,
+    fontWeight?: FontWeight,         // Толщина шрифта: normal, bold, medium и т.д.
+    fontStyle?: FontStyle,           // Наклон: normal, italic
+    shape?: Shape,
+    border?: Border
+}
+
 export interface Action {
-  action: string;
-  targetId: string;
+  action?: string;
+  targetId?: string;
 }
 
 // Компоненты
@@ -92,21 +103,7 @@ export interface ButtonComponent {
   _id?: string;
   text: string;
   enabled?: boolean;
-  style?: {
-    background?: string;
-    textColor?: string;
-    fontSize?: number;
-    fontWeight?: string;
-    fontStyle?: string;
-    shape?: {
-      cornerRadius?: number;
-    };
-    border?: {
-      width?: number;
-      color?: string | null;
-    };
-    elevation?: number;
-  };
+  style?: ButtonStyle;
   modifier?: Modifier;
   icon?: string | null;
   actions?: Action[];
@@ -117,14 +114,7 @@ export interface ImageComponent {
   _id?: string;
   url: string;
   contentDescription?: string;
-  contentScale?:
-    | "Fill"
-    | "FillHeight"
-    | "Crop"
-    | "FillWidth"
-    | "Inside"
-    | "None"
-    | "FillBounds";
+  contentScale?:ContentScale;
   placeholder?: string | null;
   error?: string | null;
   modifier?: Modifier;
@@ -145,14 +135,8 @@ export interface RowComponent {
   type: "row";
   _id?: string;
   modifier?: Modifier;
-  verticalAlignment?: "top" | "centerVertically" | "bottom";
-  horizontalArrangement?:
-    | "start"
-    | "center"
-    | "end"
-    | "spaceBetween"
-    | "spaceAround"
-    | "spaceEvenly";
+  verticalAlignment?: VerticalAlignment;
+  horizontalArrangement?:HorizontalArrangement;
   children: UIComponent[];
 }
 
@@ -160,13 +144,8 @@ export interface ColumnComponent {
   type: "column";
   _id?: string;
   modifier?: Modifier;
-  verticalArrangement?:
-    | "top"
-    | "centerVertically"
-    | "bottom"
-    | "spaceBetween"
-    | "spaceAround";
-  horizontalAlignment?: "start" | "centerHorizontally" | "end";
+  verticalArrangement?:VerticalAlignment;
+  horizontalAlignment?: HorizontalArrangement;
   children: UIComponent[];
 }
 
@@ -187,9 +166,6 @@ export interface CheckboxComponent {
 export interface SpacerComponent {
   type: "spacer";
   _id?: string;
-  width?: string | number;
-  height?: string | number;
-  weight?: string | number;
   modifier?: Modifier;
 }
 
@@ -198,14 +174,7 @@ export interface CardComponent {
   _id?: string;
   modifier?: Modifier;
   elevation?: number;
-  shape?: {
-    cornerRadius?: number;
-  };
-  background?: string;
-  shadow?: {
-    elevation?: number;
-    color?: string;
-  };
+  shape?: Shape;
   children: UIComponent[];
 }
 

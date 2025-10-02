@@ -2,7 +2,7 @@ import styles from './BoolSwitch.module.css'
 
 import clsx from 'clsx';
 
-export const BoolSwitch: React.FC<{ checked: boolean; onChange: (v: boolean) => void }> = ({ checked, onChange }) => (
+export const BoolSwitch: React.FC<{ checked?: boolean; onChange: (v: boolean) => void }> = ({ checked, onChange }) => (
     <button type="button" className={clsx([styles.switch], {
         [styles.switch__on]: (checked)
     })}

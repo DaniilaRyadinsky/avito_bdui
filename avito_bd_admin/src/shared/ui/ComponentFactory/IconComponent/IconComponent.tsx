@@ -18,7 +18,7 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     icon,
     contentDescription,
     tint = "#000000",
-    modifier = {},
+    modifier={},
   } = component;
 
   const isSelected = selectedId == component._id
