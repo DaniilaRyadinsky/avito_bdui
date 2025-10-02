@@ -54,7 +54,7 @@ export interface Modifier {
   clip?: Clip;
   border?: Border;
   clickable?: boolean;
-  onClick?: string | null;
+  // onClick?: string | null;
   align?: Align;
   alpha?: number;
   shadow?: Shadow;

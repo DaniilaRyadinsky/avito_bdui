@@ -18,7 +18,7 @@ const ShadowEditor: React.FC<{ value?: Shadow; onChange: (next: Partial<Shadow>)
 
 
 export const VisualsGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<Modifier>) => void }> = ({ value, onChange }) => (
-    <Section title="Visuals">
+    <Section title="Visuals"> 
         <Column label="Фон"><ColorInput value={value?.background} onChange={(c) => onChange({ background: c })} /></Column>
         <Section title="Граница">
             <div className="grid grid-cols-2 gap-3">

@@ -18,7 +18,7 @@ export const defaultModifier: Modifier = {
     clip: defaultClip,
     border: defaultBorder,
     clickable: false,
-    onClick: null,
+    // onClick: null,
     align: "start",
     alpha: 1,
     shadow: defaultShadow,
