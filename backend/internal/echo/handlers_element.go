@@ -32,7 +32,7 @@ func (s *Server) CreateElement(ctx echo.Context) error {
 
 // DeleteElement godoc
 // @Summary Delete element by ID
-// @Description Deletes an element document by its UUID (`id`).
+// @Description Deletes an element document by its UUID (`id`). STAT: delete all info about this element
 // @Tags elements
 // @Produce json
 // @Param id query string true "Element ID (UUID)"

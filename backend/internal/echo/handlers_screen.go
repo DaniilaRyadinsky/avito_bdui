@@ -34,7 +34,7 @@ func (s *Server) CreateScreen(ctx echo.Context) error {
 
 // DeleteScreen godoc
 // @Summary Delete screen by ID
-// @Description Deletes a screen document by its UUID (`id`).
+// @Description Deletes a screen document by its UUID (`id`). STAT: delete all info about this screen
 // @Tags screens
 // @Produce json
 // @Param id query string true "Screen ID (UUID)"
@@ -147,7 +147,7 @@ func (s *Server) GetAllScreens(ctx echo.Context) error {
 
 // GetScreen godoc
 // @Summary Get screen by ID
-// @Description Returns a single screen document by UUID.
+// @Description Returns a single screen document by UUID. STAT: Increment screenReceiving for this screen
 // @Tags screens
 // @Produce json
 // @Param id query string true "Screen ID (UUID)"
