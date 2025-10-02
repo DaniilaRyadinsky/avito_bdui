@@ -5,7 +5,7 @@ export const defaultPadding: Padding = { all: 5, start: 10, end: 10, top: 10, bo
 export const defaultBorder: Border = { width: 0, color: "#000000" };
 export const defaultShape: Shape = { cornerRadius: 0, topStart: 0, topEnd: 0 };
 export const defaultClip: Clip = { cornerRadius: 0 };
-export const defaultShadow: Shadow = { elevation: 0, color: 0x000000 };
+export const defaultShadow: Shadow = { elevation: 0, color: "#000000" };
 
 // Базовый модификатор (нейтральный)
 export const defaultModifier: Modifier = {
