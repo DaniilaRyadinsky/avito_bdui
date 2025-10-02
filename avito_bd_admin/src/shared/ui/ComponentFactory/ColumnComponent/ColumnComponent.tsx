@@ -21,8 +21,8 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
 }) => {
   const {
     children = [],
-    verticalArrangement = "top",
-    horizontalAlignment = "start",
+    verticalAlignment = "top",
+    horizontalArrangement = "start",
     modifier = {},
   } = component;
 
@@ -59,11 +59,11 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     display: "flex",
     flexDirection: "column",
     justifyContent:
-      verticalArrangement === "top"
+      verticalAlignment === "top"
         ? "flex-start"
-        : verticalArrangement === "centerVertically"
+        : verticalAlignment === "centerVertically"
           ? "center"
-          : verticalArrangement === "bottom"
+          : verticalAlignment === "bottom"
             ? "flex-end"
             : "",
     // : verticalArrangement === "spaceBetween"
@@ -72,9 +72,9 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     // ? "space-around"
     // : "flex-start",
     alignItems:
-      horizontalAlignment === "start"
+      horizontalArrangement === "start"
         ? "flex-start"
-        : horizontalAlignment === "center"
+        : horizontalArrangement === "center"
           ? "center"
           : "flex-end",
     backgroundColor: background || "transparent",

@@ -93,8 +93,8 @@ export const componentDefaults: {
             ...defaultModifier,
             size: { width: "20", height: "20" }, // контейнер 20×20
         },
-        verticalArrangement: "top",
-        horizontalAlignment: "start",
+        verticalAlignment: "top",
+        horizontalArrangement: "start",
     },
     box: {
         modifier: {

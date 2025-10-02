@@ -76,8 +76,8 @@ export const RowComponent: React.FC<RowComponentProps> = ({
       verticalAlignment === "centerVertically"
         ? "center"
         : verticalAlignment === "top"
-          ? "flex-start"
-          : "flex-end",
+          ? "start"
+          : "end",
     justifyContent:
       horizontalArrangement === "start"
         ? "flex-start"

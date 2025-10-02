@@ -112,9 +112,9 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
                 <SelectBox value={String(value.fillMaxHeight)} onChange={(v) => onChange({ fillMaxHeight: v === "true" ? true : v === "false" ? false : Number(v) })} options={pctOrBoolOptions} />
             </Column> */}
 
-            <Column label="Выравнивание">
+            {/* <Column label="Выравнивание">
                 <SelectBox value={value?.align} onChange={(v) => onChange({ align: v as any })} options={["start", "center", "end", "top", "bottom"].map(x => ({ label: x, value: x }))} />
-            </Column>
+            </Column> */}
         </Section>
     );
 };

@@ -16,12 +16,6 @@ export const AdvancedGroup: React.FC<{
 }> = ({ modifier, onChange, contentScale, onContentScaleChange }) => (
     <Section title="Advanced">
         <Column label="Clickable"><BoolSwitch checked={modifier.clickable} onChange={(v) => onChange({ clickable: v })} /></Column>
-        {onContentScaleChange && (
-            <Column label="Content scale">
-                <SelectBox value={String(contentScale ?? "None")} onChange={(v) => onContentScaleChange(v as ContentScale)}
-                    options={["Fill", "FillHeight", "Crop", "FillWidth", "Inside", "None", "FillBounds"].map(x => ({ label: x, value: x }))}
-                />
-            </Column>
-        )}
+
     </Section>
 );

@@ -109,8 +109,8 @@ export const createColumn = (overrides: Partial<ColumnComponent> = {}): ColumnCo
         type: "column",
         _id: genId("column"),
         modifier: defaultModifier,
-        verticalArrangement: "top",
-        horizontalAlignment: "start",
+        verticalAlignment: "top",
+        horizontalArrangement: "start",
         children: [],
     };
     return withDefaults(base, componentDefaults["column"], overrides);

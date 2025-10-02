@@ -145,8 +145,8 @@ export interface ColumnComponent {
   type: "column";
   _id?: string;
   modifier?: Modifier;
-  verticalArrangement?: VerticalAlignment;
-  horizontalAlignment?: HorizontalArrangement;
+  verticalAlignment?: VerticalAlignment;
+  horizontalArrangement?: HorizontalArrangement;
   children: UIComponent[];
 }
 

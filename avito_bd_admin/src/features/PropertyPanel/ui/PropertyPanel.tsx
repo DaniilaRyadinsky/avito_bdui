@@ -1,5 +1,5 @@
 import React from "react";
-import type { ContentScale, ImageComponent, UIComponent, UIScreen } from "../../../shared/model/types";
+import type { ColumnComponent, ContentScale, ImageComponent, RowComponent, UIComponent, UIScreen } from "../../../shared/model/types";
 import { useBuilder } from "../../Builder/lib/builderContext";
 import { ButtonStyleGroup } from "../groups/ButtonStyleGroup";
 import { LayoutGroup } from "../groups/LayoutGroup";
@@ -9,11 +9,14 @@ import { VisualsGroup } from "../groups/VisualsGroup";
 import { applyDefaultsToComponent } from "../lib/constants";
 import { updateComponentById } from "../lib/utils";
 import { ImageStyleGroup } from "../groups/ImageStyleGroup";
+import { AligmentStyleGroup } from "../groups/AligmentStyleGroup";
 
 export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) => {
   const { screen, updateScreen, selectedComponentId } = useBuilder();
 
   const isImage = (c: UIComponent): c is ImageComponent => c.type === "image";
+  const isRow = (c: UIComponent): c is RowComponent => c.type === "row";
+  const isColumn = (c: UIComponent): c is ColumnComponent => c.type === "column";
 
   // Поисковые хелперы можно вынести вне компонента, но оставлю тут для краткости
   const findInList = (list: UIComponent[] | undefined, id: string): UIComponent | null => {
@@ -66,6 +69,24 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) =
             updateSelected(c => ({ ...c, modifier: { ...c.modifier, ...partialModifier } }))
           }
         />
+
+        {(targetComponent.type === "row" || targetComponent.type === "column") &&
+          <AligmentStyleGroup
+            value={targetComponent}
+            onChange={(patch: Partial<RowComponent> | Partial<ColumnComponent>) =>
+              updateSelected((c) => {
+                if (isRow(c)) {
+                  return { ...c, ...(patch as Partial<RowComponent>) };
+                }
+                if (isColumn(c)) {
+                  return { ...c, ...(patch as Partial<ColumnComponent>) };
+                }
+                return c; // на всякий случай
+              })
+            }
+          />
+        }
+
         <PaddingGroup
           value={targetComponent.modifier?.padding}
           onChange={(partialPadding) =>
