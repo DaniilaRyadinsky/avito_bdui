@@ -1,3 +1,0 @@
-conn_str: "postgres://postgres:passwd@localhost:5432/carddb?sslmode=disable"
-port: 8080
-mode: "DEV"
