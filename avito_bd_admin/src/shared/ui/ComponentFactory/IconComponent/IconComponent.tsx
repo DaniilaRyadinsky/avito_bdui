@@ -1,5 +1,6 @@
 import React from "react";
 import type { IconComponent as IconComponentType } from "../../../model/types";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface IconComponentProps {
   component: IconComponentType;
@@ -18,12 +19,12 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     icon,
     contentDescription,
     tint = "#000000",
-    modifier={},
+    modifier = {},
   } = component;
 
   const isSelected = selectedId == component._id
   const {
-    size ,
+    size,
     padding,
     background,
     clip,
@@ -33,8 +34,16 @@ export const IconComponent: React.FC<IconComponentProps> = ({
   } = modifier;
 
   const iconStyle: React.CSSProperties = {
-    width: size?.width || 24,
-    height: size?.height || 24,
+    width:
+      size?.width === "wrap_content"
+        ? "auto"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "auto"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     color: tint,
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",

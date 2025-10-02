@@ -4,6 +4,7 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface CardComponentProps {
   component: CardComponentType;
@@ -22,8 +23,6 @@ export const CardComponent: React.FC<CardComponentProps> = ({
     children = [],
     elevation = 4,
     shape = {},
-    background = "#FFFFFF",
-    shadow = {},
     modifier = {},
   } = component;
 
@@ -40,27 +39,35 @@ export const CardComponent: React.FC<CardComponentProps> = ({
     }
   };
 
-  const { padding = {}, clip, border, clickable, alpha = 1.0 } = modifier;
+  const { size, padding = {}, clip, border, clickable, background = "#FFFFFF", shadow = {}, alpha = 1.0 } = modifier;
 
   const cardStyle: React.CSSProperties = {
-    backgroundColor: background,
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
+    backgroundColor: background ? background : "none",
     borderRadius: shape.cornerRadius
       ? `${shape.cornerRadius}px`
       : clip?.cornerRadius
-      ? `${clip.cornerRadius}px`
-      : "0",
+        ? `${clip.cornerRadius}px`
+        : "0",
     border:
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
     boxShadow: shadow.elevation
-      ? `0 ${shadow.elevation}px ${shadow.elevation * 2}px ${
-          shadow.color || "rgba(0,0,0,0.1)"
-        }`
+      ? `0 ${shadow.elevation}px ${shadow.elevation * 2}px ${shadow.color || "rgba(0,0,0,0.1)"
+      }`
       : `0 ${elevation}px ${elevation * 2}px rgba(0,0,0,0.1)`,
-    padding: `${padding.top || 16}px ${padding.end || 16}px ${
-      padding.bottom || 16
-    }px ${padding.start || 16}px`,
+    padding: `${padding.top || 16}px ${padding.end || 16}px ${padding.bottom || 16
+      }px ${padding.start || 16}px`,
     opacity: alpha,
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

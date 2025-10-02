@@ -1,9 +1,12 @@
 import React from "react";
 import type {
   BoxComponent as BoxComponentType,
+  Padding,
+  Size,
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
+import { calculateHeight, calculateWidth } from "../utils";
 
 interface BoxComponentProps {
   component: BoxComponentType;
@@ -31,6 +34,7 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
   };
 
   const {
+    size,
     padding = {},
     background,
     clip,
@@ -39,7 +43,19 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
     alpha = 1.0,
   } = modifier;
 
+
+
   const boxStyle: React.CSSProperties = {
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     border:

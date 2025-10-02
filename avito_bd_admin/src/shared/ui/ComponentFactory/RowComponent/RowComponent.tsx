@@ -4,6 +4,7 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
+import { calculateHeight, calculateWidth } from "../utils";
 
 interface RowComponentProps {
   component: RowComponentType;
@@ -24,12 +25,12 @@ export const RowComponent: React.FC<RowComponentProps> = ({
     children = [],
     verticalAlignment = "centerVertically",
     horizontalArrangement = "start",
-    modifier = {} ,
+    modifier = {},
   } = component;
 
-    // useEffect(() => {
-      
-    // }, [])
+  // useEffect(() => {
+
+  // }, [])
 
   const {
     size,
@@ -50,27 +51,25 @@ export const RowComponent: React.FC<RowComponentProps> = ({
     e.stopPropagation();
     if (component._id && onSelect) {
       onSelect(e.currentTarget.id);
-      if(modifier) {
-      console.log(e.currentTarget.id,modifier)
-      // console.log(modifier.size)
+      if (modifier) {
+        // console.log(calculateWidth(padding), padding.top)
+        // console.log(modifier.size)
       }
     }
   };
 
 
   const rowStyle: React.CSSProperties = {
-    width: 
-    size?.width === "wrap_content"
-    ? "fit-content"
-    : size?.width === "match_parent"
-    ? "100%"
-    : size?.width !== undefined
-    ? `${size.width}px`
-    : undefined,
-    height: size?.height === "wrap_content" 
-    ? "fit-content"
-    : size?.height === "match_parent"
-    ? "100%" : `${size?.height}px`,
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     display: "flex",
     flexDirection: "row",
     alignItems:
@@ -101,7 +100,7 @@ export const RowComponent: React.FC<RowComponentProps> = ({
       }px ${padding.start || 10}px`,
     opacity: alpha,
     cursor: clickable ? "pointer" : "default",
-    outline: isSelected ? "2px solid #111111" : "none",
+    outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
     gap: "8px",
   };

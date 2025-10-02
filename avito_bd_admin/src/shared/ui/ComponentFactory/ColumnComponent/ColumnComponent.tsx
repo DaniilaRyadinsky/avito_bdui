@@ -4,6 +4,7 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface ColumnComponentProps {
   component: ColumnComponentType;
@@ -28,12 +29,13 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   const isSelected = selectedId == component._id
 
   const {
-    padding ={},
+    padding = {},
     background,
     clip,
     border,
     clickable,
     alpha = 1.0,
+    size
   } = modifier;
 
   const handleClick = (e: React.MouseEvent) => {
@@ -44,36 +46,45 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   };
 
   const columnStyle: React.CSSProperties = {
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     display: "flex",
     flexDirection: "column",
     justifyContent:
       verticalArrangement === "top"
         ? "flex-start"
         : verticalArrangement === "centerVertically"
-        ? "center"
-        : verticalArrangement === "bottom"
-        ? "flex-end"
-        :"",
-        // : verticalArrangement === "spaceBetween"
-        // ? "space-between"
-        // : verticalArrangement === "spaceAround"
-        // ? "space-around"
-        // : "flex-start",
+          ? "center"
+          : verticalArrangement === "bottom"
+            ? "flex-end"
+            : "",
+    // : verticalArrangement === "spaceBetween"
+    // ? "space-between"
+    // : verticalArrangement === "spaceAround"
+    // ? "space-around"
+    // : "flex-start",
     alignItems:
       horizontalAlignment === "start"
         ? "flex-start"
         : horizontalAlignment === "center"
-        ? "center"
-        : "flex-end",
+          ? "center"
+          : "flex-end",
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     border:
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${
-      padding.bottom || 0
-    }px ${padding.start || 0}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
+      }px ${padding.start || 0}px`,
     opacity: alpha,
     cursor: onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
