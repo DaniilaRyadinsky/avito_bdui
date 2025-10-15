@@ -15,7 +15,8 @@ export type Padding = {
   start?: number,
   end?: number,
   top?: number,
-  bottom?: number
+  bottom?: number,
+  all?: number
 }
 export type Align = "start" | "center" | "end" | "top" | "bottom"
 export type Border = {

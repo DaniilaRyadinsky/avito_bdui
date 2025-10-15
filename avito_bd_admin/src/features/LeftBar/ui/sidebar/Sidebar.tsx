@@ -1,28 +1,46 @@
 import styles from './Sidebar.module.css'
 
-const Sidebar = () => {
+import clsx from 'clsx'
+
+interface ISidebar {
+    mode: "comp"| "col" | "var",
+    setMode: (mode: "comp"| "col" | "var") => void
+}
+const Sidebar = ({mode, setMode} : ISidebar) => {
     return (
         <div className={styles.sidebar}>
-            <div className={styles.sidebar_item}>
+            <div 
+            className={styles.sidebar_item} 
+            style={{backgroundColor: mode=='comp'? "var(--color-avito-active)":""}}
+            onClick={() => setMode("comp")}
+            >
                 <svg className={styles.icon} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_650_270)">
-                        <path fill="var(--color-avito)" d="M20.5 11H19V7C19 5.9 18.1 5 17 5H13V3.5C13 2.12 11.88 1 10.5 1C9.12 1 8 2.12 8 3.5V5H4C2.9 5 2.01 5.9 2.01 7V10.8H3.5C4.99 10.8 6.2 12.01 6.2 13.5C6.2 14.99 4.99 16.2 3.5 16.2H2V20C2 21.1 2.9 22 4 22H7.8V20.5C7.8 19.01 9.01 17.8 10.5 17.8C11.99 17.8 13.2 19.01 13.2 20.5V22H17C18.1 22 19 21.1 19 20V16H20.5C21.88 16 23 14.88 23 13.5C23 12.12 21.88 11 20.5 11Z"  />
+                        <path fill={mode == 'comp' ? "#fff":"var(--color-avito)"} d="M20.5 11H19V7C19 5.9 18.1 5 17 5H13V3.5C13 2.12 11.88 1 10.5 1C9.12 1 8 2.12 8 3.5V5H4C2.9 5 2.01 5.9 2.01 7V10.8H3.5C4.99 10.8 6.2 12.01 6.2 13.5C6.2 14.99 4.99 16.2 3.5 16.2H2V20C2 21.1 2.9 22 4 22H7.8V20.5C7.8 19.01 9.01 17.8 10.5 17.8C11.99 17.8 13.2 19.01 13.2 20.5V22H17C18.1 22 19 21.1 19 20V16H20.5C21.88 16 23 14.88 23 13.5C23 12.12 21.88 11 20.5 11Z"  />
                     </g>
                 </svg>
             </div>
 
-            <div className={styles.sidebar_item}>
+            <div 
+            className={styles.sidebar_item} 
+            style={{backgroundColor: mode=='col'? "var(--color-avito-active)":""}}
+            onClick={() => setMode("col")}
+            >
                 <svg className={styles.icon} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_650_272)">
-                        <path fill="var(--color-avito)" d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C12.83 21 13.5 20.33 13.5 19.5C13.5 19.11 13.35 18.76 13.11 18.49C12.88 18.23 12.73 17.88 12.73 17.5C12.73 16.67 13.4 16 14.23 16H16C18.76 16 21 13.76 21 11C21 6.58 16.97 3 12 3ZM6.5 12C5.67 12 5 11.33 5 10.5C5 9.67 5.67 9 6.5 9C7.33 9 8 9.67 8 10.5C8 11.33 7.33 12 6.5 12ZM9.5 8C8.67 8 8 7.33 8 6.5C8 5.67 8.67 5 9.5 5C10.33 5 11 5.67 11 6.5C11 7.33 10.33 8 9.5 8ZM14.5 8C13.67 8 13 7.33 13 6.5C13 5.67 13.67 5 14.5 5C15.33 5 16 5.67 16 6.5C16 7.33 15.33 8 14.5 8ZM17.5 12C16.67 12 16 11.33 16 10.5C16 9.67 16.67 9 17.5 9C18.33 9 19 9.67 19 10.5C19 11.33 18.33 12 17.5 12Z"  />
+                        <path fill={mode == 'col' ? "#fff":"var(--color-avito)"} d="M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C12.83 21 13.5 20.33 13.5 19.5C13.5 19.11 13.35 18.76 13.11 18.49C12.88 18.23 12.73 17.88 12.73 17.5C12.73 16.67 13.4 16 14.23 16H16C18.76 16 21 13.76 21 11C21 6.58 16.97 3 12 3ZM6.5 12C5.67 12 5 11.33 5 10.5C5 9.67 5.67 9 6.5 9C7.33 9 8 9.67 8 10.5C8 11.33 7.33 12 6.5 12ZM9.5 8C8.67 8 8 7.33 8 6.5C8 5.67 8.67 5 9.5 5C10.33 5 11 5.67 11 6.5C11 7.33 10.33 8 9.5 8ZM14.5 8C13.67 8 13 7.33 13 6.5C13 5.67 13.67 5 14.5 5C15.33 5 16 5.67 16 6.5C16 7.33 15.33 8 14.5 8ZM17.5 12C16.67 12 16 11.33 16 10.5C16 9.67 16.67 9 17.5 9C18.33 9 19 9.67 19 10.5C19 11.33 18.33 12 17.5 12Z"  />
                     </g>
                 </svg>
             </div>
 
-            <div className={styles.sidebar_item}>
+            <div 
+            className={styles.sidebar_item} 
+            style={{backgroundColor: mode=='var'? "var(--color-avito-active)":""}}
+            onClick={() => setMode("var")}
+            >
                 <svg className={styles.icon} width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_650_274)">
-                        <path fill="var(--color-avito)" d="M7.76995 6.76047L6.22995 5.48047L0.819946 12.0005L6.22995 18.5205L7.76995 17.2405L3.41995 12.0005L7.76995 6.76047ZM6.99995 13.0005H8.99995V11.0005H6.99995V13.0005ZM16.9999 11.0005H14.9999V13.0005H16.9999V11.0005ZM10.9999 13.0005H12.9999V11.0005H10.9999V13.0005ZM17.7699 5.48047L16.2299 6.76047L20.5799 12.0005L16.2299 17.2405L17.7699 18.5205L23.1799 12.0005L17.7699 5.48047Z" />
+                        <path fill={mode == 'var' ? "#fff":"var(--color-avito)"} d="M7.76995 6.76047L6.22995 5.48047L0.819946 12.0005L6.22995 18.5205L7.76995 17.2405L3.41995 12.0005L7.76995 6.76047ZM6.99995 13.0005H8.99995V11.0005H6.99995V13.0005ZM16.9999 11.0005H14.9999V13.0005H16.9999V11.0005ZM10.9999 13.0005H12.9999V11.0005H10.9999V13.0005ZM17.7699 5.48047L16.2299 6.76047L20.5799 12.0005L16.2299 17.2405L17.7699 18.5205L23.1799 12.0005L17.7699 5.48047Z" />
                     </g>
                 </svg>
             </div>
