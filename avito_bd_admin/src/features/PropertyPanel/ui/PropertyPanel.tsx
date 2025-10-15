@@ -1,44 +1,142 @@
-import * as React from "react";
-import { VisualsGroup } from "../groups/VisualsGroup";
-import { TextStyleGroup } from "../groups/TextStyleGroup";
+import React from "react";
+import type { ColumnComponent, ContentScale, ImageComponent, RowComponent, UIComponent, UIScreen } from "../../../shared/model/types";
+import { useBuilder } from "../../Builder/lib/builderContext";
 import { ButtonStyleGroup } from "../groups/ButtonStyleGroup";
-import { AdvancedGroup } from "../groups/AdvancedGroup";
-import type { Modifier, TextStyle, ButtonStyle, ContentScale } from "../model/types";
 import { LayoutGroup } from "../groups/LayoutGroup";
 import { PaddingGroup } from "../groups/PaddingGroup";
+import { TextStyleGroup } from "../groups/TextStyleGroup";
+import { VisualsGroup } from "../groups/VisualsGroup";
+import { applyDefaultsToComponent } from "../lib/constants";
+import { updateComponentById } from "../lib/utils";
+import { ImageStyleGroup } from "../groups/ImageStyleGroup";
+import { AligmentStyleGroup } from "../groups/AligmentStyleGroup";
 
-import "../styles/panel.css"
+export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) => {
+  const { screen, updateScreen, selectedComponentId } = useBuilder();
 
+  const isImage = (c: UIComponent): c is ImageComponent => c.type === "image";
+  const isRow = (c: UIComponent): c is RowComponent => c.type === "row";
+  const isColumn = (c: UIComponent): c is ColumnComponent => c.type === "column";
 
-export type PropertyPanelValue = {
-  modifier: Modifier;
-  textStyle?: TextStyle;
-  buttonStyle?: ButtonStyle;
-  contentScale?: ContentScale;
-};
+  // Поисковые хелперы можно вынести вне компонента, но оставлю тут для краткости
+  const findInList = (list: UIComponent[] | undefined, id: string): UIComponent | null => {
+    if (!list) return null;
+    for (const comp of list) {
+      if (comp._id === id) return comp;
+      if ("children" in comp && comp.children?.length) {
+        const found = findInList(comp.children, id);
+        if (found) return found;
+      }
+    }
+    return null;
+  };
 
+  const findComponentById = (screen: UIScreen | null | undefined, id: string | null): UIComponent | null => {
+    if (!screen || !id) return null;
+    return findInList(screen.topBar, id) || findInList(screen.content, id) || findInList(screen.bottomBar, id) || null;
+  };
 
-export const PropertyPanel: React.FC<{
-  value: PropertyPanelValue;
-  onChange: (next: PropertyPanelValue) => void;
-  className?: string;
-}> = ({ value, onChange, className }) => {
-  
-  const patch = React.useCallback(<K extends keyof PropertyPanelValue>(key: K, part: Partial<NonNullable<PropertyPanelValue[K]>>) => {
-    onChange({ ...value, [key]: { ...(value[key] as any), ...part } as any });
-  }, [value, onChange]);
+  // Важно: хук вызывается всегда
+  const targetComponent = React.useMemo(
+    () => applyDefaultsToComponent(findComponentById(screen, selectedComponentId)),
+    [screen, selectedComponentId]
+  );
 
+  // Тоже хук — вызывать всегда, до раннего return
+  const updateSelected = React.useCallback(
+    (mutator: (c: UIComponent) => UIComponent) => {
+      if (!selectedComponentId) return;
+      updateScreen(prev => {
+        if (!prev) return prev;
+        return updateComponentById(prev, selectedComponentId, mutator);
+      });
+    },
+    [selectedComponentId, updateScreen]
+  );
+
+  // Теперь можно делать ранний return — порядок хуков уже зафиксирован
+  if (!targetComponent) {
+    return <div className={`panel-card ${className ?? ""}`}>Выберите элемент</div>;
+  }
 
   return (
     <div className={`panel-card ${className ?? ""}`}>
       <div className="panel-card__header">Свойства</div>
       <div className="panel-card__content">
-        <LayoutGroup value={value.modifier} onChange={(m) => patch("modifier", m)} />
-        <PaddingGroup value={value.modifier.padding} onChange={(p) => onChange({ ...value, modifier: { ...value.modifier, padding: p } })} />
-        <VisualsGroup value={value.modifier} onChange={(m) => patch("modifier", m)} />
-        {value.textStyle && (<TextStyleGroup value={value.textStyle} onChange={(t) => patch("textStyle", t)} />)}
-        {value.buttonStyle && (<ButtonStyleGroup value={value.buttonStyle} onChange={(b) => patch("buttonStyle", b)} />)}
-        {/* <AdvancedGroup modifier={value.modifier} onChange={(m) => patch("modifier", m)} contentScale={value.contentScale} onContentScaleChange={(v) => onChange({ ...value, contentScale: v })} /> */}
+        <LayoutGroup
+          value={targetComponent.modifier}
+          onChange={(partialModifier) =>
+            updateSelected(c => ({ ...c, modifier: { ...c.modifier, ...partialModifier } }))
+          }
+        />
+
+        {(targetComponent.type === "row" || targetComponent.type === "column") &&
+          <AligmentStyleGroup
+            value={targetComponent}
+            onChange={(patch: Partial<RowComponent> | Partial<ColumnComponent>) =>
+              updateSelected((c) => {
+                if (isRow(c)) {
+                  return { ...c, ...(patch as Partial<RowComponent>) };
+                }
+                if (isColumn(c)) {
+                  return { ...c, ...(patch as Partial<ColumnComponent>) };
+                }
+                return c; // на всякий случай
+              })
+            }
+          />
+        }
+
+        <PaddingGroup
+          value={targetComponent.modifier?.padding}
+          onChange={(partialPadding) =>
+            updateSelected(c => ({
+              ...c,
+              modifier: { ...c.modifier, padding: { ...c.modifier?.padding, ...partialPadding } }
+            }))
+          }
+        />
+
+        {targetComponent.type === "image" && (
+          <ImageStyleGroup
+            // если вдруг где-то пролезает null — превращаем в undefined
+            value={targetComponent}
+            onChange={(patch: Partial<ImageComponent>) =>
+              updateSelected(c =>
+                isImage(c) ? { ...c, ...patch } : c
+              )
+            }
+          />
+        )}
+        {targetComponent.type === "text" && (
+          <TextStyleGroup
+            text={targetComponent.text}
+            value={(targetComponent as any).style}
+            onChange={(partialStyle) =>
+              updateSelected(c => ({ ...c, style: { ...(c as any).style, ...partialStyle } as any }))
+            }
+            onTextChange={(newText) =>
+              updateSelected(c => ({
+                ...c,
+                text: newText, // просто обновляем поле text
+              }))}
+          />
+        )}
+        {targetComponent.type === "button" && (
+          <ButtonStyleGroup
+            value={(targetComponent as any).style}
+            onChange={(partialStyle) =>
+              updateSelected(c => ({ ...c, style: { ...(c as any).style, ...partialStyle } as any }))
+            }
+          />
+        )}
+        <VisualsGroup
+          value={targetComponent.modifier}
+          onChange={(partialModifier) =>
+            updateSelected(c => ({ ...c, modifier: { ...c.modifier, ...partialModifier } }))
+          }
+        />
+
       </div>
     </div>
   );

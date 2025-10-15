@@ -4,17 +4,18 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface CardComponentProps {
   component: CardComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const CardComponent: React.FC<CardComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
@@ -22,41 +23,51 @@ export const CardComponent: React.FC<CardComponentProps> = ({
     children = [],
     elevation = 4,
     shape = {},
-    background = "#FFFFFF",
-    shadow = {},
     modifier = {},
   } = component;
 
-  const handleClick = () => {
-    if (component.id && onSelect) {
-      onSelect(component.id);
+  const isSelected = selectedId == component._id
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (component._id && onSelect) {
+      console.log(e.currentTarget.id)
+      onSelect(e.currentTarget.id);
     }
-    if (component.id && onAction) {
-      onAction(component.id, { type: "click" });
+    if (component._id && onAction) {
+      onAction(component._id, { type: "click" });
     }
   };
 
-  const { padding = {}, clip, border, clickable, alpha = 1.0 } = modifier;
+  const { size, padding = {}, clip, border, clickable, background = "#FFFFFF", shadow = {}, alpha = 1.0 } = modifier;
 
   const cardStyle: React.CSSProperties = {
-    backgroundColor: background,
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
+    backgroundColor: background ? background : "none",
     borderRadius: shape.cornerRadius
       ? `${shape.cornerRadius}px`
       : clip?.cornerRadius
-      ? `${clip.cornerRadius}px`
-      : "0",
+        ? `${clip.cornerRadius}px`
+        : "0",
     border:
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
     boxShadow: shadow.elevation
-      ? `0 ${shadow.elevation}px ${shadow.elevation * 2}px ${
-          shadow.color || "rgba(0,0,0,0.1)"
-        }`
+      ? `0 ${shadow.elevation}px ${shadow.elevation * 2}px ${shadow.color || "rgba(0,0,0,0.1)"
+      }`
       : `0 ${elevation}px ${elevation * 2}px rgba(0,0,0,0.1)`,
-    padding: `${padding.top || 16}px ${padding.end || 16}px ${
-      padding.bottom || 16
-    }px ${padding.start || 16}px`,
+    padding: `${padding.top || 16}px ${padding.end || 16}px ${padding.bottom || 16
+      }px ${padding.start || 16}px`,
     opacity: alpha,
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
@@ -64,12 +75,12 @@ export const CardComponent: React.FC<CardComponentProps> = ({
   };
 
   return (
-    <div style={cardStyle} onClick={handleClick} title={component.id}>
+    <div style={cardStyle} onClick={handleClick} id={component._id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
-          key={child.id || index}
+          key={child._id || index}
           component={child}
-          isSelected={isSelected}
+          selectedId={selectedId}
           onSelect={onSelect}
           onAction={onAction}
         />

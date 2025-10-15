@@ -4,26 +4,29 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface ColumnComponentProps {
   component: ColumnComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
   const {
     children = [],
-    verticalArrangement = "top",
-    horizontalAlignment = "start",
+    verticalAlignment = "top",
+    horizontalArrangement = "start",
     modifier = {},
   } = component;
+
+  const isSelected = selectedId == component._id
 
   const {
     padding = {},
@@ -32,59 +35,72 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     border,
     clickable,
     alpha = 1.0,
+    size,
+    shadow
   } = modifier;
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (component.id && onSelect) {
-      onSelect(component.id);
+    if (component._id && onSelect) {
+      onSelect(e.currentTarget.id);
     }
   };
 
   const columnStyle: React.CSSProperties = {
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     display: "flex",
     flexDirection: "column",
     justifyContent:
-      verticalArrangement === "top"
+      verticalAlignment === "top"
         ? "flex-start"
-        : verticalArrangement === "centerVertically"
-        ? "center"
-        : verticalArrangement === "bottom"
-        ? "flex-end"
-        : verticalArrangement === "spaceBetween"
-        ? "space-between"
-        : verticalArrangement === "spaceAround"
-        ? "space-around"
-        : "flex-start",
+        : verticalAlignment === "centerVertically"
+          ? "center"
+          : verticalAlignment === "bottom"
+            ? "flex-end"
+            : "",
+    // : verticalArrangement === "spaceBetween"
+    // ? "space-between"
+    // : verticalArrangement === "spaceAround"
+    // ? "space-around"
+    // : "flex-start",
     alignItems:
-      horizontalAlignment === "start"
+      horizontalArrangement === "start"
         ? "flex-start"
-        : horizontalAlignment === "centerHorizontally"
-        ? "center"
-        : "flex-end",
+        : horizontalArrangement === "center"
+          ? "center"
+          : "flex-end",
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     border:
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${
-      padding.bottom || 0
-    }px ${padding.start || 0}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
+      }px ${padding.start || 0}px`,
     opacity: alpha,
     cursor: onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
     gap: "8px",
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   return (
-    <div style={columnStyle} onClick={handleClick} title={component.id}>
+    <div style={columnStyle} onClick={handleClick} id={component._id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
-          key={child.id || index}
+          key={child._id || index}
           component={child}
-          isSelected={isSelected}
+          selectedId={selectedId}
           onSelect={onSelect}
           onAction={onAction}
         />

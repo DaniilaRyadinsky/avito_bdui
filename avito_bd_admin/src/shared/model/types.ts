@@ -1,55 +1,97 @@
 // Базовые интерфейсы
+
+export type FontWeight = "normal" | "bold" | "medium"
+export type FontStyle = "normal" | "italic"
+export type TextDecoration = "none" | "underline" | "lineThrough"
+export type TextAlign = "start" | "end" | "center" | "justify"
+
+export type Size = {
+  width?: "wrap_content" | "match_parent" | string,
+  height?: "wrap_content" | "match_parent" | string
+}
+
+export type Overflow = "clip" | "ellipsis" | "visible"
+export type Padding = {
+  start?: number,
+  end?: number,
+  top?: number,
+  bottom?: number
+}
+export type Align = "start" | "center" | "end" | "top" | "bottom"
+export type Border = {
+  width?: number,
+  color?: string
+}
+export type Shape = {
+  cornerRadius?: number,
+  topStart?: number,
+  topEnd?: number
+}
+
+export type Clip = {
+  cornerRadius?: number
+}
+
+export type ContentScale = "Fill" | "FillHeight" | "Crop" | "FillWidth" | "Inside" | "None" | "FillBounds"
+
+export type VerticalAlignment = "top" | "centerVertically" | "bottom"
+export type HorizontalArrangement = "start" | "center" | "end" | "spaceBetween" | "spaceAround" | "spaceEvenly"
+
+export type Shadow = {
+  elevation?: number,
+  color?: string
+}
+
+
 export interface Modifier {
-  size?: {
-    width?: string | number;
-    height?: string | number;
-  };
+  size?: Size;
   fillMaxWidth?: boolean;
   fillMaxHeight?: boolean;
-  weight?: number | string | null;
-  padding?: {
-    start?: number;
-    end?: number;
-    top?: number;
-    bottom?: number;
-    all?: number | null;
-  };
+  weight?: number;
+  padding?: Padding;
   background?: string | null;
-  clip?: {
-    cornerRadius?: number;
-  };
-  border?: {
-    width?: number | string;
-    color?: string | null;
-  };
+  clip?: Clip;
+  border?: Border;
   clickable?: boolean;
-  onClick?: string | null;
-  align?: string | null;
+  // onClick?: string | null;
+  align?: Align;
   alpha?: number;
+  shadow?: Shadow;
 }
 
 export interface TextStyle {
   fontSize?: number;
-  fontWeight?: "normal" | "bold" | "medium" | "light";
-  fontStyle?: "normal" | "italic";
+  fontWeight?: FontWeight;
+  fontStyle?: FontStyle;
   color?: string;
   lineHeight?: number;
   letterSpacing?: number;
-  textDecoration?: "none" | "underline" | "lineThrough";
-  textAlign?: "start" | "center" | "end" | "justify";
+  textDecoration?: TextDecoration;
+  textAlign?: TextAlign;
   maxLines?: number;
-  overflow?: "clip" | "ellipsis" | "visible";
+  overflow?: Overflow;
+}
+
+export type ButtonStyle = {
+  background?: string,
+  textColor?: string,
+  fontSize?: number,
+  fontWeight?: FontWeight,         // Толщина шрифта: normal, bold, medium и т.д.
+  fontStyle?: FontStyle,           // Наклон: normal, italic
+  shape?: Shape,
+  border?: Border,
+  elevation?: number
 }
 
 export interface Action {
-  action: string;
-  targetId: string;
+  action?: string;
+  targetId?: string;
 }
 
 // Компоненты
 export interface TextComponent {
   type: "text";
-  id?: string;
+  _id?: string;
   text: string;
   format?: string;
   style?: TextStyle;
@@ -58,24 +100,10 @@ export interface TextComponent {
 
 export interface ButtonComponent {
   type: "button";
-  id?: string;
+  _id?: string;
   text: string;
   enabled?: boolean;
-  style?: {
-    background?: string;
-    textColor?: string;
-    fontSize?: number;
-    fontWeight?: string;
-    fontStyle?: string;
-    shape?: {
-      cornerRadius?: number;
-    };
-    border?: {
-      width?: number;
-      color?: string | null;
-    };
-    elevation?: number;
-  };
+  style?: ButtonStyle;
   modifier?: Modifier;
   icon?: string | null;
   actions?: Action[];
@@ -83,17 +111,10 @@ export interface ButtonComponent {
 
 export interface ImageComponent {
   type: "image";
-  id?: string;
+  _id?: string;
   url: string;
   contentDescription?: string;
-  contentScale?:
-    | "Fill"
-    | "FillHeight"
-    | "Crop"
-    | "FillWidth"
-    | "Inside"
-    | "None"
-    | "FillBounds";
+  contentScale?: ContentScale;
   placeholder?: string | null;
   error?: string | null;
   modifier?: Modifier;
@@ -102,7 +123,7 @@ export interface ImageComponent {
 
 export interface IconComponent {
   type: "icon";
-  id?: string;
+  _id?: string;
   icon: string;
   contentDescription?: string;
   tint?: string;
@@ -112,36 +133,25 @@ export interface IconComponent {
 
 export interface RowComponent {
   type: "row";
-  id?: string;
+  _id?: string;
   modifier?: Modifier;
-  verticalAlignment?: "top" | "centerVertically" | "bottom";
-  horizontalArrangement?:
-    | "start"
-    | "center"
-    | "end"
-    | "spaceBetween"
-    | "spaceAround"
-    | "spaceEvenly";
+  verticalAlignment?: VerticalAlignment;
+  horizontalArrangement?: HorizontalArrangement;
   children: UIComponent[];
 }
 
 export interface ColumnComponent {
   type: "column";
-  id?: string;
+  _id?: string;
   modifier?: Modifier;
-  verticalArrangement?:
-    | "top"
-    | "centerVertically"
-    | "bottom"
-    | "spaceBetween"
-    | "spaceAround";
-  horizontalAlignment?: "start" | "centerHorizontally" | "end";
+  verticalAlignment?: VerticalAlignment;
+  horizontalArrangement?: HorizontalArrangement;
   children: UIComponent[];
 }
 
 export interface CheckboxComponent {
   type: "checkbox";
-  id?: string;
+  _id?: string;
   isChecked: boolean;
   onCheckedChange?: string | null;
   enabled?: boolean;
@@ -155,32 +165,22 @@ export interface CheckboxComponent {
 
 export interface SpacerComponent {
   type: "spacer";
-  id?: string;
-  width?: string | number;
-  height?: string | number;
-  weight?: string | number;
+  _id?: string;
   modifier?: Modifier;
 }
 
 export interface CardComponent {
   type: "card";
-  id?: string;
+  _id?: string;
   modifier?: Modifier;
   elevation?: number;
-  shape?: {
-    cornerRadius?: number;
-  };
-  background?: string;
-  shadow?: {
-    elevation?: number;
-    color?: string;
-  };
+  shape?: Shape;
   children: UIComponent[];
 }
 
 export interface SnackbarComponent {
   type: "snackbar";
-  id: string;
+  _id: string;
   text: string;
   actionText?: string;
   duration?: number;
@@ -190,35 +190,9 @@ export interface SnackbarComponent {
 
 export interface BoxComponent {
   type: "box";
-  id?: string;
+  _id?: string;
   modifier?: Modifier;
   children: UIComponent[];
-}
-
-// Объединенный тип компонента
-export type UIComponent =
-  | TextComponent
-  | ButtonComponent
-  | ImageComponent
-  | IconComponent
-  | RowComponent
-  | ColumnComponent
-  | CheckboxComponent
-  | SpacerComponent
-  | CardComponent
-  | SnackbarComponent
-  | BoxComponent;
-
-// Экран
-export interface UIScreen {
-  type: "screen";
-  id: string;
-  name: string;
-  background: string;
-  topBar: UIComponent[];
-  content: UIComponent[];
-  bottomBar: UIComponent[];
-  snackbars: SnackbarComponent[];
 }
 
 export interface Position {
@@ -252,9 +226,25 @@ export type RawUIComponent = Omit<UIComponent, "type"> & {
   [key: string]: any;
 };
 
+// Объединенный тип компонента
+export type UIComponent =
+  | TextComponent
+  | ButtonComponent
+  | ImageComponent
+  | IconComponent
+  | RowComponent
+  | ColumnComponent
+  | CheckboxComponent
+  | SpacerComponent
+  | CardComponent
+  | SnackbarComponent
+  | BoxComponent;
+
+
+
 export type RawUIScreen = {
   type: string;
-  id: string;
+  _id: string;
   name: string;
   background: string;
   topBar: RawUIComponent[];
@@ -263,3 +253,15 @@ export type RawUIScreen = {
   snackbars: RawUIComponent[];
   [key: string]: any;
 };
+
+// Экран
+export interface UIScreen {
+  type: "screen";
+  _id: string;
+  name: string;
+  background: string;
+  topBar: UIComponent[];
+  content: UIComponent[];
+  bottomBar: UIComponent[];
+  snackbars: SnackbarComponent[];
+}

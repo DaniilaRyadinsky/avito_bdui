@@ -1,64 +1,84 @@
 import React from "react";
 import type {
   BoxComponent as BoxComponentType,
+  Padding,
+  Size,
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
+import { calculateHeight, calculateWidth } from "../utils";
 
 interface BoxComponentProps {
   component: BoxComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const BoxComponent: React.FC<BoxComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
+
+  const isSelected = selectedId == component._id
+
   const { children = [], modifier = {} } = component;
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (component.id && onSelect) {
-      onSelect(component.id);
+    if (component._id && onSelect) {
+      onSelect(e.currentTarget.id);
     }
   };
 
   const {
+    size,
     padding = {},
     background,
     clip,
     border,
     clickable,
     alpha = 1.0,
+    shadow
   } = modifier;
 
+
+
   const boxStyle: React.CSSProperties = {
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     border:
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 12}px ${padding.end || 12}px ${
-      padding.bottom || 12
-    }px ${padding.start || 12}px`,
+    padding: `${padding.top || 12}px ${padding.end || 12}px ${padding.bottom || 12
+      }px ${padding.start || 12}px`,
     opacity: alpha,
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   return (
-    <div style={boxStyle} onClick={handleClick} title={component.id}>
+    <div style={boxStyle} onClick={handleClick} id={component._id}>
       {children.map((child: UIComponent, index: number) => (
         <ComponentFactory
-          key={child.id || index}
+          key={child._id || index}
           component={child}
-          isSelected={isSelected}
+          selectedId={selectedId}
           onSelect={onSelect}
           onAction={onAction}
         />

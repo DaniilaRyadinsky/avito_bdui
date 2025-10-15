@@ -94,14 +94,14 @@
 }
 
 .button {
-  background: #f0f0f0;
+  background: var(--color-avito-active);
+  color: white;
   border: 1px solid #ddd;
   padding: 8px 12px;
   border-radius: 4px;
-  cursor: not-allowed;
+  cursor: pointer;
   font-size: 12px;
   flex: 1;
-  opacity: 0.6;
 }
 
 .info {

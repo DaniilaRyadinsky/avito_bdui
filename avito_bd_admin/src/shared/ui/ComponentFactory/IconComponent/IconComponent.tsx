@@ -1,16 +1,17 @@
 import React from "react";
 import type { IconComponent as IconComponentType } from "../../../model/types";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface IconComponentProps {
   component: IconComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const IconComponent: React.FC<IconComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
   onAction,
 }) => {
@@ -21,19 +22,29 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     modifier = {},
   } = component;
 
+  const isSelected = selectedId == component._id
   const {
-    size = {},
-    padding = {},
+    size,
+    padding,
     background,
     clip,
     border,
     clickable,
     alpha = 1.0,
+    shadow
   } = modifier;
 
   const iconStyle: React.CSSProperties = {
-    width: size.width || 24,
-    height: size.height || 24,
+    width:
+      size?.width === "wrap_content"
+        ? "auto"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "auto"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     color: tint,
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
@@ -41,9 +52,8 @@ export const IconComponent: React.FC<IconComponentProps> = ({
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${
-      padding.bottom || 0
-    }px ${padding.start || 0}px`,
+    padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0
+      }px ${padding?.start || 0}px`,
     opacity: alpha,
     cursor: clickable || onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
@@ -52,12 +62,13 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     alignItems: "center",
     justifyContent: "center",
     fontSize: "18px",
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (component.id && onSelect) {
-      onSelect(component.id);
+    if (component._id && onSelect) {
+      onSelect(e.currentTarget.id);
     }
   };
 
@@ -65,7 +76,7 @@ export const IconComponent: React.FC<IconComponentProps> = ({
     <div
       style={iconStyle}
       onClick={handleClick}
-      title={contentDescription || component.id}
+      id={contentDescription || component._id}
     >
       {icon}
     </div>

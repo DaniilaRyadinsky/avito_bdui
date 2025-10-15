@@ -1,16 +1,17 @@
 import React from "react";
 import type { CheckboxComponent as CheckboxComponentType } from "../../../model/types";
+import { calculateWidth, calculateHeight } from "../utils";
 
 interface CheckboxComponentProps {
   component: CheckboxComponentType;
-  isSelected?: boolean;
+  selectedId?: string | null;
   onSelect?: (componentId: string) => void;
   onAction?: (componentId: string, action: any) => void;
 }
 
 export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
   component,
-  isSelected = false,
+  selectedId,
   onSelect,
 }) => {
   const {
@@ -20,13 +21,23 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
     modifier = {},
   } = component;
 
+  const isSelected = selectedId == component._id
+
   const { checkedColor = "#000000", uncheckedColor = "#CCCCCC" } = colors;
 
-  const { size = {}, padding = {}, clickable, alpha = 1.0 } = modifier;
+  const { size = {}, padding = {}, clickable, alpha = 1.0, shadow } = modifier;
 
   const checkboxStyle: React.CSSProperties = {
-    width: size.width || 24,
-    height: size.height || 24,
+    width:
+      size?.width === "wrap_content"
+        ? "fit-content"
+        : size?.width === "match_parent"
+          ? `${calculateWidth(padding)}`
+          : `${size?.width}px`,
+    height: size?.height === "wrap_content"
+      ? "fit-content"
+      : size?.height === "match_parent"
+        ? `${calculateHeight(padding)}` : `${size?.height}px`,
     backgroundColor: isChecked ? checkedColor : uncheckedColor,
     opacity: enabled ? alpha : 0.6,
     cursor: clickable && enabled ? "pointer" : "default",
@@ -37,13 +48,20 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${
-      padding.bottom || 0
-    }px ${padding.start || 0}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
+      }px ${padding.start || 0}px`,
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
+  };
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (component._id && onSelect) {
+      onSelect(e.currentTarget.id);
+    }
   };
 
   return (
-    <div style={checkboxStyle} onClick={onSelect} title={component.id}>
+    <div style={checkboxStyle} onClick={handleClick} id={component._id}>
       {isChecked && (
         <span style={{ color: "#FFFFFF", fontSize: "14px" }}>✓</span>
       )}
