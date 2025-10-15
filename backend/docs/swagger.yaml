@@ -56,10 +56,7 @@ definitions:
     type: object
 host: 31.56.205.210:8080
 info:
-  contact:
-    email: admin@breezy.su
-    name: Alex "bustard" Provor
-    url: https://breezy.su
+  contact: {}
   title: bdUI REST API
   version: --dev--
 paths:

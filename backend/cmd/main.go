@@ -1,8 +1,8 @@
 package main
 
 import (
-	_ "bdui/cmd/docs"
 	"bdui/config"
+	_ "bdui/docs"
 	"bdui/internal/echo"
 	"bdui/internal/mongo"
 	"bdui/internal/ws"
@@ -14,10 +14,6 @@ import (
 
 // @title bdUI REST API
 // @version --dev--
-
-// @contact.name Alex "bustard" Provor
-// @contact.url https://breezy.su
-// @contact.email admin@breezy.su
 
 // @host 31.56.205.210:8080
 // @BasePath /

@@ -5,11 +5,7 @@
     "swagger": "2.0",
     "info": {
         "title": "bdUI REST API",
-        "contact": {
-            "name": "Alex \"bustard\" Provor",
-            "url": "https://breezy.su",
-            "email": "admin@breezy.su"
-        },
+        "contact": {},
         "version": "--dev--"
     },
     "host": "31.56.205.210:8080",
