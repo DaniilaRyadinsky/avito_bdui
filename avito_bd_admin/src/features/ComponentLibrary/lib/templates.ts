@@ -91,10 +91,7 @@ export const createRow = (overrides: Partial<RowComponent> = {}): RowComponent =
     const base: RowComponent = {
         type: "row",
         _id: genId("row"),
-        modifier: {
-            ...defaultModifier,
-            size: { width: "20", height: "20" },
-        },
+        modifier: defaultModifier,
         verticalAlignment: "centerVertically",
         horizontalArrangement: "start",
         children: [],
@@ -139,10 +136,7 @@ export const createSpacer = (overrides: Partial<SpacerComponent> = {}): SpacerCo
     const base: SpacerComponent = {
         type: "spacer",
         _id: genId("spacer"),
-        modifier: {
-            ...defaultModifier,
-            size: { width: "8", height: "8" },
-        },
+        modifier: defaultModifier,
     };
     return withDefaults(base, componentDefaults["spacer"], overrides);
 };
@@ -169,10 +163,7 @@ export const createSnackbar = (overrides: Partial<SnackbarComponent> = {}): Snac
         actionText: undefined,
         duration: 3000,
         actions: [],
-        modifier: {
-            ...defaultModifier,
-            background: "#323232",
-        },
+        modifier: defaultModifier,
     };
     return withDefaults(base, componentDefaults["snackbar"], overrides);
 };

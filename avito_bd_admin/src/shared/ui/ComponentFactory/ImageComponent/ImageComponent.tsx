@@ -1,6 +1,6 @@
 import React from "react";
 import type { ImageComponent as ImageComponentType } from "../../../model/types";
-import { calculateWidth, calculateHeight } from "../utils";
+import { calculateWidth, calculateHeight, calculateSize } from "../utils";
 
 interface ImageComponentProps {
   component: ImageComponentType;
@@ -19,14 +19,14 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
     url,
     contentDescription,
     contentScale = "Crop",
-    modifier={},
+    modifier = {},
   } = component;
 
   const isSelected = selectedId == component._id
 
   const {
     size,
-    padding,
+    padding = {},
     clip,
     background,
     border,
@@ -43,27 +43,18 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
     }
   };
 
-  
+
 
   const imageStyle: React.CSSProperties = {
-    width:
-          size?.width === "wrap_content"
-            ? "auto"
-            : size?.width === "match_parent"
-              ? `${calculateWidth(padding)}`
-              : `${size?.width}px`,
-        height: size?.height === "wrap_content"
-          ? "auto"
-          : size?.height === "match_parent"
-            ? `${calculateHeight(padding)}` : `${size?.height}px`,
+    width: calculateSize(size?.width, padding.start, padding.end, true),
+    height: calculateSize(size?.height, padding.top, padding.bottom, true),
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     backgroundColor: background || "transparent",
     border:
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0
-      }px ${padding?.start || 0}px`,
+    padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0}px ${padding?.start || 0}px`,
     opacity: alpha,
     cursor: clickable || onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

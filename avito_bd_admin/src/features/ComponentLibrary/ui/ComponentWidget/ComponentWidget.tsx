@@ -13,7 +13,7 @@ const LibraryItem: React.FC<{
   name: string;
   type: string;
 }> = ({ name, type, }) => {
-  const { screen, updateScreen, selectedComponentId } = useBuilder();
+  const { screen, updateScreen, selectedComponentId, setSelectedComponent } = useBuilder();
 
   const handleAddComponent = () => {
     if (!screen) return;
@@ -44,9 +44,13 @@ const LibraryItem: React.FC<{
               };
             }
 
+
             return comp;
           });
         };
+
+        if (newComponent._id !== undefined)
+          setSelectedComponent(newComponent._id)
 
         return {
           ...currentScreen,

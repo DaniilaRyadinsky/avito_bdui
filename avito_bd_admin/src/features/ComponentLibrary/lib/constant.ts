@@ -83,7 +83,8 @@ export const componentDefaults: {
     row: {
         modifier: {
             ...defaultModifier,
-            size: { width: "20", height: "20" }, // контейнер 20×20
+            fillMaxHeight: true,
+            size: { width: "20", height: "match_parent" }, // контейнер 20×20
         },
         verticalAlignment: "centerVertically",
         horizontalArrangement: "start",
@@ -91,7 +92,8 @@ export const componentDefaults: {
     column: {
         modifier: {
             ...defaultModifier,
-            size: { width: "20", height: "20" }, // контейнер 20×20
+            fillMaxWidth: true,
+            size: { width: "match_parent", height: "20" }, // контейнер 20×20
         },
         verticalAlignment: "top",
         horizontalArrangement: "start",

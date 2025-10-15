@@ -6,7 +6,7 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
-import { calculateHeight, calculateWidth } from "../utils";
+import { calculateHeight, calculateSize, calculateWidth } from "../utils";
 
 interface BoxComponentProps {
   component: BoxComponentType;
@@ -34,7 +34,7 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
   };
 
   const {
-    size,
+    size = {},
     padding = {},
     background,
     clip,
@@ -47,29 +47,20 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
 
 
   const boxStyle: React.CSSProperties = {
-    width:
-      size?.width === "wrap_content"
-        ? "fit-content"
-        : size?.width === "match_parent"
-          ? `${calculateWidth(padding)}`
-          : `${size?.width}px`,
-    height: size?.height === "wrap_content"
-      ? "fit-content"
-      : size?.height === "match_parent"
-        ? `${calculateHeight(padding)}` : `${size?.height}px`,
+    width: calculateSize(size.width, padding.start, padding.end),
+    height: calculateSize(size.height, padding.top, padding.bottom),
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     border:
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 12}px ${padding.end || 12}px ${padding.bottom || 12
-      }px ${padding.start || 12}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0}px ${padding.start || 0}px`,
     opacity: alpha,
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
-    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
+    boxShadow: `0 0 ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { use, useEffect, useLayoutEffect } from "react";
 import type { SpacerComponent as SpacerComponentType } from "../../../model/types";
-import { calculateWidth, calculateHeight } from "../utils";
+import { calculateWidth, calculateHeight, calculateSize } from "../utils";
 
 interface SpacerComponentProps {
   component: SpacerComponentType;
@@ -29,26 +29,17 @@ export const SpacerComponent: React.FC<SpacerComponentProps> = ({
 
   // const { size, weight, padding, background, alpha = 1.0 } = modifier ?? {};
 
-  const { size, weight, background, alpha, padding } = modifier || {}
+  const { size = {} , weight, background, alpha, padding = {} } = modifier || {}
 
   const spacerStyle: React.CSSProperties = {
-    width:
-      size?.width === "wrap_content"
-        ? "fit-content"
-        : size?.width === "match_parent"
-          ? `${calculateWidth(padding)}`
-          : `${size?.width}px`,
-    height: size?.height === "wrap_content"
-      ? "fit-content"
-      : size?.height === "match_parent"
-        ? `${calculateHeight(padding)}` : `${size?.height}px`,
-    flex: weight ? Number(weight) : undefined,
+    width: calculateSize(size.width, padding.start, padding.end),
+    height: calculateSize(size.height, padding.top, padding.bottom),
+    flex: weight ? Number(weight) : '',
     backgroundColor: background || "transparent",
     opacity: alpha,
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
-    padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0
-      }px ${padding?.start || 0}px`,
+    padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0}px ${padding?.start || 0}px`,
     minHeight: "1px",
     minWidth: "1px",
   };

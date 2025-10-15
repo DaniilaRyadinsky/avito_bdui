@@ -88,8 +88,7 @@ export const RowComponent: React.FC<RowComponentProps> = ({
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 10}px ${padding.end || 0}px ${padding.bottom || 0
-      }px ${padding.start || 10}px`,
+    padding: `${padding.top ||0}px ${padding.end || 0}px ${padding.bottom || 0}px ${padding.start || 0}px`,
     opacity: alpha,
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

@@ -1,6 +1,6 @@
 import React from "react";
 import type { CheckboxComponent as CheckboxComponentType } from "../../../model/types";
-import { calculateWidth, calculateHeight } from "../utils";
+import { calculateWidth, calculateHeight, calculateSize } from "../utils";
 
 interface CheckboxComponentProps {
   component: CheckboxComponentType;
@@ -28,16 +28,8 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
   const { size = {}, padding = {}, clickable, alpha = 1.0, shadow } = modifier;
 
   const checkboxStyle: React.CSSProperties = {
-    width:
-      size?.width === "wrap_content"
-        ? "fit-content"
-        : size?.width === "match_parent"
-          ? `${calculateWidth(padding)}`
-          : `${size?.width}px`,
-    height: size?.height === "wrap_content"
-      ? "fit-content"
-      : size?.height === "match_parent"
-        ? `${calculateHeight(padding)}` : `${size?.height}px`,
+    width: calculateSize(size?.width, padding.start, padding.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom),
     backgroundColor: isChecked ? checkedColor : uncheckedColor,
     opacity: enabled ? alpha : 0.6,
     cursor: clickable && enabled ? "pointer" : "default",

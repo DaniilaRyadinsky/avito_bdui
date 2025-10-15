@@ -1,6 +1,6 @@
 import React from "react";
 import type { ButtonComponent as ButtonComponentType } from "../../../model/types";
-import { calculateWidth, calculateHeight } from "../utils";
+import { calculateWidth, calculateHeight, calculateSize } from "../utils";
 
 interface ButtonComponentProps {
   component: ButtonComponentType;
@@ -40,21 +40,12 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
 
   } = style;
 
-  const { size } = modifier;
 
-  const { padding = {}, clickable, alpha = 1.0 , shadow} = modifier;
+  const { size ={}, padding = {}, clickable, alpha = 1.0, shadow } = modifier;
 
   const buttonStyle: React.CSSProperties = {
-    width:
-      size?.width === "wrap_content"
-        ? "fit-content"
-        : size?.width === "match_parent"
-          ? `${calculateWidth(padding)}`
-          : `${size?.width}px`,
-    height: size?.height === "wrap_content"
-      ? "fit-content"
-      : size?.height === "match_parent"
-        ? `${calculateHeight(padding)}` : `${size?.height}px`,
+    width: calculateSize(size.width, padding.start, padding.end),
+    height: calculateSize(size.height, padding.top, padding.bottom),
     backgroundColor: background,
     color: textColor,
     fontSize: `${fontSize}px`,
@@ -66,8 +57,7 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
         ? `${border.width}px solid ${border.color}`
         : "none",
     boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`,
-    padding: `${padding.top || 12}px ${padding.end || 16}px ${padding.bottom || 12
-      }px ${padding.start || 16}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0}px ${padding.start || 0}px`,
     opacity: alpha,
     cursor: clickable || onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

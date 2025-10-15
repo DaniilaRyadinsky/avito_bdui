@@ -4,7 +4,7 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
-import { calculateWidth, calculateHeight } from "../utils";
+import { calculateWidth, calculateHeight, calculateSize } from "../utils";
 
 interface ColumnComponentProps {
   component: ColumnComponentType;
@@ -47,16 +47,8 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   };
 
   const columnStyle: React.CSSProperties = {
-    width:
-      size?.width === "wrap_content"
-        ? "fit-content"
-        : size?.width === "match_parent"
-          ? `${calculateWidth(padding)}`
-          : `${size?.width}px`,
-    height: size?.height === "wrap_content"
-      ? "fit-content"
-      : size?.height === "match_parent"
-        ? `${calculateHeight(padding)}` : `${size?.height}px`,
+    width: calculateSize(size?.width, padding.start, padding.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom),
     display: "flex",
     flexDirection: "column",
     justifyContent:

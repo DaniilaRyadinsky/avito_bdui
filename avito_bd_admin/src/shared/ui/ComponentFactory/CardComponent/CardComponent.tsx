@@ -4,7 +4,7 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
-import { calculateWidth, calculateHeight } from "../utils";
+import { calculateWidth, calculateHeight, calculateSize } from "../utils";
 
 interface CardComponentProps {
   component: CardComponentType;
@@ -39,19 +39,11 @@ export const CardComponent: React.FC<CardComponentProps> = ({
     }
   };
 
-  const { size, padding = {}, clip, border, clickable, background = "#FFFFFF", shadow = {}, alpha = 1.0 } = modifier;
+  const { size = {}, padding = {}, clip, border = {}, clickable, background = "#FFFFFF", shadow = {}, alpha = 1.0 } = modifier;
 
   const cardStyle: React.CSSProperties = {
-    width:
-      size?.width === "wrap_content"
-        ? "fit-content"
-        : size?.width === "match_parent"
-          ? `${calculateWidth(padding)}`
-          : `${size?.width}px`,
-    height: size?.height === "wrap_content"
-      ? "fit-content"
-      : size?.height === "match_parent"
-        ? `${calculateHeight(padding)}` : `${size?.height}px`,
+    width: calculateSize(size.width, padding.start, padding.end),
+    height: calculateSize(size.height, padding.top, padding.bottom),
     backgroundColor: background ? background : "none",
     borderRadius: shape.cornerRadius
       ? `${shape.cornerRadius}px`
@@ -59,15 +51,15 @@ export const CardComponent: React.FC<CardComponentProps> = ({
         ? `${clip.cornerRadius}px`
         : "0",
     border:
-      border?.width && border.color
+      border.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    boxShadow: shadow.elevation
-      ? `0 ${shadow.elevation}px ${shadow.elevation * 2}px ${shadow.color || "rgba(0,0,0,0.1)"
-      }`
-      : `0 ${elevation}px ${elevation * 2}px rgba(0,0,0,0.1)`,
-    padding: `${padding.top || 16}px ${padding.end || 16}px ${padding.bottom || 16
-      }px ${padding.start || 16}px`,
+    // boxShadow: shadow.elevation
+    //   ? `0 0 calc(${shadow.elevation} * 0.9) ${shadow.color},
+    // 0 calc(${shadow.elevation} * 0.5) calc(${shadow.elevation} * 0.6) ${shadow.color}` : '',
+
+    boxShadow: '0 0 8px rgba(0, 0, 0, 0.12), 0 4px 6px rgba(0, 0, 0, 0.24)',
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0}px ${padding.start || 0}px`,
     opacity: alpha,
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

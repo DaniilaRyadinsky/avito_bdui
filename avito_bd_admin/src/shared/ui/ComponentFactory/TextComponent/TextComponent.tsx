@@ -1,6 +1,6 @@
 import React from "react";
 import type { TextComponent as TextComponentType } from "../../../model/types";
-import { calculateWidth, calculateHeight } from "../utils";
+import { calculateWidth, calculateHeight, calculateSize } from "../utils";
 
 interface TextComponentProps {
   component: TextComponentType;
@@ -55,16 +55,8 @@ export const TextComponent: React.FC<TextComponentProps> = ({
   };
 
   const textStyle: React.CSSProperties = {
-    width:
-      size?.width === "wrap_content"
-        ? "fit-content"
-        : size?.width === "match_parent"
-          ? `${calculateWidth(padding)}`
-          : `${size?.width}px`,
-    height: size?.height === "wrap_content"
-      ? "fit-content"
-      : size?.height === "match_parent"
-        ? `${calculateHeight(padding)}` : `${size?.height}px`,
+    width: calculateSize(size?.width, padding.start, padding.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom),
     fontSize: `${fontSize}px`,
     fontWeight,
     fontStyle,
