@@ -5,34 +5,37 @@ import { Column } from "./FieldPrimitives";
 import "../styles/panel.css"
 import { BoolSwitch } from "../../../shared/ui/BoolSwitch/BoolSwitch";
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
-import type { Padding } from "../../../shared/model/types";
+import type { Margin, Padding } from "../../../shared/model/types";
 
 
-export const PaddingGroup: React.FC<{ value?: Padding; onChange: (next: Padding) => void }> = ({ value, onChange }) => {
-    const [linkAll, setLinkAll] = React.useState<boolean>(value?.all !== undefined);
-    const setAll = (n: number) => onChange({ start: n, end: n, top: n, bottom: n, all: n });
+export const PaddingGroup: React.FC<{ 
+    padding?: Padding; 
+    margin?: Margin; 
+    onChangePadding: (next: Padding) => void, 
+    onChangeMargin: (next: Margin) => void }> = ({ padding, margin, onChangePadding, onChangeMargin }) => {
     return (
         <Section title="Отступы">
-                <Column label="">
-                    <div className="flex">
-                        <BoolSwitch checked={linkAll} onChange={(v) => { setLinkAll(v); if (v) setAll(value?.all ?? 0); else onChange({ ...value, all: undefined }); }} />
-                        <span className="small">Все стороны</span>
-                    </div>
-                </Column>
-                {linkAll ? (
-                    <Column label="All"><NumberInput min={0} value={Number(value?.all ?? 0)} onChange={(n) => setAll(n)} /></Column>
-                ) : (
-                    <div className="grid-2">
-                        <div className="section_container">
-                            <Column label="Start"><NumberInput min={0} value={Number(value?.start)} onChange={(n) => onChange({ ...value, start: n })} /></Column>
-                            <Column label="End"><NumberInput min={0} value={Number(value?.end)} onChange={(n) => onChange({ ...value, end: n })} /></Column>
-                        </div>
-                        <div className="section_container">
-                            <Column label="Top"><NumberInput min={0} value={Number(value?.top)} onChange={(n) => onChange({ ...value, top: n })} /></Column>
-                            <Column label="Bottom"><NumberInput min={0} value={Number(value?.bottom)} onChange={(n) => onChange({ ...value, bottom: n })} /></Column>
-                        </div>
-                    </div>
-                )}
+            <Section title="Padding">
+                <div className="section_container">
+                    <Column label="Start"><NumberInput min={0} value={Number(padding?.start)} onChange={(n) => onChangePadding({ ...padding, start: n })} /></Column>
+                    <Column label="End"><NumberInput min={0} value={Number(padding?.end)} onChange={(n) => onChangePadding({ ...padding, end: n })} /></Column>
+                </div>
+                <div className="section_container">
+                    <Column label="Top"><NumberInput min={0} value={Number(padding?.top)} onChange={(n) => onChangePadding({ ...padding, top: n })} /></Column>
+                    <Column label="Bottom"><NumberInput min={0} value={Number(padding?.bottom)} onChange={(n) => onChangePadding({ ...padding, bottom: n })} /></Column>
+                </div>
+            </Section>
+            <Section title="Margin">
+                <div className="section_container">
+                    <Column label="Start"><NumberInput min={0} value={Number(margin?.start)} onChange={(n) => onChangeMargin({ ...margin, start: n })} /></Column>
+                    <Column label="End"><NumberInput min={0} value={Number(margin?.end)} onChange={(n) => onChangeMargin({ ...margin, end: n })} /></Column>
+                </div>
+                <div className="section_container">
+                    <Column label="Top"><NumberInput min={0} value={Number(margin?.top)} onChange={(n) => onChangeMargin({ ...margin, top: n })} /></Column>
+                    <Column label="Bottom"><NumberInput min={0} value={Number(margin?.bottom)} onChange={(n) => onChangeMargin({ ...margin, bottom: n })} /></Column>
+                </div>
+            </Section>
+
         </Section>
     );
 };

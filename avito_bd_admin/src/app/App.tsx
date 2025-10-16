@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import ScreensList from "../pages/screenList/ScreensList";
 import Stats from "../pages/Stats/Stats";
-import Main from "../pages/Main";
+import Main from "../pages/Main/Main";
 
 function App() {
   return (

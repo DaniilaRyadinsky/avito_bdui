@@ -16,7 +16,7 @@
     background: var(--panel-bg);
     box-shadow: var(--shadow);
     border-radius: 28px;
-     height: calc(100vh - 48px - 10px - 40px - 10px);
+     height: calc(100vh - 10px - 40px - 10px);
     width: 400px;
     padding: 20px;
     

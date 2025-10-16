@@ -13,5 +13,6 @@ body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  box-sizing: border-box;
   /* background-color: pink; */
 }

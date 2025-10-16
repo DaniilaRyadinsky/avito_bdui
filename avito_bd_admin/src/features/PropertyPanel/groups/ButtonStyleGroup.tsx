@@ -9,6 +9,7 @@ import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
 import { ColorInput } from "../../../shared/ui/ColorInput/ColorInput";
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import type { Border, Shape, ButtonStyle } from "../../../shared/model/types";
+import { TextInput } from "../../../shared/ui/TextInput/TextInput";
 
 
 const BorderEditor: React.FC<{ value?: Border; onChange: (next: Partial<Border>) => void }> = ({ value, onChange }) => (
@@ -31,9 +32,13 @@ const ShapeEditor: React.FC<{ value?: Shape; onChange: (next: Partial<Shape>) =>
 
 
 export const ButtonStyleGroup: React.FC<{
-    value?: ButtonStyle; onChange: (next: Partial<ButtonStyle>) => void
-}> = ({ value, onChange }) => (
+    text: string;
+    onTextChange: (v: string) => void;
+    value?: ButtonStyle;
+    onChange: (next: Partial<ButtonStyle>) => void
+}> = ({ value, onChange, text, onTextChange }) => (
     <Section title="Свойство кнопки">
+        <TextInput value={text}  placeholder="Текст" onChange={(v) => onTextChange( v)} />
         <Column label="Фон"><ColorInput value={value?.background} onChange={(c) => onChange({ background: c })} /></Column>
         <Column label="Цвет текста"><ColorInput value={value?.textColor} onChange={(c) => onChange({ textColor: c })} /></Column>
         <Column label="Размер текста"><NumberInput min={0} value={Number(value?.fontSize)} onChange={(n) => onChange({ fontSize: n })} /></Column>

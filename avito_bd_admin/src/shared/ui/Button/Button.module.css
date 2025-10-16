@@ -1,0 +1,24 @@
+.saveButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  background: var(--color-avito-active);
+  border: 0;
+  border-radius: 10px;
+  font-size: 16px;
+  width: fit-content;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.saveButton:hover {
+  background: var(--color-avito-active-hover, #357ABD);
+}
+
+.saveButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

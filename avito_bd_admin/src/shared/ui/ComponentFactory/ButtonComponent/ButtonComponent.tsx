@@ -1,6 +1,6 @@
 import React from "react";
 import type { ButtonComponent as ButtonComponentType } from "../../../model/types";
-import { calculateWidth, calculateHeight, calculateSize } from "../utils";
+import {calculateSize } from "../utils";
 
 interface ButtonComponentProps {
   component: ButtonComponentType;
@@ -41,7 +41,7 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   } = style;
 
 
-  const { size ={}, padding = {}, clickable, alpha = 1.0, shadow } = modifier;
+  const { size = {}, padding = {}, margin = {}, clickable, alpha = 1.0, shadow } = modifier;
 
   const buttonStyle: React.CSSProperties = {
     width: calculateSize(size.width, padding.start, padding.end),
@@ -58,6 +58,7 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
         : "none",
     boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`,
     padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0}px ${padding.start || 0}px`,
+    margin: `${margin.top || 0}px ${margin.end || 0}px ${margin.bottom || 0}px ${margin.start || 0}px`,
     opacity: alpha,
     cursor: clickable || onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

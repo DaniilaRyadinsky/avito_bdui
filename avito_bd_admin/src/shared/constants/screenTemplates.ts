@@ -7,7 +7,7 @@ export const NEW_SCREEN_TEMPLATE: UIScreen = {
   topBar: [
     {
       _id: "comp-topbar-0-0dy6un5am",
-      type: "column",
+      type: "row",
       modifier: {
         background: "#FFFFFF",
         fillMaxWidth: true,
@@ -21,7 +21,7 @@ export const NEW_SCREEN_TEMPLATE: UIScreen = {
   ],
   content: [
     {
-      type: "row",
+      type: "column",
       modifier: {
         size: { width: "match_parent", height: "match_parent" },
         fillMaxWidth: true,
@@ -33,7 +33,7 @@ export const NEW_SCREEN_TEMPLATE: UIScreen = {
   ],
   bottomBar: [
     {
-      type: "box",
+      type: "row",
       _id: "comp-bottombar-0-l07qiutpa",
       modifier: {
         background: "#FFFFFF",

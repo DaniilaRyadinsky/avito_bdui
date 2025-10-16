@@ -15,9 +15,16 @@ export type Padding = {
   start?: number,
   end?: number,
   top?: number,
-  bottom?: number,
-  all?: number
+  bottom?: number
 }
+
+export type Margin = {
+  start?: number,
+  end?: number,
+  top?: number,
+  bottom?: number
+}
+
 export type Align = "start" | "center" | "end" | "top" | "bottom"
 export type Border = {
   width?: number,
@@ -50,14 +57,15 @@ export interface Modifier {
   fillMaxHeight?: boolean;
   weight?: number;
   padding?: Padding;
+  margin?: Margin;
   background?: string | null;
   clip?: Clip;
   border?: Border;
   clickable?: boolean;
-  // onClick?: string | null;
   align?: Align;
   alpha?: number;
   shadow?: Shadow;
+  scrollable?: boolean,
 }
 
 export interface TextStyle {
@@ -260,6 +268,8 @@ export interface UIScreen {
   type: "screen";
   _id: string;
   name: string;
+  // width: string,
+  // height: string;
   background: string;
   topBar: UIComponent[];
   content: UIComponent[];

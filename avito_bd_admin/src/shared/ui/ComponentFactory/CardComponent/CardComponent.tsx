@@ -4,7 +4,7 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
-import { calculateWidth, calculateHeight, calculateSize } from "../utils";
+import {  calculateSize } from "../utils";
 
 interface CardComponentProps {
   component: CardComponentType;
@@ -39,7 +39,7 @@ export const CardComponent: React.FC<CardComponentProps> = ({
     }
   };
 
-  const { size = {}, padding = {}, clip, border = {}, clickable, background = "#FFFFFF", shadow = {}, alpha = 1.0 } = modifier;
+  const { size = {}, padding = {}, margin={}, clip, border = {}, clickable, background = "#FFFFFF", shadow = {}, alpha = 1.0 } = modifier;
 
   const cardStyle: React.CSSProperties = {
     width: calculateSize(size.width, padding.start, padding.end),
@@ -60,6 +60,7 @@ export const CardComponent: React.FC<CardComponentProps> = ({
 
     boxShadow: '0 0 8px rgba(0, 0, 0, 0.12), 0 4px 6px rgba(0, 0, 0, 0.24)',
     padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0}px ${padding.start || 0}px`,
+    margin: `${margin.top || 0}px ${margin.end || 0}px ${margin.bottom || 0}px ${margin.start || 0}px`,
     opacity: alpha,
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

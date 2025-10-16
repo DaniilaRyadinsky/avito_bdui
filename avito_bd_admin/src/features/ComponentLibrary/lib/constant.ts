@@ -1,7 +1,8 @@
-import type { Padding, Border, Shape, Clip, Shadow, Modifier, TextStyle, ButtonStyle, UIComponent } from "../../../shared/model/types";
+import type { Padding, Border, Shape, Clip, Shadow, Modifier, TextStyle, ButtonStyle, UIComponent, Margin } from "../../../shared/model/types";
 
 // ===== ГЛОБАЛЬНЫЕ ДЕФОЛТЫ =====
-export const defaultPadding: Padding = { all: 5, start: 10, end: 10, top: 10, bottom: 10 };
+export const defaultPadding: Padding = { start: 0, end: 0, top: 0, bottom: 0 };
+export const defaultMargin: Margin = { start: 0, end: 0, top: 0, bottom: 0 };
 export const defaultBorder: Border = { width: 0, color: "#000000" };
 export const defaultShape: Shape = { cornerRadius: 0, topStart: 0, topEnd: 0 };
 export const defaultClip: Clip = { cornerRadius: 0 };
@@ -14,11 +15,11 @@ export const defaultModifier: Modifier = {
     fillMaxHeight: false,
     weight: undefined,
     padding: defaultPadding,
+    margin: defaultMargin,
     background: null,
     clip: defaultClip,
     border: defaultBorder,
     clickable: false,
-    // onClick: null,
     align: "start",
     alpha: 1,
     shadow: defaultShadow,
@@ -57,16 +58,17 @@ export const componentDefaults: {
         modifier: {
             ...defaultModifier,
             size: { width: "wrap_content", height: "wrap_content" },
-            padding: { ...defaultPadding, all: 0 }, // обычно текст без внешних отступов
+            padding: defaultPadding, // обычно текст без внешних отступов
         },
-        style: { ...defaultTextStyle },
+        style: defaultTextStyle,
     },
     button: {
         modifier: {
             ...defaultModifier,
             size: { width: "wrap_content", height: "wrap_content" },
+            padding: {start: 24, end: 24, top: 10, bottom: 10 }
         },
-        style: { ...defaultButtonStyle },
+        style: defaultButtonStyle,
     },
     image: {
         modifier: {
@@ -83,8 +85,8 @@ export const componentDefaults: {
     row: {
         modifier: {
             ...defaultModifier,
-            fillMaxHeight: true,
-            size: { width: "20", height: "match_parent" }, // контейнер 20×20
+            fillMaxWidth: true,
+            size: { width: "match_parent", height: "20" }, // контейнер 20×20
         },
         verticalAlignment: "centerVertically",
         horizontalArrangement: "start",
@@ -92,8 +94,8 @@ export const componentDefaults: {
     column: {
         modifier: {
             ...defaultModifier,
-            fillMaxWidth: true,
-            size: { width: "match_parent", height: "20" }, // контейнер 20×20
+            fillMaxHeight: true,
+            size: { width: "20", height: "match_parent" }, // контейнер 20×20
         },
         verticalAlignment: "top",
         horizontalArrangement: "start",
@@ -138,39 +140,39 @@ export const componentDefaults: {
 
 // Типы для шаблонов компонентов
 export const componentTemplates: {
-  type: UIComponent["type"];
-  name: string;
+    type: UIComponent["type"];
+    name: string;
 }[] = [
-    {
-      type: "text",
-      name: "Текст"
-    },
-    {
-      type: "button",
-      name: "Кнопка"
-    },
-    {
-      type: "image",
-      name: "Изображение"
-    },
-    {
-      type: "card",
-      name: "Карточка"
-    },
-    {
-      type: "row",
-      name: "Строка"
-    },
-    {
-      type: "column",
-      name: "Колонка"
-    },
-    {
-      type: "checkbox",
-      name: "Чекбокс"
-    },
-    {
-      type: "spacer",
-      name: "Спейсер"
-    },
-  ];
+        {
+            type: "text",
+            name: "Текст"
+        },
+        {
+            type: "button",
+            name: "Кнопка"
+        },
+        {
+            type: "image",
+            name: "Изображение"
+        },
+        {
+            type: "card",
+            name: "Карточка"
+        },
+        {
+            type: "row",
+            name: "Строка"
+        },
+        {
+            type: "column",
+            name: "Колонка"
+        },
+        {
+            type: "checkbox",
+            name: "Чекбокс"
+        },
+        {
+            type: "spacer",
+            name: "Спейсер"
+        },
+    ];

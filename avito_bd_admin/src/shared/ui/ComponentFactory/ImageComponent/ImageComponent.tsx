@@ -1,6 +1,6 @@
 import React from "react";
 import type { ImageComponent as ImageComponentType } from "../../../model/types";
-import { calculateWidth, calculateHeight, calculateSize } from "../utils";
+import { calculateSize } from "../utils";
 
 interface ImageComponentProps {
   component: ImageComponentType;
@@ -27,6 +27,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
   const {
     size,
     padding = {},
+    margin={},
     clip,
     background,
     border,
@@ -55,6 +56,7 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
         ? `${border.width}px solid ${border.color}`
         : "none",
     padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0}px ${padding?.start || 0}px`,
+    margin: `${margin.top || 0}px ${margin.end || 0}px ${margin.bottom || 0}px ${margin.start || 0}px`,
     opacity: alpha,
     cursor: clickable || onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

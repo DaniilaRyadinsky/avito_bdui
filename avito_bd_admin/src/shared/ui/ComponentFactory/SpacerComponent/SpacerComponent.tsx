@@ -1,6 +1,6 @@
 import React, { use, useEffect, useLayoutEffect } from "react";
 import type { SpacerComponent as SpacerComponentType } from "../../../model/types";
-import { calculateWidth, calculateHeight, calculateSize } from "../utils";
+import { calculateSize } from "../utils";
 
 interface SpacerComponentProps {
   component: SpacerComponentType;
@@ -39,7 +39,6 @@ export const SpacerComponent: React.FC<SpacerComponentProps> = ({
     opacity: alpha,
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
-    padding: `${padding?.top || 0}px ${padding?.end || 0}px ${padding?.bottom || 0}px ${padding?.start || 0}px`,
     minHeight: "1px",
     minWidth: "1px",
   };

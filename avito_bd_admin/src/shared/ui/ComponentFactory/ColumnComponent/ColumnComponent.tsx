@@ -4,7 +4,7 @@ import type {
   UIComponent,
 } from "../../../model/types";
 import { ComponentFactory } from "../ComponentFactory";
-import { calculateWidth, calculateHeight, calculateSize } from "../utils";
+import {  calculateSize } from "../utils";
 
 interface ColumnComponentProps {
   component: ColumnComponentType;
@@ -30,6 +30,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
 
   const {
     padding = {},
+    margin={},
     background,
     clip,
     border,
@@ -76,8 +77,8 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
       border?.width && border.color
         ? `${border.width}px solid ${border.color}`
         : "none",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
-      }px ${padding.start || 0}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0}px ${padding.start || 0}px`,
+    margin: `${margin.top || 0}px ${margin.end || 0}px ${margin.bottom || 0}px ${margin.start || 0}px`,
     opacity: alpha,
     cursor: onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",

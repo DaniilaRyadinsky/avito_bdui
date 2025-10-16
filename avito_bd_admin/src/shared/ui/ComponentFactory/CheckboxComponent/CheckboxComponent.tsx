@@ -1,6 +1,6 @@
 import React from "react";
 import type { CheckboxComponent as CheckboxComponentType } from "../../../model/types";
-import { calculateWidth, calculateHeight, calculateSize } from "../utils";
+import { calculateSize } from "../utils";
 
 interface CheckboxComponentProps {
   component: CheckboxComponentType;
@@ -25,7 +25,7 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
 
   const { checkedColor = "#000000", uncheckedColor = "#CCCCCC" } = colors;
 
-  const { size = {}, padding = {}, clickable, alpha = 1.0, shadow } = modifier;
+  const { size = {}, padding = {}, margin={}, clickable, alpha = 1.0, shadow } = modifier;
 
   const checkboxStyle: React.CSSProperties = {
     width: calculateSize(size?.width, padding.start, padding.end),
@@ -40,8 +40,8 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0
-      }px ${padding.start || 0}px`,
+    padding: `${padding.top || 0}px ${padding.end || 0}px ${padding.bottom || 0}px ${padding.start || 0}px`,
+    margin: `${margin.top || 0}px ${margin.end || 0}px ${margin.bottom || 0}px ${margin.start || 0}px`,
     boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
   };
 

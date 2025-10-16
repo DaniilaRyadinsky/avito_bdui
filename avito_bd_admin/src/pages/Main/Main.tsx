@@ -1,22 +1,27 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import LeftBar from "../features/LeftBar/ui/LeftBar";
-import Topbar from "../widgets/Topbar/Topbar";
-import { ScreenRenderer } from "../widgets/ScreenRenderer/index";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import LeftBar from "../../features/LeftBar/ui/LeftBar";
+import Topbar from "../../widgets/Topbar/Topbar";
+import { ScreenRenderer } from "../../widgets/ScreenRenderer/index";
 import {
     BuilderProvider,
     useBuilder,
-} from "../features/Builder/lib/builderContext";
-import { useScreenData } from "../shared/lib/useScreenData";
+} from "../../features/Builder/lib/builderContext";
+import { useScreenData } from "../../shared/lib/useScreenData";
 import styles from "./Main.module.css";
-import { PropertyPanel } from "../features/PropertyPanel/ui/PropertyPanel";
-import { NumberInput } from "../shared/ui/NumberInput/NumberInput";
-import { createNewScreen } from "../shared/constants/screenTemplates";
+import { PropertyPanel } from "../../features/PropertyPanel/ui/PropertyPanel";
+import { NumberInput } from "../../shared/ui/NumberInput/NumberInput";
+import { createNewScreen } from "../../shared/constants/screenTemplates";
+import Button from "../../shared/ui/Button/Button";
+
+
 
 const SaveButton = () => {
     const { screen } = useBuilder();
     const [saving, setSaving] = useState(false);
     const [message, setMessage] = useState<string | null>(null);
+
+    const navigate = useNavigate();
 
     const handleSave = async () => {
         if (!screen) return;
@@ -68,13 +73,16 @@ const SaveButton = () => {
 
             console.log("✅ Save successful:", result);
 
-            if (isNewScreen && result._id) {
-                console.log("New screen ID:", result._id);
+            if (isNewScreen && result.id) {
+                console.log("New screen ID:", result.id);
+                navigate(`/builder/${result.id}`)
             }
 
             setMessage(
                 isNewScreen ? "Экран успешно создан!" : "Изменения успешно сохранены!"
             );
+
+
         } catch (err) {
             setMessage(
                 `Ошибка: ${err instanceof Error ? err.message : "Неизвестная ошибка"}`
@@ -87,17 +95,16 @@ const SaveButton = () => {
 
     return (
         <div className={styles.saveSection}>
-            <button
+            <Button
                 onClick={handleSave}
                 disabled={saving}
-                className={styles.saveButton}
             >
                 {saving
                     ? "Сохранение..."
                     : screen?._id === "new"
                         ? "Создать экран"
                         : "Сохранить изменения"}
-            </button>
+            </Button>
             {message && (
                 <div
                     className={
@@ -121,6 +128,8 @@ const Main = () => {
     const [width, setWidth] = useState(420);
     const [height, setHeight] = useState(600);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         const fetchScreenData = async () => {
             try {
@@ -130,21 +139,15 @@ const Main = () => {
                 console.log("🔍 Screen ID from URL:", screenId);
 
                 if (!screenId) {
-                    // Создаем новый экран с уникальными ID
                     const newScreen = createNewScreen();
-                    console.log("🆕 Creating new screen (no ID):", newScreen);
                     setFetchedData(newScreen);
                     return;
                 }
 
                 if (screenId === "new") {
-                    // Создаем новый экран с уникальными ID
                     const newScreen = createNewScreen();
-                    console.log("🆕 Creating new screen:", newScreen);
                     setFetchedData(newScreen);
                 } else {
-                    // Загружаем существующий экран
-                    console.log(`📡 Fetching screen with ID: ${screenId}`);
                     const response = await fetch(
                         `http://31.56.205.210:8080/api/screen/get?id=${screenId}`
                     );
@@ -204,9 +207,9 @@ const Main = () => {
                         экрана
                     </h3>
                     <p>{error}</p>
-                    <Link to="/" className={styles.backLink}>
+                    <Button onClick={() => navigate("/")} >
                         ← К списку экранов
-                    </Link>
+                    </Button>
                 </div>
             </div>
         );
@@ -218,9 +221,9 @@ const Main = () => {
                 <div className={styles.error}>
                     <h3>Данные экрана не найдены или неверный формат</h3>
                     <p>ID экрана: {screenId || "новый экран"}</p>
-                    <Link to="/" className={styles.backLink}>
+                    <Button onClick={() => navigate("/")} >
                         ← К списку экранов
-                    </Link>
+                    </Button>
                 </div>
             </div>
         );
@@ -228,17 +231,16 @@ const Main = () => {
 
     return (
         <div className={styles.container}>
-            <Topbar />
-
+            {/* <Topbar /> */}
             <div className={styles.main_window}>
                 <BuilderProvider screen={screen}>
                     <LeftBar />
                     <div className={styles.work_panel}>
                         <div className={styles.work_panel_top}>
                             <div className={styles.top_actions}>
-                                <Link to="/" className={styles.screensLink}>
+                                <Button onClick={() => navigate("/")} >
                                     ← Доступные экраны
-                                </Link>
+                                </Button>
 
                             </div>
                             <div className={styles.input_container}>
