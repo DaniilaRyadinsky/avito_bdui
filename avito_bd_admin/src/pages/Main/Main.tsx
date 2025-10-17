@@ -13,8 +13,6 @@ import { SaveButton } from "./ui/SaveButton/SaveButton";
 import { fetchScreenData } from "./api/fetch";
 import SizeContainer from "./ui/SizeContainer/SizeContainer";
 
-
-
 const Main = () => {
     const { screenId } = useParams<{ screenId: string }>();
     const [fetchedData, setFetchedData] = useState<any>(null);
@@ -31,8 +29,6 @@ const Main = () => {
     // Передаем полученные данные в useScreenData
     const screen = useScreenData(fetchedData);
     console.log(screen)
-
-
 
     if (!screenId && loading) {
         return (

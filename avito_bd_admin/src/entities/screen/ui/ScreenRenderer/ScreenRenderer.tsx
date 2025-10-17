@@ -64,9 +64,9 @@ export const ScreenRenderer: React.FC = () => {
       </div>
 
       {/* bottomsheet */}
-      <div className={styles.bottomsheet}>
+      {/* <div className={styles.bottomsheet}>
           
-      </div>
+      </div> */}
     </div>
   );
 };
