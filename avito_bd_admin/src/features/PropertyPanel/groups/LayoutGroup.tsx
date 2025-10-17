@@ -5,19 +5,18 @@ import { Column } from "./FieldPrimitives";
 import "../styles/panel.css"
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
-import type { Modifier, Size } from "../../../shared/model/types";
+import type { Modifier, Size } from "../../../entities/components/model/componentTypes";
 
-
-const pctOrBoolOptions = [
-    { label: "Off", value: "false" },
-    { label: "100%", value: "true" },
-    { label: "25%", value: "0.25" },
-    { label: "33%", value: "0.33" },
-    { label: "50%", value: "0.5" },
-    { label: "66%", value: "0.66" },
-    { label: "75%", value: "0.75" },
-    { label: "90%", value: "0.9" },
-];
+// const pctOrBoolOptions = [
+//     { label: "Off", value: "false" },
+//     { label: "100%", value: "true" },
+//     { label: "25%", value: "0.25" },
+//     { label: "33%", value: "0.33" },
+//     { label: "50%", value: "0.5" },
+//     { label: "66%", value: "0.66" },
+//     { label: "75%", value: "0.75" },
+//     { label: "90%", value: "0.9" },
+// ];
 
 export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<Modifier>) => void }> = ({ value, onChange }) => {
     const setSize = (patch: Partial<Size>) => {

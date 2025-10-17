@@ -5,7 +5,9 @@ import React, {
   useEffect,
   type ReactNode,
 } from "react";
-import type { UIScreen, UIComponent } from "../../../shared/model/types";
+import type { UIScreen } from "../../../entities/screen/model/screenTypes";
+import type { UIComponent } from "../../../entities/components/model/componentTypes";
+
 
 interface BuilderContextType {
   screen: UIScreen | null;

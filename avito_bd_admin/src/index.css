@@ -13,5 +13,30 @@ body {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  box-sizing: border-box;
   /* background-color: pink; */
+}
+
+::-webkit-scrollbar {
+  width: 6px;              /* ← толщина вертикального скролла */
+  height: 6px;             /* ← толщина горизонтального скролла */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 100, 100, 0.6);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* можно задать фон трека */
+}
+
+/* Работает в Firefox */
+* {
+  scrollbar-width: thin;                /* варианты: auto | thin | none */
+  scrollbar-color: rgba(100,100,100,.4) transparent;
 }

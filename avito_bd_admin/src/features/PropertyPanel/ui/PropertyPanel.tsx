@@ -1,5 +1,4 @@
 import React from "react";
-import type { ColumnComponent, ContentScale, ImageComponent, RowComponent, UIComponent, UIScreen } from "../../../shared/model/types";
 import { useBuilder } from "../../Builder/lib/builderContext";
 import { ButtonStyleGroup } from "../groups/ButtonStyleGroup";
 import { LayoutGroup } from "../groups/LayoutGroup";
@@ -10,6 +9,8 @@ import { applyDefaultsToComponent } from "../lib/constants";
 import { updateComponentById } from "../lib/utils";
 import { ImageStyleGroup } from "../groups/ImageStyleGroup";
 import { AligmentStyleGroup } from "../groups/AligmentStyleGroup";
+import type { UIComponent, ImageComponent, RowComponent, ColumnComponent } from "../../../entities/components/model/componentTypes";
+import type { UIScreen } from "../../../entities/screen/model/screenTypes";
 
 export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) => {
   const { screen, updateScreen, selectedComponentId } = useBuilder();
@@ -87,15 +88,23 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) =
           />
         }
 
-        <PaddingGroup
-          value={targetComponent.modifier?.padding}
-          onChange={(partialPadding) =>
-            updateSelected(c => ({
-              ...c,
-              modifier: { ...c.modifier, padding: { ...c.modifier?.padding, ...partialPadding } }
-            }))
-          }
-        />
+        {targetComponent.type !== "spacer" && (
+          <PaddingGroup
+            padding={targetComponent.modifier?.padding}
+            onChangePadding={(partialPadding) =>
+              updateSelected(c => ({
+                ...c,
+                modifier: { ...c.modifier, padding: { ...c.modifier?.padding, ...partialPadding } }
+              }))
+            }
+            margin={targetComponent.modifier?.margin}
+            onChangeMargin={(partialMargin) =>
+              updateSelected(c => ({
+                ...c,
+                modifier: { ...c.modifier, margin: { ...c.modifier?.padding, ...partialMargin } }
+              }))}
+          />)
+        }
 
         {targetComponent.type === "image" && (
           <ImageStyleGroup
@@ -124,10 +133,16 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) =
         )}
         {targetComponent.type === "button" && (
           <ButtonStyleGroup
+            text={targetComponent.text}
             value={(targetComponent as any).style}
             onChange={(partialStyle) =>
               updateSelected(c => ({ ...c, style: { ...(c as any).style, ...partialStyle } as any }))
             }
+            onTextChange={(newText) =>
+              updateSelected(c => ({
+                ...c,
+                text: newText, // просто обновляем поле text
+              }))}
           />
         )}
         <VisualsGroup

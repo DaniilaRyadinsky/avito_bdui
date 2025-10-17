@@ -2,13 +2,15 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
+
 }
 
 .panel {
-    height: calc(100vh - 48px - 10px - 40px - 10px);
-    width: 360px;
+    height: calc(100vh - 10px - 40px - 10px);
+    width: 300px;
     background-color: #fff;
     border-radius: 28px;
     box-shadow: var(--shadow);
     padding: 20px;
+    overflow-y: auto;
 }

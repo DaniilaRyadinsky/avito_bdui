@@ -6,8 +6,8 @@ import "../styles/panel.css"
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
 import { ColorInput } from "../../../shared/ui/ColorInput/ColorInput";
-import type { TextStyle } from "../../../shared/model/types";
 import { TextInput } from "../../../shared/ui/TextInput/TextInput";
+import type { TextStyle } from "../../../entities/components/model/componentTypes";
 
 
 export const TextStyleGroup: React.FC<{

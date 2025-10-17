@@ -1,4 +1,6 @@
-import type { UIComponent, UIScreen } from "../../../shared/model/types";
+import type { UIComponent } from "../../../entities/components/model/componentTypes";
+import type { UIScreen } from "../../../entities/screen/model/screenTypes";
+
 
 export function updateByIdInList(
   list: UIComponent[] | undefined,

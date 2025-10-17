@@ -1,0 +1,123 @@
+/* ComponentControls.module.css */
+.container {
+  padding: 8px;
+  height: 100%;
+  background: white;
+}
+
+.placeholder {
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.hint {
+  padding: 12px;
+  text-align: center;
+  color: #888;
+  font-size: 12px;
+  background: #f9f9f9;
+  border-radius: 4px;
+}
+
+.header {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.componentId {
+  font-size: 12px;
+  color: #666;
+  background: #f5f5f5;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+  margin-bottom: 4px;
+}
+
+.componentType {
+  font-size: 12px;
+  color: #007aff;
+  background: #e3f2fd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section h4 {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.delete {
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  flex: 1;
+}
+
+.delete:hover {
+  background: #ff3742;
+}
+
+.button {
+  background: var(--color-avito-active);
+  color: white;
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  flex: 1;
+}
+
+.info {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.info p {
+  margin: 4px 0;
+}
+
+.textContent {
+  font-size: 12px;
+  background: #f9f9f9;
+  padding: 8px;
+  border-radius: 4px;
+  border-left: 3px solid #007aff;
+}

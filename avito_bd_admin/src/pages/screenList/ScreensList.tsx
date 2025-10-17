@@ -1,43 +1,34 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./ScreensList.module.css";
+import Button from "../../shared/ui/Button/Button";
+import { deleteScreen, fetchScreens } from "./api/fetch";
+import type { ScreenItem } from "./model/types";
 
-interface ScreenItem {
-  _id: string;
-  title?: string;
-  id?: string;
-  name?: string;
-}
+
 
 const ScreensList = () => {
+  const navigate = useNavigate()
+
   const [screens, setScreens] = useState<ScreenItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const [isUpdate, setIsUpdate] = useState(true);
+
   useEffect(() => {
-    const fetchScreens = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(
-          "http://31.56.205.210:8080/api/screen/all"
-        );
+    fetchScreens(setScreens, setLoading, setError);
+    setIsUpdate(false)
+  }, [isUpdate]);
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setScreens(data);
-      } catch (err) {
-        console.error("Error fetching screens:", err);
-        setError(err instanceof Error ? err.message : "Unknown error");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchScreens();
-  }, []);
+  const handleDeleteClick = (id: string) => {
+    deleteScreen({
+      id: id,
+      onSuccess: () => { console.log("success") },
+      onError: (e) => { console.log(e) }
+    })
+    setIsUpdate(true);
+  }
 
   if (loading) {
     return <div className={styles.container}>Загрузка экранов...</div>;
@@ -52,16 +43,15 @@ const ScreensList = () => {
       <h1 className={styles.title}>Доступные экраны</h1>
 
       <div className={styles.actions}>
-        <Link to="/builder/new" className={styles.createButton}>
+        <Button onClick={() => navigate("/builder/new")}>
           + Создать новый экран
-        </Link>
+        </Button>
       </div>
 
       <div className={styles.screensGrid}>
         {screens.map((screen) => (
-          <Link
+          <div
             key={screen._id}
-            to={`/builder/${screen._id}`}
             className={styles.screenCard}
           >
             <h3 className={styles.screenName}>
@@ -74,12 +64,13 @@ const ScreensList = () => {
             >
               ID: {screen._id}
             </p>
-            <span className={styles.viewButton}>
-              {screen._id === "new"
+            <div className={styles.btn_container}>
+              <Button onClick={() => navigate(`/builder/${screen._id}`)}> {screen._id === "new"
                 ? "Продолжить изменения"
-                : "Открыть в Редакторе"}
-            </span>
-          </Link>
+                : "Открыть в Редакторе"}</Button>
+              <Button style={{background:"#e12323"}} onClick={() => handleDeleteClick(screen._id)}>Удалить</Button>
+            </div>
+          </div>
         ))}
       </div>
 
