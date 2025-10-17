@@ -8,7 +8,6 @@ import Button from "../../../../shared/ui/Button/Button";
 
 export const ComponentControls: React.FC = () => {
   const {
-    screen,
     selectedComponentId,
     deleteComponent,
     moveComponent,
