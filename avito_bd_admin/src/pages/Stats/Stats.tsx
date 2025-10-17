@@ -81,18 +81,6 @@ const Stats = () => {
             ))}
           </div>
         </div>
-
-        <div className={styles.statSection}>
-          <h2>Клики по экранам</h2>
-          <div className={styles.statList}>
-            {stats.clickScreens.map((item) => (
-              <div key={item.id} className={styles.statItem}>
-                <span className={styles.statId}>{item.name}</span>
-                <span className={styles.statCount}>{item.count} кликов </span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );
