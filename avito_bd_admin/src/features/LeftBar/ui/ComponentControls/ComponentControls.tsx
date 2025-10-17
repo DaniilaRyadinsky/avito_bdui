@@ -102,7 +102,7 @@ export const ComponentControls: React.FC = () => {
           </div>
         </div>
 
-        {selectedComponent?.type === "text" && (
+        {/* {selectedComponent?.type === "text" && (
           <div className={styles.section}>
             <h4>Текст</h4>
             <div className={styles.textContent}>
@@ -118,7 +118,7 @@ export const ComponentControls: React.FC = () => {
               Текст: {(selectedComponent as any).text}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
