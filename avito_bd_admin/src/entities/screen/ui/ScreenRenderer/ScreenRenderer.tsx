@@ -16,57 +16,59 @@ export const ScreenRenderer: React.FC = () => {
   };
 
   return (
-    <div
-      className={styles.screen}
-      style={{ background: screen.background }}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) {
-          setSelectedComponent(null);
-        }
-      }}
-    >
-      {/* Top Bar */}
-      <div className={styles.topBar}>
-        {screen.topBar.map((component, index) => (
-          <ComponentFactory
-            key={component._id || `topbar-${index}`}
-            component={component}
-            selectedId={selectedComponentId}
-            onSelect={handleComponentSelect}
-          />
-        ))}
-      </div>
 
-      {/* Main Content */}
-      <div className={styles.content}>
-        {screen.content.map((component, index) => (
-          <ComponentFactory
-            key={
-              component._id ? `${component._id}-${index}` : `content-${index}`
-            }
-            component={component}
-            selectedId={selectedComponentId}
-            onSelect={handleComponentSelect}
-          />
-        ))}
-      </div>
+      <div
+        className={styles.screen}
+        style={{ background: screen.background, width: screen.width, height: screen.height }}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            setSelectedComponent(null);
+          }
+        }}
+      >
+        {/* Top Bar */}
+        <div className={styles.topBar}>
+          {screen.topBar.map((component, index) => (
+            <ComponentFactory
+              key={component._id || `topbar-${index}`}
+              component={component}
+              selectedId={selectedComponentId}
+              onSelect={handleComponentSelect}
+            />
+          ))}
+        </div>
 
-      {/* Bottom Bar */}
-      <div className={styles.bottomBar}>
-        {screen.bottomBar.map((component, index) => (
-          <ComponentFactory
-            key={component._id || `bottombar-${index}`}
-            component={component}
-            selectedId={selectedComponentId}
-            onSelect={handleComponentSelect}
-          />
-        ))}
-      </div>
+        {/* Main Content */}
+        <div className={styles.content}>
+          {screen.content.map((component, index) => (
+            <ComponentFactory
+              key={
+                component._id ? `${component._id}-${index}` : `content-${index}`
+              }
+              component={component}
+              selectedId={selectedComponentId}
+              onSelect={handleComponentSelect}
+            />
+          ))}
+        </div>
 
-      {/* bottomsheet */}
-      {/* <div className={styles.bottomsheet}>
+        {/* Bottom Bar */}
+        <div className={styles.bottomBar}>
+          {screen.bottomBar.map((component, index) => (
+            <ComponentFactory
+              key={component._id || `bottombar-${index}`}
+              component={component}
+              selectedId={selectedComponentId}
+              onSelect={handleComponentSelect}
+            />
+          ))}
+        </div>
+
+        {/* bottomsheet */}
+        {/* <div className={styles.bottomsheet}>
           
       </div> */}
-    </div>
+      </div>
+    
   );
 };

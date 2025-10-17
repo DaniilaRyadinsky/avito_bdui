@@ -41,13 +41,12 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
   }, [initialScreen]);
 
   // Функция для обновления экрана
-  const updateScreen = (updater: (currentScreen: UIScreen) => UIScreen) => {
+   const updateScreen = (updater: (currentScreen: UIScreen) => UIScreen) => {
     if (screen) {
       const newScreen = updater(screen);
       setScreen(newScreen);
     }
   };
-
   const moveComponent = (componentId: string, direction: "up" | "down") => {
     if (!screen) return;
 
@@ -124,32 +123,32 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
     setScreen(newScreen);
   };
 
-const deleteComponent = (componentId: string) => {
-  if (!screen) return;
+  const deleteComponent = (componentId: string) => {
+    if (!screen) return;
 
-  const deepRemove = (components: UIComponent[] = []): UIComponent[] => {
-    return components
-      // 1) Удаляем сам компонент, если совпал id
-      .filter(c => c._id !== componentId)
-      // 2) Рекурсивно чистим детей (если они есть)
-      .map(c => {
-        if ('children' in c && Array.isArray(c.children)) {
-          return { ...c, children: deepRemove(c.children) };
-        }
-        return c;
-      });
+    const deepRemove = (components: UIComponent[] = []): UIComponent[] => {
+      return components
+        // 1) Удаляем сам компонент, если совпал id
+        .filter(c => c._id !== componentId)
+        // 2) Рекурсивно чистим детей (если они есть)
+        .map(c => {
+          if ('children' in c && Array.isArray(c.children)) {
+            return { ...c, children: deepRemove(c.children) };
+          }
+          return c;
+        });
+    };
+
+    const newScreen: UIScreen = {
+      ...screen,
+      topBar: deepRemove(screen.topBar || []),
+      content: deepRemove(screen.content || []),
+      bottomBar: deepRemove(screen.bottomBar || []),
+    };
+
+    setScreen(newScreen);
+    setSelectedComponent(null);
   };
-
-  const newScreen: UIScreen = {
-    ...screen,
-    topBar: deepRemove(screen.topBar || []),
-    content: deepRemove(screen.content || []),
-    bottomBar: deepRemove(screen.bottomBar || []),
-  };
-
-  setScreen(newScreen);
-  setSelectedComponent(null);
-};
 
   const contextValue: BuilderContextType = {
     screen,
