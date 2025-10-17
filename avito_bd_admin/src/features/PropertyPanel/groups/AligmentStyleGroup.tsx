@@ -1,4 +1,5 @@
-import type { RowComponent, ColumnComponent, VerticalAlignment, HorizontalArrangement } from "../../../shared/model/types";
+
+import type { RowComponent, ColumnComponent, VerticalAlignment, HorizontalArrangement } from "../../../entities/components/model/componentTypes";
 import { BoolSwitch } from "../../../shared/ui/BoolSwitch/BoolSwitch";
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { Column } from "./FieldPrimitives";

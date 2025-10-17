@@ -1,5 +1,4 @@
 import React from "react";
-import type { ColumnComponent, ContentScale, ImageComponent, RowComponent, UIComponent, UIScreen } from "../../../shared/model/types";
 import { useBuilder } from "../../Builder/lib/builderContext";
 import { ButtonStyleGroup } from "../groups/ButtonStyleGroup";
 import { LayoutGroup } from "../groups/LayoutGroup";
@@ -10,6 +9,8 @@ import { applyDefaultsToComponent } from "../lib/constants";
 import { updateComponentById } from "../lib/utils";
 import { ImageStyleGroup } from "../groups/ImageStyleGroup";
 import { AligmentStyleGroup } from "../groups/AligmentStyleGroup";
+import type { UIComponent, ImageComponent, RowComponent, ColumnComponent } from "../../../entities/components/model/componentTypes";
+import type { UIScreen } from "../../../entities/screen/model/screenTypes";
 
 export const PropertyPanel: React.FC<{ className?: string }> = ({ className }) => {
   const { screen, updateScreen, selectedComponentId } = useBuilder();

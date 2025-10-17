@@ -1,4 +1,5 @@
-import type { ContentScale, ImageComponent } from "../../../shared/model/types";
+
+import type { ImageComponent, ContentScale } from "../../../entities/components/model/componentTypes";
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { TextInput } from "../../../shared/ui/TextInput/TextInput";
 import { Section } from "./Section";

@@ -5,8 +5,7 @@ import { Column } from "./FieldPrimitives";
 import "../styles/panel.css"
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
-import type { Modifier, Size } from "../../../shared/model/types";
-
+import type { Modifier, Size } from "../../../entities/components/model/componentTypes";
 
 const pctOrBoolOptions = [
     { label: "Off", value: "false" },

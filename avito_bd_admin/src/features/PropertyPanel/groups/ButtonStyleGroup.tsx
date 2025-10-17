@@ -8,8 +8,8 @@ import "../styles/panel.css"
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
 import { ColorInput } from "../../../shared/ui/ColorInput/ColorInput";
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
-import type { Border, Shape, ButtonStyle } from "../../../shared/model/types";
 import { TextInput } from "../../../shared/ui/TextInput/TextInput";
+import type { Border, Shape, ButtonStyle } from "../../../entities/components/model/componentTypes";
 
 
 const BorderEditor: React.FC<{ value?: Border; onChange: (next: Partial<Border>) => void }> = ({ value, onChange }) => (

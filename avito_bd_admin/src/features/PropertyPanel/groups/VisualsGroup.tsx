@@ -5,7 +5,8 @@ import { NumberInput } from '../../../shared/ui/NumberInput/NumberInput'
 import { Column } from "./FieldPrimitives";
 
 import "../styles/panel.css"
-import type { Shadow, Modifier } from "../../../shared/model/types";
+import type { Modifier, Shadow } from "../../../entities/components/model/componentTypes";
+
 
 
 const ShadowEditor: React.FC<{ value?: Shadow; onChange: (next: Partial<Shadow>) => void }> = ({ value, onChange }) => {

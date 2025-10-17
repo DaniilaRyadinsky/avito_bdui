@@ -1,6 +1,5 @@
 import styles from './Sidebar.module.css'
 
-import clsx from 'clsx'
 
 interface ISidebar {
     mode: "comp"| "col" | "var",

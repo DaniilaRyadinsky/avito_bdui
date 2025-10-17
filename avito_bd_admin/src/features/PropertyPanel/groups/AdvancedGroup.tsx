@@ -4,8 +4,8 @@ import { Column } from "./FieldPrimitives";
 
 import "../styles/panel.css"
 import { BoolSwitch } from "../../../shared/ui/BoolSwitch/BoolSwitch";
-import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
-import type { Modifier, ContentScale } from "../../../shared/model/types";
+import type { Modifier, ContentScale } from "../../../entities/components/model/componentTypes";
+
 
 
 export const AdvancedGroup: React.FC<{

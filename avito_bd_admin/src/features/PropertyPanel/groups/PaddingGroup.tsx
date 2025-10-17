@@ -3,9 +3,8 @@ import { Section } from "./Section";
 import { Column } from "./FieldPrimitives";
 
 import "../styles/panel.css"
-import { BoolSwitch } from "../../../shared/ui/BoolSwitch/BoolSwitch";
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
-import type { Margin, Padding } from "../../../shared/model/types";
+import type { Padding, Margin } from "../../../entities/components/model/componentTypes";
 
 
 export const PaddingGroup: React.FC<{ 

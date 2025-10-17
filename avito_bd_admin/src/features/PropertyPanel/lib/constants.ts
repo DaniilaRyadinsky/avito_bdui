@@ -1,9 +1,7 @@
-import type {
-  UIComponent,
-  Modifier,
-  UIScreen,
-} from "../../../shared/model/types";
-import { componentDefaults, defaultButtonStyle, defaultModifier, defaultTextStyle } from "../../ComponentLibrary/lib/constant";
+
+import type { UIComponent, Modifier } from "../../../entities/components/model/componentTypes";
+import type { UIScreen } from "../../../entities/screen/model/screenTypes";
+import { componentDefaults, defaultButtonStyle, defaultModifier, defaultTextStyle } from "../../LeftBar/ui/ComponentLibrary/lib/constant";
 
 
 // === утилиты ===
