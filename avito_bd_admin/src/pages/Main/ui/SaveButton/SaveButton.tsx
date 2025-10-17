@@ -39,7 +39,7 @@ export const SaveButton = () => {
             
             setMessage(isNewScreen ? "Экран успешно создан!" : "Изменения успешно сохранены!");
             if (!isNewScreen ) {
-                console.log("fetch")
+                // console.log("fetch")
                 fetchReloadScreen(screen._id)
             }
 

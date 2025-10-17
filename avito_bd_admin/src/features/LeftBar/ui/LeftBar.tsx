@@ -7,21 +7,24 @@ import { ComponentControls } from './ComponentControls/ComponentControls'
 import ComponentTree from '../../ComponentTree/ComponentTree'
 
 const LeftBar = () => {
-    const [mode, setMode] = useState<"comp"| "col" | "var">("comp")
+    const [mode, setMode] = useState<"comp" | "col" | "var">("comp")
 
     return (
         <div className={styles.container}>
 
-            <Sidebar  mode={mode} setMode={setMode}/>
+            <Sidebar mode={mode} setMode={setMode} />
             <div className={styles.panel}>
-                {mode == "comp" && <ComponentsWidget />}
-                {mode== "col" && <ColorsWidget/>}
+                {mode == "comp" && <>
+                    <ComponentsWidget />
+                    <ComponentControls />
+                    <ComponentTree />
+                </>}
+                {mode == "col" && <ColorsWidget />}
                 <div>
-              <ComponentControls/>
-              <ComponentTree />
+
+                </div>
             </div>
-            </div>
-            
+
         </div>
     )
 }
