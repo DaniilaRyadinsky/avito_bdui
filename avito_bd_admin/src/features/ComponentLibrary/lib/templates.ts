@@ -1,8 +1,9 @@
-import type { BoxComponent, ButtonComponent, CardComponent, CheckboxComponent, ColumnComponent, IconComponent, ImageComponent, RowComponent, SnackbarComponent, SpacerComponent, TextComponent, UIComponent } from "../../../entities/components/model/componentTypes";
+
+import type { TextComponent, ButtonComponent, ImageComponent, IconComponent, RowComponent, ColumnComponent, CheckboxComponent, SpacerComponent, CardComponent, SnackbarComponent, BoxComponent, UIComponent } from "../../../entities/components/model/componentTypes";
 import type { UIScreen } from "../../../entities/screen/model/screenTypes";
 import { defaultTextStyle, defaultModifier, componentDefaults, defaultButtonStyle, defaultPadding, defaultBorder, defaultShape, defaultClip, defaultShadow } from "./constant";
 
-  // ===== ВСПОМОГАТЕЛЬНОЕ =====
+// ===== ВСПОМОГАТЕЛЬНОЕ =====
 const genId = (prefix: string = "id") =>
     `${prefix}_${Math.random().toString(36).slice(2, 10)}`;
 
@@ -92,10 +93,7 @@ export const createRow = (overrides: Partial<RowComponent> = {}): RowComponent =
     const base: RowComponent = {
         type: "row",
         _id: genId("row"),
-        modifier: {
-            ...defaultModifier,
-            size: { width: "20", height: "20" },
-        },
+        modifier: defaultModifier,
         verticalAlignment: "center",
         horizontalArrangement: "start",
         children: [],
@@ -140,10 +138,7 @@ export const createSpacer = (overrides: Partial<SpacerComponent> = {}): SpacerCo
     const base: SpacerComponent = {
         type: "spacer",
         _id: genId("spacer"),
-        modifier: {
-            ...defaultModifier,
-            size: { width: "8", height: "8" },
-        },
+        modifier: defaultModifier,
     };
     return withDefaults(base, componentDefaults["spacer"], overrides);
 };
@@ -170,10 +165,7 @@ export const createSnackbar = (overrides: Partial<SnackbarComponent> = {}): Snac
         actionText: undefined,
         duration: 3000,
         actions: [],
-        modifier: {
-            ...defaultModifier,
-            background: "#323232",
-        },
+        modifier: defaultModifier,
     };
     return withDefaults(base, componentDefaults["snackbar"], overrides);
 };
@@ -220,30 +212,30 @@ export const Defaults = {
 };
 
 export const createComponent = (type: UIComponent["type"]) => {
-  switch (type) {
-    case ("text"):
-      return createText()
-    case ("button"):
-      return createButton()
-    case ("image"):
-      return createImage()
-    case ("icon"):
-      return createIcon()
-    case ("row"):
-      return createRow()
-    case ("column"):
-      return createColumn()
-    case ("checkbox"):
-      return createCheckbox()
-    case ("spacer"):
-      return createSpacer()
-    case ("card"):
-      return createCard()
-    case ("box"):
-      return createBox()
-    case ("snackbar"):
-      return createSnackbar()
-  }
+    switch (type) {
+        case ("text"):
+            return createText()
+        case ("button"):
+            return createButton()
+        case ("image"):
+            return createImage()
+        case ("icon"):
+            return createIcon()
+        case ("row"):
+            return createRow()
+        case ("column"):
+            return createColumn()
+        case ("checkbox"):
+            return createCheckbox()
+        case ("spacer"):
+            return createSpacer()
+        case ("card"):
+            return createCard()
+        case ("box"):
+            return createBox()
+        case ("snackbar"):
+            return createSnackbar()
+    }
 
 }
 

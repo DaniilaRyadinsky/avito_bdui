@@ -55,11 +55,6 @@ export const ComponentControls: React.FC = () => {
     return null;
   };
 
-  // Найдем выбранный компонент во всем дереве
-  const selectedComponent =
-    (screen && findComponentInTree(screen.content, selectedComponentId)) ||
-    (screen && findComponentInTree(screen.topBar, selectedComponentId)) ||
-    (screen && findComponentInTree(screen.bottomBar, selectedComponentId));
 
   const handleDelete = () => {
     if (confirm("Удалить компонент?")) {
