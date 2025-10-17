@@ -5,6 +5,8 @@ export const NEW_SCREEN_TEMPLATE: UIScreen = {
   _id: "a7b1a4ed-9c24-44e9-939d-fe7c2556dc85",
   name: "CartScreen",
   background: "#FFFFFF",
+  width: 420,
+  height: 800,
   topBar: [
     {
       _id: "comp-topbar-0-0dy6un5am",

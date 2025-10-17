@@ -12,6 +12,8 @@ export const SaveButton = () => {
 
     const navigate = useNavigate();
 
+    console.log(screen)
+
     const handleSave = async () => {
         if (!screen) return;
 

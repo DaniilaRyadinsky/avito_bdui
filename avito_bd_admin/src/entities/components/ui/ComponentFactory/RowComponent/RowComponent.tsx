@@ -74,8 +74,8 @@ export const RowComponent: React.FC<RowComponentProps> = ({
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
     boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`,
-    overflow: "hidden",
-    overflowX: scrollable ? "scroll" : "hidden"
+    // overflow: "hidden",
+    // overflowX: scrollable ? "scroll" : "hidden"
   };
 
   return (

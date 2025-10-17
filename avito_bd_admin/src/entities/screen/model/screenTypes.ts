@@ -17,8 +17,8 @@ export interface UIScreen {
   type: "screen";
   _id: string;
   name: string;
-  // width: string,
-  // height: string;
+  width: number,
+  height: number;
   background: string;
   topBar: UIComponent[];
   content: UIComponent[];

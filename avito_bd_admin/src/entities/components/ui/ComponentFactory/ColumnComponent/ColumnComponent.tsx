@@ -68,8 +68,8 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
     boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`,
-    overflow: "hidden",
-    overflowY: scrollable ? "scroll" : "hidden"
+    // overflow: "hidden",
+    // overflowY: scrollable ? "scroll" : "hidden"
   };
 
   return (

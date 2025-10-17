@@ -12,6 +12,7 @@ import { NumberInput } from "../../shared/ui/NumberInput/NumberInput";
 import Button from "../../shared/ui/Button/Button";
 import { SaveButton } from "./ui/SaveButton/SaveButton";
 import { fetchScreenData } from "./api/fetch";
+import SizeContainer from "./ui/SizeContainer/SizeContainer";
 
 
 
@@ -20,8 +21,7 @@ const Main = () => {
     const [fetchedData, setFetchedData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [width, setWidth] = useState(420);
-    const [height, setHeight] = useState(600);
+
 
     const navigate = useNavigate();
 
@@ -31,6 +31,9 @@ const Main = () => {
 
     // Передаем полученные данные в useScreenData
     const screen = useScreenData(fetchedData);
+    console.log(screen)
+
+
 
     if (!screenId && loading) {
         return (
@@ -96,26 +99,13 @@ const Main = () => {
                             <div className={styles.top_actions}>
                                 <Button onClick={() => navigate("/")} >← К списку экранов</Button>
                             </div>
-                            <div className={styles.input_container}>
-                                <NumberInput
-                                    value={width}
-                                    min={0}
-                                    max={2000}
-                                    onChange={(e) => setWidth(e)}
-                                />
-                                <NumberInput
-                                    value={height}
-                                    min={0}
-                                    max={2000}
-                                    onChange={(e) => setHeight(e)}
-                                />
-                            </div>
+                            <SizeContainer/>
                             <SaveButton />
                         </div>
                         <div className={styles.workspace}>
                             <div
                                 className={styles.screen}
-                                style={{ width: width, height: height }}>
+                                style={{ width: screen.width, height: screen.height }}>
                                 <ScreenRenderer />
                             </div>
                         </div>
