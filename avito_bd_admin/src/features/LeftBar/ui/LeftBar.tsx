@@ -4,6 +4,7 @@ import { useState } from 'react'
 import ColorsWidget from './ColorsWiget/ColorsWidget'
 import ComponentsWidget from './ComponentLibrary/ui/ComponentWidget/ComponentWidget'
 import { ComponentControls } from './ComponentControls/ComponentControls'
+import ComponentTree from '../../ComponentTree/ComponentTree'
 
 const LeftBar = () => {
     const [mode, setMode] = useState<"comp"| "col" | "var">("comp")
@@ -17,6 +18,7 @@ const LeftBar = () => {
                 {mode== "col" && <ColorsWidget/>}
                 <div>
               <ComponentControls/>
+              <ComponentTree />
             </div>
             </div>
             

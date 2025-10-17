@@ -88,5 +88,13 @@ export const fetchUpdateScreen: any = async (screenData: any, id: string) => {
             return { success: true, message: "Пустой ответ" };
         }
     }
+}
 
+export const fetchReloadScreen = async(id: string) => {
+    fetch(`http://31.56.205.210:8080/api/client/reload?id=${id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
 }

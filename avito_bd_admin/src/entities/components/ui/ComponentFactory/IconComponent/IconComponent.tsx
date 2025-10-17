@@ -1,5 +1,5 @@
 import React from "react";
-import type { IconComponent as IconComponentType } from "../../../../../shared/model/types";
+import type { IconComponent as IconComponentType } from "../../../model/componentTypes";
 import {  calculateSize } from "../utils";
 
 interface IconComponentProps {

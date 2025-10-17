@@ -1,5 +1,4 @@
-import React, { use, useEffect, useLayoutEffect } from "react";
-import type { SpacerComponent as SpacerComponentType } from "../../../../../shared/model/types";
+import type { SpacerComponent as SpacerComponentType } from "../../../model/componentTypes";
 import { calculateSize } from "../utils";
 
 interface SpacerComponentProps {

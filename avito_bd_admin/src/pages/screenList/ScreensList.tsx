@@ -68,7 +68,7 @@ const ScreensList = () => {
               <Button onClick={() => navigate(`/builder/${screen._id}`)}> {screen._id === "new"
                 ? "Продолжить изменения"
                 : "Открыть в Редакторе"}</Button>
-              <Button onClick={() => handleDeleteClick(screen._id)}>Удалить</Button>
+              <Button style={{background:"#e12323"}} onClick={() => handleDeleteClick(screen._id)}>Удалить</Button>
             </div>
           </div>
         ))}

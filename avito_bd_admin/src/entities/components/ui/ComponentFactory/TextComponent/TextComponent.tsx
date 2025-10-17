@@ -1,5 +1,5 @@
 import React from "react";
-import type { TextComponent as TextComponentType } from "../../../../../shared/model/types";
+import type { TextComponent as TextComponentType } from "../../../model/componentTypes";
 import { calculateSize } from "../utils";
 
 interface TextComponentProps {

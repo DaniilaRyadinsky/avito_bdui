@@ -90,7 +90,7 @@ export const componentDefaults: {
             size: { width: "match_parent", height: "20" }, 
             scrollable:false,
         },
-        verticalAlignment: "centerVertically",
+        verticalAlignment: "center",
         horizontalArrangement: "start",
     },
     column: {
@@ -100,8 +100,8 @@ export const componentDefaults: {
             size: { width: "20", height: "match_parent" }, 
             scrollable:false,
         },
-        verticalAlignment: "top",
-        horizontalArrangement: "start",
+        verticalArrangement: "top",
+        horizontalAlignment: "start",
     },
     box: {
         modifier: {

@@ -5,11 +5,13 @@ interface IButton {
   onClick?: () => void;
   disabled?: boolean;
   children: React.ReactNode;
+  style?: React.CSSProperties
 }
 
-const Button = ({ onClick, disabled, children }:IButton) => {
+const Button = ({ onClick, disabled, children, style }:IButton) => {
   return (
     <button
+    style={style}
       onClick={onClick}
       disabled={disabled}
       className={styles.saveButton}

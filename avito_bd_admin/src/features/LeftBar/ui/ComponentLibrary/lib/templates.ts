@@ -94,7 +94,7 @@ export const createRow = (overrides: Partial<RowComponent> = {}): RowComponent =
         type: "row",
         _id: genId("row"),
         modifier: defaultModifier,
-        verticalAlignment: "centerVertically",
+        verticalAlignment: "center",
         horizontalArrangement: "start",
         children: [],
     };
@@ -108,8 +108,8 @@ export const createColumn = (overrides: Partial<ColumnComponent> = {}): ColumnCo
         type: "column",
         _id: genId("column"),
         modifier: defaultModifier,
-        verticalAlignment: "top",
-        horizontalArrangement: "start",
+        verticalArrangement: "top",
+        horizontalAlignment: "start",
         children: [],
     };
     return withDefaults(base, componentDefaults["column"], overrides);

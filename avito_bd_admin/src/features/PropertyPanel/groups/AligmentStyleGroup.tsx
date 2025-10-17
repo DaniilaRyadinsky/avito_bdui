@@ -1,5 +1,5 @@
 
-import type { RowComponent, ColumnComponent, VerticalAlignment, HorizontalArrangement } from "../../../entities/components/model/componentTypes";
+import type { RowComponent, ColumnComponent, RowVerticalAlignment, RowHorizontalArrangement, ColumnHorizontalAlignment, ColumnVerticalArrangement } from "../../../entities/components/model/componentTypes";
 import { BoolSwitch } from "../../../shared/ui/BoolSwitch/BoolSwitch";
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { Column } from "./FieldPrimitives";
@@ -23,47 +23,48 @@ export const AligmentStyleGroup: React.FC<{
 
   return (
     <Section title="Выравнивание контейнера">
+      {/* СТРОКА */}
       {isRow(value) && (
         <>
           <Column label="По вертикали (Row)">
             <SelectBox
               value={String(value.verticalAlignment ?? "centerVertically")}
               onChange={(v) =>
-                setRowCol({ verticalAlignment: v as VerticalAlignment })
+                setRowCol({ verticalAlignment: v as RowVerticalAlignment })
               }
-              options={["top", "centerVertically", "bottom"].map(x => ({ label: x, value: x }))}
+              options={["top", "center", "bottom"].map(x => ({ label: x, value: x }))}
             />
           </Column>
           <Column label="По горизонтали (Row)">
             <SelectBox
-              value={String(value.verticalAlignment ?? "centerVertically")}
+              value={String(value.horizontalArrangement ?? "centerVertically")}
               onChange={(v) =>
-                setRowCol({ horizontalArrangement: v as HorizontalArrangement })
+                setRowCol({ horizontalArrangement: v as RowHorizontalArrangement })
               }
-              options={["start", "center", "end", "spaceBetween", "spaceAround", "spaceEvenly"].map(x => ({ label: x, value: x }))}
+              options={['start', 'center', 'end', 'spaceBetween', 'spaceAround', 'spaceEvenly'].map(x => ({ label: x, value: x }))}
             />
           </Column>
         </>
       )}
-
+      {/* СТОЛБЕЦ */}
       {isColumn(value) && (
         <>
           <Column label="По вертикали (Column)">
             <SelectBox
-              value={String(value.verticalAlignment ?? "top")}
+              value={String(value.verticalArrangement ?? "top")}
               onChange={(v) =>
-                setRowCol({ verticalAlignment: v as VerticalAlignment })
+                setRowCol({ verticalArrangement: v as ColumnVerticalArrangement })
               }
-              options={["top", "centerVertically", "bottom"].map(x => ({ label: x, value: x }))}
+              options={["top", "center", "bottom", 'spaceBetween', 'spaceAround', 'spaceEvenly'].map(x => ({ label: x, value: x }))}
             />
           </Column>
           <Column label="По горизонтали (Column)">
             <SelectBox
-              value={String(value.horizontalArrangement ?? "top")}
+              value={String(value.horizontalAlignment ?? "top")}
               onChange={(v) =>
-                setRowCol({ horizontalArrangement: v as HorizontalArrangement })
+                setRowCol({ horizontalArrangement: v as ColumnHorizontalAlignment })
               }
-              options={["start", "center", "end", "spaceBetween", "spaceAround", "spaceEvenly"].map(x => ({ label: x, value: x }))}
+              options={["start", "center", "end"].map(x => ({ label: x, value: x }))}
             />
           </Column>
         </>

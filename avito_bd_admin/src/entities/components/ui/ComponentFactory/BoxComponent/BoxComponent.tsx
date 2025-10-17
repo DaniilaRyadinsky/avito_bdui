@@ -1,10 +1,8 @@
 import React from "react";
 import type {
   BoxComponent as BoxComponentType,
-  Padding,
-  Size,
   UIComponent,
-} from "../../../../../shared/model/types";
+} from "../../../model/componentTypes";
 import { ComponentFactory } from "../ComponentFactory";
 import {  calculateSize} from "../utils";
 

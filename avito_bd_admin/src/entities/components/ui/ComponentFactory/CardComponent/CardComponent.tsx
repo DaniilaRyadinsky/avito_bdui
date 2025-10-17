@@ -2,7 +2,7 @@ import React from "react";
 import type {
   CardComponent as CardComponentType,
   UIComponent,
-} from "../../../../../shared/model/types";
+} from "../../../model/componentTypes";
 import { ComponentFactory } from "../ComponentFactory";
 import {  calculateSize } from "../utils";
 

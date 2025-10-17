@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import LeftBar from "../../features/LeftBar/ui/LeftBar";
-import Topbar from "../../widgets/Topbar/Topbar";
 import { ScreenRenderer } from "../../entities/screen/ui/ScreenRenderer/index";
 import {
-    BuilderProvider,
-    useBuilder,
+    BuilderProvider
 } from "../../features/Builder/lib/builderContext";
 import { useScreenData } from "../../entities/screen/lib/useScreenData";
 import styles from "./Main.module.css";

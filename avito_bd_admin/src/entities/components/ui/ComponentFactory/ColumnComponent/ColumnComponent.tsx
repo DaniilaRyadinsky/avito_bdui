@@ -2,9 +2,9 @@ import React from "react";
 import type {
   ColumnComponent as ColumnComponentType,
   UIComponent,
-} from "../../../../../shared/model/types";
+} from "../../../model/componentTypes";
 import { ComponentFactory } from "../ComponentFactory";
-import {  calculateSize } from "../utils";
+import { calculateSize, getColHorizontalArrangement, getColVerticalAlignment } from "../utils";
 
 interface ColumnComponentProps {
   component: ColumnComponentType;
@@ -21,8 +21,8 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
 }) => {
   const {
     children = [],
-    verticalAlignment = "top",
-    horizontalArrangement = "start",
+    verticalArrangement = "top",
+    horizontalAlignment = "start",
     modifier = {},
   } = component;
 
@@ -30,7 +30,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
 
   const {
     padding = {},
-    margin={},
+    margin = {},
     background,
     scrollable,
     clip,
@@ -50,28 +50,11 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
 
   const columnStyle: React.CSSProperties = {
     width: calculateSize(size?.width, padding.start, padding.end, margin.start, margin.end),
-    height: calculateSize(size?.height, padding.top, padding.bottom,margin.top, margin.top),
+    height: calculateSize(size?.height, padding.top, padding.bottom, margin.top, margin.top),
     display: "flex",
     flexDirection: "column",
-    justifyContent:
-      verticalAlignment === "top"
-        ? "flex-start"
-        : verticalAlignment === "centerVertically"
-          ? "center"
-          : verticalAlignment === "bottom"
-            ? "flex-end"
-            : "",
-    // : verticalArrangement === "spaceBetween"
-    // ? "space-between"
-    // : verticalArrangement === "spaceAround"
-    // ? "space-around"
-    // : "flex-start",
-    alignItems:
-      horizontalArrangement === "start"
-        ? "flex-start"
-        : horizontalArrangement === "center"
-          ? "center"
-          : "flex-end",
+    justifyContent: getColVerticalAlignment(verticalArrangement),
+    alignItems: getColHorizontalArrangement(horizontalAlignment),
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     border:
@@ -86,7 +69,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     outlineOffset: "2px",
     boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`,
     overflow: "hidden",
-    overflowY: scrollable? "scroll" : "hidden"
+    overflowY: scrollable ? "scroll" : "hidden"
   };
 
   return (

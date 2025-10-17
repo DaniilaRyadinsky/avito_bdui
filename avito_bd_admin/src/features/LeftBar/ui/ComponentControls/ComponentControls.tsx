@@ -3,13 +3,13 @@ import React from "react";
 import { useBuilder } from "../../../Builder/lib/builderContext";
 import styles from "./ComponentControls.module.css";
 import type { UIComponent } from "../../../../entities/components/model/componentTypes";
+import Button from "../../../../shared/ui/Button/Button";
 
 
 export const ComponentControls: React.FC = () => {
   const {
     screen,
     selectedComponentId,
-    setSelectedComponent,
     deleteComponent,
     moveComponent,
   } = useBuilder();
@@ -69,27 +69,27 @@ export const ComponentControls: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <h3>Управление компонентом</h3>
         <div className={styles.componentId}>ID: {selectedComponentId}</div>
         <div className={styles.componentType}>
           Тип: {selectedComponent?.type || "unknown"}
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.controls}>
         <div className={styles.section}>
           <h4>Действия</h4>
           <div className={styles.actions}>
-            <button onClick={handleDelete} className={styles.delete}>
+            <Button onClick={handleDelete} style={{background:"#e12323"}}>
               🗑️ Удалить
-            </button>
-            <button onClick={handleMoveUp} className={styles.button}>
+            </Button>
+            <Button onClick={handleMoveUp} >
               ↑ Вверх
-            </button>
-            <button onClick={handleMoveDown} className={styles.button}>
+            </Button>
+            <Button onClick={handleMoveDown} >
               ↓ Вниз
-            </button>
+            </Button>
           </div>
         </div>
 

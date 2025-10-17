@@ -1,5 +1,5 @@
 import React from "react";
-import type { ImageComponent as ImageComponentType } from "../../../../../shared/model/types";
+import type { ImageComponent as ImageComponentType } from "../../../model/componentTypes";
 import { calculateSize } from "../utils";
 
 interface ImageComponentProps {

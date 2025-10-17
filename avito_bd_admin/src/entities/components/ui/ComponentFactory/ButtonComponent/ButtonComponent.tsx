@@ -1,5 +1,5 @@
 import React from "react";
-import type { ButtonComponent as ButtonComponentType } from "../../../../../shared/model/types";
+import type { ButtonComponent as ButtonComponentType } from "../../../model/componentTypes";
 import {calculateSize } from "../utils";
 
 interface ButtonComponentProps {

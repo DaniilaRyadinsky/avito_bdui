@@ -3,7 +3,7 @@ import { useBuilder } from "../../../../features/Builder/lib/builderContext";
 import { useNavigate } from "react-router-dom";
 import Button from "../../../../shared/ui/Button/Button";
 import styles from './SaveButton.module.css'
-import { fetchCreateScreen, fetchUpdateScreen } from "../../api/fetch";
+import { fetchCreateScreen, fetchReloadScreen, fetchUpdateScreen } from "../../api/fetch";
 
 export const SaveButton = () => {
     const { screen } = useBuilder();
@@ -36,6 +36,10 @@ export const SaveButton = () => {
                 navigate(`/builder/${result.id}`)
             
             setMessage(isNewScreen ? "Экран успешно создан!" : "Изменения успешно сохранены!");
+            if (!isNewScreen ) {
+                console.log("fetch")
+                fetchReloadScreen(screen._id)
+            }
 
         } catch (err) {
             setMessage(`Ошибка: ${err instanceof Error ? err.message : "Неизвестная ошибка"}`);

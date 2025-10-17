@@ -1,5 +1,5 @@
 import React from "react";
-import type { CheckboxComponent as CheckboxComponentType } from "../../../../../shared/model/types";
+import type { CheckboxComponent as CheckboxComponentType } from "../../../model/componentTypes";
 import { calculateSize } from "../utils";
 
 interface CheckboxComponentProps {

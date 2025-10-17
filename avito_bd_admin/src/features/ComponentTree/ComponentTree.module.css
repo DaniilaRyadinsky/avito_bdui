@@ -1,0 +1,96 @@
+.tree {
+  font: 12px/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  color: #1f2937;
+  user-select: none;
+}
+
+.section {
+  margin-bottom: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sectionHeader {
+  padding: 6px 10px;
+  background: #f3f4f6;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: .2px;
+}
+
+.sectionBody {
+  padding: 6px 6px 6px 8px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px 2px 2px;
+  border-radius: 6px;
+}
+
+.row:hover {
+  background: #f9fafb;
+}
+
+.active {
+  background: #e8f0ff;
+  outline: 1px solid #93c5fd;
+}
+
+.disclosure,
+.title {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 2px 4px;
+  font: inherit;
+  color: inherit;
+}
+
+.disclosure {
+  width: 16px;
+  text-align: center;
+  opacity: .8;
+}
+.disclosure:hover { opacity: 1; }
+
+.disclosurePlaceholder {
+  display: inline-block;
+  width: 16px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 8px;
+  min-width: 0; /* важно для работы overflow внутри */
+}
+
+.type {
+  font-weight: 600;
+  color: #111827;
+  flex-shrink: 0;
+}
+
+.id {
+  flex: 1;
+  text-align: right;
+  color: #6b7280;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  /* ✅ обрезает длинные id */
+}
+
+.node { margin-left: 10px; }
+.children { margin-left: 12px; }
+
+.empty, .dim {
+  color: #9ca3af;
+  padding: 8px;
+}

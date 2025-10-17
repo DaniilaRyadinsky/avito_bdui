@@ -10,7 +10,7 @@ import { CheckboxComponent } from "./CheckboxComponent/CheckboxComponent";
 import { SpacerComponent } from "./SpacerComponent/SpacerComponent";
 import { CardComponent } from "./CardComponent/CardComponent";
 import { BoxComponent } from "./BoxComponent/BoxComponent";
-import BoxModelVisualizer from "../../../../shared/ui/BoxModelVisualizer/BoxModelVisualizer";
+import BoxModelVisualizer from "../../../../features/BoxModelVisualizer/BoxModelVisualizer";
 
 interface ComponentFactoryProps {
   component: UIComponent;

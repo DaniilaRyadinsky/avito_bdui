@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./BoxModelVisualizer.module.css";
-import type { Modifier } from "../../model/types";
+import type { Modifier } from "../../entities/components/model/componentTypes";
+
 
 const colors = {
   margin: "#F6B26B",
@@ -95,16 +96,16 @@ export const BoxModelVisualizer = ({ modifier, children }: BoxModelVisualizerPro
   };
 
   // Контентная область (для наглядности)
-  const contentInnerStyle: React.CSSProperties = {
-    outline: `1px solid ${colors.outline}`,
-    backgroundColor: colors.content,
-    // создаём внутренний бокс, чтобы padding был виден как «ободок»
-    paddingTop: pad.top,
-    paddingRight: pad.right,
-    paddingBottom: pad.bottom,
-    paddingLeft: pad.left,
-    boxSizing: "border-box",
-  };
+  // const contentInnerStyle: React.CSSProperties = {
+  //   outline: `1px solid ${colors.outline}`,
+  //   backgroundColor: colors.content,
+  //   // создаём внутренний бокс, чтобы padding был виден как «ободок»
+  //   paddingTop: pad.top,
+  //   paddingRight: pad.right,
+  //   paddingBottom: pad.bottom,
+  //   paddingLeft: pad.left,
+  //   boxSizing: "border-box",
+  // };
 
   return (
     <div className={styles.container}>
