@@ -118,7 +118,7 @@ export const componentDefaults: {
         shape: { cornerRadius: 12 },
     },
     checkbox: {
-        modifier: { ...defaultModifier }, // размер задаётся содержимым/темой
+        modifier: { ...defaultModifier, size: {width:"19", height: "19"} }, // размер задаётся содержимым/темой
         colors: {
             checkedColor: "#1976d2",
             uncheckedColor: "#9e9e9e",

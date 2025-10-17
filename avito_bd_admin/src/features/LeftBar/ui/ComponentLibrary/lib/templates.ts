@@ -3,7 +3,7 @@ import type { TextComponent, ButtonComponent, ImageComponent, IconComponent, Row
 import type { UIScreen } from "../../../../../entities/screen/model/screenTypes";
 import { defaultTextStyle, defaultModifier, componentDefaults, defaultButtonStyle, defaultPadding, defaultBorder, defaultShape, defaultClip, defaultShadow } from "./constant";
 
-  // ===== ВСПОМОГАТЕЛЬНОЕ =====
+// ===== ВСПОМОГАТЕЛЬНОЕ =====
 const genId = (prefix: string = "id") =>
     `${prefix}_${Math.random().toString(36).slice(2, 10)}`;
 
@@ -211,30 +211,30 @@ export const Defaults = {
 };
 
 export const createComponent = (type: UIComponent["type"]) => {
-  switch (type) {
-    case ("text"):
-      return createText()
-    case ("button"):
-      return createButton()
-    case ("image"):
-      return createImage()
-    case ("icon"):
-      return createIcon()
-    case ("row"):
-      return createRow()
-    case ("column"):
-      return createColumn()
-    case ("checkbox"):
-      return createCheckbox()
-    case ("spacer"):
-      return createSpacer()
-    case ("card"):
-      return createCard()
-    case ("box"):
-      return createBox()
-    case ("snackbar"):
-      return createSnackbar()
-  }
+    switch (type) {
+        case ("text"):
+            return createText()
+        case ("button"):
+            return createButton()
+        case ("image"):
+            return createImage()
+        case ("icon"):
+            return createIcon()
+        case ("row"):
+            return createRow()
+        case ("column"):
+            return createColumn()
+        case ("checkbox"):
+            return createCheckbox()
+        case ("spacer"):
+            return createSpacer()
+        case ("card"):
+            return createCard()
+        case ("box"):
+            return createBox()
+        case ("snackbar"):
+            return createSnackbar()
+    }
 
 }
 
