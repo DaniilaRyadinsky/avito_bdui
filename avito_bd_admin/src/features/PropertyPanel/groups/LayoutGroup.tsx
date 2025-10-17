@@ -6,6 +6,7 @@ import "../styles/panel.css"
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { NumberInput } from "../../../shared/ui/NumberInput/NumberInput";
 import type { Modifier, Size } from "../../../entities/components/model/componentTypes";
+import { BoolSwitch } from "../../../shared/ui/BoolSwitch/BoolSwitch";
 
 // const pctOrBoolOptions = [
 //     { label: "Off", value: "false" },
@@ -104,12 +105,12 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
             </div>
 
             <Column label="Weight"><NumberInput min={0} value={Number(value?.weight)} onChange={(n) => onChange({ weight: n })} step={0.1} /></Column>
-            {/* <Column label="Fill max width">
-                <SelectBox value={String(value.fillMaxWidth)} onChange={(v) => onChange({ fillMaxWidth: v === "true" ? true : v === "false" ? false : Number(v) })} options={pctOrBoolOptions} />
+            <Column label="Fill max width">
+                <BoolSwitch checked={value?.fillMaxWidth} onChange={(v) => onChange({ fillMaxWidth: v })} />
             </Column>
             <Column label="Fill max height">
-                <SelectBox value={String(value.fillMaxHeight)} onChange={(v) => onChange({ fillMaxHeight: v === "true" ? true : v === "false" ? false : Number(v) })} options={pctOrBoolOptions} />
-            </Column> */}
+                <BoolSwitch checked={value?.fillMaxHeight} onChange={(v) => onChange({ fillMaxHeight: v })} />
+            </Column>
 
             {/* <Column label="Выравнивание">
                 <SelectBox value={value?.align} onChange={(v) => onChange({ align: v as any })} options={["start", "center", "end", "top", "bottom"].map(x => ({ label: x, value: x }))} />

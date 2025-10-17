@@ -13,5 +13,6 @@ export function validateScreenData(data: any): UIScreen {
     content: data.content || [],
     bottomBar: data.bottomBar || [],
     snackbars: data.snackbars || [],
+    bottomSheets: data.bottomSheets || []
   };
 }

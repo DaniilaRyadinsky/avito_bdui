@@ -65,7 +65,7 @@ export const createImage = (overrides: Partial<ImageComponent> = {}): ImageCompo
         _id: genId("image"),
         url: "",
         contentDescription: "",
-        contentScale: "Inside",
+        contentScale: "Fill",
         placeholder: null,
         error: null,
         modifier: defaultModifier,
@@ -194,6 +194,7 @@ export const createScreen = (overrides: Partial<UIScreen> = {}): UIScreen => {
         content: [],
         bottomBar: [],
         snackbars: [],
+        bottomSheets: []
     };
     return deepMerge(base, overrides);
 };

@@ -1,4 +1,4 @@
-import type { RawUIComponent, SnackbarComponent, UIComponent } from "../../components/model/componentTypes";
+import type { BottomSheetComponent, RawUIComponent, SnackbarComponent, UIComponent } from "../../components/model/componentTypes";
 
 export type RawUIScreen = {
   type: string;
@@ -24,4 +24,5 @@ export interface UIScreen {
   content: UIComponent[];
   bottomBar: UIComponent[];
   snackbars: SnackbarComponent[];
+  bottomSheets: BottomSheetComponent[];
 }

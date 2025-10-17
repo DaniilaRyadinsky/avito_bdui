@@ -107,7 +107,8 @@ export type UIComponentType =
     | "spacer"
     | "card"
     | "box"
-    | "snackbar";
+    | "snackbar"
+    | "bottomSheet";
 
 export interface ComponentTemplate {
     type: UIComponentType;
@@ -197,6 +198,13 @@ export interface SnackbarComponent extends ComponentTemplate {
     actionText?: string;
     duration?: number;
 }
+
+export interface BottomSheetComponent extends ComponentTemplate {
+    type: "bottomSheet";
+    dismissible: boolean,
+    children: UIComponent[];
+}
+
 
 export interface BoxComponent extends ComponentTemplate {
     type: "box";

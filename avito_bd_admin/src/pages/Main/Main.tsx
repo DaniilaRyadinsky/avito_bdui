@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import LeftBar from "../../features/LeftBar/ui/LeftBar";
-import { ScreenRenderer } from "../../entities/screen/ui/ScreenRenderer/index";
+import { ScreenRenderer } from "../../entities/screen/ui/ScreenRenderer/ScreenRenderer";
 import {
     BuilderProvider
 } from "../../features/Builder/lib/builderContext";

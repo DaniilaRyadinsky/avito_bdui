@@ -50,6 +50,7 @@ export const NEW_SCREEN_TEMPLATE: UIScreen = {
       children: [],
     },
   ],
+  bottomSheets: [],
   snackbars: [],
   type: "screen",
 };

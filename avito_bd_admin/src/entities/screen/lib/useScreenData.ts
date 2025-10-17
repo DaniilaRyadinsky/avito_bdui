@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import type { SnackbarComponent, UIComponent } from "../../components/model/componentTypes";
+import type { BottomSheetComponent, SnackbarComponent, UIComponent } from "../../components/model/componentTypes";
 import type { UIScreen, RawUIScreen } from "../model/screenTypes";
 
 
@@ -106,6 +106,7 @@ export function useScreenData(initialData: any): UIScreen | null {
         content: adaptedData.content as unknown as UIComponent[] || [],
         bottomBar: adaptedData.bottomBar as unknown as UIComponent[] || [],
         snackbars: adaptedData.snackbars as unknown as SnackbarComponent[] || [],
+        bottomSheets: adaptedData.bottomSheets as unknown as BottomSheetComponent[] || [],
       };
 
       const screenWithIds = ensureAllComponentsHaveIds(screen);
