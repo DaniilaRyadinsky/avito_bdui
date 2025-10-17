@@ -13,26 +13,20 @@ import { SaveButton } from "./ui/SaveButton/SaveButton";
 import { fetchScreenData } from "./api/fetch";
 import SizeContainer from "./ui/SizeContainer/SizeContainer";
 
-
-
 const Main = () => {
     const { screenId } = useParams<{ screenId: string }>();
     const [fetchedData, setFetchedData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-
-
     const navigate = useNavigate();
 
     useEffect(() => {
         fetchScreenData(screenId, setFetchedData, setLoading, setError);
     }, [screenId]);
 
-    // Передаем полученные данные в useScreenData
-    const screen = useScreenData(fetchedData);
+    const screen = useScreenData(fetchedData)
+
     console.log(screen)
-
-
 
     if (!screenId && loading) {
         return (
@@ -98,15 +92,12 @@ const Main = () => {
                             <div className={styles.top_actions}>
                                 <Button onClick={() => navigate("/")} >← К списку экранов</Button>
                             </div>
-                            <SizeContainer/>
+                            <SizeContainer />
                             <SaveButton />
                         </div>
                         <div className={styles.workspace}>
-                            <div
-                                className={styles.screen}
-                                style={{ width: screen.width, height: screen.height }}>
-                                <ScreenRenderer />
-                            </div>
+                            <ScreenRenderer />
+                            
                         </div>
                     </div>
                     <PropertyPanel />
