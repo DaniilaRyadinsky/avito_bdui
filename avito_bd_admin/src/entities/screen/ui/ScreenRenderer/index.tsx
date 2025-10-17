@@ -1,7 +1,8 @@
 import React from "react";
+
+import styles from "./ScreenRenderer.module.css";
 import { ComponentFactory } from "../../../components/ui/ComponentFactory/ComponentFactory";
 import { useBuilder } from "../../../../features/Builder/lib/builderContext";
-import styles from "./ScreenRenderer.module.css";
 
 export const ScreenRenderer: React.FC = () => {
   const { screen, selectedComponentId, setSelectedComponent } = useBuilder();

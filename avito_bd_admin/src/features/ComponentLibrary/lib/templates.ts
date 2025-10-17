@@ -1,4 +1,5 @@
-import type { UIComponent, BoxComponent, ButtonComponent, CardComponent, CheckboxComponent, ColumnComponent, IconComponent, ImageComponent, RowComponent, SnackbarComponent, SpacerComponent, TextComponent, UIScreen } from "../../../shared/model/types";
+import type { BoxComponent, ButtonComponent, CardComponent, CheckboxComponent, ColumnComponent, IconComponent, ImageComponent, RowComponent, SnackbarComponent, SpacerComponent, TextComponent, UIComponent } from "../../../entities/components/model/componentTypes";
+import type { UIScreen } from "../../../entities/screen/model/screenTypes";
 import { defaultTextStyle, defaultModifier, componentDefaults, defaultButtonStyle, defaultPadding, defaultBorder, defaultShape, defaultClip, defaultShadow } from "./constant";
 
   // ===== ВСПОМОГАТЕЛЬНОЕ =====
@@ -95,7 +96,7 @@ export const createRow = (overrides: Partial<RowComponent> = {}): RowComponent =
             ...defaultModifier,
             size: { width: "20", height: "20" },
         },
-        verticalAlignment: "centerVertically",
+        verticalAlignment: "center",
         horizontalArrangement: "start",
         children: [],
     };
@@ -109,8 +110,8 @@ export const createColumn = (overrides: Partial<ColumnComponent> = {}): ColumnCo
         type: "column",
         _id: genId("column"),
         modifier: defaultModifier,
-        verticalAlignment: "top",
-        horizontalArrangement: "start",
+        verticalArrangement: "top",
+        horizontalAlignment: "start",
         children: [],
     };
     return withDefaults(base, componentDefaults["column"], overrides);
@@ -194,6 +195,8 @@ export const createScreen = (overrides: Partial<UIScreen> = {}): UIScreen => {
         type: "screen",
         _id: genId("screen"),
         name: "Screen",
+        width: 420,
+        height: 800,
         background: "#ffffff",
         topBar: [],
         content: [],

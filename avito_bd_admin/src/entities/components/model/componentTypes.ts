@@ -40,9 +40,6 @@ export type Clip = {
 
 export type ContentScale = "Fill" | "FillHeight" | "Crop" | "FillWidth" | "Inside" | "None" | "FillBounds"
 
-// export type VerticalAlignment = 'top' | 'center' | 'bottom' | 'spaceBetween' | 'spaceAround' | 'spaceEvenly'
-// export type HorizontalArrangement = 'start' | 'center' | 'end'
-
 export type Shadow = {
     elevation?: number,
     color?: string

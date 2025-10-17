@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import styles from "./ComponentTree.module.css";
 import type { RowComponent, ColumnComponent, CardComponent, BoxComponent, UIComponent } from "../../entities/components/model/componentTypes";
 import type { UIScreen } from "../../entities/screen/model/screenTypes";

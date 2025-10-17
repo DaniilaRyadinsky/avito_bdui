@@ -1,5 +1,4 @@
 import React from "react";
-import type { UIComponent } from "../../../../shared/model/types";
 import { TextComponent } from "./TextComponent/TextComponent";
 import { ButtonComponent } from "./ButtonComponent/ButtonComponent";
 import { ImageComponent } from "./ImageComponent/ImageComponent";
@@ -11,6 +10,7 @@ import { SpacerComponent } from "./SpacerComponent/SpacerComponent";
 import { CardComponent } from "./CardComponent/CardComponent";
 import { BoxComponent } from "./BoxComponent/BoxComponent";
 import BoxModelVisualizer from "../../../../features/BoxModelVisualizer/BoxModelVisualizer";
+import type { UIComponent } from "../../model/componentTypes";
 
 interface ComponentFactoryProps {
   component: UIComponent;

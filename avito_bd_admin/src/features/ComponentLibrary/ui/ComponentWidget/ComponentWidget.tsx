@@ -2,10 +2,10 @@
 import React from "react";
 import styles from "./ComponentWidget.module.css";
 import { useBuilder } from "../../../Builder/lib/builderContext";
-import type { UIComponent } from "../../../../shared/model/types";
 import Summary from "../../../../shared/ui/Summary/Summary";
 import { componentTemplates } from "../../lib/constant";
 import { createComponent } from "../../lib/templates";
+import type { UIComponent } from "../../../../entities/components/model/componentTypes";
 
 
 // Компонент для элемента библиотеки

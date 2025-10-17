@@ -1,7 +1,8 @@
-import type { Padding, Border, Shape, Clip, Shadow, Modifier, TextStyle, ButtonStyle, UIComponent } from "../../../shared/model/types";
+import type { Border, ButtonStyle, Clip, Modifier, Padding, Shadow, Shape, TextStyle, UIComponent } from "../../../entities/components/model/componentTypes";
+
 
 // ===== ГЛОБАЛЬНЫЕ ДЕФОЛТЫ =====
-export const defaultPadding: Padding = { all: 5, start: 10, end: 10, top: 10, bottom: 10 };
+export const defaultPadding: Padding = { start: 10, end: 10, top: 10, bottom: 10 };
 export const defaultBorder: Border = { width: 0, color: "#000000" };
 export const defaultShape: Shape = { cornerRadius: 0, topStart: 0, topEnd: 0 };
 export const defaultClip: Clip = { cornerRadius: 0 };
@@ -57,16 +58,16 @@ export const componentDefaults: {
         modifier: {
             ...defaultModifier,
             size: { width: "wrap_content", height: "wrap_content" },
-            padding: { ...defaultPadding, all: 0 }, // обычно текст без внешних отступов
+            padding: defaultPadding, // обычно текст без внешних отступов
         },
-        style: { ...defaultTextStyle },
+        style: defaultTextStyle,
     },
     button: {
         modifier: {
             ...defaultModifier,
             size: { width: "wrap_content", height: "wrap_content" },
         },
-        style: { ...defaultButtonStyle },
+        style: defaultButtonStyle,
     },
     image: {
         modifier: {
@@ -85,7 +86,7 @@ export const componentDefaults: {
             ...defaultModifier,
             size: { width: "20", height: "20" }, // контейнер 20×20
         },
-        verticalAlignment: "centerVertically",
+        verticalAlignment: "center",
         horizontalArrangement: "start",
     },
     column: {
@@ -93,8 +94,8 @@ export const componentDefaults: {
             ...defaultModifier,
             size: { width: "20", height: "20" }, // контейнер 20×20
         },
-        verticalAlignment: "top",
-        horizontalArrangement: "start",
+        verticalArrangement: "top",
+        horizontalAlignment: "start",
     },
     box: {
         modifier: {

@@ -8,7 +8,6 @@ import {
 import { useScreenData } from "../../entities/screen/lib/useScreenData";
 import styles from "./Main.module.css";
 import { PropertyPanel } from "../../features/PropertyPanel/ui/PropertyPanel";
-import { NumberInput } from "../../shared/ui/NumberInput/NumberInput";
 import Button from "../../shared/ui/Button/Button";
 import { SaveButton } from "./ui/SaveButton/SaveButton";
 import { fetchScreenData } from "./api/fetch";
