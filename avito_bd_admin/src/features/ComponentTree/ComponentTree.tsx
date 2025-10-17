@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import styles from "./ComponentTree.module.css";
 import type { RowComponent, ColumnComponent, CardComponent, BoxComponent, UIComponent } from "../../entities/components/model/componentTypes";
 import type { UIScreen } from "../../entities/screen/model/screenTypes";
@@ -17,20 +17,19 @@ const isContainer = (c: UIComponent): c is ContainerComponent => {
   );
 };
 
-type SectionKey = "topBar" | "content" | "bottomBar" | "snackbars";
+type SectionKey = "topBar" | "content" | "bottomBar" | "snackbars" | "bottomSheets";
 
 const SECTION_LABEL: Record<SectionKey, string> = {
   topBar: "topBar",
   content: "content",
   bottomBar: "bottomBar",
   snackbars: "snackbars",
+  bottomSheets: "bottomSheets"
 };
 
-export const ComponentTree: React.FC = () => {
-  const ctx = useBuilder();
-  if (!ctx) return null;
+export const ComponentTree = () => {
 
-  const { screen, selectedComponentId, setSelectedComponent } = ctx;
+  const { screen, selectedComponentId, setSelectedComponent } = useBuilder();
 
   // set развёрнутых узлов по их path/id
   const [open, setOpen] = useState<Set<string>>(new Set());
@@ -45,7 +44,7 @@ export const ComponentTree: React.FC = () => {
 
   const sections = useMemo(() => {
     if (!screen) return [] as Array<{ key: SectionKey; items: UIComponent[] }>;
-    return (["topBar", "content", "bottomBar", "snackbars"] as SectionKey[]).map(
+    return (["topBar", "content", "bottomBar", "snackbars", "bottomSheets"] as SectionKey[]).map(
       key => ({ key, items: (screen as UIScreen)[key] as UIComponent[] })
     );
   }, [screen]);
@@ -69,25 +68,25 @@ export const ComponentTree: React.FC = () => {
           ].join(" ")}
         >
           {hasChildren ? (
-            <button
+            <div
               className={styles.disclosure}
               onClick={() => toggle(id)}
               aria-label={opened ? "Collapse" : "Expand"}
             >
               {opened ? "▾" : "▸"}
-            </button>
+            </div>
           ) : (
             <span className={styles.disclosurePlaceholder} />
           )}
 
-          <button
+          <div
             className={styles.title}
             onClick={() => setSelectedComponent(selectableId || null)}
             title={node._id || "(без id)"}
           >
             <span className={styles.type}>{node.type}</span>
             <span className={styles.id}>{node._id ?? "—"}</span>
-          </button>
+          </div>
         </div>
 
         {hasChildren && opened && (
