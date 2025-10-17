@@ -44,8 +44,8 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   const { size = {}, padding = {}, margin = {}, clickable, alpha = 1.0, shadow } = modifier;
 
   const buttonStyle: React.CSSProperties = {
-    width: calculateSize(size.width, padding.start, padding.end),
-    height: calculateSize(size.height, padding.top, padding.bottom),
+    width: calculateSize(size?.width, padding.start, padding.end, margin.start, margin.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom,margin.top, margin.top),
     backgroundColor: background,
     color: textColor,
     fontSize: `${fontSize}px`,
@@ -65,7 +65,6 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
     outlineOffset: "2px",
     display: "inline-flex",
     alignItems: "center",
-    gap: "8px",
     transition: "all 0.2s ease",
   };
 

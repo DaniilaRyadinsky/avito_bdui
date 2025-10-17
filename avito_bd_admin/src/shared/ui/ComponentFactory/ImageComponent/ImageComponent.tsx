@@ -47,8 +47,8 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
 
 
   const imageStyle: React.CSSProperties = {
-    width: calculateSize(size?.width, padding.start, padding.end, true),
-    height: calculateSize(size?.height, padding.top, padding.bottom, true),
+    width: calculateSize(size?.width, padding.start, padding.end, margin.start, margin.end, true),
+    height: calculateSize(size?.height, padding.top, padding.bottom,margin.top, margin.top, true),
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     backgroundColor: background || "transparent",
     border:

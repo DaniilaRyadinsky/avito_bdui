@@ -48,8 +48,8 @@ export const BoxComponent: React.FC<BoxComponentProps> = ({
 
 
   const boxStyle: React.CSSProperties = {
-    width: calculateSize(size.width, padding.start, padding.end),
-    height: calculateSize(size.height, padding.top, padding.bottom),
+    width: calculateSize(size?.width, padding.start, padding.end, margin.start, margin.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom,margin.top, margin.top),
     backgroundColor: background || "transparent",
     borderRadius: clip?.cornerRadius ? `${clip.cornerRadius}px` : "0",
     border:

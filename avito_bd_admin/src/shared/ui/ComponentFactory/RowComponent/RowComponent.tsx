@@ -28,14 +28,12 @@ export const RowComponent: React.FC<RowComponentProps> = ({
     modifier = {},
   } = component;
 
-  // useEffect(() => {
-
-  // }, [])
 
   const {
     size,
     fillMaxWidth,
     fillMaxHeight,
+    scrollable,
     padding = {},
     margin={},
     background,
@@ -61,8 +59,8 @@ export const RowComponent: React.FC<RowComponentProps> = ({
 
 
   const rowStyle: React.CSSProperties = {
-    width:calculateSize(size?.width, padding.start, padding.end),
-    height: calculateSize(size?.height, padding.top, padding.bottom),
+    width: calculateSize(size?.width, padding.start, padding.end, margin.start, margin.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom,margin.top, margin.top),
     display: "flex",
     flexDirection: "row",
     alignItems:
@@ -95,8 +93,9 @@ export const RowComponent: React.FC<RowComponentProps> = ({
     cursor: clickable ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
-    gap: "0px",
-    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`,
+    overflow: "hidden",
+    overflowX: scrollable? "scroll" : "hidden"
   };
 
   return (

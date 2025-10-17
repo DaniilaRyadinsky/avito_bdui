@@ -32,6 +32,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     padding = {},
     margin={},
     background,
+    scrollable,
     clip,
     border,
     clickable,
@@ -48,8 +49,8 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   };
 
   const columnStyle: React.CSSProperties = {
-    width: calculateSize(size?.width, padding.start, padding.end),
-    height: calculateSize(size?.height, padding.top, padding.bottom),
+    width: calculateSize(size?.width, padding.start, padding.end, margin.start, margin.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom,margin.top, margin.top),
     display: "flex",
     flexDirection: "column",
     justifyContent:
@@ -83,8 +84,9 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     cursor: onSelect ? "pointer" : "default",
     outline: isSelected ? "2px solid #007AFF" : "none",
     outlineOffset: "2px",
-    gap: "8px",
-    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`
+    boxShadow: `0 ${0}px ${shadow?.elevation}px ${shadow?.elevation}px ${shadow?.color}`,
+    overflow: "hidden",
+    overflowY: scrollable? "scroll" : "hidden"
   };
 
   return (

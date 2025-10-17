@@ -56,8 +56,8 @@ export const TextComponent: React.FC<TextComponentProps> = ({
   };
 
   const textStyle: React.CSSProperties = {
-    width: calculateSize(size?.width, padding.start, padding.end),
-    height: calculateSize(size?.height, padding.top, padding.bottom),
+    width: calculateSize(size?.width, padding.start, padding.end, margin.start, margin.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom,margin.top, margin.top),
     fontSize: `${fontSize}px`,
     fontWeight,
     fontStyle,

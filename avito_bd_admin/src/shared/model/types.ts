@@ -93,129 +93,14 @@ export type ButtonStyle = {
 }
 
 export interface Action {
-  action?: string;
-  targetId?: string;
+  event?: string;
+  type?: string,
+  payload: {
+    targetId?: string;
+  }
 }
 
 // Компоненты
-export interface TextComponent {
-  type: "text";
-  _id?: string;
-  text: string;
-  format?: string;
-  style?: TextStyle;
-  modifier?: Modifier;
-}
-
-export interface ButtonComponent {
-  type: "button";
-  _id?: string;
-  text: string;
-  enabled?: boolean;
-  style?: ButtonStyle;
-  modifier?: Modifier;
-  icon?: string | null;
-  actions?: Action[];
-}
-
-export interface ImageComponent {
-  type: "image";
-  _id?: string;
-  url: string;
-  contentDescription?: string;
-  contentScale?: ContentScale;
-  placeholder?: string | null;
-  error?: string | null;
-  modifier?: Modifier;
-  scaleType?: string | null;
-}
-
-export interface IconComponent {
-  type: "icon";
-  _id?: string;
-  icon: string;
-  contentDescription?: string;
-  tint?: string;
-  modifier?: Modifier;
-  actions?: Action[];
-}
-
-export interface RowComponent {
-  type: "row";
-  _id?: string;
-  modifier?: Modifier;
-  verticalAlignment?: VerticalAlignment;
-  horizontalArrangement?: HorizontalArrangement;
-  children: UIComponent[];
-}
-
-export interface ColumnComponent {
-  type: "column";
-  _id?: string;
-  modifier?: Modifier;
-  verticalAlignment?: VerticalAlignment;
-  horizontalArrangement?: HorizontalArrangement;
-  children: UIComponent[];
-}
-
-export interface CheckboxComponent {
-  type: "checkbox";
-  _id?: string;
-  isChecked: boolean;
-  onCheckedChange?: string | null;
-  enabled?: boolean;
-  colors?: {
-    checkedColor?: string;
-    uncheckedColor?: string;
-    disabledColor?: string;
-  };
-  modifier?: Modifier;
-}
-
-export interface SpacerComponent {
-  type: "spacer";
-  _id?: string;
-  modifier?: Modifier;
-}
-
-export interface CardComponent {
-  type: "card";
-  _id?: string;
-  modifier?: Modifier;
-  elevation?: number;
-  shape?: Shape;
-  children: UIComponent[];
-}
-
-export interface SnackbarComponent {
-  type: "snackbar";
-  _id: string;
-  text: string;
-  actionText?: string;
-  duration?: number;
-  actions?: Action[];
-  modifier?: Modifier;
-}
-
-export interface BoxComponent {
-  type: "box";
-  _id?: string;
-  modifier?: Modifier;
-  children: UIComponent[];
-}
-
-export interface Position {
-  x: number;
-  y: number;
-}
-
-export interface ComponentTemplate {
-  type: UIComponent["type"];
-  name: string;
-  icon: string;
-  defaultProps: Partial<UIComponent>;
-}
-
 export type UIComponentType =
   | "text"
   | "button"
@@ -228,6 +113,100 @@ export type UIComponentType =
   | "card"
   | "box"
   | "snackbar";
+
+export interface ComponentTemplate {
+  type: UIComponentType;
+  _id?: string;
+  modifier?: Modifier;
+  actions?: Action[];
+}
+
+export interface TextComponent extends ComponentTemplate{
+  type: "text";
+  text: string;
+  format?: string;
+  style?: TextStyle;
+}
+
+export interface ButtonComponent extends ComponentTemplate{
+  type: "button";
+  text: string;
+  enabled?: boolean;
+  style?: ButtonStyle;
+  icon?: string | null;
+}
+
+export interface ImageComponent extends ComponentTemplate{
+  type: "image";
+  url: string;
+  contentDescription?: string;
+  contentScale?: ContentScale;
+  placeholder?: string | null;
+  error?: string | null;
+  scaleType?: string | null;
+}
+
+export interface IconComponent extends ComponentTemplate{
+  type: "icon";
+  icon: string;
+  contentDescription?: string;
+  tint?: string;
+}
+
+export interface RowComponent extends ComponentTemplate{
+  type: "row";
+  verticalAlignment?: VerticalAlignment;
+  horizontalArrangement?: HorizontalArrangement;
+  children: UIComponent[];
+}
+
+export interface ColumnComponent extends ComponentTemplate{
+  type: "column";
+  verticalAlignment?: VerticalAlignment;
+  horizontalArrangement?: HorizontalArrangement;
+  children: UIComponent[];
+}
+
+export interface CheckboxComponent extends ComponentTemplate{
+  type: "checkbox";
+  isChecked: boolean;
+  onCheckedChange?: string | null;
+  enabled?: boolean;
+  colors?: {
+    checkedColor?: string;
+    uncheckedColor?: string;
+    disabledColor?: string;
+  };
+}
+
+export interface SpacerComponent extends ComponentTemplate{
+  type: "spacer";
+}
+
+export interface CardComponent extends ComponentTemplate{
+  type: "card";
+  elevation?: number;
+  shape?: Shape;
+  children: UIComponent[];
+}
+
+export interface SnackbarComponent extends ComponentTemplate{
+  type: "snackbar";
+  text: string;
+  actionText?: string;
+  duration?: number;
+}
+
+export interface BoxComponent extends ComponentTemplate{
+  type: "box";
+  children: UIComponent[];
+}
+
+export interface Position {
+  x: number;
+  y: number;
+}
+
 
 // Для парсинга JSON, где поля могут быть любыми
 export type RawUIComponent = Omit<UIComponent, "type"> & {

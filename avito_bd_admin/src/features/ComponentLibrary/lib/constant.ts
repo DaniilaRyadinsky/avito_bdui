@@ -86,7 +86,8 @@ export const componentDefaults: {
         modifier: {
             ...defaultModifier,
             fillMaxWidth: true,
-            size: { width: "match_parent", height: "20" }, // контейнер 20×20
+            size: { width: "match_parent", height: "20" }, 
+            scrollable:false,
         },
         verticalAlignment: "centerVertically",
         horizontalArrangement: "start",
@@ -95,7 +96,8 @@ export const componentDefaults: {
         modifier: {
             ...defaultModifier,
             fillMaxHeight: true,
-            size: { width: "20", height: "match_parent" }, // контейнер 20×20
+            size: { width: "20", height: "match_parent" }, 
+            scrollable:false,
         },
         verticalAlignment: "top",
         horizontalArrangement: "start",

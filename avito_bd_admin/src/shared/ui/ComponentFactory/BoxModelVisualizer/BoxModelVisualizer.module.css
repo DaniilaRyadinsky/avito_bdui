@@ -1,0 +1,18 @@
+/* BoxModelVisualizer.module.css */
+.container {
+  position: relative;
+  /* важно: margin-слои выходят наружу */
+  overflow: visible;
+  width: fit-content;  
+}
+
+.content {
+  width: fit-content;  
+  position: relative; /* не absolute, чтобы контейнер получил размер */
+}
+
+.overlay {
+  position: absolute;
+  pointer-events: none; /* не блокируем клики по контенту */
+  z-index: 1;
+}

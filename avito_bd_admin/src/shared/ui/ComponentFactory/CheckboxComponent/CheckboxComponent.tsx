@@ -28,8 +28,8 @@ export const CheckboxComponent: React.FC<CheckboxComponentProps> = ({
   const { size = {}, padding = {}, margin={}, clickable, alpha = 1.0, shadow } = modifier;
 
   const checkboxStyle: React.CSSProperties = {
-    width: calculateSize(size?.width, padding.start, padding.end),
-    height: calculateSize(size?.height, padding.top, padding.bottom),
+    width: calculateSize(size?.width, padding.start, padding.end, margin.start, margin.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom,margin.top, margin.top),
     backgroundColor: isChecked ? checkedColor : uncheckedColor,
     opacity: enabled ? alpha : 0.6,
     cursor: clickable && enabled ? "pointer" : "default",

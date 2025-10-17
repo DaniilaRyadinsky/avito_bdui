@@ -42,8 +42,8 @@ export const CardComponent: React.FC<CardComponentProps> = ({
   const { size = {}, padding = {}, margin={}, clip, border = {}, clickable, background = "#FFFFFF", shadow = {}, alpha = 1.0 } = modifier;
 
   const cardStyle: React.CSSProperties = {
-    width: calculateSize(size.width, padding.start, padding.end),
-    height: calculateSize(size.height, padding.top, padding.bottom),
+    width: calculateSize(size?.width, padding.start, padding.end, margin.start, margin.end),
+    height: calculateSize(size?.height, padding.top, padding.bottom,margin.top, margin.top),
     backgroundColor: background ? background : "none",
     borderRadius: shape.cornerRadius
       ? `${shape.cornerRadius}px`

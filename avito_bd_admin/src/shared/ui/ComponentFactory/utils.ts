@@ -1,7 +1,14 @@
 import type { Size, Padding } from "../../model/types"
 
+const n = (v?: number) => v ?? 0;
 
-export const calculateSize = (size?: string, padding1?: number, padding2?: number, isAuto = false) => {
+export const calculateSize = (
+    size?: string,
+    padding1?: number,
+    padding2?: number,
+    margin1?: number,
+    margin2?: number,
+    isAuto = false) => {
 
     if (size === "wrap_content") {
         if (isAuto)
@@ -9,16 +16,10 @@ export const calculateSize = (size?: string, padding1?: number, padding2?: numbe
         return "fit-content"
     }
     else if (size === "match_parent") {
-        if (padding1 !== undefined && padding2 !== undefined) {
-            console.log(`calc(100% - ${padding1 + padding2}px)`);
-            return `calc(100% - ${padding1 + padding2}px)`
-        }
-        return "100%"
+        return `calc(100% - ${n(padding1) + n(padding2) + n(margin1) + n(margin2)}px)`
     }
     else {
-        if (padding1 !== undefined && padding2 !== undefined)
-            return `calc(${size}px - ${padding1 + padding2}px)`
-        else return `${size}px`
+        return `calc(${size}px - ${n(padding1) + n(padding2)}px)`
     }
 
 }

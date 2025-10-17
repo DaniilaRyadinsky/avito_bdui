@@ -10,6 +10,7 @@ import { CheckboxComponent } from "./CheckboxComponent/CheckboxComponent";
 import { SpacerComponent } from "./SpacerComponent/SpacerComponent";
 import { CardComponent } from "./CardComponent/CardComponent";
 import { BoxComponent } from "./BoxComponent/BoxComponent";
+import BoxModelVisualizer from "./BoxModelVisualizer/BoxModelVisualizer";
 
 interface ComponentFactoryProps {
   component: UIComponent;
@@ -25,7 +26,6 @@ export const ComponentFactory: React.FC<ComponentFactoryProps> = ({
   onAction,
 }) => {
   
-  const isSelected = selectedId === component._id
 
   const handleSelect = (v: string) => {
       onSelect?.(v);
@@ -58,8 +58,9 @@ export const ComponentFactory: React.FC<ComponentFactoryProps> = ({
       return <IconComponent component={component} {...commonProps} />;
 
     case "row":
+      // return <BoxModelVisualizer modifier={component.modifier?component.modifier:{}}><RowComponent component={component} {...commonProps} /></BoxModelVisualizer>;
       return <RowComponent component={component} {...commonProps} />;
-
+      
     case "column":
       return <ColumnComponent component={component} {...commonProps} />;
 
