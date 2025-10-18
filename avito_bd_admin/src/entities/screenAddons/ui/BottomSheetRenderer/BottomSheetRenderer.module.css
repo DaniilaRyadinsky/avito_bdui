@@ -17,9 +17,21 @@
   position: absolute; 
   bottom: 0;
   width: 100%;
-  height: 400px;
   background-color: #fff;
   z-index: 2; 
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
+}
+
+.bottomsheet_stick {
+    display: flex;
+    justify-content: center;
+    padding: 8px 16px;
+
+}
+.bottomsheet_stick_content {
+    width: 40px;
+    height: 4px;
+    background-color: #EBEAE8;
+    border-radius: 3px;
 }

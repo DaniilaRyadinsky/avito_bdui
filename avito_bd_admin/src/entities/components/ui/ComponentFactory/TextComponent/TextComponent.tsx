@@ -13,7 +13,6 @@ export const TextComponent: React.FC<TextComponentProps> = ({
   component,
   selectedId,
   onSelect,
-  onAction,
 }) => {
 
   const isSelected = selectedId == component._id

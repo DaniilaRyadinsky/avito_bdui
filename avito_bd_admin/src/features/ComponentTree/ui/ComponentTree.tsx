@@ -2,36 +2,27 @@ import { useMemo, useState } from "react";
 import styles from "./ComponentTree.module.css";
 
 import type {
-  RowComponent,
-  ColumnComponent,
-  CardComponent,
-  BoxComponent,
   UIComponent,
-} from "../../entities/components/model/componentTypes";
-import type { UIScreen } from "../../entities/screen/model/screenTypes";
+} from "../../../entities/components/model/componentTypes";
+import type { UIScreen } from "../../../entities/screen/model/screenTypes";
 import type {
-  BottomSheetComponent,
   SnackbarComponent,
-} from "../../entities/screenAddons/model/screenAddonsTypes";
-import { useBuilder } from "../Builder/lib/builderContext";
+} from '../../../entities/screenAddons/model/screenAddonsTypes';
+import { useBuilder } from "../../Builder/lib/builderContext";
+import { isContainer, uiSectionKeys, type ContainerComponent } from "../lib/func";
 
-type ContainerComponent = RowComponent | ColumnComponent | CardComponent | BoxComponent;
-const isContainer = (c: UIComponent): c is ContainerComponent =>
-  c.type === "row" || c.type === "column" || c.type === "card" || c.type === "box";
-
-const uiSectionKeys = ["topBar", "content", "bottomBar"] as const;
-type UISectionKey = (typeof uiSectionKeys)[number];
 
 export const ComponentTree = () => {
   const {
     screen,
     selectedComponentId,
-    selectedBottomSheetId,   // ← если в контексте есть — будет подсветка
     selectedSnackBarId,      // ← если в контексте есть — будет подсветка
     setSelectedComponent,
-    setSelectedBottomSheet,
+
     setSelectedSnackBar,
   } = useBuilder();
+
+
 
   const [open, setOpen] = useState<Set<string>>(new Set());
   const toggle = (id: string) =>
@@ -57,7 +48,6 @@ export const ComponentTree = () => {
 
   // --- Addons ---
   const snackbars: SnackbarComponent[] = (screen as any).snackbars ?? [];
-  const bottomSheets: BottomSheetComponent[] = (screen as any).bottomSheets ?? [];
 
   const renderUiNode = (node: UIComponent, path: string) => {
     const id = node._id ?? path;
@@ -101,47 +91,7 @@ export const ComponentTree = () => {
     );
   };
 
-  const renderBottomSheet = (sheet: BottomSheetComponent, idx: number) => {
-    const id = sheet._id;
-    const hasChildren = Array.isArray(sheet.children) && sheet.children.length > 0;
-    const opened = open.has(id);
-
-    return (
-      <div className={styles.node} key={id}>
-        <div
-          className={[
-            styles.row,
-            selectedBottomSheetId === id ? styles.active : "",
-          ].join(" ")}
-        >
-          {hasChildren ? (
-            <div className={styles.disclosure} onClick={() => toggle(id)}>
-              {opened ? "▾" : "▸"}
-            </div>
-          ) : (
-            <span className={styles.disclosurePlaceholder} />
-          )}
-
-          <div
-            className={styles.title}
-            onClick={() => setSelectedBottomSheet(id)}
-            title={id}
-          >
-            <span className={styles.type}>bottomSheet</span>
-            <span className={styles.id}>{id}</span>
-          </div>
-        </div>
-
-        {hasChildren && opened && (
-          <div className={styles.children}>
-            {sheet.children.map((child, cIdx) =>
-              renderUiNode(child as UIComponent, `bottomSheets:${idx}/${child.type}:${cIdx}`)
-            )}
-          </div>
-        )}
-      </div>
-    );
-  };
+ 
 
   const renderSnackbar = (sb: SnackbarComponent) => {
     const id = sb._id;
@@ -180,16 +130,6 @@ export const ComponentTree = () => {
           </div>
         </div>
       ))}
-
-      {/* Bottom Sheets */}
-      <div className={styles.section}>
-        <div className={styles.sectionHeader}>bottomSheets</div>
-        <div className={styles.sectionBody}>
-          {bottomSheets.length
-            ? bottomSheets.map((b, idx) => renderBottomSheet(b, idx))
-            : <div className={styles.dim}>пусто</div>}
-        </div>
-      </div>
 
       {/* Snackbars */}
       <div className={styles.section}>
