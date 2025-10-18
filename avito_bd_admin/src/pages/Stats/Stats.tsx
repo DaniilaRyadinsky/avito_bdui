@@ -4,9 +4,9 @@ import styles from "./Stats.module.css";
 import { fetchStats } from "./api/fetchStats";
 
 export interface StatsData {
-  screenReceiving: Array<{ id: string; name: string; count: number }>;
+  screenReceiving: Array<{ id: string; title: string; count: number }>;
   clickElements: Array<{ id: string; count: number }>;
-  clickScreens: Array<{ id: string; name: string; count: number }>;
+  clickScreens: Array<{ id: string; title: string; count: number }>;
 }
 
 const Stats = () => {
@@ -43,7 +43,7 @@ const Stats = () => {
           <div className={styles.statList}>
             {stats.screenReceiving.map((item) => (
               <div key={item.id} className={styles.statItem}>
-                <span className={styles.statId}>{item.name}</span>
+                <span className={styles.statId}>{item.title}</span>
                 <span className={styles.statCount}>
                   {item.count} просмотров
                 </span>
