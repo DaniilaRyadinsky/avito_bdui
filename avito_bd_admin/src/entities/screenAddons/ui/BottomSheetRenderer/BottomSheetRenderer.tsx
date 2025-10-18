@@ -1,6 +1,6 @@
 import { useBuilder } from '../../../../features/Builder/lib/builderContext';
 import { ComponentFactory } from '../../../components/ui/ComponentFactory/ComponentFactory';
-import { findBottomSheetById } from '../../lib/findBottomsheets';
+import { findBottomSheetById } from '../../lib/findAddon';
 import styles from './BottomSheetRenderer.module.css'
 
 

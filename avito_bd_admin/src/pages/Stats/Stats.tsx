@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Stats.module.css";
+import { fetchStats } from "./api/fetchStats";
 
-interface StatsData {
+export interface StatsData {
   screenReceiving: Array<{ id: string; name: string; count: number }>;
   clickElements: Array<{ id: string; count: number }>;
   clickScreens: Array<{ id: string; name: string; count: number }>;
@@ -14,26 +15,7 @@ const Stats = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch("http://31.56.205.210:8080/api/stats/all");
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        console.log("Data", data);
-        setStats(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Unknown error");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchStats();
+        fetchStats(setStats, setLoading, setError);
   }, []);
 
   if (loading) {

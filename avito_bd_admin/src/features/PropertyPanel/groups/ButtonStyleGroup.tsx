@@ -29,8 +29,6 @@ const ShapeEditor: React.FC<{ value?: Shape; onChange: (next: Partial<Shape>) =>
 );
 
 
-
-
 export const ButtonStyleGroup: React.FC<{
     text: string;
     onTextChange: (v: string) => void;

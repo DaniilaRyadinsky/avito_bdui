@@ -127,7 +127,6 @@ const ScreensList = () => {
                 Удалить
               </Button>
 
-              {/* Кнопки меняются в зависимости от режима редактирования */}
               {editingScreenId === screen._id ? (
                 <>
                   <Button

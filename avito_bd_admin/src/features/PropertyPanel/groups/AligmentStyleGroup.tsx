@@ -1,5 +1,5 @@
 
-import type { RowComponent, ColumnComponent, RowVerticalAlignment, RowHorizontalArrangement, ColumnHorizontalAlignment, ColumnVerticalArrangement } from "../../../entities/components/model/componentTypes";
+import type { RowComponent, ColumnComponent, VerticalAlignment, HorizontalArrangement, HorizontalAlignment, VerticalArrangement } from "../../../entities/components/model/componentTypes";
 import { BoolSwitch } from "../../../shared/ui/BoolSwitch/BoolSwitch";
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
 import { Column } from "./FieldPrimitives";
@@ -30,7 +30,7 @@ export const AligmentStyleGroup: React.FC<{
             <SelectBox
               value={String(value.verticalAlignment ?? "centerVertically")}
               onChange={(v) =>
-                setRowCol({ verticalAlignment: v as RowVerticalAlignment })
+                setRowCol({ verticalAlignment: v as VerticalAlignment })
               }
               options={["top", "center", "bottom"].map(x => ({ label: x, value: x }))}
             />
@@ -39,7 +39,7 @@ export const AligmentStyleGroup: React.FC<{
             <SelectBox
               value={String(value.horizontalArrangement ?? "centerVertically")}
               onChange={(v) =>
-                setRowCol({ horizontalArrangement: v as RowHorizontalArrangement })
+                setRowCol({ horizontalArrangement: v as HorizontalArrangement })
               }
               options={['start', 'center', 'end', 'spaceBetween', 'spaceAround', 'spaceEvenly'].map(x => ({ label: x, value: x }))}
             />
@@ -53,7 +53,7 @@ export const AligmentStyleGroup: React.FC<{
             <SelectBox
               value={String(value.verticalArrangement ?? "top")}
               onChange={(v) =>
-                setRowCol({ verticalArrangement: v as ColumnVerticalArrangement })
+                setRowCol({ verticalArrangement: v as VerticalArrangement })
               }
               options={["top", "center", "bottom", 'spaceBetween', 'spaceAround', 'spaceEvenly'].map(x => ({ label: x, value: x }))}
             />
@@ -62,7 +62,7 @@ export const AligmentStyleGroup: React.FC<{
             <SelectBox
               value={String(value.horizontalAlignment ?? "top")}
               onChange={(v) =>
-                setRowCol({ horizontalArrangement: v as ColumnHorizontalAlignment })
+                setRowCol({ horizontalAlignment: v as HorizontalAlignment })
               }
               options={["start", "center", "end"].map(x => ({ label: x, value: x }))}
             />
@@ -72,7 +72,6 @@ export const AligmentStyleGroup: React.FC<{
       <Column label="Скролл">
         <BoolSwitch checked={value?.modifier?.scrollable} onChange={(x) => {
           setRowCol({
-            // отдаём патч по modifier; внутри него мерджим, чтобы не потерять другие поля modifier
             modifier: { ...(value?.modifier ?? {}), scrollable: x }
           })
         }} />

@@ -7,7 +7,6 @@ import Summary from "../../../shared/ui/Summary/Summary";
 export const Section: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
     <div className="section">
         <Summary title={title}>
-            {/* <div className="separator" /> */}
             <div className="section__body">{children}</div>
         </Summary>
     </div>

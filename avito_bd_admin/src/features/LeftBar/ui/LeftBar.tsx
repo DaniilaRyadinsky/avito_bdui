@@ -7,6 +7,7 @@ import { ComponentControls } from './ComponentControls/ComponentControls'
 import ComponentTree from '../../ComponentTree/ui/ComponentTree'
 import BottomSheetTree from '../../ComponentTree/ui/BottomSheetTree'
 import { TemplateManager } from './TemplateManager/TemplateManager'
+import SnackbarTree from '../../ComponentTree/ui/SnackbarTree'
 
 const LeftBar = () => {
     const [mode, setMode] = useState<"comp" | "col" | "var">("comp")
@@ -21,6 +22,7 @@ const LeftBar = () => {
                     <ComponentControls />
                     <ComponentTree />
                     <BottomSheetTree/>
+                    <SnackbarTree/>
                 </>}
                 {mode == "col" && <ColorsWidget />}
                 {mode == "var" && <TemplateManager/>}

@@ -30,7 +30,6 @@ export const RowComponent: React.FC<RowComponentProps> = ({
 
   const {
     size,
-    scrollable,
     padding = {},
     margin = {},
     background,

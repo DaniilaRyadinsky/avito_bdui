@@ -57,25 +57,17 @@
 
 .buttonTemplateDelete {
   border: none;
-  padding: 10px;
+  padding: 5px 10px;
   font-size: 20px;
   cursor: pointer;
   background-color: transparent;
 }
 
-.componentsList {
-  display: flex;
-  flex-direction: column;
-}
-
 .customLibraryItem:hover {
-  background-color: var(--color-avito-active);
-  color: white;
+    background: #e0e0e0;
+  border-color: #ccc;
 }
 
-.customLibraryItem:hover button {
-  color: white;
-}
 
 .buttonTemplateDelete:hover {
   background-color: rgb(225, 35, 35);

@@ -104,7 +104,7 @@ export type ActionMethod = "PUT" | "POST" | "GET" | "DELETE";
 export interface Action {
   event?: ActionEvent;
   type?: ActionType;
-  targetId?: string;
+    ?: string;
   method?: ActionMethod;
   endpoint?: string;
   body?: any;
@@ -172,8 +172,8 @@ export interface IconComponent extends ComponentTemplate {
   tint?: string;
 }
 
-export type RowVerticalAlignment = "top" | "center" | "bottom";
-export type RowHorizontalArrangement =
+export type VerticalAlignment = "top" | "center" | "bottom";
+export type HorizontalArrangement =
   | "start"
   | "center"
   | "end"
@@ -183,24 +183,24 @@ export type RowHorizontalArrangement =
 
 export interface RowComponent extends ComponentTemplate {
   type: "row";
-  verticalAlignment?: RowVerticalAlignment;
-  horizontalArrangement?: RowHorizontalArrangement;
+  verticalAlignment?: VerticalAlignment;
+  horizontalArrangement?: HorizontalArrangement;
   children: UIComponent[];
 }
 
-export type ColumnVerticalArrangement =
+export type VerticalArrangement =
   | "top"
   | "center"
   | "bottom"
   | "spaceBetween"
   | "spaceAround"
   | "spaceEvenly";
-export type ColumnHorizontalAlignment = "start" | "center" | "end";
+export type HorizontalAlignment = "start" | "center" | "end";
 
 export interface ColumnComponent extends ComponentTemplate {
   type: "column";
-  verticalArrangement?: ColumnVerticalArrangement;
-  horizontalAlignment?: ColumnHorizontalAlignment;
+  verticalArrangement?: VerticalArrangement;
+  horizontalAlignment?: HorizontalAlignment;
   children: UIComponent[];
 }
 

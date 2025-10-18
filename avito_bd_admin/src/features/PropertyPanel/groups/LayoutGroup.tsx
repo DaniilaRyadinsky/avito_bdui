@@ -111,10 +111,6 @@ export const LayoutGroup: React.FC<{ value?: Modifier; onChange: (next: Partial<
             <Column label="Fill max height">
                 <BoolSwitch checked={value?.fillMaxHeight} onChange={(v) => onChange({ fillMaxHeight: v })} />
             </Column>
-
-            {/* <Column label="Выравнивание">
-                <SelectBox value={value?.align} onChange={(v) => onChange({ align: v as any })} options={["start", "center", "end", "top", "bottom"].map(x => ({ label: x, value: x }))} />
-            </Column> */}
         </Section>
     );
 };

@@ -5,7 +5,6 @@ import { genId, withDefaults, deepMerge } from "../../../shared/lib/merge";
 import { defaultTextStyle, defaultModifier, componentDefaults, defaultButtonStyle, defaultPadding, defaultBorder, defaultShape, defaultClip, defaultShadow } from "./constant";
 
 
-// Text
 export const createText = (overrides: Partial<TextComponent> = {}): TextComponent => {
     const base: TextComponent = {
         type: "text",
@@ -18,7 +17,6 @@ export const createText = (overrides: Partial<TextComponent> = {}): TextComponen
     return withDefaults(base, componentDefaults["text"], overrides);
 };
 
-// Button
 export const createButton = (overrides: Partial<ButtonComponent> = {}): ButtonComponent => {
     const base: ButtonComponent = {
         type: "button",
@@ -33,7 +31,6 @@ export const createButton = (overrides: Partial<ButtonComponent> = {}): ButtonCo
     return withDefaults(base, componentDefaults["button"], overrides);
 };
 
-// Image
 export const createImage = (overrides: Partial<ImageComponent> = {}): ImageComponent => {
     const base: ImageComponent = {
         type: "image",
@@ -49,7 +46,6 @@ export const createImage = (overrides: Partial<ImageComponent> = {}): ImageCompo
     return withDefaults(base, componentDefaults["image"], overrides);
 };
 
-// Icon
 export const createIcon = (overrides: Partial<IconComponent> = {}): IconComponent => {
     const base: IconComponent = {
         type: "icon",
@@ -63,7 +59,6 @@ export const createIcon = (overrides: Partial<IconComponent> = {}): IconComponen
     return withDefaults(base, componentDefaults["icon"], overrides);
 };
 
-// Row
 export const createRow = (overrides: Partial<RowComponent> = {}): RowComponent => {
     const base: RowComponent = {
         type: "row",
@@ -74,10 +69,9 @@ export const createRow = (overrides: Partial<RowComponent> = {}): RowComponent =
         children: [],
     };
     return withDefaults(base, componentDefaults["row"], overrides);
-    // return base;
 };
 
-// Column
+
 export const createColumn = (overrides: Partial<ColumnComponent> = {}): ColumnComponent => {
     const base: ColumnComponent = {
         type: "column",
@@ -90,7 +84,6 @@ export const createColumn = (overrides: Partial<ColumnComponent> = {}): ColumnCo
     return withDefaults(base, componentDefaults["column"], overrides);
 };
 
-// Checkbox
 export const createCheckbox = (overrides: Partial<CheckboxComponent> = {}): CheckboxComponent => {
     const base: CheckboxComponent = {
         type: "checkbox",
@@ -108,7 +101,6 @@ export const createCheckbox = (overrides: Partial<CheckboxComponent> = {}): Chec
     return withDefaults(base, componentDefaults["checkbox"], overrides);
 };
 
-// Spacer
 export const createSpacer = (overrides: Partial<SpacerComponent> = {}): SpacerComponent => {
     const base: SpacerComponent = {
         type: "spacer",
@@ -118,7 +110,6 @@ export const createSpacer = (overrides: Partial<SpacerComponent> = {}): SpacerCo
     return withDefaults(base, componentDefaults["spacer"], overrides);
 };
 
-// Card
 export const createCard = (overrides: Partial<CardComponent> = {}): CardComponent => {
     const base: CardComponent = {
         type: "card",
@@ -132,7 +123,6 @@ export const createCard = (overrides: Partial<CardComponent> = {}): CardComponen
 };
 
 
-// Box
 export const createBox = (overrides: Partial<BoxComponent> = {}): BoxComponent => {
     const base: BoxComponent = {
         type: "box",
@@ -143,7 +133,6 @@ export const createBox = (overrides: Partial<BoxComponent> = {}): BoxComponent =
     return withDefaults(base, componentDefaults["box"], overrides);
 };
 
-// ===== ЭКРАН =====
 export const createScreen = (overrides: Partial<UIScreen> = {}): UIScreen => {
     const base: UIScreen = {
         type: "screen",
@@ -161,7 +150,6 @@ export const createScreen = (overrides: Partial<UIScreen> = {}): UIScreen => {
     return deepMerge(base, overrides);
 };
 
-// ===== Экспорт базовых дефолтов =====
 export const Defaults = {
     modifier: defaultModifier,
     textStyle: defaultTextStyle,
@@ -195,60 +183,8 @@ export const createComponent = (type: UIComponent["type"]) => {
             return createCard()
         case ("box"):
             return createBox()
-        // case ("snackbar"):
-        //     return createSnackbar()
     }
 
 }
 
-// ===== (Опционально) Переопределение темой на лету =====
-// Можно прокинуть снаружи объект и поверх заменить componentDefaults через deepMerge.
-// Например, чтобы в тёмной теме увеличить Icon до 32px:
-/*
-const themeComponentDefaults = {
-  icon: { modifier: { size: { width: 32, height: 32 } } }
-};
-const createIconThemed = (overrides: Partial<IconComponent> = {}) =>
-  withDefaults(
-    { ...база... },
-    deepMerge(componentDefaults["icon"] ?? {}, themeComponentDefaults["icon"] ?? {}),
-    overrides
-  );
-*/
-
-
-// ===== УТИЛИТЫ ДЛЯ БЫСТРОГО СОЗДАНИЯ ШАБЛОНОВ =====
-// export const createFilledRow = (
-//   children: UIComponent[] = [],
-//   overrides: Partial<RowComponent> = {}
-// ): RowComponent =>
-//   createRow(
-//     deepMerge(
-//       {
-//         modifier: { ...defaultModifier, fillMaxWidth: true },
-//         horizontalArrangement: "spaceBetween",
-//         verticalAlignment: "centerVertically",
-//         children,
-//       },
-//       overrides
-//     )
-//   );
-
-// export const createPaddedColumn = (
-//   children: UIComponent[] = [],
-//   overrides: Partial<ColumnComponent> = {}
-// ): ColumnComponent =>
-//   createColumn(
-//     deepMerge(
-//       {
-//         modifier: {
-//           ...defaultModifier,
-//           padding: { all: 16, start: 16, end: 16, top: 16, bottom: 16 },
-//           fillMaxWidth: true,
-//         },
-//         children,
-//       },
-//       overrides
-//     )
-//   );
 

@@ -3,7 +3,6 @@ import styles from "./ComponentTree.module.css";
 
 import type { UIComponent } from "../../../entities/components/model/componentTypes";
 import type { UIScreen } from "../../../entities/screen/model/screenTypes";
-import type { SnackbarComponent } from "../../../entities/screenAddons/model/screenAddonsTypes";
 import { useBuilder } from "../../Builder/lib/builderContext";
 import {
   isContainer,
@@ -15,10 +14,7 @@ export const ComponentTree = () => {
   const {
     screen,
     selectedComponentId,
-    selectedSnackBarId,
     setSelectedComponent,
-
-    setSelectedSnackBar,
   } = useBuilder();
 
   const [open, setOpen] = useState<Set<string>>(new Set());
@@ -41,9 +37,6 @@ export const ComponentTree = () => {
       })),
     [screen]
   );
-
-  // --- Addons ---
-  const snackbars: SnackbarComponent[] = (screen as any).snackbars ?? [];
 
   const renderUiNode = (node: UIComponent, path: string) => {
     const id = node._id ?? path;
@@ -87,29 +80,6 @@ export const ComponentTree = () => {
     );
   };
 
-  const renderSnackbar = (sb: SnackbarComponent) => {
-    const id = sb._id;
-    return (
-      <div className={styles.node} key={id}>
-        <div
-          className={[
-            styles.row,
-            selectedSnackBarId === id ? styles.active : "",
-          ].join(" ")}
-        >
-          <span className={styles.disclosurePlaceholder} />
-          <div
-            className={styles.title}
-            onClick={() => setSelectedSnackBar(id)}
-            title={id}
-          >
-            <span className={styles.type}>snackbar</span>
-            <span className={styles.id}>{id}</span>
-          </div>
-        </div>
-      </div>
-    );
-  };
 
   return (
     <div className={styles.tree} role="tree">
@@ -125,18 +95,7 @@ export const ComponentTree = () => {
           </div>
         </div>
       ))}
-
-      {/* Snackbars */}
-      <div className={styles.section}>
-        <div className={styles.sectionHeader}>snackbars</div>
-        <div className={styles.sectionBody}>
-          {snackbars.length ? (
-            snackbars.map(renderSnackbar)
-          ) : (
-            <div className={styles.dim}>пусто</div>
-          )}
-        </div>
-      </div>
+      
     </div>
   );
 };

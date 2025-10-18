@@ -1,7 +1,5 @@
 import type { Padding, Margin, Border, Shape, Clip, Shadow, Modifier, TextStyle, ButtonStyle, UIComponent } from "../../../entities/components/model/componentTypes";
 
-
-// ===== ГЛОБАЛЬНЫЕ ДЕФОЛТЫ =====
 export const defaultPadding: Padding = { start: 0, end: 0, top: 0, bottom: 0 };
 export const defaultMargin: Margin = { start: 0, end: 0, top: 0, bottom: 0 };
 export const defaultBorder: Border = { width: 0, color: "#000000" };
@@ -9,7 +7,6 @@ export const defaultShape: Shape = { cornerRadius: 0, topStart: 0, topEnd: 0 };
 export const defaultClip: Clip = { cornerRadius: 0 };
 export const defaultShadow: Shadow = { elevation: 0, color: "#000000" };
 
-// Базовый модификатор (нейтральный)
 export const defaultModifier: Modifier = {
     size: { width: "wrap_content", height: "wrap_content" },
     fillMaxWidth: false,
@@ -49,9 +46,7 @@ export const defaultButtonStyle: ButtonStyle = {
     border: { width: 0, color: "#1976d2" },
 };
 
-// ===== ДЕФОЛТЫ ПО ТИПУ КОМПОНЕНТА =====
-// Здесь задаём именно «компонентные» настройки.
-// Контейнеры — 20×20, текст/кнопка — по контенту, картинка — 64×64, и т.п.
+
 export const componentDefaults: {
     [K in UIComponent["type"]]?: Partial<Extract<UIComponent, { type: K }>>
 } = {
@@ -59,7 +54,7 @@ export const componentDefaults: {
         modifier: {
             ...defaultModifier,
             size: { width: "wrap_content", height: "wrap_content" },
-            padding: defaultPadding, // обычно текст без внешних отступов
+            padding: defaultPadding, 
         },
         style: defaultTextStyle,
     },
@@ -106,19 +101,19 @@ export const componentDefaults: {
     box: {
         modifier: {
             ...defaultModifier,
-            size: { width: "20", height: "20" }, // контейнер 20×20
+            size: { width: "20", height: "20" }, 
         },
     },
     card: {
         modifier: {
             ...defaultModifier,
-            size: { width: "20", height: "20" }, // контейнер 20×20
+            size: { width: "20", height: "20" }, 
         },
         elevation: 1,
         shape: { cornerRadius: 12 },
     },
     checkbox: {
-        modifier: { ...defaultModifier, size: {width:"19", height: "19"} }, // размер задаётся содержимым/темой
+        modifier: { ...defaultModifier, size: {width:"19", height: "19"} }, 
         colors: {
             checkedColor: "#1976d2",
             uncheckedColor: "#9e9e9e",
@@ -134,7 +129,6 @@ export const componentDefaults: {
 };
 
 
-// Типы для шаблонов компонентов
 export const componentTemplates: {
     type: UIComponent["type"];
     name: string;

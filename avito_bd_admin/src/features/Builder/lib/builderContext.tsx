@@ -7,7 +7,6 @@ import React, {
 } from "react";
 import type { UIScreen } from "../../../entities/screen/model/screenTypes";
 import type { UIComponent } from "../../../entities/components/model/componentTypes";
-import { findBottomSheetById } from "../../../entities/screenAddons/lib/findBottomsheets";
 
 interface BuilderContextType {
   screen: UIScreen | null;
@@ -209,9 +208,7 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
     const deepRemove = (components: UIComponent[] = []): UIComponent[] => {
       return (
         components
-          // 1) Удаляем сам компонент, если совпал id
           .filter((c) => c._id !== componentId)
-          // 2) Рекурсивно чистим детей (если они есть)
           .map((c) => {
             if ("children" in c && Array.isArray(c.children)) {
               return { ...c, children: deepRemove(c.children) };

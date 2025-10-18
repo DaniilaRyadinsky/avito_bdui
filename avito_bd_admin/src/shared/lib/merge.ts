@@ -16,6 +16,5 @@ export function deepMerge<T>(base: T, patch: Partial<T>): T {
     }
     return out;
 }
-// Удобный мерж для фабрик: base -> per-type defaults -> overrides
 export const withDefaults = <T>(base: T, typeDefaults: Partial<T> | undefined, overrides: Partial<T>) =>
     deepMerge(deepMerge(base, typeDefaults ?? {} as Partial<T>), overrides);

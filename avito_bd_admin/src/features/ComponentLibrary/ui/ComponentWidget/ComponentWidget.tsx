@@ -6,8 +6,6 @@ import Summary from "../../../../shared/ui/Summary/Summary";
 import { componentTemplates } from "../../lib/constant";
 import { createComponent } from "../../lib/templates";
 import type { UIComponent } from "../../../../entities/components/model/componentTypes";
-import { TemplateManager } from "../../../LeftBar/ui/TemplateManager/TemplateManager";
-import Button from "../../../../shared/ui/Button/Button";
 
 const LibraryItem: React.FC<{
   name: string;
@@ -17,7 +15,6 @@ const LibraryItem: React.FC<{
     screen,
     updateScreen,
     selectedComponentId,
-    setSelectedComponent,
     selectedBottomSheetId,
   } = useBuilder();
 
@@ -30,12 +27,10 @@ const LibraryItem: React.FC<{
 
     console.log("➕ Adding new component:", newComponent);
 
-    // Если есть выделенный компонент И он контейнерный, добавляем как ребенка
     if (selectedComponentId && screen) {
       updateScreen((currentScreen) => {
         const addToParent = (components: UIComponent[]): UIComponent[] => {
           return components.map((comp) => {
-            // Если нашли выделенный компонент и он может содержать детей
             if (comp._id === selectedComponentId && "children" in comp) {
               console.log("✅ Adding to parent:", comp._id);
               return {
@@ -44,7 +39,7 @@ const LibraryItem: React.FC<{
               };
             }
 
-            // Рекурсивно ищем в детях
+
             if ("children" in comp && comp.children) {
               return {
                 ...comp,
@@ -69,7 +64,7 @@ const LibraryItem: React.FC<{
         };
       });
     } else {
-      // Добавляем в корень content
+
       updateScreen((currentScreen) => ({
         ...currentScreen,
         content: [...currentScreen.content, newComponent],
@@ -167,7 +162,7 @@ const CustomTemplateItem: React.FC<{
   };
 
   const handleDeleteTemplate = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Предотвращаем срабатывание onClick родителя
+    e.stopPropagation();
     removeCustomTemplate(template._id!);
   };
 
@@ -204,7 +199,6 @@ const ComponentsWidget = () => {
         </div>
       </Summary>
 
-      {/* Отображение кастомных компонентов в Summary */}
       {customTemplates.length > 0 && (
         <Summary title="Мои компоненты">
           <div className={styles.componentsList}>
@@ -214,9 +208,6 @@ const ComponentsWidget = () => {
           </div>
         </Summary>
       )}
-
-      {/* Менеджер шаблонов (только создание) */}
-      {/* <TemplateManager /> */}
     </div>
   );
 };

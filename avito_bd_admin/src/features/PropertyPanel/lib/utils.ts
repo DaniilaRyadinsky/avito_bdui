@@ -22,7 +22,6 @@ export const updateComponentById = (
   id: string,
   mutator: (c: UIComponent) => UIComponent
 ): UIScreen => {
-  // обновляем в стандартных секциях
   let next: UIScreen = {
     ...screen,
     topBar: updateInList(screen.topBar, id, mutator),
@@ -30,7 +29,6 @@ export const updateComponentById = (
     bottomBar: updateInList(screen.bottomBar, id, mutator),
   };
 
-  // обновляем внутри каждого bottomSheet
   if (screen.bottomSheets?.length) {
     next = {
       ...next,

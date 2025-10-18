@@ -1,0 +1,29 @@
+.snackbar {
+    bottom: 112px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+}
+
+.snackbar_content {
+    padding: 16px 20px;
+    background: #141414;
+    border-radius: 28px;
+    display: flex;
+    font-display: row;
+    gap: 15px;
+    align-items: center;
+}
+
+.snackbar_text {
+    font-size: 15px;
+    color: #fff;
+}
+
+.snackbar_actionText {
+    background: #fff;
+    color: #0A0A0A;
+    padding: 10px 14px;
+    border-radius: 12px;
+}

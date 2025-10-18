@@ -1,5 +1,5 @@
 
-import type { ColumnHorizontalAlignment, ColumnVerticalArrangement, RowHorizontalArrangement, RowVerticalAlignment } from "../../model/componentTypes";
+import type { HorizontalAlignment, VerticalArrangement, HorizontalArrangement, VerticalAlignment } from "../../model/componentTypes";
 
 const n = (v?: number) => v ?? 0;
 
@@ -24,7 +24,7 @@ export const calculateSize = (
     }
 }
 
-export const getColHorizontalArrangement = (value: ColumnHorizontalAlignment) => {
+export const getColHorizontalArrangement = (value: HorizontalAlignment) => {
     switch (value) {
         case "start":
             return "flex-start"
@@ -37,7 +37,7 @@ export const getColHorizontalArrangement = (value: ColumnHorizontalAlignment) =>
     }
 }
 
-export const getColVerticalAlignment = (value: ColumnVerticalArrangement) => {
+export const getColVerticalAlignment = (value: VerticalArrangement) => {
     switch (value) {
         case "top":
             return "start"
@@ -56,7 +56,7 @@ export const getColVerticalAlignment = (value: ColumnVerticalArrangement) => {
     }
 }
 
-export const getRowHorizontalArrangement = (value: RowHorizontalArrangement) => {
+export const getRowHorizontalArrangement = (value: HorizontalArrangement) => {
     switch (value) {
         case "start":
             return "flex-start"
@@ -75,7 +75,7 @@ export const getRowHorizontalArrangement = (value: RowHorizontalArrangement) => 
     }
 }
 
-export const getRowVerticalAlignment = (value: RowVerticalAlignment) => {
+export const getRowVerticalAlignment = (value: VerticalAlignment) => {
     switch (value) {
         case "top":
             return "start"

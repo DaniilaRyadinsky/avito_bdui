@@ -70,7 +70,6 @@
     flex: 1;
     gap: 8px;
     min-width: 0;
-    /* важно для работы overflow внутри */
 }
 
 .type {
@@ -87,10 +86,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* ✅ обрезает длинные id */
-}
-
-.node {
 }
 
 .children {

@@ -13,7 +13,6 @@ export const IconComponent: React.FC<IconComponentProps> = ({
   component,
   selectedId,
   onSelect,
-  onAction,
 }) => {
   const {
     icon,

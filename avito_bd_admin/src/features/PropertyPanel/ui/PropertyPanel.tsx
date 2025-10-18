@@ -17,11 +17,10 @@ import type {
   ColumnComponent,
 } from "../../../entities/components/model/componentTypes";
 import { findComponentById } from "../../../shared/lib/searchHelpers";
+import SnackbarGroup from "../groups/SnackbarGroup";
 
-export const PropertyPanel: React.FC<{ className?: string }> = ({
-  className,
-}) => {
-  const { screen, updateScreen, selectedComponentId } = useBuilder();
+export const PropertyPanel = () => {
+  const { screen, updateScreen, selectedComponentId, selectedSnackBarId } = useBuilder();
 
 
   const isImage = (c: UIComponent): c is ImageComponent => c.type === "image";
@@ -29,7 +28,6 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
   const isColumn = (c: UIComponent): c is ColumnComponent =>
     c.type === "column";
 
-  // Важно: хук вызывается всегда
   const targetComponent = React.useMemo(
     () =>
       applyDefaultsToComponent(findComponentById(screen, selectedComponentId))
@@ -48,14 +46,18 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
     [selectedComponentId, updateScreen]
   );
 
+  if (selectedSnackBarId) return <SnackbarGroup />
+
   if (!targetComponent) {
     return (
-      <div className={`panel-card ${className ?? ""}`}>Выберите элемент</div>
+      <div className={`panel-card`}>Выберите элемент</div>
     );
   }
 
+
+
   return (
-    <div className={`panel-card ${className ?? ""}`}>
+    <div className={`panel-card`}>
       <div className="panel-card__header">Свойства</div>
       <div className="panel-card__content">
         <LayoutGroup
@@ -82,7 +84,7 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
                   if (isColumn(c)) {
                     return { ...c, ...(patch as Partial<ColumnComponent>) };
                   }
-                  return c; // на всякий случай
+                  return c;
                 })
               }
             />
@@ -115,7 +117,6 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
 
         {targetComponent.type === "image" && (
           <ImageStyleGroup
-            // если вдруг где-то пролезает null — превращаем в undefined
             value={targetComponent}
             onChange={(patch: Partial<ImageComponent>) =>
               updateSelected((c) => (isImage(c) ? { ...c, ...patch } : c))
@@ -135,7 +136,7 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
             onTextChange={(newText) =>
               updateSelected((c) => ({
                 ...c,
-                text: newText, // просто обновляем поле text
+                text: newText,
               }))
             }
           />
@@ -153,7 +154,7 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
             onTextChange={(newText) =>
               updateSelected((c) => ({
                 ...c,
-                text: newText, // просто обновляем поле text
+                text: newText,
               }))
             }
           />

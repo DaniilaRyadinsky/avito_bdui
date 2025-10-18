@@ -145,11 +145,11 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
             )}
 
             {action.type === "showSnackbar" && (
-              <Column label="Текст уведомления">
+              <Column label="Id snackBar">
                 <TextInput
                   value={action.targetId || ""}
                   onChange={(value) => updateAction(index, { targetId: value })}
-                  placeholder="Введите текст уведомления"
+                  placeholder="Введите id snackbar"
                 />
               </Column>
             )}

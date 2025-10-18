@@ -4,13 +4,15 @@ import styles from "./ScreenRenderer.module.css";
 import { ComponentFactory } from "../../../components/ui/ComponentFactory/ComponentFactory";
 import { useBuilder } from "../../../../features/Builder/lib/builderContext";
 import BottomSheetRenderer from "../../../screenAddons/ui/BottomSheetRenderer/BottomSheetRenderer";
+import SnackBarsRenderer from "../../../screenAddons/ui/SnackBarsRenderer/SnackBarsRenderer";
 
 export const ScreenRenderer: React.FC = () => {
-  const { screen, 
+  const { screen,
     selectedComponentId,
     selectedBottomSheetId,
-    setSelectedComponent, 
-    setSelectedBottomSheet, 
+    selectedSnackBarId,
+    setSelectedComponent,
+    setSelectedBottomSheet,
     setSelectedSnackBar } = useBuilder();
 
   if (!screen) {
@@ -22,7 +24,6 @@ export const ScreenRenderer: React.FC = () => {
   };
 
   const handleUnselect = () => {
-    console.log("workspase unselect")
     setSelectedComponent(null)
     setSelectedBottomSheet(null)
     setSelectedSnackBar(null)
@@ -30,7 +31,7 @@ export const ScreenRenderer: React.FC = () => {
 
 
   return (
-    <div className={styles.workspace} onClick={() => {handleUnselect()}}>
+    <div className={styles.workspace} onClick={() => { handleUnselect() }}>
 
       <div className={styles.workspase2}>
         <div
@@ -75,7 +76,11 @@ export const ScreenRenderer: React.FC = () => {
           </div>
 
           {selectedBottomSheetId &&
-            <BottomSheetRenderer/>
+            <BottomSheetRenderer />
+          }
+
+          {selectedSnackBarId &&
+            <SnackBarsRenderer />
           }
 
           {/* bottomsheet */}

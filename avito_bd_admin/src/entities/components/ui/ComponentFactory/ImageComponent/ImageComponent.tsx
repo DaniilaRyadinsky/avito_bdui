@@ -13,7 +13,6 @@ export const ImageComponent: React.FC<ImageComponentProps> = ({
   component,
   selectedId,
   onSelect,
-  onAction,
 }) => {
   const {
     url,
