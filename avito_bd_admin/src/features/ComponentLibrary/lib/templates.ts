@@ -131,19 +131,6 @@ export const createCard = (overrides: Partial<CardComponent> = {}): CardComponen
     return withDefaults(base, componentDefaults["card"], overrides);
 };
 
-// Snackbar
-// export const createSnackbar = (overrides: Partial<SnackbarComponent> = {}): SnackbarComponent => {
-//     const base: SnackbarComponent = {
-//         type: "snackbar",
-//         _id: genId("snackbar"),
-//         text: "Message sent",
-//         actionText: undefined,
-//         duration: 3000,
-//         actions: [],
-//         modifier: defaultModifier,
-//     };
-//     return withDefaults(base, componentDefaults["snackbar"], overrides);
-// };
 
 // Box
 export const createBox = (overrides: Partial<BoxComponent> = {}): BoxComponent => {

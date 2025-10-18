@@ -4,8 +4,6 @@ import { findBottomSheetById } from '../../lib/findBottomsheets';
 import styles from './BottomSheetRenderer.module.css'
 
 
-
-
 const BottomSheetRenderer = () => {
     const { screen,
         selectedComponentId,
@@ -16,8 +14,6 @@ const BottomSheetRenderer = () => {
     if (!screen) {
         return <div className={styles.loading}>Загрузка экрана...</div>;
     }
-
-
 
     return (
         <div className={styles.bottomsheet} onClick={(e)=> {e.stopPropagation()}}>

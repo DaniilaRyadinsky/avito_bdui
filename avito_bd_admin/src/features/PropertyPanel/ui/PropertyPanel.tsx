@@ -16,7 +16,7 @@ import type {
   RowComponent,
   ColumnComponent,
 } from "../../../entities/components/model/componentTypes";
-import type { UIScreen } from "../../../entities/screen/model/screenTypes";
+import { findComponentById } from "../../../shared/lib/searchHelpers";
 
 export const PropertyPanel: React.FC<{ className?: string }> = ({
   className,
@@ -28,38 +28,6 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
   const isRow = (c: UIComponent): c is RowComponent => c.type === "row";
   const isColumn = (c: UIComponent): c is ColumnComponent =>
     c.type === "column";
-
-  // Поисковые хелперы можно вынести вне компонента, но оставлю тут для краткости
-  const findInList = (list: UIComponent[] | undefined, id: string): UIComponent | null => {
-    if (!list) return null;
-    for (const comp of list) {
-      if (comp._id === id) return comp;
-      if ("children" in comp && comp.children?.length) {
-        const found = findInList(comp.children, id);
-        if (found) return found;
-      }
-    }
-    return null;
-  };
-
-  const findInBottomSheets = (screen: UIScreen, id: string): UIComponent | null => {
-    for (const bs of screen.bottomSheets ?? []) {
-      const found = findInList(bs.children, id);
-      if (found) return found;
-    }
-    return null;
-  };
-
-  const findComponentById = (screen: UIScreen | null | undefined, id: string | null): UIComponent | null => {
-    if (!screen || !id) return null;
-    return (
-      findInList(screen.topBar, id) ||
-      findInList(screen.content, id) ||
-      findInList(screen.bottomBar, id) ||
-      findInBottomSheets(screen, id) ||   // 👈 добавили
-      null
-    );
-  };
 
   // Важно: хук вызывается всегда
   const targetComponent = React.useMemo(

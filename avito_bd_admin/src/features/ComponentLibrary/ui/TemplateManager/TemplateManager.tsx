@@ -5,6 +5,7 @@ import type { UIComponent } from "../../../../entities/components/model/componen
 import Summary from "../../../../shared/ui/Summary/Summary";
 import Button from "../../../../shared/ui/Button/Button";
 import { TextInput } from "../../../../shared/ui/TextInput/TextInput";
+import { findComponentById } from "../../../../shared/lib/searchHelpers";
 
 export const TemplateManager: React.FC = () => {
   const { selectedComponentId, screen, customTemplates, addCustomTemplate } =
@@ -13,36 +14,11 @@ export const TemplateManager: React.FC = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [templateName, setTemplateName] = useState("");
 
-  const findSelectedComponent = (): UIComponent | null => {
-    if (!screen || !selectedComponentId) return null;
-
-    const findInTree = (components: UIComponent[]): UIComponent | null => {
-      for (const comp of components) {
-        if (comp._id === selectedComponentId) {
-          return comp;
-        }
-        if ("children" in comp && comp.children) {
-          const found = findInTree(comp.children);
-          if (found) return found;
-        }
-      }
-      return null;
-    };
-
-    return (
-      findInTree(screen.content) ||
-      findInTree(screen.topBar || []) ||
-      findInTree(screen.bottomBar || []) ||
-      (screen.bottomSheets || []).reduce<UIComponent | null>((found, bs) => {
-        return found || findInTree(bs.children || []);
-      }, null)
-    );
-  };
+  const selectedComponent = findComponentById(screen, selectedComponentId);
 
   const handleCreateTemplate = () => {
     if (!templateName.trim()) return;
 
-    const selectedComponent = findSelectedComponent();
     if (!selectedComponent) {
       return;
     }
@@ -72,7 +48,6 @@ export const TemplateManager: React.FC = () => {
     setIsCreating(false);
   };
 
-  const selectedComponent = findSelectedComponent();
 
   return (
     <div className={styles.container}>
@@ -82,7 +57,7 @@ export const TemplateManager: React.FC = () => {
             <Button
               onClick={() => setIsCreating(true)}
               disabled={!selectedComponent}
-              style={{width:"100%"}}
+              style={{ width: "100%" }}
             >
               💾 Сохранить выделенный компонент
             </Button>

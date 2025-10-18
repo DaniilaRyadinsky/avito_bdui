@@ -130,8 +130,6 @@ const Main = () => {
         setLoading(true);
         setError(null);
 
-        console.log("🔍 Screen ID from URL:", screenId);
-
         if (!screenId) {
           // Создаем новый экран с уникальными ID
           const newScreen = createNewScreen();
