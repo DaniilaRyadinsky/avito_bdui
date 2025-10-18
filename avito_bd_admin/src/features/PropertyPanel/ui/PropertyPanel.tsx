@@ -23,16 +23,15 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
 }) => {
   const { screen, updateScreen, selectedComponentId } = useBuilder();
 
+  console.log("propertypanel", selectedComponentId)
+
   const isImage = (c: UIComponent): c is ImageComponent => c.type === "image";
   const isRow = (c: UIComponent): c is RowComponent => c.type === "row";
   const isColumn = (c: UIComponent): c is ColumnComponent =>
     c.type === "column";
 
   // Поисковые хелперы можно вынести вне компонента, но оставлю тут для краткости
-  const findInList = (
-    list: UIComponent[] | undefined,
-    id: string
-  ): UIComponent | null => {
+  const findInList = (list: UIComponent[] | undefined, id: string): UIComponent | null => {
     if (!list) return null;
     for (const comp of list) {
       if (comp._id === id) return comp;
@@ -44,15 +43,21 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
     return null;
   };
 
-  const findComponentById = (
-    screen: UIScreen | null | undefined,
-    id: string | null
-  ): UIComponent | null => {
+  const findInBottomSheets = (screen: UIScreen, id: string): UIComponent | null => {
+    for (const bs of screen.bottomSheets ?? []) {
+      const found = findInList(bs.children, id);
+      if (found) return found;
+    }
+    return null;
+  };
+
+  const findComponentById = (screen: UIScreen | null | undefined, id: string | null): UIComponent | null => {
     if (!screen || !id) return null;
     return (
       findInList(screen.topBar, id) ||
       findInList(screen.content, id) ||
       findInList(screen.bottomBar, id) ||
+      findInBottomSheets(screen, id) ||   // 👈 добавили
       null
     );
   };
@@ -60,11 +65,11 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
   // Важно: хук вызывается всегда
   const targetComponent = React.useMemo(
     () =>
-      applyDefaultsToComponent(findComponentById(screen, selectedComponentId)),
+      applyDefaultsToComponent(findComponentById(screen, selectedComponentId))
+    ,
     [screen, selectedComponentId]
   );
 
-  // Тоже хук — вызывать всегда, до раннего return
   const updateSelected = React.useCallback(
     (mutator: (c: UIComponent) => UIComponent) => {
       if (!selectedComponentId) return;
@@ -76,7 +81,6 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
     [selectedComponentId, updateScreen]
   );
 
-  // Теперь можно делать ранний return — порядок хуков уже зафиксирован
   if (!targetComponent) {
     return (
       <div className={`panel-card ${className ?? ""}`}>Выберите элемент</div>
@@ -99,23 +103,23 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
 
         {(targetComponent.type === "row" ||
           targetComponent.type === "column") && (
-          <AligmentStyleGroup
-            value={targetComponent}
-            onChange={(
-              patch: Partial<RowComponent> | Partial<ColumnComponent>
-            ) =>
-              updateSelected((c) => {
-                if (isRow(c)) {
-                  return { ...c, ...(patch as Partial<RowComponent>) };
-                }
-                if (isColumn(c)) {
-                  return { ...c, ...(patch as Partial<ColumnComponent>) };
-                }
-                return c; // на всякий случай
-              })
-            }
-          />
-        )}
+            <AligmentStyleGroup
+              value={targetComponent}
+              onChange={(
+                patch: Partial<RowComponent> | Partial<ColumnComponent>
+              ) =>
+                updateSelected((c) => {
+                  if (isRow(c)) {
+                    return { ...c, ...(patch as Partial<RowComponent>) };
+                  }
+                  if (isColumn(c)) {
+                    return { ...c, ...(patch as Partial<ColumnComponent>) };
+                  }
+                  return c; // на всякий случай
+                })
+              }
+            />
+          )}
 
         {targetComponent.type !== "spacer" && (
           <PaddingGroup

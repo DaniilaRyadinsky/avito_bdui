@@ -259,14 +259,9 @@ const Main = () => {
               </div>
               <SaveButton />
             </div>
-            <div className={styles.workspace}>
-              <div
-                className={styles.screen}
-                style={{ width: width, height: height }}
-              >
+            
                 <ScreenRenderer />
-              </div>
-            </div>
+
           </div>
           <PropertyPanel />
         </BuilderProvider>

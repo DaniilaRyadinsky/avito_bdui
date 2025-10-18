@@ -130,14 +130,7 @@ export const componentDefaults: {
             ...defaultModifier,
             size: { width: "20", height: "20" },
         },
-    },
-    snackbar: {
-        modifier: {
-            ...defaultModifier,
-            background: "#323232",
-        },
-        duration: 3000,
-    },
+    }
 };
 
 
@@ -151,16 +144,8 @@ export const componentTemplates: {
             name: "Текст"
         },
         {
-            type: "button",
-            name: "Кнопка"
-        },
-        {
             type: "image",
             name: "Изображение"
-        },
-        {
-            type: "card",
-            name: "Карточка"
         },
         {
             type: "row",

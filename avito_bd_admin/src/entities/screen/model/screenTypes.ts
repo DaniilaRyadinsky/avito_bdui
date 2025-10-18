@@ -1,4 +1,5 @@
-import type { BottomSheetComponent, RawUIComponent, SnackbarComponent, UIComponent } from "../../components/model/componentTypes";
+import type { RawUIComponent, UIComponent } from "../../components/model/componentTypes";
+import type { SnackbarComponent, BottomSheetComponent } from "../../screenAddons/model/screenAddonsTypes";
 
 export type RawUIScreen = {
   type: string;

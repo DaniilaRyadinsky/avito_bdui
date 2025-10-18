@@ -219,18 +219,7 @@ export interface CardComponent extends ComponentTemplate {
   children: UIComponent[];
 }
 
-export interface SnackbarComponent extends ComponentTemplate {
-  type: "snackbar";
-  text: string;
-  actionText?: string;
-  duration?: number;
-}
 
-export interface BottomSheetComponent extends ComponentTemplate {
-  type: "bottomSheet";
-  dismissible: boolean;
-  children: UIComponent[];
-}
 
 export interface BoxComponent extends ComponentTemplate {
   type: "box";
@@ -250,7 +239,7 @@ export type RawUIComponent = Omit<UIComponent, "type"> & {
 
 // Объединенный тип компонента
 export type UIComponent =
-  | TextComponent
+  TextComponent
   | ButtonComponent
   | ImageComponent
   | IconComponent
@@ -259,5 +248,4 @@ export type UIComponent =
   | CheckboxComponent
   | SpacerComponent
   | CardComponent
-  | SnackbarComponent
   | BoxComponent;

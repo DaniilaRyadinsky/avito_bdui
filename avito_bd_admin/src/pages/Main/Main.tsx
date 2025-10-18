@@ -26,8 +26,6 @@ const Main = () => {
 
     const screen = useScreenData(fetchedData)
 
-    console.log(screen)
-
     if (!screenId && loading) {
         return (
             <div className={styles.container}>
@@ -95,10 +93,7 @@ const Main = () => {
                             <SizeContainer />
                             <SaveButton />
                         </div>
-                        <div className={styles.workspace}>
-                            <ScreenRenderer />
-                            
-                        </div>
+                        <ScreenRenderer />
                     </div>
                     <PropertyPanel />
                 </BuilderProvider>
