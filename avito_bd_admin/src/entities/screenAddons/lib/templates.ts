@@ -1,7 +1,7 @@
+import { defaultModifier } from "../../../features/ComponentLibrary/lib/constant";
 import { createColumn } from "../../../features/ComponentLibrary/lib/templates";
-import { genId, withDefaults } from "../../../shared/lib/merge";
+import { genId } from "../../../shared/lib/merge";
 import type { BottomSheetComponent, SnackbarComponent } from "../model/screenAddonsTypes";
-import { addonsDefaults } from "./constants";
 
 export const createSnackbar = (): SnackbarComponent => {
     const base: SnackbarComponent = {
@@ -19,7 +19,13 @@ export const createBottomSheet = (): BottomSheetComponent => {
         _id: genId("bottomSheet"),
         type: "bottomSheet",
         dismissible: false,
-        children: [createColumn()],
+        children: [createColumn({
+            modifier: 
+            {...defaultModifier, 
+                size: {width: "match_parent", height: "450"}, 
+                fillMaxWidth: true,
+                fillMaxHeight: false
+            }})],
     };
     return base;
 }

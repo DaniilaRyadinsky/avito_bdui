@@ -32,10 +32,8 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
     padding = {},
     margin = {},
     background,
-    scrollable,
     clip,
     border,
-    clickable,
     alpha = 1.0,
     size,
     shadow

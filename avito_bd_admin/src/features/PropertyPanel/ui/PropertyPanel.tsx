@@ -23,7 +23,6 @@ export const PropertyPanel: React.FC<{ className?: string }> = ({
 }) => {
   const { screen, updateScreen, selectedComponentId } = useBuilder();
 
-  console.log("propertypanel", selectedComponentId)
 
   const isImage = (c: UIComponent): c is ImageComponent => c.type === "image";
   const isRow = (c: UIComponent): c is RowComponent => c.type === "row";

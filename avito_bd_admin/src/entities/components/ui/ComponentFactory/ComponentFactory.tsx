@@ -9,7 +9,7 @@ import { CheckboxComponent } from "./CheckboxComponent/CheckboxComponent";
 import { SpacerComponent } from "./SpacerComponent/SpacerComponent";
 import { CardComponent } from "./CardComponent/CardComponent";
 import { BoxComponent } from "./BoxComponent/BoxComponent";
-import BoxModelVisualizer from "../../../../features/BoxModelVisualizer/BoxModelVisualizer";
+// import BoxModelVisualizer from "../../../../features/BoxModelVisualizer/BoxModelVisualizer";
 import type { UIComponent } from "../../model/componentTypes";
 
 interface ComponentFactoryProps {

@@ -1,7 +1,6 @@
 import React from "react";
 import { useBuilder } from "../../../Builder/lib/builderContext";
 import styles from "./ComponentControls.module.css";
-import type { UIComponent } from "../../../../entities/components/model/componentTypes";
 import Button from "../../../../shared/ui/Button/Button";
 
 

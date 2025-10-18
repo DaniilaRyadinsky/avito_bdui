@@ -4,8 +4,8 @@ import { useState } from 'react'
 import ColorsWidget from './ColorsWiget/ColorsWidget'
 import ComponentsWidget from '../../ComponentLibrary/ui/ComponentWidget/ComponentWidget'
 import { ComponentControls } from './ComponentControls/ComponentControls'
-import ComponentTree from '../../ComponentTree/ComponentTree'
-import AddonsWidget from '../../../entities/screenAddons/ui/AddonsControl/AddonsControls'
+import ComponentTree from '../../ComponentTree/ui/ComponentTree'
+import BottomSheetTree from '../../ComponentTree/ui/BottomSheetTree'
 
 const LeftBar = () => {
     const [mode, setMode] = useState<"comp" | "col" | "var">("comp")
@@ -19,7 +19,7 @@ const LeftBar = () => {
                     <ComponentsWidget />
                     <ComponentControls />
                     <ComponentTree />
-                    <AddonsWidget/>
+                    <BottomSheetTree/>
                 </>}
                 {mode == "col" && <ColorsWidget />}
                 <div>

@@ -3,14 +3,12 @@ import React from "react";
 import styles from "./ScreenRenderer.module.css";
 import { ComponentFactory } from "../../../components/ui/ComponentFactory/ComponentFactory";
 import { useBuilder } from "../../../../features/Builder/lib/builderContext";
-import type { BottomSheetComponent } from "../../../screenAddons/model/screenAddonsTypes";
 import BottomSheetRenderer from "../../../screenAddons/ui/BottomSheetRenderer/BottomSheetRenderer";
 
 export const ScreenRenderer: React.FC = () => {
   const { screen, 
     selectedComponentId,
     selectedBottomSheetId,
-    selectedSnackBarId, 
     setSelectedComponent, 
     setSelectedBottomSheet, 
     setSelectedSnackBar } = useBuilder();

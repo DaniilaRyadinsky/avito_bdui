@@ -52,7 +52,7 @@
 }
 
 .section__body {
-    padding: var(--space-4);
+    padding: 0 var(--space-4) var(--space-4) var(--space-4);
     display: flex;
     flex-direction: column;
     gap: 10px;
