@@ -1,4 +1,3 @@
-// features/Builder/ui/ComponentControls/ComponentControls.tsx
 import React from "react";
 import { useBuilder } from "../../../Builder/lib/builderContext";
 import styles from "./ComponentControls.module.css";
@@ -38,23 +37,6 @@ export const ComponentControls: React.FC = () => {
     );
   }
 
-  // Функция для поиска компонента по всему дереву
-  const findComponentInTree = (
-    components: UIComponent[],
-    targetId: string
-  ): UIComponent | null => {
-    for (const comp of components) {
-      if (comp._id === targetId) return comp;
-
-      if ("children" in comp && comp.children) {
-        const found = findComponentInTree(comp.children, targetId);
-        if (found) return found;
-      }
-    }
-    return null;
-  };
-
-
   const handleDelete = () => {
     if (confirm("Удалить компонент?")) {
       deleteComponent(selectedComponentId);
@@ -63,13 +45,6 @@ export const ComponentControls: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      {/* <div className={styles.header}>
-        <h3>Управление компонентом</h3>
-        <div className={styles.componentId}>ID: {selectedComponentId}</div>
-        <div className={styles.componentType}>
-          Тип: {selectedComponent?.type || "unknown"}
-        </div>
-      </div> */}
 
       <div className={styles.controls}>
         <div className={styles.section}>
@@ -95,24 +70,6 @@ export const ComponentControls: React.FC = () => {
             <p>• Удаление - кнопка выше</p>
           </div>
         </div>
-
-        {/* {selectedComponent?.type === "text" && (
-          <div className={styles.section}>
-            <h4>Текст</h4>
-            <div className={styles.textContent}>
-              {(selectedComponent as any).text}
-            </div>
-          </div>
-        )}
-
-        {selectedComponent?.type === "button" && (
-          <div className={styles.section}>
-            <h4>Кнопка</h4>
-            <div className={styles.textContent}>
-              Текст: {(selectedComponent as any).text}
-            </div>
-          </div>
-        )} */}
       </div>
     </div>
   );

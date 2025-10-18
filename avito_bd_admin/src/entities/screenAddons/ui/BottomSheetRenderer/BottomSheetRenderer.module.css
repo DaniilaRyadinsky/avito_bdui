@@ -1,0 +1,25 @@
+.bottomsheet {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1; 
+}
+
+.bottomsheet_content {
+  position: absolute; 
+  bottom: 0;
+  width: 100%;
+  height: 400px;
+  background-color: #fff;
+  z-index: 2; 
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+}

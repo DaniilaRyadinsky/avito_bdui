@@ -44,6 +44,7 @@ export const ColumnComponent: React.FC<ColumnComponentProps> = ({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (component._id && onSelect) {
+      console.log()
       onSelect(e.currentTarget.id);
     }
   };

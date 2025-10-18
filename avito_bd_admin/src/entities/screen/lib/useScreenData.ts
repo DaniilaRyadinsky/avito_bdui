@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import type { BottomSheetComponent, SnackbarComponent, UIComponent } from "../../components/model/componentTypes";
+import type { UIComponent } from "../../components/model/componentTypes";
 import type { UIScreen, RawUIScreen } from "../model/screenTypes";
+import type { BottomSheetComponent, SnackbarComponent } from "../../screenAddons/model/screenAddonsTypes";
 
 
 // Функция для добавления ID всем компонентам

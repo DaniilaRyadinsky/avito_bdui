@@ -4,8 +4,6 @@ import { useBuilder } from '../../../../features/Builder/lib/builderContext';
 
 const SizeContainer = () => {
     const { screen, updateScreen } = useBuilder();
-
-    console.log(screen)
     return (
         <div className={styles.input_container}>
             <NumberInput

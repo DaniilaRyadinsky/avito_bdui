@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import type { UIScreen } from "../../../entities/screen/model/screenTypes";
 import type { UIComponent } from "../../../entities/components/model/componentTypes";
+import { findBottomSheetById } from "../../../entities/screenAddons/lib/findBottomsheets";
 
 
 interface BuilderContextType {
@@ -16,6 +17,12 @@ interface BuilderContextType {
   updateScreen: (updater: (currentScreen: UIScreen) => UIScreen) => void;
   deleteComponent: (componentId: string) => void;
   moveComponent: (componentId: string, direction: "up" | "down") => void;
+
+  selectedBottomSheetId: string | null;
+  setSelectedBottomSheet: (_id: string | null) => void,
+
+  selectedSnackBarId: string | null,
+  setSelectedSnackBar: (_id: string | null) => void,
 }
 
 const BuilderContext = createContext<BuilderContextType | undefined>(undefined);
@@ -30,9 +37,9 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
   children,
 }) => {
   const [screen, setScreen] = useState<UIScreen | null>(initialScreen);
-  const [selectedComponentId, setSelectedComponent] = useState<string | null>(
-    null
-  );
+  const [selectedComponentId, setSelectedComponent] = useState<string | null>(null);
+  const [selectedBottomSheetId, setSelectedBottomSheet] = useState<string | null>(null);
+  const [selectedSnackBarId, setSelectedSnackBar] = useState<string | null>(null);
 
   // Обновляем screen при изменении initialScreen
   useEffect(() => {
@@ -41,7 +48,7 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
   }, [initialScreen]);
 
   // Функция для обновления экрана
-   const updateScreen = (updater: (currentScreen: UIScreen) => UIScreen) => {
+  const updateScreen = (updater: (currentScreen: UIScreen) => UIScreen) => {
     if (screen) {
       const newScreen = updater(screen);
       setScreen(newScreen);
@@ -118,8 +125,15 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
       content: moveInSection(screen.content),
       topBar: moveInSection(screen.topBar),
       bottomBar: moveInSection(screen.bottomBar),
-    };
 
+      // ✅ Меняем только children выбранного bottomSheet
+      bottomSheets: (screen.bottomSheets ?? []).map(bs =>
+        bs._id === selectedBottomSheetId
+          ? { ...bs, children: moveInSection(bs.children ?? []) }
+          : bs
+      ),
+      // snackbars — без изменений
+    };
     setScreen(newScreen);
   };
 
@@ -144,6 +158,11 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
       topBar: deepRemove(screen.topBar || []),
       content: deepRemove(screen.content || []),
       bottomBar: deepRemove(screen.bottomBar || []),
+      bottomSheets: (screen.bottomSheets ?? []).map(bs =>
+        bs._id === selectedBottomSheetId
+          ? { ...bs, children: deepRemove(bs.children ?? []) }
+          : bs
+      ),
     };
 
     setScreen(newScreen);
@@ -157,6 +176,10 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
     updateScreen,
     deleteComponent,
     moveComponent,
+    selectedBottomSheetId,
+    setSelectedBottomSheet,
+    selectedSnackBarId,
+    setSelectedSnackBar
   };
 
   return (

@@ -1,34 +1,9 @@
 
-import type { TextComponent, ButtonComponent, ImageComponent, IconComponent, RowComponent, ColumnComponent, CheckboxComponent, SpacerComponent, CardComponent, SnackbarComponent, BoxComponent, UIComponent } from "../../../entities/components/model/componentTypes";
+import type { TextComponent, ButtonComponent, ImageComponent, IconComponent, RowComponent, ColumnComponent, CheckboxComponent, SpacerComponent, CardComponent, BoxComponent, UIComponent } from "../../../entities/components/model/componentTypes";
 import type { UIScreen } from "../../../entities/screen/model/screenTypes";
+import { genId, withDefaults, deepMerge } from "../../../shared/lib/merge";
 import { defaultTextStyle, defaultModifier, componentDefaults, defaultButtonStyle, defaultPadding, defaultBorder, defaultShape, defaultClip, defaultShadow } from "./constant";
 
-// ===== ВСПОМОГАТЕЛЬНОЕ =====
-const genId = (prefix: string = "id") =>
-    `${prefix}_${Math.random().toString(36).slice(2, 10)}`;
-
-export function deepMerge<T>(base: T, patch: Partial<T>): T {
-    const out: any = Array.isArray(base) ? [...(base as any)] : { ...base };
-    for (const [k, v] of Object.entries(patch as any)) {
-        if (
-            v && typeof v === "object" && !Array.isArray(v) &&
-            typeof (out as any)[k] === "object" && (out as any)[k] !== null &&
-            !Array.isArray((out as any)[k])
-        ) {
-            (out as any)[k] = deepMerge((out as any)[k], v);
-        } else {
-            (out as any)[k] = v as any;
-        }
-    }
-    return out;
-}
-// Удобный мерж для фабрик: base -> per-type defaults -> overrides
-const withDefaults = <T>(base: T, typeDefaults: Partial<T> | undefined, overrides: Partial<T>) =>
-    deepMerge(deepMerge(base, typeDefaults ?? {} as Partial<T>), overrides);
-
-
-
-// ===== ФАБРИКИ (base -> per-type defaults -> overrides) =====
 
 // Text
 export const createText = (overrides: Partial<TextComponent> = {}): TextComponent => {
@@ -157,18 +132,18 @@ export const createCard = (overrides: Partial<CardComponent> = {}): CardComponen
 };
 
 // Snackbar
-export const createSnackbar = (overrides: Partial<SnackbarComponent> = {}): SnackbarComponent => {
-    const base: SnackbarComponent = {
-        type: "snackbar",
-        _id: genId("snackbar"),
-        text: "Message sent",
-        actionText: undefined,
-        duration: 3000,
-        actions: [],
-        modifier: defaultModifier,
-    };
-    return withDefaults(base, componentDefaults["snackbar"], overrides);
-};
+// export const createSnackbar = (overrides: Partial<SnackbarComponent> = {}): SnackbarComponent => {
+//     const base: SnackbarComponent = {
+//         type: "snackbar",
+//         _id: genId("snackbar"),
+//         text: "Message sent",
+//         actionText: undefined,
+//         duration: 3000,
+//         actions: [],
+//         modifier: defaultModifier,
+//     };
+//     return withDefaults(base, componentDefaults["snackbar"], overrides);
+// };
 
 // Box
 export const createBox = (overrides: Partial<BoxComponent> = {}): BoxComponent => {
@@ -233,8 +208,8 @@ export const createComponent = (type: UIComponent["type"]) => {
             return createCard()
         case ("box"):
             return createBox()
-        case ("snackbar"):
-            return createSnackbar()
+        // case ("snackbar"):
+        //     return createSnackbar()
     }
 
 }

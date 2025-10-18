@@ -87,7 +87,7 @@ export const ComponentFactory: React.FC<ComponentFactoryProps> = ({
             fontSize: "12px",
           }}
         >
-          Unknown: {component.type}
+          Unknown: {component}
         </div>
       );
   }

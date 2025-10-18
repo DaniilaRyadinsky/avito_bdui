@@ -14,7 +14,7 @@ const LibraryItem: React.FC<{
   name: string;
   type: string;
 }> = ({ name, type, }) => {
-  const { screen, updateScreen, selectedComponentId, setSelectedComponent } = useBuilder();
+  const { screen, updateScreen, selectedComponentId, setSelectedComponent, selectedBottomSheetId } = useBuilder();
 
   const handleAddComponent = () => {
     if (!screen) return;
@@ -50,14 +50,18 @@ const LibraryItem: React.FC<{
           });
         };
 
-        if (newComponent._id !== undefined)
-          setSelectedComponent(newComponent._id)
 
         return {
           ...currentScreen,
           content: addToParent(currentScreen.content),
           topBar: addToParent(currentScreen.topBar),
           bottomBar: addToParent(currentScreen.bottomBar),
+          bottomSheets: (screen.bottomSheets ?? []).map(bs =>
+            bs._id === selectedBottomSheetId
+              ? { ...bs, children: addToParent(bs.children ?? []) }
+              : bs
+          ),
+          // bottomSheets: addToParent(currentScreen.bottomSheets)
         };
       });
     } else {

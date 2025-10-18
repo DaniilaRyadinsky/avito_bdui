@@ -9,8 +9,6 @@ export const fetchScreenData = async (
         setLoading(true);
         setError(null);
 
-        console.log("Screen ID from URL:", id);
-
         if (!id) {
             const newScreen = createNewScreen();
             setFetchedData(newScreen);
