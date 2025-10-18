@@ -7,6 +7,7 @@ import { componentTemplates } from "../../lib/constant";
 import { createComponent } from "../../lib/templates";
 import type { UIComponent } from "../../../../entities/components/model/componentTypes";
 import { TemplateManager } from "../TemplateManager/TemplateManager";
+import Button from "../../../../shared/ui/Button/Button";
 
 const LibraryItem: React.FC<{
   name: string;
@@ -83,7 +84,6 @@ const LibraryItem: React.FC<{
   );
 };
 
-// CustomTemplateItem - только отображение и использование
 const CustomTemplateItem: React.FC<{
   template: UIComponent;
 }> = ({ template }) => {
@@ -95,7 +95,6 @@ const CustomTemplateItem: React.FC<{
     removeCustomTemplate,
   } = useBuilder();
 
-  // Функция для рекурсивного изменения всех ID
   const regenerateIds = (comp: UIComponent): UIComponent => {
     const newId = `comp_${Date.now()}_${Math.random()
       .toString(36)
@@ -106,10 +105,8 @@ const CustomTemplateItem: React.FC<{
       _id: newId,
     };
 
-    // Убираем templateName из конечного компонента
     delete (newComp as any).templateName;
 
-    // Рекурсивно обновляем детей
     if ("children" in newComp && Array.isArray(newComp.children)) {
       (newComp as any).children = newComp.children.map((child) =>
         regenerateIds(child)
@@ -126,7 +123,6 @@ const CustomTemplateItem: React.FC<{
 
     console.log("➕ Adding custom template:", newComponent);
 
-    // Логика добавления компонента
     if (selectedComponentId && screen) {
       updateScreen((currentScreen) => {
         const addToParent = (components: UIComponent[]): UIComponent[] => {
@@ -178,15 +174,11 @@ const CustomTemplateItem: React.FC<{
   return (
     <div className={styles.customLibraryItem} onClick={handleUseTemplate}>
       <div className={styles.templateInfo}>
-        <strong>{(template as any).templateName}</strong>
-        <span className={styles.type}>{template.type}</span>
-        {(template as any).text && (
-          <span className={styles.preview}>{(template as any).text}</span>
-        )}
+        {(template as any).templateName}
       </div>
       <button
+        className={styles.buttonTemplateDelete}
         onClick={handleDeleteTemplate}
-        className={styles.deleteButton}
         title="Удалить шаблон"
       >
         ×
