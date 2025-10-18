@@ -9,7 +9,6 @@ import type { UIScreen } from "../../../entities/screen/model/screenTypes";
 import type { UIComponent } from "../../../entities/components/model/componentTypes";
 import { findBottomSheetById } from "../../../entities/screenAddons/lib/findBottomsheets";
 
-
 interface BuilderContextType {
   screen: UIScreen | null;
   selectedComponentId: string | null;
@@ -19,10 +18,14 @@ interface BuilderContextType {
   moveComponent: (componentId: string, direction: "up" | "down") => void;
 
   selectedBottomSheetId: string | null;
-  setSelectedBottomSheet: (_id: string | null) => void,
+  setSelectedBottomSheet: (_id: string | null) => void;
 
-  selectedSnackBarId: string | null,
-  setSelectedSnackBar: (_id: string | null) => void,
+  selectedSnackBarId: string | null;
+  setSelectedSnackBar: (_id: string | null) => void;
+
+  customTemplates: UIComponent[];
+  addCustomTemplate: (component: UIComponent, name: string) => void;
+  removeCustomTemplate: (templateId: string) => void;
 }
 
 const BuilderContext = createContext<BuilderContextType | undefined>(undefined);
@@ -37,9 +40,49 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
   children,
 }) => {
   const [screen, setScreen] = useState<UIScreen | null>(initialScreen);
-  const [selectedComponentId, setSelectedComponent] = useState<string | null>(null);
-  const [selectedBottomSheetId, setSelectedBottomSheet] = useState<string | null>(null);
-  const [selectedSnackBarId, setSelectedSnackBar] = useState<string | null>(null);
+  const [selectedComponentId, setSelectedComponent] = useState<string | null>(
+    null
+  );
+  const [selectedBottomSheetId, setSelectedBottomSheet] = useState<
+    string | null
+  >(null);
+  const [selectedSnackBarId, setSelectedSnackBar] = useState<string | null>(
+    null
+  );
+  const [customTemplates, setCustomTemplates] = useState<UIComponent[]>([]);
+
+  const addCustomTemplate = (component: UIComponent, name: string) => {
+    const regenerateIds = (comp: UIComponent): UIComponent => {
+      const newId = `comp_${Date.now()}_${Math.random()
+        .toString(36)
+        .substr(2, 9)}`;
+
+      const newComp: UIComponent = {
+        ...comp,
+        _id: newId,
+      };
+
+      if ("children" in newComp && Array.isArray(newComp.children)) {
+        (newComp as any).children = newComp.children.map((child) =>
+          regenerateIds(child)
+        );
+      }
+
+      return newComp;
+    };
+
+    const templateWithName = {
+      ...regenerateIds(component),
+      _id: `template_${Date.now()}`,
+      templateName: name,
+    };
+
+    setCustomTemplates((prev) => [...prev, templateWithName]);
+  };
+
+  const removeCustomTemplate = (templateId: string) => {
+    setCustomTemplates((prev) => prev.filter((t) => t._id !== templateId));
+  };
 
   // Обновляем screen при изменении initialScreen
   useEffect(() => {
@@ -127,7 +170,7 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
       bottomBar: moveInSection(screen.bottomBar),
 
       // ✅ Меняем только children выбранного bottomSheet
-      bottomSheets: (screen.bottomSheets ?? []).map(bs =>
+      bottomSheets: (screen.bottomSheets ?? []).map((bs) =>
         bs._id === selectedBottomSheetId
           ? { ...bs, children: moveInSection(bs.children ?? []) }
           : bs
@@ -141,16 +184,18 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
     if (!screen) return;
 
     const deepRemove = (components: UIComponent[] = []): UIComponent[] => {
-      return components
-        // 1) Удаляем сам компонент, если совпал id
-        .filter(c => c._id !== componentId)
-        // 2) Рекурсивно чистим детей (если они есть)
-        .map(c => {
-          if ('children' in c && Array.isArray(c.children)) {
-            return { ...c, children: deepRemove(c.children) };
-          }
-          return c;
-        });
+      return (
+        components
+          // 1) Удаляем сам компонент, если совпал id
+          .filter((c) => c._id !== componentId)
+          // 2) Рекурсивно чистим детей (если они есть)
+          .map((c) => {
+            if ("children" in c && Array.isArray(c.children)) {
+              return { ...c, children: deepRemove(c.children) };
+            }
+            return c;
+          })
+      );
     };
 
     const newScreen: UIScreen = {
@@ -158,7 +203,7 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
       topBar: deepRemove(screen.topBar || []),
       content: deepRemove(screen.content || []),
       bottomBar: deepRemove(screen.bottomBar || []),
-      bottomSheets: (screen.bottomSheets ?? []).map(bs =>
+      bottomSheets: (screen.bottomSheets ?? []).map((bs) =>
         bs._id === selectedBottomSheetId
           ? { ...bs, children: deepRemove(bs.children ?? []) }
           : bs
@@ -179,7 +224,10 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
     selectedBottomSheetId,
     setSelectedBottomSheet,
     selectedSnackBarId,
-    setSelectedSnackBar
+    setSelectedSnackBar,
+    customTemplates,
+    addCustomTemplate,
+    removeCustomTemplate,
   };
 
   return (

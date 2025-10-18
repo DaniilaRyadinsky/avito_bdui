@@ -110,6 +110,14 @@ export interface Action {
   body?: any;
 }
 
+export interface PatternTemplate {
+  _id: string;
+  name: string;
+  component: UIComponent;
+  category?: string;
+  tags?: string[];
+}
+
 // Компоненты
 export type UIComponentType =
   | "text"
@@ -219,8 +227,6 @@ export interface CardComponent extends ComponentTemplate {
   children: UIComponent[];
 }
 
-
-
 export interface BoxComponent extends ComponentTemplate {
   type: "box";
   children: UIComponent[];
@@ -239,7 +245,7 @@ export type RawUIComponent = Omit<UIComponent, "type"> & {
 
 // Объединенный тип компонента
 export type UIComponent =
-  TextComponent
+  | TextComponent
   | ButtonComponent
   | ImageComponent
   | IconComponent
