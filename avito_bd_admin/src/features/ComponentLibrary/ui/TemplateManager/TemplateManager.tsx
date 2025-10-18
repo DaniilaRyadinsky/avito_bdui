@@ -82,6 +82,7 @@ export const TemplateManager: React.FC = () => {
             <Button
               onClick={() => setIsCreating(true)}
               disabled={!selectedComponent}
+              style={{width:"100%"}}
             >
               💾 Сохранить выделенный компонент
             </Button>
