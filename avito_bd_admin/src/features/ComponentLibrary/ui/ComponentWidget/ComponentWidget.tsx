@@ -6,7 +6,7 @@ import Summary from "../../../../shared/ui/Summary/Summary";
 import { componentTemplates } from "../../lib/constant";
 import { createComponent } from "../../lib/templates";
 import type { UIComponent } from "../../../../entities/components/model/componentTypes";
-import { TemplateManager } from "../TemplateManager/TemplateManager";
+import { TemplateManager } from "../../../LeftBar/ui/TemplateManager/TemplateManager";
 import Button from "../../../../shared/ui/Button/Button";
 
 const LibraryItem: React.FC<{
@@ -216,7 +216,7 @@ const ComponentsWidget = () => {
       )}
 
       {/* Менеджер шаблонов (только создание) */}
-      <TemplateManager />
+      {/* <TemplateManager /> */}
     </div>
   );
 };
