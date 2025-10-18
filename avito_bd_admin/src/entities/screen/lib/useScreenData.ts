@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import type { UIComponent } from "../../components/model/componentTypes";
 import type { UIScreen, RawUIScreen } from "../model/screenTypes";
-import type { BottomSheetComponent, SnackbarComponent } from "../../screenAddons/model/screenAddonsTypes";
-
+import type {
+  BottomSheetComponent,
+  SnackbarComponent,
+} from "../../screenAddons/model/screenAddonsTypes";
 
 // Функция для добавления ID всем компонентам
 function ensureAllComponentsHaveIds(screen: UIScreen): UIScreen {
@@ -44,8 +46,6 @@ function ensureAllComponentsHaveIds(screen: UIScreen): UIScreen {
 function adaptServerData(serverData: any): RawUIScreen | null {
   if (!serverData) return null;
 
-  console.log("🔄 Adapting server data:", serverData);
-
   // Если это новый скрин (уже в правильном формате)
   if (serverData._id === "new" && serverData.type === "screen") {
     return serverData;
@@ -80,7 +80,7 @@ function adaptServerData(serverData: any): RawUIScreen | null {
     };
   }
 
-  console.warn("❌ Unknown data format:", serverData);
+  console.warn("Unknown data format:", serverData);
   return null;
 }
 
@@ -103,11 +103,13 @@ export function useScreenData(initialData: any): UIScreen | null {
         width: adaptedData.width,
         height: adaptedData.height,
         background: adaptedData.background || "#FFFFFF",
-        topBar: adaptedData.topBar as unknown as UIComponent[] || [],
-        content: adaptedData.content as unknown as UIComponent[] || [],
-        bottomBar: adaptedData.bottomBar as unknown as UIComponent[] || [],
-        snackbars: adaptedData.snackbars as unknown as SnackbarComponent[] || [],
-        bottomSheets: adaptedData.bottomSheets as unknown as BottomSheetComponent[] || [],
+        topBar: (adaptedData.topBar as unknown as UIComponent[]) || [],
+        content: (adaptedData.content as unknown as UIComponent[]) || [],
+        bottomBar: (adaptedData.bottomBar as unknown as UIComponent[]) || [],
+        snackbars:
+          (adaptedData.snackbars as unknown as SnackbarComponent[]) || [],
+        bottomSheets:
+          (adaptedData.bottomSheets as unknown as BottomSheetComponent[]) || [],
       };
 
       const screenWithIds = ensureAllComponentsHaveIds(screen);

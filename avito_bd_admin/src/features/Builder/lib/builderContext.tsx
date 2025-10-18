@@ -35,6 +35,31 @@ interface BuilderProviderProps {
   children: ReactNode;
 }
 
+const CUSTOM_TEMPLATES_STORAGE_KEY = "builder_custom_templates";
+
+const loadCustomTemplatesFromStorage = (): UIComponent[] => {
+  try {
+    const stored = localStorage.getItem(CUSTOM_TEMPLATES_STORAGE_KEY);
+    if (stored) {
+      return JSON.parse(stored);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  return [];
+};
+
+const saveCustomTemplatesToStorage = (templates: UIComponent[]): void => {
+  try {
+    localStorage.setItem(
+      CUSTOM_TEMPLATES_STORAGE_KEY,
+      JSON.stringify(templates)
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const BuilderProvider: React.FC<BuilderProviderProps> = ({
   screen: initialScreen,
   children,
@@ -50,6 +75,11 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
     null
   );
   const [customTemplates, setCustomTemplates] = useState<UIComponent[]>([]);
+
+  useEffect(() => {
+    const loadedTemplates = loadCustomTemplatesFromStorage();
+    setCustomTemplates(loadedTemplates);
+  }, []);
 
   const addCustomTemplate = (component: UIComponent, name: string) => {
     const regenerateIds = (comp: UIComponent): UIComponent => {
@@ -77,20 +107,25 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
       templateName: name,
     };
 
-    setCustomTemplates((prev) => [...prev, templateWithName]);
+    setCustomTemplates((prev) => {
+      const newTemplates = [...prev, templateWithName];
+      saveCustomTemplatesToStorage(newTemplates);
+      return newTemplates;
+    });
   };
 
   const removeCustomTemplate = (templateId: string) => {
-    setCustomTemplates((prev) => prev.filter((t) => t._id !== templateId));
+    setCustomTemplates((prev) => {
+      const newTemplates = prev.filter((t) => t._id !== templateId);
+      saveCustomTemplatesToStorage(newTemplates);
+      return newTemplates;
+    });
   };
 
-  // Обновляем screen при изменении initialScreen
   useEffect(() => {
-    console.log("🔄 BuilderProvider: screen updated", initialScreen);
     setScreen(initialScreen);
   }, [initialScreen]);
 
-  // Функция для обновления экрана
   const updateScreen = (updater: (currentScreen: UIScreen) => UIScreen) => {
     if (screen) {
       const newScreen = updater(screen);
@@ -100,15 +135,12 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
   const moveComponent = (componentId: string, direction: "up" | "down") => {
     if (!screen) return;
 
-    console.log("🔄 Attempting to move component:", componentId, direction);
-
     const moveInTree = (
       components: UIComponent[]
     ): { found: boolean; components: UIComponent[] } => {
       let found = false;
       const newComponents = [...components];
 
-      // Сначала ищем на текущем уровне
       const index = newComponents.findIndex((comp) => comp._id === componentId);
 
       if (index !== -1) {
@@ -124,20 +156,11 @@ export const BuilderProvider: React.FC<BuilderProviderProps> = ({
         if (newIndex !== index) {
           const [movedComponent] = newComponents.splice(index, 1);
           newComponents.splice(newIndex, 0, movedComponent);
-          console.log(
-            "✅ Moved component:",
-            componentId,
-            "from",
-            index,
-            "to",
-            newIndex
-          );
         }
 
         return { found, components: newComponents };
       }
 
-      // Если не нашли, ищем в детях
       for (let i = 0; i < newComponents.length; i++) {
         const comp = newComponents[i];
         if ("children" in comp && comp.children) {
