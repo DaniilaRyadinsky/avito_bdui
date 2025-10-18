@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Section } from "./Section";
 import { Column } from "./FieldPrimitives";
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
@@ -6,10 +6,12 @@ import type {
   Action,
   ActionEvent,
   ActionType,
+  ActionMethod,
   Modifier,
 } from "../../../entities/components/model/componentTypes";
 import Button from "../../../shared/ui/Button/Button";
 import { TextInput } from "../../../shared/ui/TextInput/TextInput";
+import { TextArea } from "../../../shared/ui/TextArea/TextArea";
 
 interface ActionGroupProps {
   actions?: Action[];
@@ -24,28 +26,22 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
   onChange,
   onModifierChange,
 }) => {
-  // Используем локальное состояние для отслеживания изменений
   const [localActions, setLocalActions] = React.useState<Action[]>(
     actions || []
   );
 
-  // Синхронизируем локальное состояние с props
-  React.useEffect(() => {
+  useEffect(() => {
     setLocalActions(actions || []);
   }, [actions]);
 
-  // Автоматически управляем clickable на основе наличия действий
-  React.useEffect(() => {
+  useEffect(() => {
     const hasActions = localActions.length > 0;
     const isCurrentlyClickable = modifier?.clickable === true;
 
-    // Если есть действия, но компонент не кликабельный - делаем кликабельным
     if (hasActions && !isCurrentlyClickable) {
       console.log("Setting clickable to true because there are actions");
       onModifierChange?.({ clickable: true });
-    }
-    // Если нет действий, но компонент кликабельный - делаем не кликабельным
-    else if (!hasActions && isCurrentlyClickable) {
+    } else if (!hasActions && isCurrentlyClickable) {
       console.log("Setting clickable to false because there are no actions");
       onModifierChange?.({ clickable: false });
     }
@@ -58,11 +54,8 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
       targetId: "",
     };
     const newActions = [...localActions, newAction];
-
-    // Сначала обновляем локальное состояние для мгновенного отображения
     setLocalActions(newActions);
 
-    // Затем вызываем onChange для родительского компонента
     onChange(newActions);
   };
 
@@ -71,21 +64,21 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
       i === index ? { ...action, ...updates } : action
     );
 
-    // Сначала обновляем локальное состояние
     setLocalActions(newActions);
 
-    // Затем вызываем onChange
     onChange(newActions);
   };
 
   const removeAction = (index: number) => {
     const newActions = localActions.filter((_, i) => i !== index);
 
-    // Сначала обновляем локальное состояние
     setLocalActions(newActions);
 
-    // Затем вызываем onChange
     onChange(newActions);
+  };
+
+  const shouldShowBodyField = (method?: ActionMethod) => {
+    return method === "POST" || method === "PUT";
   };
 
   const actionEvents: { value: ActionEvent; label: string }[] = [
@@ -96,6 +89,14 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
     { value: "navigate", label: "Навигация" },
     { value: "showSnackbar", label: "Показать уведомление" },
     { value: "showBottomSheet", label: "Показать нижнюю панель" },
+    { value: "fetch", label: "HTTP запрос" },
+  ];
+
+  const actionMethods: { value: ActionMethod; label: string }[] = [
+    { value: "GET", label: "GET" },
+    { value: "POST", label: "POST" },
+    { value: "PUT", label: "PUT" },
+    { value: "DELETE", label: "DELETE" },
   ];
 
   return (
@@ -161,6 +162,61 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
                   placeholder="Введите ID содержимого"
                 />
               </Column>
+            )}
+
+            {action.type === "fetch" && (
+              <>
+                <Column label="Метод запроса">
+                  <SelectBox
+                    value={action.method || "GET"}
+                    options={actionMethods}
+                    onChange={(value) =>
+                      updateAction(index, { method: value as ActionMethod })
+                    }
+                  />
+                </Column>
+
+                <Column label="Эндпоинт">
+                  <TextInput
+                    value={action.endpoint || ""}
+                    onChange={(value) =>
+                      updateAction(index, { endpoint: value })
+                    }
+                    placeholder="Введите URL эндпоинта"
+                  />
+                </Column>
+
+                {shouldShowBodyField(action.method) && (
+                  <Column label="Тело запроса (JSON)">
+                    <TextArea
+                      value={
+                        action.body ? JSON.stringify(action.body, null, 2) : ""
+                      }
+                      onChange={(value) => {
+                        try {
+                          const parsedBody = value
+                            ? JSON.parse(value)
+                            : undefined;
+                          updateAction(index, { body: parsedBody });
+                        } catch (error) {
+                          console.log(error);
+                        }
+                      }}
+                      placeholder='Введите JSON тело запроса, например: {"key": "value"}'
+                    />
+                  </Column>
+                )}
+
+                <Column label="ID для сохранения ответа (опционально)">
+                  <TextInput
+                    value={action.targetId || ""}
+                    onChange={(value) =>
+                      updateAction(index, { targetId: value })
+                    }
+                    placeholder="ID переменной для сохранения ответа"
+                  />
+                </Column>
+              </>
             )}
           </div>
         ))}

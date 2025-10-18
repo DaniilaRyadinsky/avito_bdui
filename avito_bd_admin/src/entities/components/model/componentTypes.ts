@@ -87,19 +87,27 @@ export type ButtonStyle = {
   textColor?: string;
   fontSize?: number;
   fontWeight?: FontWeight; // Толщина шрифта: normal, bold, medium и т.д.
-  fontStyle?: FontStyle; // Наклон: normal, italic
+  fontStyle?: FontStyle; // Наклон: [normal], italic ещкере
   shape?: Shape;
   border?: Border;
   elevation?: number;
 };
 
 export type ActionEvent = "onClick";
-export type ActionType = "navigate" | "showSnackbar" | "showBottomSheet";
+export type ActionType =
+  | "navigate"
+  | "showSnackbar"
+  | "showBottomSheet"
+  | "fetch";
+export type ActionMethod = "PUT" | "POST" | "GET" | "DELETE";
 
 export interface Action {
   event?: ActionEvent;
   type?: ActionType;
   targetId?: string;
+  method?: ActionMethod;
+  endpoint?: string;
+  body?: any;
 }
 
 // Компоненты
