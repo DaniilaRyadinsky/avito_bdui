@@ -137,7 +137,7 @@ export const createScreen = (overrides: Partial<UIScreen> = {}): UIScreen => {
     const base: UIScreen = {
         type: "screen",
         _id: genId("screen"),
-        name: "Screen",
+        title: "Screen",
         width: 420,
         height: 800,
         background: "#ffffff",

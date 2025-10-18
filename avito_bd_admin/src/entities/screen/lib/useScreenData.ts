@@ -99,7 +99,7 @@ export function useScreenData(initialData: any): UIScreen | null {
       const screen: UIScreen = {
         type: "screen",
         _id: adaptedData._id || "default",
-        name: adaptedData.name || "Default Screen",
+        title: adaptedData.name || "Default Screen",
         width: adaptedData.width,
         height: adaptedData.height,
         background: adaptedData.background || "#FFFFFF",

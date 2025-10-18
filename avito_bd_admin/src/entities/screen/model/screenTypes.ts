@@ -17,7 +17,7 @@ export type RawUIScreen = {
 export interface UIScreen {
   type: "screen";
   _id: string;
-  name: string;
+  title: string;
   width: number,
   height: number;
   background: string;
