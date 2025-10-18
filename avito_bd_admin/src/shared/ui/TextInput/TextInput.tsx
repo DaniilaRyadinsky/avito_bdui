@@ -4,8 +4,10 @@ export const TextInput: React.FC<{
   value?: string;
   onChange: (v: string) => void;
   placeholder?: string;
-}> = ({ value, onChange, placeholder }) => (
+  style?: React.CSSProperties;
+}> = ({ value, onChange, placeholder, style }) => (
   <input
+    style={style}
     className={styles.input}
     value={value}
     placeholder={placeholder}

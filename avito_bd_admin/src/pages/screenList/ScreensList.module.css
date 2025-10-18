@@ -87,8 +87,13 @@
   border-radius: 5px;
 }
 
-.btn_container  {
+.btn_container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 10px;
+}
+
+.input_name {
+  width: 100%;
 }
