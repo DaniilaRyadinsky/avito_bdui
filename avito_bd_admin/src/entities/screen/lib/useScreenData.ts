@@ -71,7 +71,7 @@ function adaptServerData(serverData: any): RawUIScreen | null {
     return {
       type: "screen",
       _id: serverData._id || serverData.id,
-      name: serverData.name || "Unnamed Screen",
+      title: serverData.title || "Unnamed Screen",
       background: serverData.background || "#FFFFFF",
       topBar: serverData.topBar || [],
       content: serverData.content || [],
@@ -99,7 +99,7 @@ export function useScreenData(initialData: any): UIScreen | null {
       const screen: UIScreen = {
         type: "screen",
         _id: adaptedData._id || "default",
-        title: adaptedData.name || "Default Screen",
+        title: adaptedData.title || "Default Screen",
         width: adaptedData.width,
         height: adaptedData.height,
         background: adaptedData.background || "#FFFFFF",

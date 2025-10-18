@@ -5,7 +5,7 @@ export function validateScreenData(data: any): UIScreen {
   return {
     type: data.type as "screen",
     _id: data._id,
-    title: data.name,
+    title: data.title,
     width: data.width,
     height: data.heidht,
     background: data.background,

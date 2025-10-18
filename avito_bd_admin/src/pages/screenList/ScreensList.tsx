@@ -100,7 +100,6 @@ const ScreensList = () => {
             ) : (
               <h3 className={styles.screenName}>
                 {screen.title ||
-                  screen.name ||
                   screen.id ||
                   "Неназванный скрин"}
               </h3>

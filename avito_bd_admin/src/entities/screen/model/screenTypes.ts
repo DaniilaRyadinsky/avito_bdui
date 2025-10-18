@@ -4,7 +4,7 @@ import type { SnackbarComponent, BottomSheetComponent } from "../../screenAddons
 export type RawUIScreen = {
   type: string;
   _id: string;
-  name: string;
+  title: string;
   background: string;
   topBar: RawUIComponent[];
   content: RawUIComponent[];
