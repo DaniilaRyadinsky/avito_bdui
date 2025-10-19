@@ -25,6 +25,15 @@ const docTemplate = `{
                     "websocket"
                 ],
                 "summary": "Broadcast all clients after reload screens",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Screen ID (UUID)",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "202": {
                         "description": "No Content",

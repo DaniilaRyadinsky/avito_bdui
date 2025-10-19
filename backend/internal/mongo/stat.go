@@ -125,7 +125,7 @@ type Stats struct {
 type CountDoc struct {
 	ID    string `bson:"_id" json:"id"`
 	Count int    `bson:"count" json:"count"`
-	Name  string `bson:"-" json:"name"`
+	Name  string `bson:"-" json:"title"`
 }
 
 func (c *Client) readCounters(ctx context.Context, col *mongo.Collection, colOrigin *mongo.Collection) ([]CountDoc, error) {
@@ -151,14 +151,14 @@ func (c *Client) readCounters(ctx context.Context, col *mongo.Collection, colOri
 		} else {
 			switch v := obj.(type) {
 			case bson.M:
-				if name, ok := v["name"].(string); ok && name != "" {
+				if name, ok := v["title"].(string); ok && name != "" {
 					d.Name = name
 				} else {
 					d.Name = "object dont have name"
 				}
 			case bson.D:
 				for _, elem := range v {
-					if elem.Key == "name" {
+					if elem.Key == "title" {
 						d.Name = elem.Value.(string)
 						break
 					}

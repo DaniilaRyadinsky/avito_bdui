@@ -2,10 +2,11 @@ package echo
 
 import (
 	"bdui/internal/ws"
-	"github.com/labstack/echo/v4"
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/labstack/echo/v4"
 )
 
 // Reload godoc
@@ -13,12 +14,18 @@ import (
 // @Description log count clients
 // @Tags websocket
 // @Produce json
+// @Param id query string true "Screen ID (UUID)"
 // @Success 202 {string} string "No Content"
 // @Router /api/client/reload [post]
 func (s *Server) Reload(c echo.Context) error {
+	id := c.QueryParam("id")
+	if id == "" {
+		return c.JSON(http.StatusBadRequest, echo.Map{"error": "missing id"})
+	}
+
 	count := s.wsm.Broadcast(ws.Event{
 		Type: "RELOAD SCREEN",
-		Data: map[string]any{"ts": time.Now().Unix()},
+		Data: map[string]any{"ts": time.Now().Unix(), "id": id},
 	})
 	log.Printf("broadcast sent to %d clients", count)
 	return c.NoContent(204)
