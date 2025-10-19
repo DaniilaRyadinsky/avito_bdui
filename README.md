@@ -44,7 +44,9 @@
 ### База данных и бэкенд  
 - БД находится на сервере, запускать её локально не нужно.  
 - Документация по API доступна в Swagger:  
-  `backend/cmd/docs/swagger.yaml`  
+  `backend/docs/swagger.yaml`
+  Или [по ссылке](http://31.56.205.210:8080/swagger/index.html)
+  
 
 ---
 
