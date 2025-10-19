@@ -153,8 +153,8 @@ export const componentTemplates: {
             type: "checkbox",
             name: "Чекбокс"
         },
-        {
-            type: "spacer",
-            name: "Спейсер"
-        },
+        // {
+        //     type: "spacer",
+        //     name: "Спейсер"
+        // },
     ];
