@@ -93,19 +93,19 @@ export type ButtonStyle = {
   elevation?: number;
 };
 
-export type ActionEvent = "onClick";
+export type ActionEvent = "onClick" | "onScreenInitialized";
 export type ActionType =
   | "navigate"
   | "showSnackbar"
   | "showBottomSheet"
-  | "fetch";
+  | "fetch_data";
 export type ActionMethod = "PUT" | "POST" | "GET" | "DELETE";
 
 export interface Action {
   event?: ActionEvent;
   type?: ActionType;
-    ?: string;
   method?: ActionMethod;
+  targetId?: string;
   endpoint?: string;
   body?: any;
 }
@@ -130,6 +130,7 @@ export type UIComponentType =
   | "spacer"
   | "card"
   | "box"
+  | "list"
   | "snackbar"
   | "bottomSheet";
 
@@ -138,6 +139,11 @@ export interface ComponentTemplate {
   _id?: string;
   modifier?: Modifier;
   actions?: Action[];
+}
+
+export interface ListComponent extends ComponentTemplate {
+  type: "list";
+  children: UIComponent[];
 }
 
 export interface TextComponent extends ComponentTemplate {
@@ -254,4 +260,5 @@ export type UIComponent =
   | CheckboxComponent
   | SpacerComponent
   | CardComponent
+  | ListComponent
   | BoxComponent;

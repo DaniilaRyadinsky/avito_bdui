@@ -83,13 +83,14 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
 
   const actionEvents: { value: ActionEvent; label: string }[] = [
     { value: "onClick", label: "По клику" },
+    { value: "onScreenInitialized", label: "При загрузке экрана" },
   ];
 
   const actionTypes: { value: ActionType; label: string }[] = [
     { value: "navigate", label: "Навигация" },
     { value: "showSnackbar", label: "Показать уведомление" },
     { value: "showBottomSheet", label: "Показать нижнюю панель" },
-    { value: "fetch", label: "HTTP запрос" },
+    { value: "fetch_data", label: "HTTP запрос" },
   ];
 
   const actionMethods: { value: ActionMethod; label: string }[] = [
@@ -164,7 +165,7 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
               </Column>
             )}
 
-            {action.type === "fetch" && (
+            {action.type === "fetch_data" && (
               <>
                 <Column label="Метод запроса">
                   <SelectBox

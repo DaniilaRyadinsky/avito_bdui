@@ -9,6 +9,7 @@ import { CheckboxComponent } from "./CheckboxComponent/CheckboxComponent";
 import { SpacerComponent } from "./SpacerComponent/SpacerComponent";
 import { CardComponent } from "./CardComponent/CardComponent";
 import { BoxComponent } from "./BoxComponent/BoxComponent";
+import { ListComponent } from "./ListComponent/ListComponent";
 // import BoxModelVisualizer from "../../../../features/BoxModelVisualizer/BoxModelVisualizer";
 import type { UIComponent } from "../../model/componentTypes";
 
@@ -25,10 +26,8 @@ export const ComponentFactory: React.FC<ComponentFactoryProps> = ({
   onSelect,
   onAction,
 }) => {
-  
-
   const handleSelect = (v: string) => {
-      onSelect?.(v);
+    onSelect?.(v);
   };
 
   const handleAction = (action: any) => {
@@ -75,6 +74,8 @@ export const ComponentFactory: React.FC<ComponentFactoryProps> = ({
 
     case "box":
       return <BoxComponent component={component} {...commonProps} />;
+    case "list":
+      return <ListComponent component={component} {...commonProps} />;
 
     default:
       return (
