@@ -148,7 +148,7 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
             </Column>
 
             {action.type === "navigate" && (
-              <Column label="Тип действия">
+              <Column label="Название экрана">
                 <SelectBox
                   options={screens?.map((screen) => ({
                     value: screen._id,
