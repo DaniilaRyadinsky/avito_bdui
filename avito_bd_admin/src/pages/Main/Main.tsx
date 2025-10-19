@@ -95,6 +95,7 @@ const Main = () => {
             </div>
             <ScreenRenderer />
           </div>
+
           <PropertyPanel />
         </BuilderProvider>
       </div>
