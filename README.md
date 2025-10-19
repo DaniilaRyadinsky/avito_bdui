@@ -65,6 +65,10 @@
 
 ---
 
+Репозиторий андроид:
+https://github.com/Detrig/Uikit
+
+
 ### Документация к android части
 
 
