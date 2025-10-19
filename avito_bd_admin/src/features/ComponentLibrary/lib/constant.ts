@@ -163,10 +163,6 @@ export const componentTemplates: {
     name: "Чекбокс",
   },
   {
-    type: "spacer",
-    name: "Спейсер",
-  },
-  {
     type: "list",
     name: "Лист",
   },
