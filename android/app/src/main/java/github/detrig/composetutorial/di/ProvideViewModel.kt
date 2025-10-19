@@ -5,6 +5,8 @@ import github.detrig.composetutorial.core.Core
 import github.detrig.composetutorial.presentation.cart.di.ProvideCartViewModel
 import github.detrig.composetutorial.presentation.main.di.ProvideMainViewModel
 import github.detrig.composetutorial.presentation.makeorder.di.ProvideMakeOrderViewModel
+import github.detrig.composetutorial.presentation.shippingmethod.di.ProvideShippingMethodViewModel
+
 
 interface ProvideViewModel {
 
@@ -21,6 +23,7 @@ interface ProvideViewModel {
             chain = ProvideMainViewModel(core, chain)
             chain = ProvideCartViewModel(core, chain)
             chain = ProvideMakeOrderViewModel(core, chain)
+            chain = ProvideShippingMethodViewModel(core, chain)
         }
 
         override fun <T : ViewModel> viewModel(viewModelClass: Class<T>): T {

@@ -34,8 +34,8 @@ interface Navigation {
         }
 
         override fun update(screen: Screen) {
-            state.value = screen
             list.add(screen)
+            state.value = screen
         }
 
     }

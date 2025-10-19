@@ -21,7 +21,7 @@ class CartViewModel(
     val dispatcher: ActionDispatcher
 ) : ScreenViewModel(navigation, repository, networkRepository, dispatcher) {
 
-    private val dataState = DataState()
+    val dataState = DataState()
 
     private val _cartScreenState = MutableStateFlow<ScreenState?>(null)
     val cartScreenState: StateFlow<ScreenState?> = _cartScreenState
