@@ -1,4 +1,15 @@
-import type { Padding, Margin, Border, Shape, Clip, Shadow, Modifier, TextStyle, ButtonStyle, UIComponent } from "../../../entities/components/model/componentTypes";
+import type {
+  Padding,
+  Margin,
+  Border,
+  Shape,
+  Clip,
+  Shadow,
+  Modifier,
+  TextStyle,
+  ButtonStyle,
+  UIComponent,
+} from "../../../entities/components/model/componentTypes";
 
 export const defaultPadding: Padding = { start: 0, end: 0, top: 0, bottom: 0 };
 export const defaultMargin: Margin = { start: 0, end: 0, top: 0, bottom: 0 };
@@ -8,153 +19,155 @@ export const defaultClip: Clip = { cornerRadius: 0 };
 export const defaultShadow: Shadow = { elevation: 0, color: "#000000" };
 
 export const defaultModifier: Modifier = {
-    size: { width: "wrap_content", height: "wrap_content" },
-    fillMaxWidth: false,
-    fillMaxHeight: false,
-    weight: undefined,
-    padding: defaultPadding,
-    margin: defaultMargin,
-    background: null,
-    clip: defaultClip,
-    border: defaultBorder,
-    clickable: false,
-    align: "start",
-    alpha: 1,
-    shadow: defaultShadow,
+  size: { width: "wrap_content", height: "wrap_content" },
+  fillMaxWidth: false,
+  fillMaxHeight: false,
+  weight: undefined,
+  padding: defaultPadding,
+  margin: defaultMargin,
+  background: null,
+  clip: defaultClip,
+  border: defaultBorder,
+  clickable: false,
+  align: "start",
+  alpha: 1,
+  shadow: defaultShadow,
 };
 
 export const defaultTextStyle: TextStyle = {
-    fontSize: 14,
-    fontWeight: "normal",
-    fontStyle: "normal",
-    color: "#000000",
-    lineHeight: 18,
-    letterSpacing: 0,
-    textDecoration: "none",
-    textAlign: "start",
-    maxLines: undefined,
-    overflow: "visible",
+  fontSize: 14,
+  fontWeight: "normal",
+  fontStyle: "normal",
+  color: "#000000",
+  lineHeight: 18,
+  letterSpacing: 0,
+  textDecoration: "none",
+  textAlign: "start",
+  maxLines: undefined,
+  overflow: "visible",
 };
 
 export const defaultButtonStyle: ButtonStyle = {
-    background: "#1976d2",
-    textColor: "#ffffff",
-    fontSize: 14,
-    fontWeight: "medium",
-    fontStyle: "normal",
-    shape: { cornerRadius: 8 },
-    border: { width: 0, color: "#1976d2" },
+  background: "#1976d2",
+  textColor: "#ffffff",
+  fontSize: 14,
+  fontWeight: "medium",
+  fontStyle: "normal",
+  shape: { cornerRadius: 8 },
+  border: { width: 0, color: "#1976d2" },
 };
-
 
 export const componentDefaults: {
-    [K in UIComponent["type"]]?: Partial<Extract<UIComponent, { type: K }>>
+  [K in UIComponent["type"]]?: Partial<Extract<UIComponent, { type: K }>>;
 } = {
-    text: {
-        modifier: {
-            ...defaultModifier,
-            size: { width: "wrap_content", height: "wrap_content" },
-            padding: defaultPadding, 
-        },
-        style: defaultTextStyle,
+  text: {
+    modifier: {
+      ...defaultModifier,
+      size: { width: "wrap_content", height: "wrap_content" },
+      padding: defaultPadding,
     },
-    button: {
-        modifier: {
-            ...defaultModifier,
-            size: { width: "wrap_content", height: "wrap_content" },
-            padding: {start: 24, end: 24, top: 10, bottom: 10 }
-        },
-        style: defaultButtonStyle,
+    style: defaultTextStyle,
+  },
+  button: {
+    modifier: {
+      ...defaultModifier,
+      size: { width: "wrap_content", height: "wrap_content" },
+      padding: { start: 24, end: 24, top: 10, bottom: 10 },
     },
-    image: {
-        modifier: {
-            ...defaultModifier,
-            size: { width: "64", height: "64" },
-        },
+    style: defaultButtonStyle,
+  },
+  image: {
+    modifier: {
+      ...defaultModifier,
+      size: { width: "64", height: "64" },
     },
-    icon: {
-        modifier: {
-            ...defaultModifier,
-            size: { width: "24", height: "24" },
-        },
+  },
+  icon: {
+    modifier: {
+      ...defaultModifier,
+      size: { width: "24", height: "24" },
     },
-    row: {
-        modifier: {
-            ...defaultModifier,
-            fillMaxWidth: true,
-            size: { width: "match_parent", height: "20" }, 
-            scrollable:false,
-        },
-        verticalAlignment: "center",
-        horizontalArrangement: "start",
+  },
+  row: {
+    modifier: {
+      ...defaultModifier,
+      fillMaxWidth: true,
+      size: { width: "match_parent", height: "20" },
+      scrollable: false,
     },
-    column: {
-        modifier: {
-            ...defaultModifier,
-            fillMaxHeight: true,
-            size: { width: "20", height: "match_parent" }, 
-            scrollable:false,
-        },
-        verticalArrangement: "top",
-        horizontalAlignment: "start",
+    verticalAlignment: "center",
+    horizontalArrangement: "start",
+  },
+  column: {
+    modifier: {
+      ...defaultModifier,
+      fillMaxHeight: true,
+      size: { width: "20", height: "match_parent" },
+      scrollable: false,
     },
-    box: {
-        modifier: {
-            ...defaultModifier,
-            size: { width: "20", height: "20" }, 
-        },
+    verticalArrangement: "top",
+    horizontalAlignment: "start",
+  },
+  box: {
+    modifier: {
+      ...defaultModifier,
+      size: { width: "20", height: "20" },
     },
-    card: {
-        modifier: {
-            ...defaultModifier,
-            size: { width: "20", height: "20" }, 
-        },
-        elevation: 1,
-        shape: { cornerRadius: 12 },
+  },
+  card: {
+    modifier: {
+      ...defaultModifier,
+      size: { width: "20", height: "20" },
     },
-    checkbox: {
-        modifier: { ...defaultModifier, size: {width:"19", height: "19"} }, 
-        colors: {
-            checkedColor: "#1976d2",
-            uncheckedColor: "#9e9e9e",
-            disabledColor: "#bdbdbd",
-        },
+    elevation: 1,
+    shape: { cornerRadius: 12 },
+  },
+  checkbox: {
+    modifier: { ...defaultModifier, size: { width: "19", height: "19" } },
+    colors: {
+      checkedColor: "#1976d2",
+      uncheckedColor: "#9e9e9e",
+      disabledColor: "#bdbdbd",
     },
-    spacer: {
-        modifier: {
-            ...defaultModifier,
-            size: { width: "20", height: "20" },
-        },
-    }
+  },
+  spacer: {
+    modifier: {
+      ...defaultModifier,
+      size: { width: "20", height: "20" },
+    },
+  },
 };
 
-
 export const componentTemplates: {
-    type: UIComponent["type"];
-    name: string;
+  type: UIComponent["type"];
+  name: string;
 }[] = [
-        {
-            type: "text",
-            name: "Текст"
-        },
-        {
-            type: "image",
-            name: "Изображение"
-        },
-        {
-            type: "row",
-            name: "Строка"
-        },
-        {
-            type: "column",
-            name: "Колонка"
-        },
-        {
-            type: "checkbox",
-            name: "Чекбокс"
-        },
-        // {
-        //     type: "spacer",
-        //     name: "Спейсер"
-        // },
-    ];
+  {
+    type: "text",
+    name: "Текст",
+  },
+  {
+    type: "image",
+    name: "Изображение",
+  },
+  {
+    type: "row",
+    name: "Строка",
+  },
+  {
+    type: "column",
+    name: "Колонка",
+  },
+  {
+    type: "checkbox",
+    name: "Чекбокс",
+  },
+  {
+    type: "spacer",
+    name: "Спейсер",
+  },
+  {
+    type: "list",
+    name: "Лист",
+  },
+];
