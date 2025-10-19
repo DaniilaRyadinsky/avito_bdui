@@ -20,7 +20,7 @@ const LeftBar = () => {
           <>
             <ComponentsWidget />
             <ComponentControls />
-            <div>Дерево компонентов</div>
+            <div>Дерево элементов</div>
             <ComponentTree />
             <BottomSheetTree />
             <SnackbarTree />
