@@ -4,6 +4,7 @@ import github.detrig.composetutorial.core.navigation.Navigation
 import github.detrig.composetutorial.core.Screen
 import github.detrig.composetutorial.presentation.cart.CartScreen
 import github.detrig.composetutorial.presentation.makeorder.MakeOrderScreen
+import github.detrig.composetutorial.presentation.shippingmethod.ShippingMethodScreen
 import github.detrig.uikit.core.Action
 import github.detrig.uikit.core.ActionHandler
 
@@ -17,6 +18,7 @@ class NavigateHandler(
             when (action.targetId) {
                 CartScreen.SCREEN_ID -> CartScreen
                 MakeOrderScreen.SCREEN_ID -> MakeOrderScreen
+                ShippingMethodScreen.SCREEN_ID -> ShippingMethodScreen
                 else -> Screen.Empty
             }
         )

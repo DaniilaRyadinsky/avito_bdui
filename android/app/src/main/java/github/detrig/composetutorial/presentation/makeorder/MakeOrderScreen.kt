@@ -16,8 +16,6 @@ import github.detrig.uikit.core.ActionDispatcher
 
 
 object MakeOrderScreen : Screen {
-    //private const val SCREEN_ID = "76b729c3-9213-49df-91af-25259cc56162"
-    //const val SCREEN_ID = "03213239-75dc-4393-8c88-c95d4c00cd5a"
     const val SCREEN_ID = "d8ca047f-9c92-4150-a8fd-a79c359e54df"
 
     @Composable

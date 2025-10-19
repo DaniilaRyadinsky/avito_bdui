@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import github.detrig.composetutorial.core.navigation.NavigationRegistry
 import github.detrig.composetutorial.di.ProvideViewModel
 
 class MainActivity : ComponentActivity() {

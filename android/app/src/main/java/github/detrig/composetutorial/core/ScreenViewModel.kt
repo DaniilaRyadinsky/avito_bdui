@@ -38,6 +38,7 @@ open class ScreenViewModel(
     protected val _screenUiState = MutableStateFlow<UiState<ScreenComponent>>(UiState.Initial)
     val screenUiState: StateFlow<UiState<ScreenComponent>> = _screenUiState
 
+
     protected fun registerHandlers(state: ScreenState, dataState: DataState) {
         dispatcher.register(Action.ShowSnackbar::class, ShowSnackbarHandler(state))
         dispatcher.register(Action.SetValue::class, SetValueHandler(state))
@@ -82,4 +83,5 @@ open class ScreenViewModel(
             Log.e("alz-04", "Error loading screen JSON for $screenId", e)
             null
         }
+
 }
