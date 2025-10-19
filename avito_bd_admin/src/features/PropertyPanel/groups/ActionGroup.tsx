@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Section } from "./Section";
 import { Column } from "./FieldPrimitives";
 import { SelectBox } from "../../../shared/ui/SelectBox/SelectBox";
@@ -12,6 +12,8 @@ import type {
 import Button from "../../../shared/ui/Button/Button";
 import { TextInput } from "../../../shared/ui/TextInput/TextInput";
 import { TextArea } from "../../../shared/ui/TextArea/TextArea";
+import type { ScreenItem } from "../../../pages/screenList/model/types";
+import { fetchScreens } from "../../../pages/screenList/api/fetch";
 
 interface ActionGroupProps {
   actions?: Action[];
@@ -26,9 +28,19 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
   onChange,
   onModifierChange,
 }) => {
+  const [screens, setScreens] = useState<ScreenItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [isUpdate, setIsUpdate] = useState(true);
+
   const [localActions, setLocalActions] = React.useState<Action[]>(
     actions || []
   );
+
+  useEffect(() => {
+    fetchScreens(setScreens, setLoading, setError);
+    setIsUpdate(false);
+  }, [isUpdate]);
 
   useEffect(() => {
     setLocalActions(actions || []);
@@ -136,11 +148,15 @@ export const ActionGroup: React.FC<ActionGroupProps> = ({
             </Column>
 
             {action.type === "navigate" && (
-              <Column label="ID целевого компонента">
-                <TextInput
-                  value={action.targetId || ""}
-                  onChange={(value) => updateAction(index, { targetId: value })}
-                  placeholder="Введите ID компонента"
+              <Column label="Тип действия">
+                <SelectBox
+                  options={screens?.map((screen) => ({
+                    value: screen._id,
+                    label: screen.title ? screen.title : "",
+                  }))}
+                  onChange={(value) =>
+                    updateAction(index, { targetId: value as ActionType })
+                  }
                 />
               </Column>
             )}
