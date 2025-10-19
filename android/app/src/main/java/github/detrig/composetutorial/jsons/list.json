@@ -1,0 +1,138 @@
+{
+  "id": "03213239-75dc-4393-8c88-c95d4c00cd5a",
+  "title": "тест",
+  "topBar": [],
+  "type": "screen",
+  "width": 375,
+
+  "background": "#FFFFFF",
+  "content": [
+    {
+      "type": "column",
+      "modifier": {
+        "size": {
+          "height": "100",
+          "width": "200"
+        },
+        "clickable": true,
+        "background": "#FF0000"
+      },
+      "actions": [
+        {
+          "type": "fetch_data",
+          "event": "onClick",
+          "endpoint": "https://jsonkeeper.com/b/VRL0S",
+          "targetId": "cart_lazy_column"
+        }
+      ]
+    },
+    {
+      "id": "cart_lazy_column",
+      "type": "list",
+
+      "modifier": {
+        "fillMaxWidth": true,
+        "size": {
+          "height": "matchParent"
+        },
+        "padding": {
+          "all": 8
+        }
+      },
+      "template": {
+        "type": "column",
+        "modifier": {
+          "padding": {
+            "vertical": 4,
+            "horizontal": 8
+          },
+          "backgroundColor": "#F5F5F5",
+          "cornerRadius": 8
+        },
+        "children": [
+          {
+            "type": "row",
+            "modifier": {
+              "spacing": 8,
+              "verticalAlignment": "center"
+            },
+            "children": [
+              {
+                "type": "image",
+                "url": "$imageUrl",
+                "modifier": {
+                  "size": {
+                    "width": "60",
+                    "height": "60"
+                  },
+                  "cornerRadius": 30
+                }
+              },
+              {
+                "type": "column",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "$titleItem",
+                    "modifier": {
+                      "fontSize": 16,
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "text": "$subtitleItem",
+                    "modifier": {
+                      "fontSize": 14,
+                      "color": "#757575"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "checkbox",
+            "isChecked": "$isChecked",
+            "modifier": {
+              "padding": {
+                "top": 8
+              }
+            }
+          },
+          {
+            "type": "button",
+            "text": "Удалить",
+            "modifier": {
+              "backgroundColor": "#E53935",
+              "textColor": "#FFFFFF",
+              "padding": {
+                "vertical": 4,
+                "horizontal": 16
+              },
+              "cornerRadius": 4
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "bottomBar": [
+    {
+      "children": [],
+      "type": "row",
+      "_id": "comp-bottombar-mgv122td-q2ozk2nn2",
+      "modifier": {
+        "background": "#FFFFFF",
+        "fillMaxWidth": true,
+        "size": {
+          "width": "match_parent",
+          "height": "50"
+        }
+      }
+    }
+  ],
+  "snackbars": [],
+  "bottomSheets": [],
+  "height": 1000
+}

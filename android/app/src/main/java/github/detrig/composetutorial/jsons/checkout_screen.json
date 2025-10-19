@@ -1,0 +1,1764 @@
+{
+  "_id": "03213239-75dc-4393-8c88-c95d4c00cd5a",
+  "topBar": [
+    {
+      "children": [
+        {
+          "type": "text",
+          "_id": "text_4tnxk3va",
+          "text": "Text",
+          "style": {
+            "textDecoration": "none",
+            "fontSize": 14,
+            "textAlign": "start",
+            "fontWeight": "normal",
+            "fontStyle": "normal",
+            "color": "#000000",
+            "lineHeight": 18,
+            "overflow": "visible",
+            "letterSpacing": 0
+          },
+          "modifier": {
+            "clip": {
+              "cornerRadius": 0
+            },
+            "fillMaxHeight": false,
+            "background": null,
+            "fillMaxWidth": false,
+            "size": {
+              "height": "wrap_content",
+              "width": "wrap_content"
+            },
+            "clickable": false,
+            "align": "start",
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "alpha": 1,
+            "margin": {
+              "start": 0,
+              "end": 0,
+              "top": 0,
+              "bottom": 0
+            },
+            "border": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "padding": {
+              "start": 0,
+              "end": 0,
+              "top": 0,
+              "bottom": 0
+            }
+          }
+        },
+        {
+          "text": "Text",
+          "style": {
+            "letterSpacing": 0,
+            "fontStyle": "normal",
+            "textAlign": "start",
+            "overflow": "visible",
+            "fontWeight": "normal",
+            "color": "#000000",
+            "fontSize": 14,
+            "lineHeight": 18,
+            "textDecoration": "none"
+          },
+          "modifier": {
+            "align": "start",
+            "margin": {
+              "bottom": 0,
+              "start": 0,
+              "end": 0,
+              "top": 0
+            },
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "fillMaxHeight": false,
+            "border": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "padding": {
+              "top": 0,
+              "bottom": 0,
+              "start": 0,
+              "end": 0
+            },
+            "background": null,
+            "alpha": 1,
+            "clip": {
+              "cornerRadius": 0
+            },
+            "clickable": false,
+            "size": {
+              "height": "wrap_content",
+              "width": "wrap_content"
+            },
+            "fillMaxWidth": false
+          },
+          "type": "text",
+          "_id": "text_93vczlha"
+        },
+        {
+          "_id": "text_zwbtb6mr",
+          "text": "Text",
+          "style": {
+            "textDecoration": "none",
+            "overflow": "visible",
+            "fontSize": 14,
+            "color": "#000000",
+            "fontStyle": "normal",
+            "textAlign": "start",
+            "fontWeight": "normal",
+            "lineHeight": 18,
+            "letterSpacing": 0
+          },
+          "modifier": {
+            "shadow": {
+              "color": "#000000",
+              "elevation": 0
+            },
+            "size": {
+              "height": "wrap_content",
+              "width": "wrap_content"
+            },
+            "padding": {
+              "start": 0,
+              "end": 0,
+              "top": 0,
+              "bottom": 0
+            },
+            "clip": {
+              "cornerRadius": 0
+            },
+            "border": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "fillMaxWidth": false,
+            "background": null,
+            "fillMaxHeight": false,
+            "margin": {
+              "end": 0,
+              "top": 0,
+              "bottom": 0,
+              "start": 0
+            },
+            "align": "start",
+            "clickable": false,
+            "alpha": 1
+          },
+          "type": "text"
+        },
+        {
+          "verticalAlignment": "center",
+          "horizontalArrangement": "start",
+          "children": [
+            {
+              "type": "text",
+              "_id": "text_moqq77cv",
+              "text": "Text",
+              "style": {
+                "fontSize": 14,
+                "textDecoration": "none",
+                "overflow": "visible",
+                "fontWeight": "normal",
+                "fontStyle": "normal",
+                "color": "#000000",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "textAlign": "start"
+              },
+              "modifier": {
+                "clickable": false,
+                "fillMaxHeight": false,
+                "margin": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "alpha": 1,
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "fillMaxWidth": false,
+                "align": "start",
+                "size": {
+                  "width": "wrap_content",
+                  "height": "wrap_content"
+                },
+                "padding": {
+                  "bottom": 0,
+                  "start": 0,
+                  "end": 0,
+                  "top": 0
+                },
+                "background": null,
+                "clip": {
+                  "cornerRadius": 0
+                }
+              }
+            }
+          ],
+          "type": "row",
+          "_id": "row_orylxbci",
+          "modifier": {
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "scrollable": false,
+            "fillMaxWidth": true,
+            "fillMaxHeight": false,
+            "border": {
+              "color": "#000000",
+              "width": 0
+            },
+            "padding": {
+              "start": 0,
+              "end": 0,
+              "top": 0,
+              "bottom": 0
+            },
+            "align": "start",
+            "size": {
+              "width": "match_parent",
+              "height": "20"
+            },
+            "margin": {
+              "start": 0,
+              "end": 0,
+              "top": 0,
+              "bottom": 0
+            },
+            "clickable": false,
+            "alpha": 1,
+            "background": null,
+            "clip": {
+              "cornerRadius": 0
+            }
+          }
+        },
+        {
+          "type": "row",
+          "_id": "row_2sbn0b2s",
+          "modifier": {
+            "margin": {
+              "top": 0,
+              "bottom": 0,
+              "start": 0,
+              "end": 0
+            },
+            "fillMaxHeight": false,
+            "align": "start",
+            "padding": {
+              "start": 0,
+              "end": 0,
+              "top": 0,
+              "bottom": 0
+            },
+            "border": {
+              "color": "#000000",
+              "width": 0
+            },
+            "scrollable": false,
+            "clickable": false,
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "fillMaxWidth": true,
+            "background": null,
+            "clip": {
+              "cornerRadius": 0
+            },
+            "alpha": 1,
+            "size": {
+              "width": "match_parent",
+              "height": "20"
+            }
+          },
+          "verticalAlignment": "center",
+          "horizontalArrangement": "start",
+          "children": [
+            {
+              "style": {
+                "fontWeight": "normal",
+                "color": "#000000",
+                "textAlign": "start",
+                "overflow": "visible",
+                "lineHeight": 18,
+                "textDecoration": "none",
+                "letterSpacing": 0,
+                "fontStyle": "normal",
+                "fontSize": 14
+              },
+              "modifier": {
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "alpha": 1,
+                "margin": {
+                  "top": 0,
+                  "bottom": 0,
+                  "start": 0,
+                  "end": 0
+                },
+                "padding": {
+                  "bottom": 0,
+                  "start": 0,
+                  "end": 0,
+                  "top": 0
+                },
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "clickable": false,
+                "align": "start",
+                "fillMaxWidth": false,
+                "size": {
+                  "width": "wrap_content",
+                  "height": "wrap_content"
+                },
+                "background": null,
+                "fillMaxHeight": false
+              },
+              "type": "text",
+              "_id": "text_86i5jr9r",
+              "text": "Text"
+            }
+          ]
+        }
+      ],
+      "_id": "comp-topbar-mgv122td-q2ozk2nn2",
+      "type": "row",
+      "modifier": {
+        "size": {
+          "height": "50",
+          "width": "match_parent"
+        },
+        "background": "#FFFFFF",
+        "fillMaxWidth": true
+      }
+    }
+  ],
+  "type": "screen",
+  "background": "#FFFFFF",
+  "snackbars": [],
+  "name": "New Screen mgv122td",
+  "width": 375,
+  "bottomBar": [
+    {
+      "modifier": {
+        "background": "#FFFFFF",
+        "fillMaxWidth": true,
+        "size": {
+          "height": "50",
+          "width": "match_parent"
+        }
+      },
+      "children": [],
+      "type": "row",
+      "_id": "comp-bottombar-mgv122td-q2ozk2nn2"
+    }
+  ],
+  "content": [
+    {
+      "children": [
+        {
+          "_id": "row_z58vyhme",
+          "modifier": {
+            "background": "#63ff38",
+            "align": "start",
+            "fillMaxWidth": true,
+            "scrollable": false,
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "clickable": true,
+            "fillMaxHeight": false,
+            "border": {
+              "color": "#000000",
+              "width": 0
+            },
+            "clip": {
+              "cornerRadius": 0
+            },
+            "margin": {
+              "bottom": 0,
+              "start": 0,
+              "end": 0,
+              "top": 0
+            },
+            "size": {
+              "width": "match_parent",
+              "height": "100"
+            },
+            "padding": {
+              "start": 11,
+              "end": 0,
+              "top": 0,
+              "bottom": 0
+            },
+            "alpha": 1
+          },
+          "verticalAlignment": "center",
+          "horizontalArrangement": "start",
+          "children": [
+            {
+              "_id": "text_09jqz0zy",
+              "text": "Открыть боттомщит",
+              "style": {
+                "color": "#000000",
+                "lineHeight": 18,
+                "overflow": "visible",
+                "letterSpacing": 0,
+                "textAlign": "start",
+                "fontWeight": "normal",
+                "textDecoration": "none",
+                "fontSize": 14,
+                "fontStyle": "normal"
+              },
+              "modifier": {
+                "background": null,
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "clickable": false,
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "size": {
+                  "height": "wrap_content",
+                  "width": "wrap_content"
+                },
+                "fillMaxWidth": false,
+                "fillMaxHeight": false,
+                "padding": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "margin": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "align": "start",
+                "alpha": 1,
+                "shadow": {
+                  "color": "#000000",
+                  "elevation": 0
+                }
+              },
+              "type": "text"
+            }
+          ],
+          "type": "row",
+          "actions": [
+            {
+              "event": "onClick",
+              "type": "showBottomSheet",
+              "targetId": "bottomSheet_mxxgn2l2"
+            }
+          ]
+        },
+        {
+          "_id": "row_bnry5d8n",
+          "modifier": {
+            "alpha": 1,
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "background": null,
+            "scrollable": false,
+            "size": {
+              "height": "20",
+              "width": "match_parent"
+            },
+            "fillMaxWidth": true,
+            "margin": {
+              "start": 0,
+              "end": 0,
+              "top": 0,
+              "bottom": 0
+            },
+            "border": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "fillMaxHeight": false,
+            "padding": {
+              "start": 0,
+              "end": 0,
+              "top": 0,
+              "bottom": 0
+            },
+            "align": "start",
+            "clip": {
+              "cornerRadius": 0
+            },
+            "clickable": false
+          },
+          "verticalAlignment": "center",
+          "horizontalArrangement": "start",
+          "children": [],
+          "type": "row"
+        }
+      ],
+      "_id": "comp-content-mgv122td-q2ozk2nn2",
+      "type": "column",
+      "modifier": {
+        "fillMaxWidth": true,
+        "fillMaxHeight": true,
+        "size": {
+          "width": "match_parent",
+          "height": "match_parent"
+        }
+      }
+    }
+  ],
+  "bottomSheets": [
+    {
+      "type": "bottomSheet",
+      "dismissible": false,
+      "children": [
+        {
+          "horizontalAlignment": "start",
+          "children": [
+            {
+              "horizontalArrangement": "start",
+              "children": [
+                {
+                  "style": {
+                    "color": "#000000",
+                    "lineHeight": 18,
+                    "letterSpacing": 0,
+                    "overflow": "visible",
+                    "fontStyle": "normal",
+                    "fontSize": 21,
+                    "textDecoration": "none",
+                    "textAlign": "start",
+                    "fontWeight": "bold"
+                  },
+                  "modifier": {
+                    "size": {
+                      "width": "wrap_content",
+                      "height": "wrap_content"
+                    },
+                    "margin": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0
+                    },
+                    "background": null,
+                    "clickable": false,
+                    "align": "start",
+                    "alpha": 1,
+                    "fillMaxHeight": false,
+                    "padding": {
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0,
+                      "start": 0
+                    },
+                    "fillMaxWidth": false,
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    }
+                  },
+                  "type": "text",
+                  "_id": "text_pousb4o4",
+                  "text": "Получатель"
+                }
+              ],
+              "type": "row",
+              "_id": "row_b98sd07u",
+              "modifier": {
+                "padding": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "margin": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "clickable": false,
+                "scrollable": false,
+                "fillMaxWidth": true,
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "shadow": {
+                  "color": "#000000",
+                  "elevation": 0
+                },
+                "fillMaxHeight": false,
+                "background": null,
+                "alpha": 1,
+                "size": {
+                  "width": "match_parent",
+                  "height": "20"
+                },
+                "align": "start"
+              },
+              "verticalAlignment": "center"
+            },
+            {
+              "type": "row",
+              "_id": "row_dr4pn7nr",
+              "modifier": {
+                "alpha": 1,
+                "scrollable": false,
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "align": "start",
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "size": {
+                  "height": "wrap_content",
+                  "width": "match_parent"
+                },
+                "fillMaxHeight": false,
+                "padding": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "margin": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "background": null,
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "clickable": false,
+                "fillMaxWidth": true
+              },
+              "verticalAlignment": "center",
+              "horizontalArrangement": "start",
+              "children": [
+                {
+                  "text": "ФИО",
+                  "style": {
+                    "fontStyle": "normal",
+                    "textAlign": "start",
+                    "color": "#000000",
+                    "overflow": "visible",
+                    "fontWeight": "bold",
+                    "letterSpacing": 0,
+                    "fontSize": 16,
+                    "lineHeight": 18,
+                    "textDecoration": "none"
+                  },
+                  "modifier": {
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "alpha": 1,
+                    "fillMaxHeight": false,
+                    "align": "start",
+                    "size": {
+                      "width": "wrap_content",
+                      "height": "wrap_content"
+                    },
+                    "padding": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0
+                    },
+                    "background": null,
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "clickable": false,
+                    "shadow": {
+                      "color": "#000000",
+                      "elevation": 0
+                    },
+                    "fillMaxWidth": false,
+                    "margin": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 16,
+                      "bottom": 0
+                    }
+                  },
+                  "type": "text",
+                  "_id": "text_n3y748p5"
+                }
+              ]
+            },
+            {
+              "horizontalArrangement": "spaceBetween",
+              "children": [
+                {
+                  "_id": "text_9cl4a5qw",
+                  "text": "Князева Екатерина ",
+                  "style": {
+                    "fontStyle": "normal",
+                    "letterSpacing": 0,
+                    "overflow": "visible",
+                    "fontWeight": "normal",
+                    "textAlign": "start",
+                    "color": "#000000",
+                    "lineHeight": 18,
+                    "textDecoration": "none",
+                    "fontSize": 15
+                  },
+                  "modifier": {
+                    "background": null,
+                    "fillMaxWidth": false,
+                    "alpha": 1,
+                    "size": {
+                      "width": "wrap_content",
+                      "height": "wrap_content"
+                    },
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "clickable": false,
+                    "align": "start",
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "fillMaxHeight": false,
+                    "margin": {
+                      "bottom": 0,
+                      "start": 0,
+                      "end": 0,
+                      "top": 0
+                    },
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "padding": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0
+                    }
+                  },
+                  "type": "text"
+                },
+                {
+                  "placeholder": null,
+                  "modifier": {
+                    "padding": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0
+                    },
+                    "background": null,
+                    "align": "start",
+                    "size": {
+                      "width": "20",
+                      "height": "20"
+                    },
+                    "margin": {
+                      "top": 0,
+                      "bottom": 0,
+                      "start": 0,
+                      "end": 0
+                    },
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "clickable": false,
+                    "fillMaxWidth": false,
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "alpha": 1,
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "fillMaxHeight": false
+                  },
+                  "error": null,
+                  "type": "image",
+                  "url": "https://w7.pngwing.com/pngs/839/738/png-transparent-close-delete-remove-cancel-cross-ink-basic-icon-thumbnail.png",
+                  "scaleType": null,
+                  "_id": "image_er1ec3aq",
+                  "contentDescription": "",
+                  "contentScale": "Fill"
+                }
+              ],
+              "type": "row",
+              "_id": "row_fu5ms2x1",
+              "modifier": {
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "clickable": false,
+                "margin": {
+                  "top": 12,
+                  "bottom": 0,
+                  "start": 0,
+                  "end": 0
+                },
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "size": {
+                  "width": "match_parent",
+                  "height": "wrap_content"
+                },
+                "fillMaxWidth": true,
+                "fillMaxHeight": false,
+                "align": "start",
+                "alpha": 1,
+                "padding": {
+                  "top": 11,
+                  "bottom": 11,
+                  "start": 16,
+                  "end": 12
+                },
+                "background": "#F2F1F0",
+                "scrollable": false,
+                "clip": {
+                  "cornerRadius": 12
+                }
+              },
+              "verticalAlignment": "center"
+            },
+            {
+              "type": "column",
+              "_id": "column_c96nzwm7",
+              "modifier": {
+                "border": {
+                  "color": "#000000",
+                  "width": 0
+                },
+                "clickable": false,
+                "align": "start",
+                "size": {
+                  "width": "match_parent",
+                  "height": "wrap_content"
+                },
+                "background": null,
+                "alpha": 1,
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "scrollable": false,
+                "fillMaxWidth": true,
+                "fillMaxHeight": false,
+                "padding": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "margin": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 16,
+                  "bottom": 0
+                },
+                "clip": {
+                  "cornerRadius": 0
+                }
+              },
+              "verticalArrangement": "top",
+              "horizontalAlignment": "start",
+              "children": [
+                {
+                  "_id": "row_joacj8vm",
+                  "modifier": {
+                    "align": "start",
+                    "alpha": 1,
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "fillMaxWidth": true,
+                    "fillMaxHeight": false,
+                    "margin": {
+                      "top": 0,
+                      "bottom": 0,
+                      "start": 0,
+                      "end": 0
+                    },
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "clickable": false,
+                    "scrollable": false,
+                    "size": {
+                      "height": "wrap_content",
+                      "width": "match_parent"
+                    },
+                    "padding": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0
+                    },
+                    "background": null
+                  },
+                  "verticalAlignment": "center",
+                  "horizontalArrangement": "start",
+                  "children": [
+                    {
+                      "type": "text",
+                      "_id": "text_jtyo5pkj",
+                      "text": "ФИО",
+                      "style": {
+                        "letterSpacing": 0,
+                        "textAlign": "start",
+                        "overflow": "visible",
+                        "fontStyle": "normal",
+                        "textDecoration": "none",
+                        "fontSize": 14,
+                        "fontWeight": "normal",
+                        "color": "#000000",
+                        "lineHeight": 18
+                      },
+                      "modifier": {
+                        "border": {
+                          "color": "#000000",
+                          "width": 0
+                        },
+                        "alpha": 1,
+                        "fillMaxWidth": false,
+                        "padding": {
+                          "top": 0,
+                          "bottom": 0,
+                          "start": 0,
+                          "end": 0
+                        },
+                        "clickable": false,
+                        "align": "start",
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "fillMaxHeight": false,
+                        "margin": {
+                          "start": 0,
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0
+                        },
+                        "background": null,
+                        "clip": {
+                          "cornerRadius": 0
+                        }
+                      }
+                    }
+                  ],
+                  "type": "row"
+                },
+                {
+                  "type": "row",
+                  "_id": "row_wme56sk3",
+                  "modifier": {
+                    "fillMaxWidth": true,
+                    "fillMaxHeight": false,
+                    "padding": {
+                      "start": 16,
+                      "end": 12,
+                      "top": 11,
+                      "bottom": 11
+                    },
+                    "margin": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 12,
+                      "bottom": 0
+                    },
+                    "background": "#F2F1F0",
+                    "clickable": false,
+                    "align": "start",
+                    "alpha": 1,
+                    "size": {
+                      "width": "match_parent",
+                      "height": "wrap_content"
+                    },
+                    "clip": {
+                      "cornerRadius": 12
+                    },
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "scrollable": false
+                  },
+                  "verticalAlignment": "center",
+                  "horizontalArrangement": "spaceBetween",
+                  "children": [
+                    {
+                      "_id": "text_4rn4gatu",
+                      "text": "Text",
+                      "style": {
+                        "fontSize": 14,
+                        "fontWeight": "normal",
+                        "lineHeight": 18,
+                        "textDecoration": "none",
+                        "textAlign": "start",
+                        "fontStyle": "normal",
+                        "color": "#000000",
+                        "letterSpacing": 0,
+                        "overflow": "visible"
+                      },
+                      "modifier": {
+                        "fillMaxWidth": false,
+                        "padding": {
+                          "bottom": 0,
+                          "start": 0,
+                          "end": 0,
+                          "top": 0
+                        },
+                        "margin": {
+                          "start": 0,
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0
+                        },
+                        "background": null,
+                        "align": "start",
+                        "alpha": 1,
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "fillMaxHeight": false,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "clickable": false,
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        }
+                      },
+                      "type": "text"
+                    },
+                    {
+                      "_id": "image_u6stj6e6",
+                      "url": "https://w7.pngwing.com/pngs/839/738/png-transparent-close-delete-remove-cancel-cross-ink-basic-icon-thumbnail.png",
+                      "contentScale": "Fill",
+                      "placeholder": null,
+                      "error": null,
+                      "modifier": {
+                        "padding": {
+                          "bottom": 0,
+                          "start": 0,
+                          "end": 0,
+                          "top": 0
+                        },
+                        "margin": {
+                          "start": 0,
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0
+                        },
+                        "background": null,
+                        "clickable": false,
+                        "align": "start",
+                        "alpha": 1,
+                        "fillMaxWidth": false,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "size": {
+                          "width": "20",
+                          "height": "20"
+                        },
+                        "fillMaxHeight": false
+                      },
+                      "scaleType": null,
+                      "type": "image",
+                      "contentDescription": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "children": [
+                {
+                  "horizontalArrangement": "start",
+                  "children": [
+                    {
+                      "text": "ФИО",
+                      "style": {
+                        "textDecoration": "none",
+                        "overflow": "visible",
+                        "fontWeight": "normal",
+                        "fontStyle": "normal",
+                        "textAlign": "start",
+                        "fontSize": 14,
+                        "color": "#000000",
+                        "lineHeight": 18,
+                        "letterSpacing": 0
+                      },
+                      "modifier": {
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "fillMaxWidth": false,
+                        "padding": {
+                          "bottom": 0,
+                          "start": 0,
+                          "end": 0,
+                          "top": 0
+                        },
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "fillMaxHeight": false,
+                        "margin": {
+                          "start": 0,
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0
+                        },
+                        "background": null,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "clickable": false,
+                        "align": "start",
+                        "alpha": 1
+                      },
+                      "type": "text",
+                      "_id": "comp_1760800178604_5bgez97dl"
+                    }
+                  ],
+                  "type": "row",
+                  "_id": "comp_1760800178604_jv8bdb2vt",
+                  "modifier": {
+                    "align": "start",
+                    "alpha": 1,
+                    "size": {
+                      "width": "match_parent",
+                      "height": "wrap_content"
+                    },
+                    "fillMaxHeight": false,
+                    "padding": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0
+                    },
+                    "background": null,
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "clickable": false,
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "scrollable": false,
+                    "fillMaxWidth": true,
+                    "margin": {
+                      "top": 0,
+                      "bottom": 0,
+                      "start": 0,
+                      "end": 0
+                    },
+                    "clip": {
+                      "cornerRadius": 0
+                    }
+                  },
+                  "verticalAlignment": "center"
+                },
+                {
+                  "modifier": {
+                    "background": "#F2F1F0",
+                    "align": "start",
+                    "alpha": 1,
+                    "scrollable": false,
+                    "size": {
+                      "width": "match_parent",
+                      "height": "wrap_content"
+                    },
+                    "fillMaxWidth": true,
+                    "padding": {
+                      "end": 12,
+                      "top": 11,
+                      "bottom": 11,
+                      "start": 16
+                    },
+                    "margin": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 12,
+                      "bottom": 0
+                    },
+                    "clip": {
+                      "cornerRadius": 12
+                    },
+                    "border": {
+                      "color": "#000000",
+                      "width": 0
+                    },
+                    "clickable": false,
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "fillMaxHeight": false
+                  },
+                  "verticalAlignment": "center",
+                  "horizontalArrangement": "spaceBetween",
+                  "children": [
+                    {
+                      "style": {
+                        "overflow": "visible",
+                        "fontStyle": "normal",
+                        "lineHeight": 18,
+                        "fontSize": 14,
+                        "fontWeight": "normal",
+                        "color": "#000000",
+                        "letterSpacing": 0,
+                        "textDecoration": "none",
+                        "textAlign": "start"
+                      },
+                      "modifier": {
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "alpha": 1,
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "fillMaxWidth": false,
+                        "padding": {
+                          "bottom": 0,
+                          "start": 0,
+                          "end": 0,
+                          "top": 0
+                        },
+                        "background": null,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "clickable": false,
+                        "align": "start",
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "fillMaxHeight": false,
+                        "margin": {
+                          "bottom": 0,
+                          "start": 0,
+                          "end": 0,
+                          "top": 0
+                        }
+                      },
+                      "type": "text",
+                      "_id": "comp_1760800178604_8eys1ltf4",
+                      "text": "Text"
+                    },
+                    {
+                      "contentScale": "Fill",
+                      "type": "image",
+                      "url": "https://w7.pngwing.com/pngs/839/738/png-transparent-close-delete-remove-cancel-cross-ink-basic-icon-thumbnail.png",
+                      "contentDescription": "",
+                      "placeholder": null,
+                      "error": null,
+                      "modifier": {
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "alpha": 1,
+                        "shadow": {
+                          "color": "#000000",
+                          "elevation": 0
+                        },
+                        "fillMaxWidth": false,
+                        "padding": {
+                          "top": 0,
+                          "bottom": 0,
+                          "start": 0,
+                          "end": 0
+                        },
+                        "background": null,
+                        "clickable": false,
+                        "align": "start",
+                        "size": {
+                          "width": "20",
+                          "height": "20"
+                        },
+                        "fillMaxHeight": false,
+                        "margin": {
+                          "start": 0,
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0
+                        }
+                      },
+                      "scaleType": null,
+                      "_id": "comp_1760800178604_ohwwm23l4"
+                    }
+                  ],
+                  "type": "row",
+                  "_id": "comp_1760800178604_xg5o7e9h2"
+                }
+              ],
+              "type": "column",
+              "_id": "comp_1760800178604_7ddmqmws1",
+              "modifier": {
+                "background": null,
+                "alpha": 1,
+                "scrollable": false,
+                "fillMaxWidth": true,
+                "fillMaxHeight": false,
+                "padding": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "clickable": false,
+                "align": "start",
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "size": {
+                  "width": "match_parent",
+                  "height": "wrap_content"
+                },
+                "margin": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 16,
+                  "bottom": 0
+                }
+              },
+              "verticalArrangement": "top",
+              "horizontalAlignment": "start"
+            },
+            {
+              "_id": "comp_1760800191320_de6sxai8e",
+              "modifier": {
+                "size": {
+                  "width": "match_parent",
+                  "height": "wrap_content"
+                },
+                "fillMaxHeight": false,
+                "padding": {
+                  "bottom": 0,
+                  "start": 0,
+                  "end": 0,
+                  "top": 0
+                },
+                "background": null,
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "clickable": false,
+                "align": "start",
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "fillMaxWidth": true,
+                "margin": {
+                  "end": 0,
+                  "top": 16,
+                  "bottom": 0,
+                  "start": 0
+                },
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "alpha": 1,
+                "scrollable": false
+              },
+              "verticalArrangement": "top",
+              "horizontalAlignment": "start",
+              "children": [
+                {
+                  "modifier": {
+                    "scrollable": false,
+                    "size": {
+                      "width": "match_parent",
+                      "height": "wrap_content"
+                    },
+                    "fillMaxHeight": false,
+                    "background": null,
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "clickable": false,
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "fillMaxWidth": true,
+                    "padding": {
+                      "top": 0,
+                      "bottom": 0,
+                      "start": 0,
+                      "end": 0
+                    },
+                    "margin": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0
+                    },
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "align": "start",
+                    "alpha": 1
+                  },
+                  "verticalAlignment": "center",
+                  "horizontalArrangement": "start",
+                  "children": [
+                    {
+                      "style": {
+                        "fontSize": 14,
+                        "fontStyle": "normal",
+                        "color": "#000000",
+                        "lineHeight": 18,
+                        "textAlign": "start",
+                        "overflow": "visible",
+                        "fontWeight": "normal",
+                        "letterSpacing": 0,
+                        "textDecoration": "none"
+                      },
+                      "modifier": {
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "fillMaxWidth": false,
+                        "fillMaxHeight": false,
+                        "margin": {
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0,
+                          "start": 0
+                        },
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "alpha": 1,
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "padding": {
+                          "bottom": 0,
+                          "start": 0,
+                          "end": 0,
+                          "top": 0
+                        },
+                        "background": null,
+                        "clickable": false,
+                        "align": "start"
+                      },
+                      "type": "text",
+                      "_id": "comp_1760800191321_gdgw895fr",
+                      "text": "ФИО"
+                    }
+                  ],
+                  "type": "row",
+                  "_id": "comp_1760800191321_5sxnrzwa9"
+                },
+                {
+                  "children": [
+                    {
+                      "type": "text",
+                      "_id": "comp_1760800191321_35kh0gqfe",
+                      "text": "Text",
+                      "style": {
+                        "lineHeight": 18,
+                        "letterSpacing": 0,
+                        "textAlign": "start",
+                        "fontStyle": "normal",
+                        "color": "#000000",
+                        "textDecoration": "none",
+                        "overflow": "visible",
+                        "fontSize": 14,
+                        "fontWeight": "normal"
+                      },
+                      "modifier": {
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "clickable": false,
+                        "fillMaxHeight": false,
+                        "align": "start",
+                        "alpha": 1,
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "fillMaxWidth": false,
+                        "padding": {
+                          "top": 0,
+                          "bottom": 0,
+                          "start": 0,
+                          "end": 0
+                        },
+                        "margin": {
+                          "start": 0,
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0
+                        },
+                        "background": null,
+                        "clip": {
+                          "cornerRadius": 0
+                        }
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "_id": "comp_1760800191321_ppa19ivij",
+                      "contentScale": "Fill",
+                      "placeholder": null,
+                      "error": null,
+                      "scaleType": null,
+                      "url": "https://w7.pngwing.com/pngs/839/738/png-transparent-close-delete-remove-cancel-cross-ink-basic-icon-thumbnail.png",
+                      "contentDescription": "",
+                      "modifier": {
+                        "size": {
+                          "width": "20",
+                          "height": "20"
+                        },
+                        "fillMaxWidth": false,
+                        "fillMaxHeight": false,
+                        "margin": {
+                          "start": 0,
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0
+                        },
+                        "background": null,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "border": {
+                          "color": "#000000",
+                          "width": 0
+                        },
+                        "alpha": 1,
+                        "padding": {
+                          "start": 0,
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0
+                        },
+                        "clickable": false,
+                        "align": "start",
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        }
+                      }
+                    }
+                  ],
+                  "type": "row",
+                  "_id": "comp_1760800191321_ewmsp68ys",
+                  "modifier": {
+                    "padding": {
+                      "end": 12,
+                      "top": 11,
+                      "bottom": 11,
+                      "start": 16
+                    },
+                    "margin": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 12,
+                      "bottom": 0
+                    },
+                    "background": "#F2F1F0",
+                    "clip": {
+                      "cornerRadius": 12
+                    },
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "align": "start",
+                    "fillMaxHeight": false,
+                    "clickable": false,
+                    "alpha": 1,
+                    "shadow": {
+                      "color": "#000000",
+                      "elevation": 0
+                    },
+                    "scrollable": false,
+                    "size": {
+                      "width": "match_parent",
+                      "height": "wrap_content"
+                    },
+                    "fillMaxWidth": true
+                  },
+                  "verticalAlignment": "center",
+                  "horizontalArrangement": "spaceBetween"
+                }
+              ],
+              "type": "column"
+            }
+          ],
+          "type": "column",
+          "_id": "column_mep0zqk9",
+          "modifier": {
+            "fillMaxWidth": true,
+            "fillMaxHeight": false,
+            "background": null,
+            "clip": {
+              "cornerRadius": 0
+            },
+            "border": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "padding": {
+              "top": 12,
+              "bottom": 16,
+              "start": 16,
+              "end": 16
+            },
+            "shadow": {
+              "color": "#000000",
+              "elevation": 0
+            },
+            "scrollable": false,
+            "size": {
+              "width": "match_parent",
+              "height": "450"
+            },
+            "margin": {
+              "top": 0,
+              "bottom": 0,
+              "start": 0,
+              "end": 0
+            },
+            "align": "start",
+            "clickable": false,
+            "alpha": 1
+          },
+          "verticalArrangement": "top"
+        }
+      ],
+      "_id": "bottomSheet_mxxgn2l2"
+    }
+  ],
+  "height": 1000
+}

@@ -1,0 +1,37 @@
+{
+  "_id": "03213239-75dc-4393-8c88-c95d4c00cd5a",
+  "title": "тест",
+  "topBar": [],
+  "type": "screen",
+  "width": 375,
+  "background": "#FFFFFF",
+  "content": [
+    {
+      "id": "cart_lazy_column",
+      "type": "lazy_column",
+      "modifier": {
+        "fillMaxWidth": true
+      },
+      "endpoint": "",
+      "template": "cartItem"
+    }
+  ],
+  "bottomBar": [
+    {
+      "children": [],
+      "type": "row",
+      "_id": "comp-bottombar-mgv122td-q2ozk2nn2",
+      "modifier": {
+        "background": "#FFFFFF",
+        "fillMaxWidth": true,
+        "size": {
+          "width": "match_parent",
+          "height": "50"
+        }
+      }
+    }
+  ],
+  "snackbars": [],
+  "bottomSheets": [],
+  "height": 1000
+}

@@ -1,0 +1,143 @@
+{
+          "type": "screen",
+          "id": "cart_screen",
+          "name": "CartScreen",
+          "background": "#FFFFFF",
+          "topBar": [],
+          "bottomBar": [],
+          "content": [
+            {
+              "type": "card",
+              "id": "cart_item",
+              "modifier": {
+                "fillMaxWidth": true,
+                "padding": { "top": 8, "bottom": 8, "start": 16, "end": 16 }
+              },
+              "background": "#FFFFFF",
+              "shape": { "cornerRadius": 12 },
+              "children": [
+                {
+                  "type": "row",
+                  "verticalAlignment": "top",
+                  "modifier": {
+                      "fillMaxWidth": true,
+                      "padding": { "start": 16, "end": 16, "top": 8, "bottom": 8 }
+                  },
+                  "children": [
+                    {
+                      "type": "checkbox",
+                      "checked": false,
+                      "modifier": { "size": { "width": "21", "height": "21" } }
+                    },
+                    {
+                      "type": "image",
+                      "url": "https://avatars.mds.yandex.net/i?id=bcfca40a29a6b3fe628c6894a33acc38fa829a59-13033711-images-thumbs&n=13",
+                      "contentScale": "Crop",
+                      "modifier": {
+                        "size": { "width": "96", "height": "96" },
+                        "padding": { "start": 8 },
+                        "clip": { "cornerRadius": 12 }
+                      }
+                    },
+                    {
+                      "type": "spacer",
+                      "modifier": { "height": "10" }
+                    },
+                    {
+                      "type": "column",
+                      "modifier": { "weight": 1 },
+                      "children": [
+                        {
+                          "type": "text",
+                          "text": "2490 ₽",
+                          "style": { "fontWeight": "bold", "fontSize": 16 }
+                        },
+                        {
+                          "type": "text",
+                          "text": "SHOES AIR MAX",
+                          "style": { "color": "#888888", "fontSize": 14 },
+                          "maxLines": 2,
+                          "overflow": "ellipsis"
+                        },
+                        {
+                          "type": "spacer",
+                          "modifier": { "height": "8" }
+                        },
+                        {
+                          "type": "row",
+                          "children": [
+                            {
+                              "type": "row",
+                              "modifier": {
+                                "clip": { "cornerRadius": 8 },
+                                "background": "#F0F0F0"
+                              },
+                              "children": [
+                                {
+                                  "type": "box",
+                                  "modifier": {
+                                    "padding": { "horizontal": 12, "vertical": 6 },
+                                    "clickable": true
+                                  },
+                                  "children": [
+                                    { "type": "text", "text": "-", "style": { "fontSize": 18, "fontWeight": "bold" } }
+                                  ]
+                                },
+                                {
+                                  "type": "text",
+                                  "text": "1",
+                                  "style": { "fontSize": 16, "fontWeight": "medium" },
+                                  "modifier": { "padding": { "horizontal": 12 } }
+                                },
+                                {
+                                  "type": "box",
+                                  "modifier": {
+                                    "padding": { "horizontal": 12, "vertical": 6 },
+                                    "clickable": true
+                                  },
+                                  "children": [
+                                    { "type": "text", "text": "+", "style": { "fontSize": 18, "fontWeight": "bold" } }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                       },
+                        {
+                            "type": "spacer",
+                            "modifier": { "height": "10" }
+                         },
+                        {
+                          "type": "text",
+                          "text": "Купить с доставкой",
+                          "style": { "color": "#0099F7", "fontSize": 14 },
+                          "modifier": { "padding": { "top": 8, "bottom": 8 } }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "column",
+                      "horizontalAlignment": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "icon": "favorite_border"
+
+                        },
+                        {
+                          "type": "icon",
+                          "icon": "delete"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+        }
+          ]
+        }
+
+
+
+
+

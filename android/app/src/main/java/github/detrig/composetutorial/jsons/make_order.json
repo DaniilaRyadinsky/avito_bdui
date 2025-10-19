@@ -1,0 +1,2065 @@
+{
+  "_id": "1c24b76b-f646-40d4-84e1-65a613152aa9",
+  "topBar": [
+    {
+      "_id": "comp-topbar-mg9v8gqw-1j5nge1kt",
+      "id": "column1",
+      "type": "column",
+      "modifier": {
+        "fillMaxWidth": true,
+        "size": {
+          "height": "wrap_content",
+          "width": "420"
+        },
+        "fillMaxHeight": false
+      },
+      "background": "#FFFFFF",
+      "children": [
+        {
+          "_id": "text_nza1yzhc",
+          "text": "Оформление доставки",
+          "style": {
+            "textAlign": "center",
+            "fontStyle": "normal",
+            "fontSize": 16,
+            "textDecoration": "none",
+            "lineHeight": 18,
+            "overflow": "visible",
+            "letterSpacing": 0,
+            "fontWeight": "bold",
+            "color": "#000000"
+          },
+          "modifier": {
+            "clip": {
+              "cornerRadius": 0
+            },
+            "clickable": false,
+            "fillMaxWidth": true,
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "padding": {
+              "bottom": 14,
+              "all": 0,
+              "start": 14,
+              "end": 14,
+              "top": 14
+            },
+            "background": null,
+            "onClick": null,
+            "alpha": 1,
+            "align": "start",
+            "fillMaxHeight": false
+          },
+          "type": "text"
+        }
+      ]
+    }
+  ],
+  "content": [
+    {
+      "verticalAlignment": "top",
+      "children": [
+        {
+          "_id": "column_t1t7gpnf",
+          "modifier": {
+            "clip": {
+              "cornerRadius": 0
+            },
+            "alpha": 1,
+            "fillMaxHeight": false,
+            "clickable": false,
+            "onClick": null,
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "size": {
+              "width": "400",
+              "height": "600"
+            },
+            "padding": {
+              "start": 10,
+              "end": 10,
+              "top": 10,
+              "bottom": 10,
+              "all": 10
+            },
+            "align": "start",
+            "fillMaxWidth": false,
+            "background": null
+          },
+          "verticalAlignment": "top",
+          "horizontalArrangement": "start",
+          "children": [
+            {
+              "_id": "column_5z0cz4q9",
+              "modifier": {
+                "padding": {
+                  "all": 5,
+                  "start": 10,
+                  "end": 10,
+                  "top": 10,
+                  "bottom": 10
+                },
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "clickable": false,
+                "align": "start",
+
+                "fillMaxHeight": false,
+                "alpha": 1,
+                "shadow": {
+                  "color": "#000000",
+                  "elevation": 0
+                },
+                "fillMaxWidth": true,
+                "background": null
+              },
+              "verticalAlignment": "top",
+              "horizontalArrangement": "start",
+              "children": [
+                {
+                  "modifier": {
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "size": {
+                      "height": "wrap_content",
+                      "width": "wrap_content"
+                    },
+                    "fillMaxHeight": false,
+                    "background": null,
+                    "fillMaxWidth": false,
+                    "clickable": false,
+                    "padding": {
+                      "start": 0,
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0,
+                      "all": 0
+                    },
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "align": "start",
+                    "alpha": 1
+                  },
+                  "type": "text",
+                  "_id": "text_a4j47681",
+                  "text": "Способ получения",
+                  "style": {
+                    "fontSize": 21,
+                    "fontWeight": "medium",
+                    "letterSpacing": 0,
+                    "textAlign": "start",
+                    "lineHeight": 18,
+                    "fontStyle": "normal",
+                    "color": "#000000",
+                    "textDecoration": "none",
+                    "overflow": "visible"
+                  }
+                },
+                {
+                  "type": "text",
+                  "_id": "text_7fvmxu2m",
+                  "text": "Для адреса: Москва, ул. Лесная, 7",
+                  "style": {
+                    "fontWeight": "normal",
+                    "fontStyle": "normal",
+                    "textAlign": "start",
+                    "textDecoration": "none",
+                    "fontSize": 15,
+                    "lineHeight": 18,
+                    "letterSpacing": 0,
+                    "overflow": "visible",
+                    "color": "#000000"
+                  },
+                  "modifier": {
+                    "fillMaxWidth": false,
+                    "padding": {
+                      "all": 0,
+                      "start": 0,
+                      "end": 0,
+                      "top": 4,
+                      "bottom": 0
+                    },
+                    "clickable": false,
+                    "size": {
+                      "height": "wrap_content",
+                      "width": "wrap_content"
+                    },
+                    "fillMaxHeight": false,
+                    "align": "start",
+                    "background": null,
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "alpha": 1
+                  }
+                }
+              ],
+              "type": "column"
+            },
+            {
+              "type": "row",
+              "_id": "row_buid0cwl",
+              "modifier": {
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "background": null,
+                "clickable": false,
+                "align": "start",
+                "fillMaxHeight": false,
+                "padding": {
+                  "all": 5,
+                  "start": 5,
+                  "end": 5,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "alpha": 1,
+                "fillMaxWidth": true
+              },
+              "verticalAlignment": "top",
+              "horizontalArrangement": "start",
+              "children": [
+                {
+                  "modifier": {
+                    "fillMaxWidth": false,
+                    "fillMaxHeight": false,
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "background": "#F2F1F0",
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "size": {
+                      "width": "147",
+                      "height": "wrap_content"
+                    },
+                    "clickable": false,
+                    "align": "start",
+                    "padding": {
+                      "all": 5,
+                      "start": 16,
+                      "end": 16,
+                      "top": 12,
+                      "bottom": 12
+                    },
+                    "alpha": 1
+                  },
+                  "elevation": 1,
+                  "shape": {
+                    "cornerRadius": 12
+                  },
+                  "children": [
+                    {
+                      "style": {
+                        "fontSize": 11,
+                        "fontWeight": "normal",
+                        "textAlign": "start",
+                        "fontStyle": "normal",
+                        "color": "#8C4FE8",
+                        "lineHeight": 18,
+                        "letterSpacing": 0,
+                        "overflow": "visible",
+                        "textDecoration": "none"
+                      },
+                      "modifier": {
+                        "fillMaxWidth": false,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "fillMaxHeight": false,
+                        "alpha": 1,
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "padding": {
+                          "top": 0,
+                          "bottom": 0,
+                          "all": 0,
+                          "start": 0,
+                          "end": 0
+                        },
+                        "clickable": false,
+                        "align": "start",
+                        "background": null,
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        }
+                      },
+                      "type": "text",
+                      "_id": "text_hg3wkejd",
+                      "text": "Сюда доставляли"
+                    },
+                    {
+                      "text": "Почта России",
+                      "style": {
+                        "textDecoration": "none",
+                        "fontSize": 13,
+                        "textAlign": "start",
+                        "fontStyle": "normal",
+                        "color": "#757575",
+                        "fontWeight": "normal",
+                        "overflow": "visible",
+                        "lineHeight": 18,
+                        "letterSpacing": 0
+                      },
+                      "modifier": {
+                        "background": null,
+                        "padding": {
+                          "top": 2,
+                          "bottom": 4,
+                          "all": 0,
+                          "start": 0,
+                          "end": 0
+                        },
+                        "alpha": 1,
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "fillMaxHeight": false,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "clickable": false,
+                        "align": "start",
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "fillMaxWidth": false
+                      },
+                      "type": "text",
+                      "_id": "text_bwo75kvs"
+                    },
+                    {
+                      "type": "text",
+                      "_id": "text_aw971nch",
+                      "text": "2 701₽, 1–4 дня",
+                      "style": {
+                        "fontWeight": "normal",
+                        "color": "#000000",
+                        "textDecoration": "none",
+                        "overflow": "visible",
+                        "lineHeight": 18,
+                        "textAlign": "start",
+                        "fontSize": 14,
+                        "fontStyle": "normal",
+                        "letterSpacing": 0
+                      },
+                      "modifier": {
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "clickable": false,
+                        "align": "start",
+                        "fillMaxWidth": false,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "fillMaxHeight": false,
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "padding": {
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0,
+                          "start": 0
+                        },
+                        "background": null,
+                        "alpha": 1
+                      }
+                    }
+                  ],
+                  "type": "box",
+                  "_id": "card_6xbhpldo"
+                },
+                {
+                  "type": "spacer",
+                  "_id": "spacer_ekxcff49",
+                  "modifier": {
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "align": "start",
+                    "size": {
+                      "width": "6",
+                      "height": "20"
+                    },
+                    "fillMaxWidth": false,
+                    "clickable": false,
+                    "padding": {
+                      "all": 0,
+                      "start": 0,
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0
+                    },
+                    "alpha": 1,
+                    "background": null,
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "fillMaxHeight": false
+                  }
+                },
+                {
+                  "modifier": {
+                    "background": "#F2F1F0",
+                    "clip": {
+                      "cornerRadius": 16
+                    },
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "size": {
+                      "width": "199"
+                    },
+                    "fillMaxWidth": false,
+                    "fillMaxHeight": false,
+                    "padding": {
+                      "end": 10,
+                      "top": 10,
+                      "bottom": 10,
+                      "all": 5,
+                      "start": 10
+                    },
+                    "alpha": 1,
+                    "clickable": false,
+                    "align": "start"
+                  },
+                  "elevation": 1,
+                  "shape": {
+                    "cornerRadius": 12
+                  },
+                  "children": [
+                    {
+                      "_id": "text_ishzfv41",
+                      "text": "Лучшая цена",
+                      "style": {
+                        "letterSpacing": 0,
+                        "textDecoration": "none",
+                        "fontSize": 11,
+                        "textAlign": "start",
+                        "fontWeight": "normal",
+                        "fontStyle": "normal",
+                        "overflow": "visible",
+                        "color": "#00B253",
+                        "lineHeight": 18
+                      },
+                      "modifier": {
+                        "fillMaxHeight": false,
+                        "background": null,
+                        "align": "start",
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "clickable": false,
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "alpha": 1,
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "fillMaxWidth": false,
+                        "padding": {
+                          "start": 0,
+                          "end": 12,
+                          "top": 4
+                        }
+                      },
+                      "type": "text"
+                    },
+                    {
+                      "text": "Авито",
+                      "style": {
+                        "fontStyle": "normal",
+                        "color": "#000000",
+                        "letterSpacing": 0,
+                        "overflow": "visible",
+                        "fontSize": 13,
+                        "lineHeight": 18,
+                        "fontWeight": "normal",
+                        "textDecoration": "none",
+                        "textAlign": "start"
+                      },
+                      "modifier": {
+                        "padding": {
+                          "bottom": 4,
+                          "start": 0,
+                          "end": 0,
+                          "top": 2
+                        },
+                        "align": "start",
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "background": null,
+                        "alpha": 1,
+                        "fillMaxHeight": false,
+                        "clickable": false,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "fillMaxWidth": false
+                      },
+                      "type": "text",
+                      "_id": "text_nsu4gnwd"
+                    },
+                    {
+                      "_id": "row_vd44t5uq",
+                      "modifier": {
+                        "padding": {
+                          "end": 0,
+                          "top": 0,
+                          "bottom": 0,
+                          "start": 0
+                        },
+                        "align": "start",
+                        "shadow": {
+                          "color": "#000000",
+                          "elevation": 0
+                        },
+                        "size": {
+                          "width": "wrap_content",
+                          "height": "wrap_content"
+                        },
+                        "background": null,
+                        "clip": {
+                          "cornerRadius": 0
+                        },
+                        "clickable": false,
+                        "fillMaxWidth": false,
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "alpha": 1,
+                        "fillMaxHeight": false
+                      },
+                      "verticalAlignment": "centerVertically",
+                      "horizontalArrangement": "start",
+                      "children": [
+                        {
+                          "text": "5 028 ₽",
+                          "style": {
+                            "fontWeight": "bold",
+                            "letterSpacing": 0,
+                            "fontSize": 13,
+                            "lineHeight": 18,
+                            "textAlign": "start",
+                            "overflow": "visible",
+                            "fontStyle": "normal",
+                            "color": "#000000",
+                            "textDecoration": "lineThrough"
+                          },
+                          "modifier": {
+
+                            "clickable": false,
+                            "align": "start",
+                            "shadow": {
+                              "color": "#000000",
+                              "elevation": 0
+                            },
+                            "size": {
+                              "height": "wrap_content",
+                              "width": "wrap_content"
+                            },
+                            "alpha": 1,
+                            "fillMaxHeight": false,
+                            "clip": {
+                              "cornerRadius": 0
+                            },
+                            "fillMaxWidth": false,
+                            "background": null,
+                            "padding": {
+                              "top": 0,
+                              "bottom": 0,
+                              "all": 0,
+                              "start": 0,
+                              "end": 0
+                            }
+                          },
+                          "type": "text",
+                          "_id": "text_iaci338z"
+                        },
+                        {
+                          "style": {
+                            "textAlign": "start",
+                            "fontWeight": "bold",
+                            "lineHeight": 18,
+                            "letterSpacing": 0,
+                            "overflow": "visible",
+                            "fontSize": 14,
+                            "textDecoration": "none",
+                            "fontStyle": "normal",
+                            "color": "#FF4053"
+                          },
+                          "modifier": {
+                            "padding": {
+                              "all": 0,
+                              "start": 2,
+                              "end": 2,
+                              "top": 0,
+                              "bottom": 0
+                            },
+
+                            "shadow": {
+                              "elevation": 0,
+                              "color": "#000000"
+                            },
+                            "align": "start",
+                            "fillMaxHeight": false,
+                            "clip": {
+                              "cornerRadius": 0
+                            },
+                            "clickable": false,
+                            "alpha": 1,
+                            "size": {
+                              "width": "wrap_content",
+                              "height": "wrap_content"
+                            },
+                            "background": null,
+                            "fillMaxWidth": false
+                          },
+                          "type": "text",
+                          "_id": "text_i1o8su9n",
+                          "text": "1 216 ₽"
+                        },
+                        {
+                          "type": "text",
+                          "_id": "text_dr2cthq6",
+                          "text": ", 1–4 дня",
+                          "style": {
+                            "fontWeight": "bold",
+                            "textDecoration": "none",
+                            "overflow": "visible",
+                            "color": "#000000",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "lineHeight": 18,
+                            "textAlign": "start",
+                            "letterSpacing": 0
+                          },
+                          "modifier": {
+                            "clip": {
+                              "cornerRadius": 0
+                            },
+
+                            "alpha": 1,
+                            "shadow": {
+                              "elevation": 0,
+                              "color": "#000000"
+                            },
+                            "fillMaxWidth": false,
+                            "background": null,
+                            "size": {
+                              "width": "wrap_content",
+                              "height": "wrap_content"
+                            },
+                            "fillMaxHeight": false,
+                            "clickable": false,
+                            "align": "start",
+                            "padding": {
+                              "all": 0,
+                              "start": 0,
+                              "end": 0,
+                              "top": 0,
+                              "bottom": 0
+                            }
+                          }
+                        }
+                      ],
+                      "type": "row"
+                    }
+                  ],
+                  "type": "box",
+                  "_id": "card_nf4cm2ui"
+                }
+              ]
+            },
+            {
+              "type": "column",
+              "_id": "column_yogz2ka0",
+              "modifier": {
+                "fillMaxWidth": true,
+                "clickable": false,
+                "align": "start",
+                "alpha": 1,
+                "background": "#F2F1F0",
+                "fillMaxHeight": false,
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "padding": {
+                  "all": 0,
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0
+                },
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "size": {
+                  "width": "405",
+                  "height": "339"
+                }
+              },
+              "verticalAlignment": "top",
+              "horizontalArrangement": "start",
+              "children": [
+                {
+                  "_id": "column_0ziqk11v",
+                  "modifier": {
+                    "padding": {
+                      "end": 16,
+                      "top": 16,
+                      "bottom": 0,
+                      "all": 5,
+                      "start": 16
+                    },
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "clickable": false,
+                    "align": "start",
+                    "alpha": 1,
+                    "fillMaxWidth": true,
+                    "fillMaxHeight": false,
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "size": {
+                      "height": "20"
+                    },
+                    "background": null,
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    }
+                  },
+                  "verticalAlignment": "top",
+                  "horizontalArrangement": "start",
+                  "children": [
+                    {
+                      "_id": "card_blghm9k9",
+                      "modifier": {
+                        "fillMaxHeight": false,
+                        "align": "start",
+                        "shadow": {
+                          "elevation": 0,
+                          "color": "#000000"
+                        },
+                        "background": "#ffffff",
+                        "clip": {
+                          "cornerRadius": 16
+                        },
+                        "border": {
+                          "width": 0,
+                          "color": "#000000"
+                        },
+                        "alpha": 1,
+                        "size": {
+                          "height": "wrap_content",
+                          "width": "330"
+                        },
+                        "padding": {
+                          "bottom": 16,
+                          "all": 5,
+                          "start": 24,
+                          "end": 24,
+                          "top": 16
+                        },
+                        "clickable": false,
+                        "fillMaxWidth": false
+                      },
+                      "elevation": 1,
+                      "shape": {
+                        "cornerRadius": 12
+                      },
+                      "children": [
+                        {
+                          "modifier": {
+                            "alpha": 1,
+                            "shadow": {
+                              "elevation": 0,
+                              "color": "#000000"
+                            },
+                            "size": {
+                              "width": "wrap_content",
+                              "height": "wrap_content"
+                            },
+                            "fillMaxHeight": false,
+                            "clip": {
+                              "cornerRadius": 0
+                            },
+                            "fillMaxWidth": false,
+                            "padding": {
+                              "bottom": 10,
+                              "all": 5,
+                              "start": 10,
+                              "end": 10,
+                              "top": 10
+                            },
+                            "background": null,
+
+                            "clickable": false,
+                            "align": "start"
+                          },
+                          "verticalAlignment": "top",
+                          "horizontalArrangement": "start",
+                          "children": [
+                            {
+                              "modifier": {
+                                "align": "start",
+                                "alpha": 1,
+                                "fillMaxWidth": false,
+                                "fillMaxHeight": false,
+                                "background": null,
+                                "clickable": false,
+                                "shadow": {
+                                  "color": "#000000",
+                                  "elevation": 0
+                                },
+                                "size": {
+                                  "width": "wrap_content",
+                                  "height": "wrap_content"
+                                },
+                                "padding": {
+                                  "top": 0,
+                                  "bottom": 0,
+                                  "all": 0,
+                                  "start": 0,
+                                  "end": 0
+                                },
+                                "clip": {
+                                  "cornerRadius": 0
+                                }
+                              },
+                              "type": "text",
+                              "_id": "text_qbzbenai",
+                              "text": "Pear Store",
+                              "style": {
+                                "fontSize": 21,
+                                "color": "#000000",
+                                "letterSpacing": 0,
+                                "overflow": "visible",
+                                "fontWeight": "bold",
+                                "fontStyle": "normal",
+                                "lineHeight": 18,
+                                "textDecoration": "none",
+                                "textAlign": "start"
+                              }
+                            }
+                          ],
+                          "type": "column",
+                          "_id": "column_brc1ga0v"
+                        },
+                        {
+                          "verticalAlignment": "top",
+                          "horizontalArrangement": "start",
+                          "children": [
+                            {
+                              "modifier": {
+                                "fillMaxWidth": false,
+                                "clip": {
+                                  "cornerRadius": 0
+                                },
+
+                                "clickable": false,
+                                "alpha": 1,
+                                "size": {
+                                  "width": "20",
+                                  "height": "20"
+                                },
+                                "fillMaxHeight": false,
+                                "padding": {
+                                  "all": 0,
+                                  "start": 0,
+                                  "end": 12,
+                                  "top": 0,
+                                  "bottom": 0
+                                },
+                                "background": null,
+                                "align": "start",
+                                "shadow": {
+                                  "color": "#000000",
+                                  "elevation": 0
+                                }
+                              },
+                              "contentDescription": "",
+                              "contentScale": "Inside",
+                              "error": null,
+                              "scaleType": null,
+                              "type": "image",
+                              "_id": "image_tpppywvw",
+                              "url": "https://i.ibb.co/84tvdHD2/order-Icon.png",
+                              "placeholder": null
+                            },
+                            {
+                              "modifier": {
+                                "size": {
+                                  "width": "wrap_content",
+                                  "height": "wrap_content"
+                                },
+                                "fillMaxWidth": false,
+                                "fillMaxHeight": false,
+                                "clickable": false,
+                                "align": "start",
+                                "padding": {
+                                  "all": 0,
+                                  "start": 0,
+                                  "end": 0,
+                                  "top": 0,
+                                  "bottom": 0
+                                },
+                                "background": null,
+                                "clip": {
+                                  "cornerRadius": 0
+                                },
+                                "border": {
+                                  "color": "#000000",
+                                  "width": 0
+                                },
+                                "alpha": 1,
+                                "shadow": {
+                                  "color": "#000000",
+                                  "elevation": 0
+                                }
+                              },
+                              "verticalAlignment": "top",
+                              "horizontalArrangement": "start",
+                              "children": [],
+                              "type": "column",
+                              "_id": "column_a6gbu7ju"
+                            },
+                            {
+                              "type": "column",
+                              "_id": "column_3xz6moe7",
+                              "modifier": {
+                                "align": "start",
+                                "alpha": 1,
+                                "size": {
+                                  "width": "wrap_content",
+                                  "height": "wrap_content"
+                                },
+                                "fillMaxWidth": false,
+
+                                "shadow": {
+                                  "elevation": 0,
+                                  "color": "#000000"
+                                },
+                                "fillMaxHeight": false,
+                                "padding": {
+                                  "all": 0,
+                                  "start": 0,
+                                  "end": 0,
+                                  "top": 0,
+                                  "bottom": 0
+                                },
+                                "background": null,
+                                "clip": {
+                                  "cornerRadius": 0
+                                },
+                                "clickable": false
+                              },
+                              "verticalAlignment": "top",
+                              "horizontalArrangement": "start",
+                              "children": []
+                            },
+                            {
+                              "type": "column",
+                              "_id": "column_uhw2iuks",
+                              "modifier": {
+                                "padding": {
+                                  "top": 0,
+                                  "bottom": 0,
+                                  "all": 0,
+                                  "start": 0,
+                                  "end": 0
+                                },
+                                "clip": {
+                                  "cornerRadius": 0
+                                },
+                                "align": "start",
+                                "shadow": {
+                                  "elevation": 0,
+                                  "color": "#000000"
+                                },
+                                "fillMaxWidth": false,
+                                "fillMaxHeight": false,
+                                "background": null,
+
+                                "clickable": false,
+                                "alpha": 1,
+                                "size": {
+                                  "width": "wrap_content",
+                                  "height": "wrap_content"
+                                }
+                              },
+                              "verticalAlignment": "top",
+                              "horizontalArrangement": "start",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "_id": "text_u2taq9a9",
+                                  "text": "Зарядка MagSafe Charger 15W 1 метр",
+                                  "style": {
+                                    "fontStyle": "normal",
+                                    "color": "#000000",
+                                    "letterSpacing": 0,
+                                    "textAlign": "start",
+                                    "lineHeight": 18,
+                                    "textDecoration": "none",
+                                    "overflow": "visible",
+                                    "fontSize": 15,
+                                    "fontWeight": "normal"
+                                  },
+                                  "modifier": {
+                                    "clickable": false,
+                                    "align": "start",
+                                    "size": {
+                                      "width": "wrap_content",
+                                      "height": "wrap_content"
+                                    },
+                                    "fillMaxWidth": false,
+                                    "fillMaxHeight": false,
+                                    "padding": {
+                                      "all": 0,
+                                      "start": 0,
+                                      "end": 0,
+                                      "top": 0,
+                                      "bottom": 0
+                                    },
+                                    "background": null,
+                                    "alpha": 1,
+                                    "shadow": {
+                                      "elevation": 0,
+                                      "color": "#000000"
+                                    },
+                                    "clip": {
+                                      "cornerRadius": 0
+                                    },
+                                    "border": {
+                                      "width": 0,
+                                      "color": "#000000"
+                                    }
+                                  }
+                                },
+                                {
+                                  "_id": "image_dna8t2mg",
+                                  "url": "https://i.ibb.co/FbkCwdGd/item-Group-Desktop.png",
+                                  "contentDescription": "",
+                                  "placeholder": null,
+                                  "error": null,
+                                  "modifier": {
+                                    "background": null,
+
+                                    "clickable": false,
+                                    "size": {
+                                      "width": "56",
+                                      "height": "56"
+                                    },
+                                    "padding": {
+                                      "all": 0,
+                                      "start": 0,
+                                      "end": 0,
+                                      "top": 0,
+                                      "bottom": 0
+                                    },
+                                    "clip": {
+                                      "cornerRadius": 0
+                                    },
+                                    "align": "start",
+                                    "alpha": 1,
+                                    "shadow": {
+                                      "elevation": 0,
+                                      "color": "#000000"
+                                    },
+                                    "fillMaxWidth": false,
+                                    "fillMaxHeight": false
+                                  },
+                                  "scaleType": null,
+                                  "type": "image",
+                                  "contentScale": "Inside"
+                                }
+                              ]
+                            }
+                          ],
+                          "type": "row",
+                          "_id": "row_t75xk5hk",
+                          "modifier": {
+                            "fillMaxWidth": false,
+                            "padding": {
+                              "all": 5,
+                              "start": 0,
+                              "end": 0,
+                              "top": 0,
+                              "bottom": 16
+                            },
+                            "background": null,
+
+                            "clickable": false,
+                            "size": {
+                              "width": "wrap_content",
+                              "height": "wrap_content"
+                            },
+                            "fillMaxHeight": false,
+                            "clip": {
+                              "cornerRadius": 0
+                            },
+                            "align": "start",
+                            "alpha": 1,
+                            "shadow": {
+                              "elevation": 0,
+                              "color": "#000000"
+                            }
+                          }
+                        },
+                        {
+                          "type": "row",
+                          "_id": "row_xmdlanqj",
+                          "modifier": {
+                            "background": null,
+                            "alpha": 1,
+                            "padding": {
+                              "bottom": 0,
+                              "all": 0,
+                              "start": 0,
+                              "end": 0,
+                              "top": 0
+                            },
+                            "clip": {
+                              "cornerRadius": 0
+                            },
+                            "clickable": false,
+                            "align": "start",
+                            "shadow": {
+                              "elevation": 0,
+                              "color": "#000000"
+                            },
+                            "size": {
+                              "width": "wrap_content",
+                              "height": "wrap_content"
+                            },
+                            "fillMaxWidth": false,
+                            "fillMaxHeight": false
+                          },
+                          "verticalAlignment": "top",
+                          "horizontalArrangement": "start",
+                          "children": [
+                            {
+                              "type": "image",
+                              "url": "https://i.ibb.co/7xTtkwXx/Pin.png",
+                              "contentDescription": "",
+                              "contentScale": "Inside",
+                              "placeholder": null,
+                              "_id": "image_d5f1fys6",
+                              "error": null,
+                              "modifier": {
+                                "size": {
+                                  "width": "20",
+                                  "height": "20"
+                                },
+                                "fillMaxWidth": false,
+
+                                "clickable": false,
+                                "alpha": 1,
+                                "shadow": {
+                                  "elevation": 0,
+                                  "color": "#000000"
+                                },
+                                "fillMaxHeight": false,
+                                "padding": {
+                                  "all": 0,
+                                  "start": 0,
+                                  "end": 12,
+                                  "top": 0,
+                                  "bottom": 0
+                                },
+                                "background": null,
+                                "clip": {
+                                  "cornerRadius": 0
+                                },
+                                "align": "start"
+                              },
+                              "scaleType": null
+                            },
+                            {
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "_id": "text_p33durfr",
+                                  "text": "Авито",
+                                  "style": {
+                                    "fontSize": 15,
+                                    "fontWeight": "normal",
+                                    "fontStyle": "normal",
+                                    "color": "#000000",
+                                    "letterSpacing": 0,
+                                    "overflow": "visible",
+                                    "lineHeight": 18,
+                                    "textDecoration": "none",
+                                    "textAlign": "start"
+                                  },
+                                  "modifier": {
+                                    "size": {
+                                      "width": "wrap_content",
+                                      "height": "wrap_content"
+                                    },
+                                    "fillMaxWidth": false,
+                                    "padding": {
+                                      "bottom": 0,
+                                      "all": 0,
+                                      "start": 0,
+                                      "end": 0,
+                                      "top": 0
+                                    },
+                                    "clip": {
+                                      "cornerRadius": 0
+                                    },
+
+                                    "clickable": false,
+                                    "alpha": 1,
+                                    "shadow": {
+                                      "elevation": 0,
+                                      "color": "#000000"
+                                    },
+                                    "fillMaxHeight": false,
+                                    "background": null,
+                                    "align": "start"
+                                  }
+                                },
+                                {
+                                  "type": "text",
+                                  "_id": "text_8svlf9jn",
+                                  "text": "Москва, ул. Лесная, 7",
+                                  "style": {
+                                    "fontWeight": "normal",
+                                    "fontStyle": "normal",
+                                    "color": "#757575",
+                                    "lineHeight": 18,
+                                    "overflow": "visible",
+                                    "fontSize": 15,
+                                    "letterSpacing": 0,
+                                    "textDecoration": "none",
+                                    "textAlign": "start"
+                                  },
+                                  "modifier": {
+                                    "clip": {
+                                      "cornerRadius": 0
+                                    },
+                                    "clickable": false,
+                                    "align": "start",
+                                    "padding": {
+                                      "start": 0,
+                                      "end": 0,
+                                      "top": 0,
+                                      "bottom": 0,
+                                      "all": 0
+                                    },
+                                    "background": null,
+
+                                    "alpha": 1,
+                                    "shadow": {
+                                      "elevation": 0,
+                                      "color": "#000000"
+                                    },
+                                    "size": {
+                                      "width": "wrap_content",
+                                      "height": "wrap_content"
+                                    },
+                                    "fillMaxWidth": false,
+                                    "fillMaxHeight": false
+                                  }
+                                },
+                                {
+                                  "children": [
+                                    {
+                                      "style": {
+                                        "lineHeight": 18,
+                                        "textAlign": "start",
+                                        "overflow": "visible",
+                                        "fontSize": 16,
+                                        "fontWeight": "normal",
+                                        "color": "#000000",
+                                        "letterSpacing": 0,
+                                        "textDecoration": "none",
+                                        "fontStyle": "normal"
+                                      },
+                                      "modifier": {
+                                        "size": {
+                                          "width": "wrap_content",
+                                          "height": "wrap_content"
+                                        },
+                                        "fillMaxHeight": false,
+                                        "alpha": 1,
+                                        "shadow": {
+                                          "elevation": 0,
+                                          "color": "#000000"
+                                        },
+                                        "fillMaxWidth": false,
+                                        "padding": {
+                                          "start": 0,
+                                          "end": 0,
+                                          "top": 0,
+                                          "bottom": 0,
+                                          "all": 0
+                                        },
+                                        "background": null,
+                                        "clip": {
+                                          "cornerRadius": 0
+                                        },
+                                        "clickable": false,
+                                        "align": "start"
+                                      },
+                                      "type": "text",
+                                      "_id": "text_ow4d84a8",
+                                      "text": "789 ₽"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "_id": "text_o2sp0ytj",
+                                      "text": "157 ₽",
+                                      "style": {
+                                        "fontSize": 15,
+                                        "fontWeight": "normal",
+                                        "fontStyle": "normal",
+                                        "color": "#FF4053",
+                                        "textDecoration": "none",
+                                        "textAlign": "start",
+                                        "overflow": "visible",
+                                        "lineHeight": 18,
+                                        "letterSpacing": 0
+                                      },
+                                      "modifier": {
+                                        "shadow": {
+                                          "elevation": 0,
+                                          "color": "#000000"
+                                        },
+                                        "fillMaxWidth": false,
+                                        "padding": {
+                                          "end": 0,
+                                          "top": 0,
+                                          "bottom": 0,
+                                          "all": 0,
+                                          "start": 5
+                                        },
+                                        "clip": {
+                                          "cornerRadius": 0
+                                        },
+                                        "clickable": false,
+                                        "size": {
+                                          "width": "wrap_content",
+                                          "height": "wrap_content"
+                                        },
+                                        "fillMaxHeight": false,
+                                        "background": null,
+                                        "align": "start",
+                                        "alpha": 1
+                                      }
+                                    },
+                                    {
+                                      "style": {
+                                        "fontWeight": "normal",
+                                        "color": "#000000",
+                                        "lineHeight": 18,
+                                        "letterSpacing": 0,
+                                        "textDecoration": "none",
+                                        "textAlign": "start",
+                                        "overflow": "visible",
+                                        "fontSize": 15,
+                                        "fontStyle": "normal"
+                                      },
+                                      "modifier": {
+                                        "alpha": 1,
+                                        "shadow": {
+                                          "elevation": 0,
+                                          "color": "#000000"
+                                        },
+                                        "fillMaxWidth": false,
+                                        "padding": {
+                                          "top": 0,
+                                          "bottom": 0,
+                                          "all": 0,
+                                          "start": 0,
+                                          "end": 0
+                                        },
+                                        "background": null,
+                                        "align": "start",
+                                        "size": {
+                                          "width": "wrap_content",
+                                          "height": "wrap_content"
+                                        },
+                                        "fillMaxHeight": false,
+                                        "clip": {
+                                          "cornerRadius": 0
+                                        },
+                                        "clickable": false
+                                      },
+                                      "type": "text",
+                                      "_id": "text_47etpgwv",
+                                      "text": ", 1–4 дня"
+                                    }
+                                  ],
+                                  "type": "row",
+                                  "_id": "row_xidwgmkv",
+                                  "modifier": {
+                                    "clickable": false,
+                                    "align": "start",
+                                    "shadow": {
+                                      "elevation": 0,
+                                      "color": "#000000"
+                                    },
+                                    "fillMaxWidth": false,
+                                    "fillMaxHeight": false,
+                                    "background": null,
+                                    "clip": {
+                                      "cornerRadius": 0
+                                    },
+                                    "alpha": 1,
+                                    "size": {
+                                      "width": "wrap_content",
+                                      "height": "20"
+                                    },
+                                    "padding": {
+                                      "end": 0,
+                                      "top": 0,
+                                      "bottom": 0,
+                                      "all": 0,
+                                      "start": 0
+                                    }
+                                  },
+                                  "verticalAlignment": "centerVertically",
+                                  "horizontalArrangement": "start"
+                                }
+                              ],
+                              "type": "column",
+                              "_id": "column_niuwrwv8",
+                              "modifier": {
+                                "fillMaxHeight": false,
+                                "padding": {
+                                  "bottom": 0,
+                                  "all": 0,
+                                  "start": 0,
+                                  "end": 0,
+                                  "top": 0
+                                },
+                                "clip": {
+                                  "cornerRadius": 0
+                                },
+                                "clickable": false,
+                                "align": "start",
+                                "alpha": 1,
+                                "size": {
+                                  "width": "wrap_content",
+                                  "height": "wrap_content"
+                                },
+                                "fillMaxWidth": false,
+                                "background": null,
+                                "shadow": {
+                                  "elevation": 0,
+                                  "color": "#000000"
+                                }
+                              },
+                              "verticalAlignment": "top",
+                              "horizontalArrangement": "start"
+                            }
+                          ]
+                        }
+                      ],
+                      "type": "box"
+                    }
+                  ],
+                  "type": "column"
+                }
+              ]
+            }
+          ],
+          "type": "column"
+        },
+        {
+          "type": "column",
+          "_id": "column_twubwt2i",
+          "modifier": {
+            "shadow": {
+              "color": "#000000",
+              "elevation": 0
+            },
+            "fillMaxWidth": false,
+            "clip": {
+              "cornerRadius": 0
+            },
+            "align": "start",
+            "size": {
+              "height": "20",
+              "width": "20"
+            },
+            "padding": {
+              "bottom": 10,
+              "all": 5,
+              "start": 10,
+              "end": 10,
+              "top": 10
+            },
+            "background": null,
+            "clickable": false,
+            "fillMaxHeight": false,
+            "alpha": 1
+          },
+          "verticalAlignment": "top",
+          "horizontalArrangement": "start",
+          "children": []
+        }
+      ],
+      "_id": "comp-content-mg9v8gqw-1j5nge1kt",
+      "type": "row",
+      "modifier": {
+        "size": {
+          "height": "500"
+        },
+        "fillMaxWidth": true,
+        "height": "500"
+      }
+    },
+    {
+      "modifier": {
+        "shadow": {
+          "color": "#000000",
+          "elevation": 0
+        },
+        "fillMaxHeight": false,
+        "padding": {
+          "bottom": 10,
+          "all": 5,
+          "start": 10,
+          "end": 10,
+          "top": 10
+        },
+        "background": null,
+        "alpha": 1,
+        "align": "start",
+        "size": {
+          "width": "20",
+          "height": "20"
+        },
+        "clip": {
+          "cornerRadius": 0
+        },
+        "clickable": false,
+        "fillMaxWidth": false
+      },
+      "type": "spacer",
+      "_id": "spacer_yvpztym9"
+    },
+    {
+      "type": "row",
+      "_id": "row_vfnw58z8",
+      "modifier": {
+        "clip": {
+          "cornerRadius": 0
+        },
+        "shadow": {
+          "elevation": 0,
+          "color": "#000000"
+        },
+        "fillMaxHeight": false,
+        "padding": {
+          "all": 5,
+          "start": 10,
+          "end": 10,
+          "top": 10,
+          "bottom": 10
+        },
+        "background": null,
+        "clickable": false,
+        "align": "start",
+        "alpha": 1,
+        "size": {
+          "height": "20",
+          "width": "20"
+        },
+        "fillMaxWidth": false
+      },
+      "verticalAlignment": "centerVertically",
+      "horizontalArrangement": "start",
+      "children": []
+    }
+  ],
+  "bottomBar": [
+    {
+      "id": "box1",
+      "modifier": {
+        "fillMaxWidth": false,
+        "fillMaxHeight": false,
+        "padding": {
+          "bottom": 20,
+          "all": 5,
+          "start": 16,
+          "end": 16,
+          "top": 20
+        },
+        "size": {
+          "height": "wrap_content",
+          "width": "396"
+        }
+      },
+      "background": "#FFFFFF",
+      "children": [
+        {
+          "children": [
+            {
+              "type": "text",
+              "_id": "text_d67i12oq",
+              "text": "Итого с доставкой:",
+              "style": {
+                "fontSize": 15,
+                "fontWeight": "normal",
+                "textAlign": "start",
+                "fontStyle": "normal",
+                "lineHeight": 18,
+                "letterSpacing": 0,
+                "color": "#000000",
+                "textDecoration": "none",
+                "overflow": "visible"
+              },
+              "modifier": {
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "size": {
+                  "width": "wrap_content",
+                  "height": "wrap_content"
+                },
+                "fillMaxHeight": false,
+                "align": "start",
+                "fillMaxWidth": false,
+                "clickable": false,
+                "alpha": 1,
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "padding": {
+                  "start": 0,
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "all": 0
+                },
+                "background": null
+              }
+            },
+            {
+              "modifier": {
+                "fillMaxWidth": false,
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "clickable": false,
+                "align": "start",
+                "shadow": {
+                  "color": "#000000",
+                  "elevation": 0
+                },
+                "size": {
+                  "width": "133",
+                  "height": "wrap_content"
+                },
+                "background": null,
+                "alpha": 1,
+                "fillMaxHeight": false,
+                "padding": {
+                  "start": 10,
+                  "end": 10,
+                  "top": 10,
+                  "bottom": 10,
+                  "all": 5
+                }
+              },
+              "type": "spacer",
+              "_id": "spacer_vfr15gwu"
+            },
+            {
+              "type": "text",
+              "_id": "text_bl7e4x7m",
+              "text": "110 687 ₽",
+              "style": {
+                "overflow": "visible",
+                "fontStyle": "normal",
+                "color": "#000000",
+                "letterSpacing": 0,
+                "textAlign": "start",
+                "textDecoration": "none",
+                "lineHeight": 18,
+                "fontSize": 16,
+                "fontWeight": "bold"
+              },
+              "modifier": {
+                "background": null,
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "align": "start",
+                "alpha": 1,
+                "size": {
+                  "width": "wrap_content",
+                  "height": "wrap_content"
+                },
+                "clickable": false,
+                "fillMaxWidth": false,
+                "fillMaxHeight": false,
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "padding": {
+                  "top": 10,
+                  "bottom": 10,
+                  "all": 0,
+                  "start": 10,
+                  "end": 10
+                }
+              }
+            }
+          ],
+          "type": "row",
+          "_id": "row_ah1i6qib",
+          "modifier": {
+            "clip": {
+              "cornerRadius": 0
+            },
+            "alpha": 1,
+            "background": null,
+            "clickable": false,
+            "fillMaxWidth": true,
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "align": "start",
+            "fillMaxHeight": false,
+            "padding": {
+              "start": 0,
+              "end": 0,
+              "top": 0,
+              "bottom": 0,
+              "all": 0
+            }
+          },
+          "verticalAlignment": "centerVertically",
+          "horizontalArrangement": "start"
+        },
+        {
+          "modifier": {
+            "align": "start",
+            "shadow": {
+              "elevation": 0,
+              "color": "#000000"
+            },
+            "padding": {
+              "top": 5,
+              "bottom": 5,
+              "all": 5,
+              "start": 5,
+              "end": 5
+            },
+            "background": null,
+            "clip": {
+              "cornerRadius": 0
+            },
+            "fillMaxWidth": true,
+            "clickable": false,
+            "alpha": 1,
+            "fillMaxHeight": false
+          },
+          "verticalAlignment": "centerVertically",
+          "horizontalArrangement": "center",
+          "children": [
+            {
+              "modifier": {
+                "align": "start",
+                "size": {
+                  "width": "wrap_content",
+                  "height": "wrap_content"
+                },
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "clickable": false,
+                "alpha": 1,
+                "fillMaxHeight": false,
+                "padding": {
+                  "bottom": 0,
+                  "all": 0,
+                  "start": 0,
+                  "end": 0,
+                  "top": 0
+                },
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "fillMaxWidth": false,
+                "background": null,
+                "border": {
+                  "color": "#000000",
+                  "width": 0
+                }
+              },
+              "verticalAlignment": "top",
+              "horizontalArrangement": "start",
+              "children": [
+                {
+                  "type": "image",
+                  "url": "https://i.ibb.co/JjVHXkn2/Shape-Content.png",
+                  "contentDescription": "",
+                  "modifier": {
+                    "alpha": 1,
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    },
+                    "size": {
+                      "width": "52",
+                      "height": "52"
+                    },
+                    "fillMaxWidth": false,
+                    "padding": {
+                      "end": 0,
+                      "top": 0,
+                      "bottom": 0,
+                      "all": 0,
+                      "start": 0
+                    },
+                    "background": null,
+                    "clip": {
+                      "cornerRadius": 16
+                    },
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "clickable": false,
+                    "align": "start",
+                    "fillMaxHeight": false
+                  },
+                  "_id": "image_zksbw734",
+                  "contentScale": "Inside",
+                  "placeholder": null,
+                  "error": null,
+                  "scaleType": null
+                }
+              ],
+              "type": "column",
+              "_id": "column_aq1j1lfz"
+            },
+            {
+              "type": "column",
+              "_id": "column_gr2v2f32",
+              "modifier": {
+                "fillMaxHeight": false,
+                "padding": {
+                  "end": 0,
+                  "top": 0,
+                  "bottom": 0,
+                  "all": 0,
+                  "start": 0
+                },
+                "background": null,
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "clickable": false,
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "size": {
+                  "width": "wrap_content",
+                  "height": "wrap_content"
+                },
+                "fillMaxWidth": false,
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "align": "start",
+                "alpha": 1
+              },
+              "verticalAlignment": "top",
+              "horizontalArrangement": "start",
+              "children": []
+            },
+            {
+              "type": "spacer",
+              "_id": "spacer_sgdy00tt",
+              "modifier": {
+                "size": {
+                  "height": "20",
+                  "width": "34"
+                },
+                "fillMaxWidth": false,
+                "clip": {
+                  "cornerRadius": 0
+                },
+                "border": {
+                  "width": 0,
+                  "color": "#000000"
+                },
+                "clickable": false,
+                "align": "start",
+                "alpha": 1,
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                },
+                "fillMaxHeight": false,
+                "padding": {
+                  "top": 10,
+                  "bottom": 10,
+                  "all": 5,
+                  "start": 10,
+                  "end": 10
+                },
+                "background": null
+              }
+            },
+            {
+              "children": [
+                {
+                  "modifier": {
+                    "fillMaxWidth": true,
+                    "fillMaxHeight": false,
+                    "clickable": false,
+                    "alpha": 1,
+                    "padding": {
+                      "bottom": 0,
+                      "all": 0,
+                      "start": 0,
+                      "end": 0,
+                      "top": 0
+                    },
+                    "background": null,
+                    "clip": {
+                      "cornerRadius": 0
+                    },
+                    "border": {
+                      "width": 0,
+                      "color": "#000000"
+                    },
+                    "align": "start",
+                    "shadow": {
+                      "elevation": 0,
+                      "color": "#000000"
+                    }
+                  },
+                  "type": "text",
+                  "_id": "text_sjq674j1",
+                  "text": "Перейти к оплате",
+                  "style": {
+                    "fontStyle": "normal",
+                    "color": "#FFFFFF",
+                    "lineHeight": 18,
+                    "letterSpacing": 0,
+                    "textDecoration": "none",
+                    "textAlign": "start",
+                    "overflow": "visible",
+                    "fontSize": 14,
+                    "fontWeight": "normal"
+                  }
+                }
+              ],
+              "type": "column",
+              "_id": "column_ex37tva5",
+              "modifier": {
+                "size": {
+                  "width": "wrap_content",
+                  "height": "20"
+                },
+                "background": "#141414",
+                "clip": {
+                  "cornerRadius": 16
+                },
+                "clickable": false,
+                "align": "start",
+                "alpha": 1,
+                "fillMaxWidth": false,
+                "fillMaxHeight": false,
+                "padding": {
+                  "all": 5,
+                  "start": 78,
+                  "end": 78,
+                  "top": 15,
+                  "bottom": 15
+                },
+                "border": {
+                  "color": "#000000",
+                  "width": 0
+                },
+                "shadow": {
+                  "elevation": 0,
+                  "color": "#000000"
+                }
+              },
+              "verticalAlignment": "top",
+              "horizontalArrangement": "start"
+            }
+          ],
+          "type": "row",
+          "_id": "row_c5lebzya"
+        }
+      ],
+      "type": "box",
+      "_id": "comp-bottombar-mg9v8gqw-1j5nge1kt"
+    }
+  ],
+  "snackbars": [],
+  "type": "screen",
+  "name": "New Screen mg9v8gqw",
+  "background": "#FFFFFF"
+}

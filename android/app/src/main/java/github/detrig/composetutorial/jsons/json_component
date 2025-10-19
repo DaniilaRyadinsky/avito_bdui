@@ -1,0 +1,372 @@
+
+Компоненты:
+
+{
+  "type": "textField",
+  "id": "username_input",
+  "modifier": {
+    "fillMaxWidth": true,
+    "padding": { "start": 16, "end": 16, "top": 8, "bottom": 8 }
+  },
+  "value": "",
+  "placeholder": "Введите имя пользователя",
+  "enabled": true,
+  "singleLine": true,
+  "style": {
+    "fontSize": 16,
+    "fontWeight": "normal",
+    "color": "#333333",
+    "textAlign": "start"
+  }
+}
+
+{
+  "type": "bottomSheet",
+  "id": "cart_options_sheet",
+  "modifier": {
+    "fillMaxWidth": true,
+    "padding": { "start": 16, "end": 16, "top": 12, "bottom": 12 }
+  },
+  "dismissible": true,
+  "children": [
+
+      ],
+      "style": {
+        "background": "#965EEB",
+        "textColor": "#FFFFFF",
+        "shape": { "cornerRadius": 12 }
+      },
+      "modifier": {
+        "fillMaxWidth": true,
+        "height": 48,
+        "padding": { "top": 12 }
+      }
+    }
+  ]
+}
+
+
+
+{
+  "type": "text",
+  "text": "",
+  "format": "(%s)",     // Форматирование текста, например скобки вокруг числа
+  "style": {
+    "fontSize": 16,        // Размер шрифта в sp
+    "fontWeight": "normal",// Толщина шрифта: normal, bold, medium и т.д.
+    "fontStyle": "normal", // Наклон: normal, italic
+    "color": "#A3A3A3",    // Цвет текста
+    "lineHeight": 20,       // Высота строки
+    "letterSpacing": 0.5,   // Межбуквенный интервал
+    "textDecoration": "none", // underline, lineThrough
+    "textAlign": "start",     // start, center, end, justify
+    "maxLines": 1,            // Максимальное количество строк
+    "overflow": "ellipsis"    // Поведение при переполнении: clip, ellipsis, visible
+  },
+  "modifier": {
+    "size": { "width": "wrap_content", "height": "wrap_content" }, // Размер: можно задать конкретно, null = wrap content
+    "fillMaxWidth": false,                      // Растянуть по ширине
+    "fillMaxHeight": false,                     // Растянуть по высоте
+    "weight": null,                             // Вес для Row/Column
+    "padding": {                                // Отступы
+      "start": 2,
+      "end": 0,
+      "top": 0,
+      "bottom": 0
+    },
+    "align": "centerVertically",                // Row/Column: start, center, end, top, bottom
+    "background": null,                         // Цвет фона
+    "clip": { "cornerRadius": 0 },              // Закругление углов
+    "clickable": false,                         // Можно ли кликать
+    "onClick": null,                            // Действие по клику
+    "border": { "width": 0, "color": null },    // Рамка вокруг текста
+    "alpha": 1.0                                // Прозрачность текста
+  }
+}
+
+
+
+{
+  "type": "button",
+  "id": "checkoutButton",
+  "text": "Оформить доставку",
+  "enabled": true,
+  "style": {
+    "background": "#965EEB",
+    "textColor": "#FFFFFF",
+    "fontSize": 16,
+    "fontWeight": "bold",
+    "fontStyle": "normal",
+    "shape": { "cornerRadius": 12 },
+    "border": { "width": 0, "color": null },
+    "elevation": 4
+  },
+  "modifier": {
+    "width": "wrap_content",
+    "height": "48",
+    "fillMaxWidth": false,
+    "padding": {
+      "start": 0,
+      "end": 0,
+      "top": 0,
+      "bottom": 0,
+      "all": null
+    },
+    "align": null,
+    "clip": { "cornerRadius": 12 },
+    "background": null,
+    "clickable": true,
+    "alpha": 1.0
+  },
+  "icon": null,
+  "actions": [
+    {
+      "action": "navigate",
+      "targetId": "make_order" //screen id
+    }
+  ]
+}
+
+
+
+
+{
+  "type": "image",
+  "url": "https://provor.com/provor.jpg",  // URL изображения или локальный ресурс
+  "contentDescription": "Product Image",   // Описание для accessibility
+  "contentScale": "Crop",                  // Масштабирование: Fill, FillHeight, Crop, FillWidth, Inside, None, FillBounds
+  "placeholder": null,                     // Заглушка (placeholder) пока загружается изображение
+  "error": null,                           // Изображение ошибки, если загрузка не удалась
+  "modifier": {
+    "size": { "width": "96", "height": "96" }, // Размер изображения
+    "fillMaxWidth": false,                 // Растянуть по ширине
+    "fillMaxHeight": false,                // Растянуть по высоте
+    "padding": {                           // Отступы
+      "start": 8,
+      "end": 0,
+      "top": 0,
+      "bottom": 0,
+      "all": null
+    },
+    "clip": { "cornerRadius": 12 },        // Скругление углов
+    "background": null,                    // Цвет фона
+    "border": { "width": "0", "color": null }, // Рамка
+    "align": "top",                        // Выравнивание в Row/Column: start, center, end, top, bottom
+    "clickable": false,                    // Можно ли кликать
+    "onClick": null,                        // Действие при клике
+    "alpha": 1.0                            // Прозрачность
+  },
+  "scaleType": null                         // Альтернативное масштабирование (аналог contentScale)
+}
+
+
+
+{
+  "type": "icon",
+  "icon": "star",                        // Название иконки или путь к ресурсу
+  "contentDescription": "Star Icon",     // Описание для accessibility
+  "tint": "#00FF00",                     // Цвет иконки
+  "modifier": {
+    "size": { "width": "14", "height": "14" }, // Размер иконки
+    "fillMaxWidth": false,                 // Растянуть по ширине
+    "fillMaxHeight": false,                // Растянуть по высоте
+    "padding": {                           // Отступы вокруг иконки
+      "start": 4,
+      "end": 0,
+      "top": 0,
+      "bottom": 0,
+      "all": null
+    },
+    "clip": { "cornerRadius": 0 },         // Скругление (если нужно)
+    "background": null,                    // Цвет фона
+    "border": { "width": 0, "color": null }, // Рамка
+    "align": "centerVertically",           // Выравнивание в Row/Column: start, center, end, top, bottom
+    "clickable": false,                    // Можно ли кликать
+    "onClick": null,                        // Действие по клику
+    "alpha": 1.0                            // Прозрачность
+  }
+}
+
+
+
+{
+  "type": "row",
+  "modifier": {
+    "fillMaxWidth": true,                  // Растянуть по ширине
+    "fillMaxHeight": false,                // Растянуть по высоте
+    "weight": null,                        // Вес для распределения в Column/Row
+    "padding": {                           // Отступы
+      "start": 16,
+      "end": 16,
+      "top": 8,
+      "bottom": 8,
+      "all": null
+    },
+    "background": null,                    // Цвет фона
+    "clip": { "cornerRadius": 0 },         // Скругление углов
+    "border": { "width": 0, "color": null }, // Рамка
+    "clickable": false,                    // Кликабельность всей строки
+    "onClick": null,                        // Действие при клике
+    "align": null,                          // Альтернативное выравнивание
+    "alpha": 1.0                            // Прозрачность
+  },
+  "verticalAlignment": "top",               // Top, CenterVertically, Bottom
+  "horizontalArrangement": "start",         // start, center, end, spaceBetween, spaceAround, spaceEvenly
+  "children": []                            // Массив дочерних компонентов
+}
+
+
+
+{
+  "type": "column",
+  "modifier": {
+    "fillMaxWidth": false,                  // Растянуть по ширине
+    "fillMaxHeight": false,                 // Растянуть по высоте
+    "weight": 1,                             // Вес для распределения
+    "padding": {                             // Отступы
+      "start": 0,
+      "end": 0,
+      "top": 0,
+      "bottom": 0,
+      "all": null
+    },
+    "background": null,                     // Цвет фона
+    "clip": { "cornerRadius": 0 },          // Скругление углов
+    "border": { "width": "0", "color": null }, // Рамка
+    "clickable": false,                     // Кликабельность всей колонки
+    "onClick": null,                         // Действие при клике
+    "align": null,                           // Альтернативное выравнивание
+    "alpha": 1.0                             // Прозрачность
+  },
+  "verticalArrangement": "top",              // Top, CenterVertically, Bottom, SpaceBetween, SpaceAround
+  "horizontalAlignment": "start",            // Start, CenterHorizontally, End
+  "children": []                             // Массив дочерних компонентов
+}
+
+
+
+{
+  "type": "checkbox",
+  "isChecked": true,                     // Состояние чекбокса: true или false
+  "onCheckedChange": null,               // Действие при изменении состояния
+  "enabled": true,                       // Можно ли взаимодействовать с чекбоксом
+  "colors": {
+    "checkedColor": "#965EEB",
+    "uncheckedColor": "#CCCCCC",
+    "disabledColor": "#AAAAAA"
+  },
+  "modifier": {
+    "size": { "width": "21", "height": "21" }, // Размер
+    "padding": {                            // Отступы
+      "start": 0,
+      "end": 0,
+      "top": 0,
+      "bottom": 0,
+      "all": null
+    },
+    "clip": { "cornerRadius": 0 },          // Скругление (не часто используется)
+    "background": null,                     // Цвет фона вокруг чекбокса
+    "border": { "width": "0", "color": null }, // Рамка вокруг
+    "align": "centerVertically",            // Выравнивание в Row/Column: start, center, end, top, bottom
+    "clickable": true,                      // Можно ли кликать
+    "alpha": 1.0                            // Прозрачность
+  }
+}
+
+
+
+{
+  "type": "spacer",
+  "width": "wrap_content",       // Ширина, если нужно использовать горизонтальный Spacer
+  "height": "10",        // Высота, если вертикальный Spacer
+  "weight": "1",      // Вес для распределения в Row/Column
+  "modifier": {
+    "padding": {       // Отступы вокруг Spacer
+      "start": 0,
+      "end": 0,
+      "top": 0,
+      "bottom": 0,
+      "all": null
+    },
+    "align": null,     // Выравнивание в Row/Column
+    "background": null,// Цвет фона (если нужно)
+    "clip": { "cornerRadius": 0 },
+    "alpha": 1.0
+  }
+}
+
+
+
+{
+  "type": "card",
+  "modifier": {
+    "fillMaxWidth": true,                 // Растянуть по ширине
+    "fillMaxHeight": false,               // Растянуть по высоте
+    "size": { "width": "wrap_content", "height": "wrap_content" },
+    "padding": {                          // Отступы вокруг Card
+      "start": 16,
+      "end": 16,
+      "top": 8,
+      "bottom": 8,
+      "all": null
+    },
+    "clip": { "cornerRadius": 12 },       // Скругление углов
+    "background": "#FFFFFF",              // Цвет фона
+    "border": { "width": 0, "color": null }, // Рамка
+    "shadow": { "elevation": 4, "color": "#000000" }, // Тень
+    "clickable": false,                   // Можно ли кликать
+    "onClick": null,                       // Действие при клике
+    "alpha": 1.0                           // Прозрачность
+  },
+  "elevation": 4,                          // Высота тени (аналог shadow)
+  "shape": { "cornerRadius": 12 },         // Скругление углов (дублирует clip)
+  "background": "#FFFFFF",                 // Цвет фона (дублирует modifier.background)
+  "children": []                           // Дочерние компоненты внутри Card
+}
+
+
+{
+  "type": "snackbar",
+  "id": "deleteCartItem",
+  "text": "Элемент удалён",
+  "actionText": "Вернуть",
+  "duration": 3000,
+  "actions": [
+    {
+      "action": "undoDelete",
+      "targetId": "cart_item_123"
+    }
+  ],
+  "modifier": {
+    "fillMaxWidth": true,
+    "padding": {
+      "start": 16,
+      "end": 16,
+      "top": 0,
+      "bottom": 16
+    },
+    "background": "#141414",
+    "clip": { "cornerRadius": 32 }
+  }
+}
+
+
+
+{
+  "type": "screen",
+  "id": "cart_screen",
+  "name": "CartScreen",
+  "background": "#FFFFFF",
+  "topBar": [
+
+  ],
+  "content": [
+
+  ],
+  "bottomBar": [
+
+  ],
+  "snackbars": [
+
+  ]
+}
